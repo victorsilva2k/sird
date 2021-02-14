@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1ib8tvLCjJfuosb1nUmEmlvVxdm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="" />
+      <created>1602165149001</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602165149001</updated>
+      <workItem from="1602165154959" duration="788000" />
+      <workItem from="1602595871694" duration="600000" />
+      <workItem from="1605974561691" duration="1268000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="386" y="573" key="NewPhpFileDialog" timestamp="1602165329811">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="386" y="573" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1602165329811" />
+    <state x="368" y="11" key="SettingsEditor" timestamp="1605975392894">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="368" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605975392894" />
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1605975329080">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1605975329080" />
+    <state x="363" y="198" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1602596709208" />
+    <state x="240" y="49" key="search.everywhere.popup" timestamp="1602165272361">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="240" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602165272361" />
+  </component>
+</project>

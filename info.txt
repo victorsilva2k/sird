@@ -1,0 +1,6 @@
+fpc-3 
+para computadores mostrar tres itens
+ft-2 
+para tablets mortrar dois itens
+fph-1
+para telefones mostrar um item

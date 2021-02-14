@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+
+
+/* Headers */
+header {
+    background-color: #21252B;
+    padding: 10px;
+}
+.navbar {
+    display: flex;
+
+}
+.search-form {
+
+    display: flex;
+    flex-grow: 8;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.search-form .form-input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin-right: 13px;
+    margin-left: 13px;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+/* Listas */
+
+ul li {
+    list-style: none;
+    text-decoration: none;
+}
+
+/* Home */
+
+.img-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.img-principal img {
+    width: 100px
+}
+
+/* Cartões */
+a.link-card {
+    text-decoration: none;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    
+}
+
+.box-card {
+    border: 1px solid #6c757d;
+    margin-bottom: 20px;
+    
+    
+}
+
+.box-card .card-text {
+    padding: 10px;
+    border-top: 1px solid #6c757d;
+}
+
+.card-text ul li {
+
+}
+img {
+    max-width: 100%;
+}
+.img-box-card img {
+    
+}
+
+/* Selecionadores */
+
+.selectors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.selectors a {
+    padding: 3px;
+}
