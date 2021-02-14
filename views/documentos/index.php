@@ -10,7 +10,7 @@
                 <li>Documentos: BI, Carta de Condução</li>
                 <li>Localização: Luanda, Talatona, Nova Vida, Mbondo Chapé, Rua 4</li>
                 <li>Data: 2 de Fevereiro de 2020</li>
-                <li>Posto/Esquadra: Esquadra No7</li>
+                <li>Posto/Esquadra: Esquadra No8</li>
             </ul>
         </div>
         
