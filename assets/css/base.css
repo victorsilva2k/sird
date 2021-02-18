@@ -1,18 +1,98 @@
+:root {
+
+  --color-primary: #eb2f64;
+  --color-primary-light: #FF3366;
+  --color-primary-dark: #BA265D;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #ced4da;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+  --color-grey-light-5: rgba(0,0,0,.125);
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #212529;;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark:  0 2rem, 6 rem rgba(0, 0, 0, 0.3);
+  
+
+
+
+
+
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 1rem; // 1rem 10px, 10px/16px = 62.5%
+}
+
+body {
+  background-color: #eb2f64;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  /* line-height: 1.6; */
+
+  background-color: #fff;
+
+}
 
 .cont {
-
-    
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-
-  }
+}
 
   .center-t {
     text-align: center !important;
   }
   
+/* BOTOES COR */
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn--icon {
+  border: none;
+  background-color: transparent;
+
+}
+
+/* CORES E SOMBRES */
+
+.sombra-cinza {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
   .btn-1 {
     color:#fff;
     border-color: #fff;
@@ -32,12 +112,33 @@
 
 }
 
+/* BACKGROUNDS */
+
 .bg-black {
   background-color: #21252B;
 }
 
+/* IMAGENS */
+
+/* ICONES */
+
+.icon--padrao {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--color-grey-dark-1);
+}
+
+/* LINKS */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
 .br-25{
   border-radius: .25rem;
+}
+
+.bd-1 {
+  border: 1px solid var(--color-grey-light-5);
 }
 
 .mgb-20 {
@@ -52,10 +153,7 @@
 .mgt-10 {
   margin-top: 10px;
 }
-a {
-  color: #0d6efd;
-  text-decoration: underline;
-}
+
 
 
 
@@ -69,8 +167,7 @@ a {
     .cont {
       max-width: 540px;
     }
-    .cards {
-      flex-direction: row;
+    .galeria {
     }
   }
   
@@ -82,9 +179,11 @@ a {
     .cont {
       max-width: 720px;
     }
-    .cards {
+    .galeria {
       display: flex;
       justify-content: space-between;
+      flex-direction: column;
+
     }
   }
 

@@ -8,21 +8,25 @@
     <nav class="navbar" >
             
         <form class="search-form" action="pesquisar" method="get">
-            <input class="form-input" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
-            <button class="btn btn-3" type="submit">Pesquisar</button>
+            <input class="search-form__input" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+            <button class="search_form__button btn--icon">
+                    <svg class="search_form__icon icon--padrao">
+                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
+                    </svg>
+                </button>
         </form>
   
     </nav>
-    <a href="" class="btn btn-3 mb-4 ">Ordenar por</a>
+    <a href="" class="btn btn-secondary mb-4 ">Ordenar por</a>
 
-        <div class="cards"> 
+        <div class="galeria cartoes"> 
             <a href="<?php echo ROOT_PATH; ?>documentos/id/192" class="responsive-item ">
-                <div class="box-card br-25 ">
-                    <div class="img-box-card">
+                <div class="cartoes__cartao br-25 ">
+                    <div class="cartoes__img">
                         <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="nome da pessoa">
                     </div>
-                    <div class="card-text">
-                        <ul class="card-text-list">
+                    <div class="cartoes__texto">
+                        <ul class="cartoes__lista">
                             <li>Nome: Victorino Kioza</li>
                             <li>Documentos: BI, Carta de Condução</li>
                         </ul>
@@ -31,12 +35,12 @@
                 </div>
             </a>
             <a href="<?php echo ROOT_PATH; ?>documentos/id/192" class="responsive-item ">
-                <div class="box-card br-25 ">
-                    <div class="img-box-card">
+                <div class="cartoes__cartao br-25 ">
+                    <div class="cartoes__img">
                         <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="nome da pessoa">
                     </div>
-                    <div class="card-text">
-                        <ul class="card-text-list">
+                    <div class="cartoes__texto">
+                        <ul class="cartoes__lista">
                             <li>Nome: Victorino Kioza</li>
                             <li>Documentos: BI, Carta de Condução</li>
                         </ul>
@@ -45,12 +49,12 @@
                 </div>
             </a>
             <a href="<?php echo ROOT_PATH; ?>documentos/id/192" class="responsive-item ">
-                <div class="box-card br-25 ">
-                    <div class="img-box-card">
+                <div class="cartoes__cartao br-25 ">
+                    <div class="cartoes__img">
                         <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="nome da pessoa">
                     </div>
-                    <div class="card-text">
-                        <ul class="card-text-list">
+                    <div class="cartoes__texto">
+                        <ul class="cartoes__lista">
                             <li>Nome: Victorino Kioza</li>
                             <li>Documentos: BI, Carta de Condução</li>
                         </ul>

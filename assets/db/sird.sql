@@ -1,0 +1,3 @@
+-- Vou criar o diagrama EER de acordo com a tabela que normalizamos, e depois te mando no whatsapp. Yha?
+-- Criei a Base de dados, com o padrão linguistico internacional
+-- esquecemos de criar uma forma de linkar ou ligar um posto a um comando municipal
