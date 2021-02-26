@@ -42,6 +42,6 @@
         
         
     </div>
-    <a href="" class="  btn btn-success mgt-10 ">Editar</a>
+    <a href="<?php echo ROOT_URL?>comando/editar" class="  btn btn-success mgt-10 ">Editar</a>
 
 </div>

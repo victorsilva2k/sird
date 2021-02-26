@@ -121,8 +121,10 @@ $oficial = true; //verdadeiro
             
                 
                 <?php 
+                echo '<div class="cont cont--side mgt-20 mgb-20"">';
                 
                 Messages::displayMessage();
+                echo '</div>';
                 require $view; 
                 
                 ?>

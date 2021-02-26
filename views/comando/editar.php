@@ -39,7 +39,7 @@
                     <input  type="text" class="caixa-info__input input--text" name="cm_rua" value="<?php echo $rua?>" id="">
                 </div>
             </div>
-            <button type="submit" class="caixa-info__botao  btn btn-success mgt-10 ">Guardar alterações</button>
+            <button type="submit" name="submit" class="caixa-info__botao  btn btn-success mgt-10 ">Guardar alterações</button>
             <?php endforeach;?>
            
 

@@ -56,6 +56,7 @@ abstract class Model
         return $this->dbh->lastInsertId();
     }
 
+ 
     public function singleResult()
     {
         $this->execute();
