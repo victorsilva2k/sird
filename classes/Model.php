@@ -8,7 +8,7 @@ abstract class Model
 
     public function __construct() {
         // TODO
-        // $this->dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $this->dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         
         
     }

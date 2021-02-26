@@ -1,9 +1,9 @@
 <div class="cont">
     <div class="btn-groupo">
-        <button class="btn btn-1">
+        <botao class="btn btn-1">
             Publicar documento
         </button>
-        <button class="btn btn-2">
+        <botao class="btn btn-2">
             Devolver documento
         </button>
     </div>

@@ -17,6 +17,7 @@ require_once "controllers/shares.php";
 require_once "controllers/users.php";
 require_once "controllers/pesquisar.php";
 require_once "controllers/documentos.php";
+require_once "controllers/comando.php";
 
 // Models
 require_once "models/home.php";
@@ -24,6 +25,7 @@ require_once "models/share.php";
 require_once "models/user.php";
 require_once "models/pesquisar.php";
 require_once "models/documentos.php";
+require_once "models/comando.php";
 
 $bt = new Bootstrap($_GET);
 $controller = $bt->createController();

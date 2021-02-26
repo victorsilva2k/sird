@@ -16,14 +16,14 @@ class Messages
     {
         if (isset($_SESSION['errorMessage'])) {
             echo '
-                <div class="alert alert-danger w-100" role="alert">
+                <div class="alertas alerta-vermelho">
                     '. $_SESSION['errorMessage'] .'
                 </div>';
             unset($_SESSION['errorMessage']);
         }
         if (isset($_SESSION['successMessage'])) {
             echo '
-                <div class="alert alert-primary" role="alert">
+                <div class="alertas alerta-normal">
                     '. $_SESSION['successMessage'] .'
                 </div>';
             unset($_SESSION['successMessage']);

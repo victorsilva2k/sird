@@ -17,6 +17,8 @@ class Bootstrap{
         } else{
 
             $this->controller = $this->request['controller'];
+      
+            
             
         }
         if ($this->request['action'] == "") {
@@ -28,7 +30,6 @@ class Bootstrap{
             $this->action = $this->request['action'];
             
         }
-
         
     }
 

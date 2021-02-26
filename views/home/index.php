@@ -7,10 +7,10 @@
     
     <nav class="navbar" >
             
-        <form class="search-form" action="pesquisar" method="get">
-            <input class="search-form__input" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
-            <button class="search_form__button btn--icon">
-                    <svg class="search_form__icon icon--padrao">
+        <form class="pesquisa-form" action="pesquisar" method="get">
+            <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+            <botao class="search_form__botao btn-icone">
+                    <svg class="search_form__icone icone--padrao">
                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
                     </svg>
                 </button>

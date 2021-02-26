@@ -5,7 +5,7 @@
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "SUPERincu1060");
-define("DB_NAME", "thriftshop");
+define("DB_NAME", "sird-db");
 // TODO
 
 define("ROOT_PATH", "/sird/");

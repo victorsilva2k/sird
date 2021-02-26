@@ -1,6 +1,31 @@
-.header {
+.cabecalho {
     font-size: 1.4rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+}
+
+.conteudo {
+    display: flex;
+}
+
+.barra-lateral {
+    background-color: var(--color-grey-light-3);
+
+    
+    flex-direction: column;
+    justify-content: space-between;
+}
+.barra-lateral, .cabecalho__link-aplicacao  {
+    flex: 0 0 22%;
+    display: flex;
+
+}
+.cabecalho-direito {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.main {
+    flex: 1;
 }
