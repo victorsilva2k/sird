@@ -2,14 +2,17 @@
 
 
 
+
+
 CREATE VIEW comando_municipal_informacao AS SELECT cm.data_criacao, cml.provincia, cml.municipio, cml.distrito, cml.bairro, cml.rua  FROM comando_municipal cm JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm;
 SELECT * FROM comando_municipal_informacao;
 
 INSERT INTO comando_municipal VALUES(NULL, current_timestamp());
 INSERT INTO comando_municipal_localizacao VALUES(1, "Luanda", "Talatona", "SIAC", "Belas", "4");
 
-UPDATE comando_municipal_localizacao SET provincia = "Luanda", municipio = "Talatona", distrito = "SIAC", bairro = "Belas", rua = "5" WHERE id_cm = 1;
-
+UPDATE comando_municipal_localizacao 
+SET provincia = "Luanda", municipio = "Talatona", distrito = "SIAC", bairro = "Belas", rua = "5" WHERE id_cm = 1;
+SELECT * FROM comando_municipal_informacao WHERE id_cm = 1;
 
 
 

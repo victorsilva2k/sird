@@ -3,8 +3,8 @@
 
 /* Headers */
 
-.cabecalho {
-    
+.cabecalho--top {
+    border-bottom: var(--grey-border);
 }
 .cabecalho__logo {
     /* margin-left: 2rem; */
@@ -165,7 +165,7 @@ ul li {
 
 .galeria {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-top: 10px;
     padding-bottom: 10px;
     flex-wrap: wrap;

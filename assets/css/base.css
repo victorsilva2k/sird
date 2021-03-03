@@ -1,6 +1,6 @@
 :root {
 
-  --color-primary: #eb2f64;
+  --color-primary: #0d6efd;
   --color-primary-light: #FF3366;
   --color-primary-dark: #BA265D;
 
@@ -15,7 +15,8 @@
   --color-grey-dark-3: #21252B;
 
   --shadow-dark:  0 2rem, 6 rem rgba(0, 0, 0, 0.3);
-  --line: 1px solid var(--color-grey-light-);
+  --line: 1px solid var(--color-grey-light-1);
+  --grey-border: 1px solid rgba(0,0,0,.125);
   
 
 
@@ -50,8 +51,8 @@ body {
 }
 
 .cont {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 15px;
+    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -117,6 +118,15 @@ body {
 
 .bg-black {
   background-color: var(--color-grey-dark-3);
+}
+.bg-blue {
+  background-color: var(--color-primary);
+}
+
+/* BORDAS */
+
+.bd--grey {
+  border: var(--grey-border);
 }
 
 /* ALERTAS */
@@ -201,8 +211,11 @@ a {
     
     .cont {
       max-width: 540px;
+
     }
     .galeria {
+      flex-direction: row;
+      
     }
   }
   
@@ -215,9 +228,9 @@ a {
       max-width: 720px;
     }
     .galeria {
-      display: flex;
+      
       justify-content: space-between;
-      flex-direction: column;
+      
 
     }
     
@@ -233,7 +246,7 @@ a {
       width: 30%;
     }
     .cont {
-      max-width: 1140px;
+      max-width: 1000px;
     }
     .cont--side {
       max-width: 1000px;

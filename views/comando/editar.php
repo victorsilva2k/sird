@@ -1,4 +1,4 @@
-<div class="cont cont--side mgt-20 mgb-20">
+
       
     <form method="post" class="caixa-info br-25">
         <div class="caixa-info__titulo">
@@ -45,4 +45,4 @@
 
     </form>
 
-</div>
+

@@ -9,7 +9,8 @@ class Comando extends Controller{
 
     protected function Editar()
     {
+        
         $viewmodel = new ComandoModel();
-        $this->returnView($viewmodel->Editar(), true);
+        $this->returnView($viewmodel->Editar($this->param), true);
     }
 }

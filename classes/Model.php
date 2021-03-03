@@ -12,10 +12,19 @@ abstract class Model
         
         
     }
-
+    
+    // Prepara uma query para ser executada
     public function query($query)
     {
         $this->stmt = $this->dbh->prepare($query);
+    }
+
+    // Função pronta para pegar dados de uma certa coleção, ou número selecionado de dados
+    public function range($query, $start, $end)
+    {
+        $this->query($query);
+        $this->bind(':START', $start);
+        $this->bind(':END', $end);
     }
 
     public function bind($param, $value, $type = null)

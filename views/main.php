@@ -3,11 +3,12 @@
 <?php
 // HACK
 $oficial = true; //verdadeiro
+
+
 ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/bootstrap.css"> -->
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/main.css">
 
     <!-- Links Externos -->
@@ -22,11 +23,13 @@ $oficial = true; //verdadeiro
 
 <body>
 
-    <header class="bg-black">
-
-        <div class=" cabecalho">
+    
+    
+    <div class="conteudo">
+    <?php if($oficial): ?>
+        <nav class="barra-lateral">
             <div class="cabecalho__link-aplicacao">
-            <?php if($oficial): ?>
+                
                 <!-- PARA O OFICIAL -->
                 
                 <a href="" class="cabecalho__link">
@@ -41,43 +44,13 @@ $oficial = true; //verdadeiro
                     <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-menu"></use> 
                     </svg>
                 </button>
-            <?php else:?>
-                <!-- PARA O CIDADÃO -->
-                <button class="cabecalho__botao btn-icone esconde-grande">
-                    <svg class="cabecalho__icone icone--padrao">
-                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use> 
-                    </svg>
-                </button>  
-            <?php endif;?>
-            </div>
             
-            <div class="cabecalho-direito cont cont--side">
-            <form class="pesquisa-form" action="pesquisar" method="get">
-                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
-                <button class="pesquisa-form__botao btn-icone">
-                    <svg class="pesquisa-form__icone  icone-padrao">
-                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
-                    </svg>
-                </button>
-                <a href="" class="pesquisa-form__botao--normal btn btn-secondary mb-4 ">Publicar</a>
-            </form> 
-
-            <a href="" class="cabecalho__link-usuario">
-                <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
-                    <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
-                    <span class="cabecalho__nome-usuario">Victor</span>
-                </div>
-            </a>
+                
+            
             </div>
-        </div>
-        
-    </header>
-    
-    <div class="conteudo">
-        <nav class="barra-lateral">
             <ul class="navegacao-lateral">
                 <li class="navegacao-lateral__item">
-                    <a href="#" class="navegacao-lateral__link">
+                    <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-lateral__link">
                         <svg class="navegacao-lateral__icone">
                             <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
                         </svg>
@@ -85,7 +58,7 @@ $oficial = true; //verdadeiro
                     </a>
                 </li>
                 <li class="navegacao-lateral__item">
-                    <a href="#" class="navegacao-lateral__link">
+                    <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
                         <svg class="navegacao-lateral__icone">
                             <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
                         </svg>
@@ -93,7 +66,7 @@ $oficial = true; //verdadeiro
                     </a>
                 </li>
                 <li class="navegacao-lateral__item">
-                    <a href="#" class="navegacao-lateral__link">
+                    <a href="<?php echo ROOT_URL; ?>oficial" class="navegacao-lateral__link">
                         <svg class="navegacao-lateral__icone">
                             <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
                         </svg>
@@ -101,7 +74,7 @@ $oficial = true; //verdadeiro
                     </a>
                 </li>
                 <li class="navegacao-lateral__item">
-                    <a href="#" class="navegacao-lateral__link">
+                    <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
                         <svg class="navegacao-lateral__icone">
                             <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
                         </svg>
@@ -116,12 +89,79 @@ $oficial = true; //verdadeiro
             </ul>
 
         </nav>
-        <main role="main" class=" main">
+      
 
+        
+
+        <?php endif;?>
+        
+
+        <main role="main" class=" main">
+                <header class=" cabecalho--top">
+
+                    <div class=" cabecalho">
+                    <?php if($oficial): ?>
+                        
+                        
+                        <div class="cabecalho-direito cont cont--side">
+                            <form class="pesquisa-form" action="pesquisar" method="get">
+                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+                                <button class="pesquisa-form__botao btn-icone">
+                                    <svg class="pesquisa-form__icone  icone-padrao">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
+                                    </svg>
+                                </button>
+                                <a href="" class="pesquisa-form__botao--normal btn btn-secondary mb-4 ">Publicar</a>
+                            </form> 
+
+                            <a href="" class="cabecalho__link-usuario">
+                                <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
+                                    <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
+                                    <span class="cabecalho__nome-usuario">Victor</span>
+                                </div>
+                            </a>
+                        </div>
+                        <?php else:?>
+                            <div class="cabecalho-direito cont cont--side">
+                            <!-- PARA O CIDADÃO -->
+                            <button class="cabecalho__botao btn-icone esconde-grande">
+                                <svg class="cabecalho__icone icone--padrao">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                                </svg>
+                            </button>  
+                            <form class="pesquisa-form" action="pesquisar" method="get">
+                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+                                <button class="pesquisa-form__botao btn-icone">
+                                    <svg class="pesquisa-form__icone  icone-padrao">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
+                                    </svg>
+                                </button>
+                                
+                            </form> 
+
+                            
+                        </div>
+                        <?php endif;?>
+                    </div>
+                    <div class="caixa-info__titulo">
+                        <p>Páginas</p>
+                        <div class="paginacao__controles">
+                            
+                        </div>
+                    </div>
+                </header>
+                <div class="cont cont--side mgt-10 paginacao bd--grey br-25">
+                    <div class="caixa-info__titulo">
+                        <p>Páginas</p>
+                        <div class="paginacao__controles">
+
+                        </div>
+                    </div>
+                </div>
             
                 
                 <?php 
-                echo '<div class="cont cont--side mgt-20 mgb-20"">';
+                echo '<div class="cont mgt-20 mgb-20">';
                 
                 Messages::displayMessage();
                 echo '</div>';
