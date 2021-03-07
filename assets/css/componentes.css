@@ -42,6 +42,9 @@
         
         
     }
+    .cabecalho__nome-usuario {
+        
+    }
 
 .pesquisa-form {
 
@@ -269,7 +272,68 @@ img {
     font-size: 1rem;
     font-weight: 100;   
 }
+/* LOGIN E CADASTRO */
+.login-box {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    
+  }
 
+  .login-box__body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    justify-items: center;
+  }
+
+  .formulario {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      
+  }
+
+  .formulario__input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .formulario__link {
+      align-self: flex-start;
+  }
+  .formulario__img {
+    vertical-align: middle;
+    border-style: none;
+    width: 72px;
+    height: 72px;
+  }
+
+  .formulario__img--grande {
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+  }
+
+  .formulario__titulo {
+    margin-bottom: .5rem;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+
+  
 @media (max-width: 576px) {
     
     .caixa-info__item {

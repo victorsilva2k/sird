@@ -15,11 +15,10 @@
 
     
     flex-direction: column;
-    justify-content: space-between;
 }
 .barra-lateral, .cabecalho__link-aplicacao  {
     flex: 0 0 22%;
-    display: flex;
+    /* display: flex; */
 
 }
 .cabecalho-direito {

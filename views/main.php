@@ -10,6 +10,7 @@ $oficial = true; //verdadeiro
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/main.css">
+  
 
     <!-- Links Externos -->
     <!-- Fontes -->
@@ -111,7 +112,7 @@ $oficial = true; //verdadeiro
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
                                     </svg>
                                 </button>
-                                <a href="" class="pesquisa-form__botao--normal btn btn-secondary mb-4 ">Publicar</a>
+                                <a href="" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
                             </form> 
 
                             <a href="" class="cabecalho__link-usuario">
@@ -143,21 +144,9 @@ $oficial = true; //verdadeiro
                         </div>
                         <?php endif;?>
                     </div>
-                    <div class="caixa-info__titulo">
-                        <p>Páginas</p>
-                        <div class="paginacao__controles">
-                            
-                        </div>
-                    </div>
-                </header>
-                <div class="cont cont--side mgt-10 paginacao bd--grey br-25">
-                    <div class="caixa-info__titulo">
-                        <p>Páginas</p>
-                        <div class="paginacao__controles">
 
-                        </div>
-                    </div>
-                </div>
+                </header>
+                
             
                 
                 <?php 

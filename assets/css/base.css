@@ -60,6 +60,16 @@ body {
   .center-t {
     text-align: center !important;
   }
+
+  /* TEXTOS E FONTES */
+
+  .text--cinza {
+    color: #6c757d !important;
+  }
+  .fonte--normal {
+    font-weight: 400;
+  }
+
   
 /* BOTOES COR */
 
