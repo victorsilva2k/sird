@@ -9,6 +9,7 @@ abstract class Model
     public function __construct() {
         // TODO
         $this->dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         
     }
@@ -49,6 +50,18 @@ abstract class Model
         $this->stmt->bindValue($param, $value, $type);
     }
 
+    public function rollBack()
+    {
+        $this->dbh->rollBack();
+    }
+    public function beginTransaction()
+    {
+        $this->dbh->beginTransaction();
+    }
+    public function commit()
+    {
+        $this->dbh->commit();
+    }
     public function execute()
     {
         $this->stmt->execute();

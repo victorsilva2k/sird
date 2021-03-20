@@ -30,9 +30,10 @@
                     <input type="password" name="cadastroConfirmarPassword"  class="formulario__input input--text" placeholder="Confirmar Palavra-passe" required>
 
                     <input type="submit" name="submit" value="Cadastrar" class="formulario__input btn btn-lg btn-primary btn-block">
-   
+                    <a href="" class="link formulario__link mgb-10">Já tem conta? Iniciar Sessão</a>
 
-                    <p class="mt-5 mb-3 text--cinza">SIRD &copy; 2017-2019</p>
+
+                    <p class="mt-5 mb-3 text--cinza">SIRD &copy; 2021</p>
                 </form>
         
         </div>

@@ -17,6 +17,9 @@
   --shadow-dark:  0 2rem, 6 rem rgba(0, 0, 0, 0.3);
   --line: 1px solid var(--color-grey-light-1);
   --grey-border: 1px solid rgba(0,0,0,.125);
+
+  --cor-primaria: #007bff;
+  --cor-secundaria: #6c757d;
   
 
 
@@ -63,11 +66,23 @@ body {
 
   /* TEXTOS E FONTES */
 
-  .text--cinza {
+  .texto--cinza {
     color: #6c757d !important;
   }
   .fonte--normal {
     font-weight: 400;
+  }
+
+  /* TÍTULOS */
+
+  .titulo--normal {
+    /* margin-bottom: .5rem; */
+    padding-bottom: .35rem;
+    margin-top: 1rem;
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--color-grey-dark-1);
+    border-bottom: 2px solid rgba(0,0,0,.125);
   }
 
   
@@ -213,6 +228,8 @@ a {
 
 
 
+
+
   @media (min-width: 576px) {
     
     .responsive-item{
@@ -243,7 +260,7 @@ a {
       
 
     }
-    
+
   }
 
   @media (min-width: 1200px) {

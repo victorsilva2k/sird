@@ -13,14 +13,12 @@ class Bootstrap{
         $this->request = $request;
         if ($this->request['controller'] == "") {
 
-            $this->controller = "home";
+            $this->controller = "inicio";
 
         } else{
 
             $this->controller = $this->request['controller'];
-            // $this->controller = $this->convertToStudlyCaps($this->controller);
-            // echo $this->controller;
-            // exit;
+
       
             
             

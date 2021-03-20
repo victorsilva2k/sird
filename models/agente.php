@@ -1,6 +1,6 @@
 <?php
 
-class OficialModel extends Model{
+class agenteModel extends Model{
     public function Index()
     {
         $this->query('SELECT * FROM comando_municipal_informacao;');
@@ -42,7 +42,7 @@ class OficialModel extends Model{
             $this->bind(':DISTRITO', $cm_distrito);
             $this->bind(':BAIRRO', $cm_bairro);
             $this->bind(':RUA', $cm_rua);
-            $this->bind(':ID_CM', $id_cm);//HACK esse valor deve vir de uma consulta relacional do oficial para o posto e do posto para o comando municipal
+            $this->bind(':ID_CM', $id_cm);//HACK esse valor deve vir de uma consulta relacional do agente para o posto e do posto para o comando municipal
             $this->execute();
             //Verify
 

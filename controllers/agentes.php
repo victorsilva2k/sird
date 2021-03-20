@@ -1,19 +1,19 @@
 <?php
 
-class Oficiais extends Controller{
+class agentes extends Controller{
     protected function Index()
     {
-        $viewmodel = new OficialModel();
+        $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->Index(), true);
     }
     protected function Login()
     {
-        $viewmodel = new OficialModel();
+        $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->Login(), true);
     }
     protected function Cadastrar()
     {
-        $viewmodel = new OficialModel();
+        $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->Cadastrar(), true);
     }
 

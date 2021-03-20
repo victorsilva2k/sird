@@ -5,4 +5,12 @@ class InicioModel extends Model{
     {
         return;
     }
+    public function Cidadao()
+    {
+        return;
+    }
+    public function Agente()
+    {
+        return;
+    }
 }

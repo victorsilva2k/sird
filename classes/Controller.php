@@ -46,4 +46,17 @@ abstract class Controller{
             require_once $view;
         }
     }
+    // Trata ou transforma uma data normal do php em uma data legivel
+    protected function tratarData($tempo, $hora = false)
+    {
+        // recebe uma data e calcula quanto tempo se passou até a data presente
+        $ts = strtotime($tempo);
+    
+        if ($hora) {
+            $tr = strftime("%e de %B de %G ás %H:%M", $ts);
+        } else {
+            $tr = strftime("%e de %B de %G", $ts);
+        }
+        return $tr;
+    }
 }

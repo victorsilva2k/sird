@@ -2,7 +2,7 @@
 <html lang="pt-pt">
 <?php
 // HACK
-$oficial = true; //verdadeiro
+$agente = true; //verdadeiro
 
 
 ?>
@@ -17,6 +17,10 @@ $oficial = true; //verdadeiro
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- Javascript -->
+    <script src="assets/js/jquery-3.2.1.js"></script>
+    <script src="assets/js/app.js"></script>
+
     <!-- Icones -->
     <script src="https://kit.fontawesome.com/d48820cda4.js" crossorigin="anonymous"></script>
     <title>SIRD - PNA</title>
@@ -24,76 +28,75 @@ $oficial = true; //verdadeiro
 
 <body>
 
+    <div class="modal">
     
+    </div>
     
     <div class="conteudo">
-    <?php if($oficial): ?>
-        <nav class="barra-lateral">
-            <div class="cabecalho__link-aplicacao">
-                
-                <!-- PARA O OFICIAL -->
-                
-                <a href="" class="cabecalho__link">
-                    <div class="cabecalho__nav">
-                        <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="Aplicação" class="cabecalho__logo cabecalho__img">
-                        <span class="cabecalho__nome-aplicacao">SIRD</span>
-                    </div>
-                </a>
-                
-                <button class="cabecalho__botao btn-icone esconde-grande">
-                    <svg class="cabecalho__icone icone--padrao">
-                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-menu"></use> 
-                    </svg>
-                </button>
-            
-                
-            
-            </div>
-            <ul class="navegacao-lateral">
-                <li class="navegacao-lateral__item">
-                    <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-lateral__link">
-                        <svg class="navegacao-lateral__icone">
-                            <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
-                        </svg>
-                        <span>Documentos</span>
+        <?php if($agente): ?>
+            <nav class="barra-lateral">
+                <div class="cabecalho__link-aplicacao">
+                    
+                    <!-- PARA O agente -->
+                    
+                    <a href="" class="cabecalho__link">
+                        <div class="cabecalho__nav">
+                            <img src="<?php echo ROOT_IMG; ?>site/logo_pna.png" alt="Aplicação" class="cabecalho__logo cabecalho__img">
+                            <span class="cabecalho__nome-aplicacao">SIRD</span>
+                        </div>
                     </a>
-                </li>
-                <li class="navegacao-lateral__item">
-                    <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
-                        <svg class="navegacao-lateral__icone">
-                            <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
+                    
+                    <button class="cabecalho__botao btn-icone esconde-grande">
+                        <svg class="cabecalho__icone icone--padrao">
+                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-menu"></use> 
                         </svg>
-                        <span>Postos</span>
-                    </a>
-                </li>
-                <li class="navegacao-lateral__item">
-                    <a href="<?php echo ROOT_URL; ?>oficial" class="navegacao-lateral__link">
-                        <svg class="navegacao-lateral__icone">
-                            <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
-                        </svg>
-                        <span>Oficiais</span>
-                    </a>
-                </li>
-                <li class="navegacao-lateral__item">
-                    <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
-                        <svg class="navegacao-lateral__icone">
-                            <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
-                        </svg>
-                        <span>Comando Municipal</span>
-                    </a>
-                </li>
-                <li class="navegacao-lateral__item">
+                    </button>
+                
+                    
+                
+                </div>
+                <ul class="navegacao-lateral">
+                    <li class="navegacao-lateral__item">
+                        <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-lateral__link">
+                            <svg class="navegacao-lateral__icone">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                            </svg>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+                    <li class="navegacao-lateral__item">
+                        <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
+                            <svg class="navegacao-lateral__icone">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
+                            </svg>
+                            <span>Postos</span>
+                        </a>
+                    </li>
+                    <li class="navegacao-lateral__item">
+                        <a href="<?php echo ROOT_URL; ?>agente" class="navegacao-lateral__link">
+                            <svg class="navegacao-lateral__icone">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
+                            </svg>
+                            <span>agentes</span>
+                        </a>
+                    </li>
+                    <li class="navegacao-lateral__item">
+                        <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
+                            <svg class="navegacao-lateral__icone">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
+                            </svg>
+                            <span>Comando Municipal</span>
+                        </a>
+                    </li>
+                    <li class="navegacao-lateral__item">
 
-                    <a href="" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
+                        <a href="" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
 
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
-        </nav>
+            </nav>
       
-
-        
-
         <?php endif;?>
         
 
@@ -101,10 +104,11 @@ $oficial = true; //verdadeiro
                 <header class=" cabecalho--top">
 
                     <div class=" cabecalho">
-                    <?php if($oficial): ?>
+                    <?php if($agente): ?>
                         
                         
                         <div class="cabecalho-direito cont cont--side">
+                            
                             <form class="pesquisa-form" action="pesquisar" method="get">
                                 <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
                                 <button class="pesquisa-form__botao btn-icone">
@@ -112,17 +116,28 @@ $oficial = true; //verdadeiro
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
                                     </svg>
                                 </button>
-                                <a href="" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
+                                
                             </form> 
-
-                            <a href="" class="cabecalho__link-usuario">
-                                <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
-                                    <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
-                                    <span class="cabecalho__nome-usuario">Victor</span>
-                                </div>
+                            <div class="cabecalho-direito__links-direito">
+                                
+                            <a href="#" class="cabecalho-direito__botao-menu esconde-grande" id="abrir-menu">
+                                <!-- HACK -->
+                                <svg class="cabecalho-direito__icone  icone-padrao">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-list"></use> 
+                                </svg>
                             </a>
+                            <div class="cabecalho-direito__links-2">
+                                <a href="" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
+                                <a href="" class="cabecalho__link-usuario">
+                                    <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
+                                        <span class="cabecalho__nome-usuario">Victor</span>
+                                        <img src="<?php echo ROOT_IMG; ?>site/usuario.png" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
+                                    </div>
+                                </a>
+                            </div>
+                            </div>
                         </div>
-                        <?php else:?>
+                    <?php else:?>
                             <div class="cabecalho-direito cont cont--side">
                             <!-- PARA O CIDADÃO -->
                             <button class="cabecalho__botao btn-icone esconde-grande">
@@ -142,7 +157,7 @@ $oficial = true; //verdadeiro
 
                             
                         </div>
-                        <?php endif;?>
+                    <?php endif;?>
                     </div>
 
                 </header>
@@ -153,9 +168,9 @@ $oficial = true; //verdadeiro
                 echo '<div class="cont mgt-20 mgb-20">';
                 
                 Messages::displayMessage();
-                echo '</div>';
-                require $view; 
                 
+                require $view; 
+                echo '</div>';
                 ?>
             
 

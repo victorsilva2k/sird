@@ -9,18 +9,7 @@
                 <div class="caixa-info__cabecalho"><h3 >Nome</h3></div>
                 <div class="caixa-info__descricao"><p >Comando Municipal de <?php echo $municipio?></p></div>
             </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Província</h3></div>
-                <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="cm_provincia" value="<?php echo $provincia?>" id="">
-                </div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Município</h3></div>
-                <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="cm_municipio" value="<?php echo $municipio?>" id="">
-                </div>
-            </div>
+    
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Distrito</h3></div>
                 <div class="caixa-info__descricao  ">
