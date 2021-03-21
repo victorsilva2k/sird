@@ -90,18 +90,7 @@ VALUES
 1,
 current_timestamp());
 
-INSERT INTO `sird-db`.`operacao_comando_municipal`
-(`id_operacao`,
-`id_agente`,
-`id_cm`,
-`tipo`,
-`data`)
-VALUES(
-NULL,
-1,
-1,
-2,
- CURRENT_TIMESTAMP);
+INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, 1, 1, 2, CURRENT_TIMESTAMP);
 
 
 
