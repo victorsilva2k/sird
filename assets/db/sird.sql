@@ -1,7 +1,20 @@
 -- PROJECT
 
+SELECT a.id_agente, a.nome, a.foto_arquivo, ac.password, ac.estado_conta
+FROM agente_conta ac 
+JOIN agente a ON ac.id_agente = a.id_agente 
+WHERE ac.nip =  1921765;
 
+SELECT ap.id_posto, ap.cargo 
+FROM agente_conta ac 
+JOIN agente_posto ap ON ac.id_agente = ap.id_agente 
+WHERE ac.nip =  1921765;
 
+-- Caso 
+SELECT acm.id_cm, acm.cargo 
+FROM agente_conta ac 
+JOIN agente_comando_municipal acm ON ac.id_agente = acm.id_agente 
+WHERE ac.nip =  1921765;
 
 
 CREATE VIEW comando_municipal_informacao AS SELECT cm.data_criacao, cml.provincia, cml.municipio, cml.distrito, cml.bairro, cml.rua  FROM comando_municipal cm JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm;

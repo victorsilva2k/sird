@@ -6,10 +6,18 @@ class agentes extends Controller{
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->Index(), true);
     }
-    protected function Login()
+    protected function Entrar()
     {
+
         $viewmodel = new AgenteModel();
-        $this->returnView($viewmodel->Login(), true);
+        $this->returnView($viewmodel->Entrar(), true);
+    }
+    protected function sair()
+    {
+        unset($_SESSION['is_logged_in']);
+        unset($_SESSION['dados_usuario']);
+        session_destroy();
+        header('Location: ' .ROOT_URL. 'agentes/entrar');
     }
     protected function Cadastrar()
     {

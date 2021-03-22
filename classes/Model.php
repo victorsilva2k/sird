@@ -1,5 +1,12 @@
 <?php
 
+/*
+CRUD números
+Criar - 1
+Editar - 2
+Eliminar - 3
+*/
+
 // Classe base para os modelos, ou seja, classes para tratar a base de dados
 abstract class Model  
 {

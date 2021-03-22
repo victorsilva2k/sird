@@ -33,7 +33,7 @@ $agente = true; //verdadeiro
     </div>
     
     <div class="conteudo">
-        <?php if($agente): ?>
+        <?php if($_SESSION['is_logged_in']): ?>
             <nav class="barra-lateral">
                 <div class="cabecalho__link-aplicacao">
                     
@@ -72,6 +72,8 @@ $agente = true; //verdadeiro
                             <span>Postos</span>
                         </a>
                     </li>
+                    
+                    <?php if($_SESSION['usuario_local']['cargo'] > 1): ?>
                     <li class="navegacao-lateral__item">
                         <a href="<?php echo ROOT_URL; ?>agente" class="navegacao-lateral__link">
                             <svg class="navegacao-lateral__icone">
@@ -80,6 +82,7 @@ $agente = true; //verdadeiro
                             <span>agentes</span>
                         </a>
                     </li>
+                    <?php endif;?>
                     <li class="navegacao-lateral__item">
                         <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
                             <svg class="navegacao-lateral__icone">
@@ -104,7 +107,7 @@ $agente = true; //verdadeiro
                 <header class=" cabecalho--top">
 
                     <div class=" cabecalho">
-                    <?php if($agente): ?>
+                    <?php if($_SESSION['is_logged_in']): ?>
                         
                         
                         <div class="cabecalho-direito cont cont--side">
@@ -130,8 +133,8 @@ $agente = true; //verdadeiro
                                 <a href="" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
                                 <a href="" class="cabecalho__link-usuario">
                                     <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
-                                        <span class="cabecalho__nome-usuario">Victor</span>
-                                        <img src="<?php echo ROOT_IMG; ?>site/usuario.png" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
+                                        <span class="cabecalho__nome-usuario"><?php echo $_SESSION['dados_usuario']['nome']; ?></span>
+                                        <img src="<?php echo ROOT_IMG; ?>site/<?php echo $_SESSION['dados_usuario']['foto']; ?>" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
                                     </div>
                                 </a>
                             </div>

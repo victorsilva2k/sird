@@ -3,11 +3,10 @@
 class Inicio extends Controller{
     protected function Index()
     {
-        $is_logged_in = false;
-        
-        if ($is_logged_in) { 
-            header('Location: ' . ROOT_URL . 'inicio/agente');
 
+        
+        if ($_SESSION['is_logged_in']) { 
+            header('Location: ' . ROOT_URL . 'inicio/agente');
         } else {
             header('Location: ' . ROOT_URL . 'inicio/cidadao');
 
@@ -18,6 +17,7 @@ class Inicio extends Controller{
 
     protected function Agente()
     {
+
         $viewmodel = new InicioModel();
         $this->returnView($viewmodel->Agente(), true);
     }

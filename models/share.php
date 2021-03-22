@@ -26,7 +26,7 @@ class ShareModel extends Model{
             $this->bind(':TITLE', $title);
             $this->bind(':BODY', $body);
             $this->bind(':LINK', $link);
-            $this->bind(':USER_ID', $_SESSION['user_data']['id']);
+            $this->bind(':USER_ID', $_SESSION['dados_usuario']['id']);
             $this->execute();
             //Verify
             if ($this->lastInsertId()) {

@@ -52,7 +52,7 @@ class UserModel extends Model{
                 if (password_verify($input_password, $password)) {
 
                     $_SESSION['is_logged_in'] = true;
-                    $_SESSION['user_data'] = array(
+                    $_SESSION['dados_usuario'] = array(
                         "id"    => $id,
                         "email" => $email,
                         "name"  => $name
