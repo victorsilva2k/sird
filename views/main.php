@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-<?php
-// HACK
-$agente = true; //verdadeiro
-
-
-?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/main.css">
+    <link rel="stylesheet" href="<?php echo ROOT_CSS; ?>main.css">
   
 
     <!-- Links Externos -->
@@ -18,8 +12,8 @@ $agente = true; //verdadeiro
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Javascript -->
-    <script src="assets/js/jquery-3.2.1.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="<?php echo ROOT_JS; ?>jquery-3.2.1.js"></script>
+    <script src="<?php echo ROOT_JS; ?>app.js"></script>
 
     <!-- Icones -->
     <script src="https://kit.fontawesome.com/d48820cda4.js" crossorigin="anonymous"></script>
@@ -33,7 +27,7 @@ $agente = true; //verdadeiro
     </div>
     
     <div class="conteudo">
-        <?php if($_SESSION['is_logged_in']): ?>
+        <?php if(isset($_SESSION['is_logged_in'])): ?>
             <nav class="barra-lateral">
                 <div class="cabecalho__link-aplicacao">
                     
@@ -73,9 +67,9 @@ $agente = true; //verdadeiro
                         </a>
                     </li>
                     
-                    <?php if($_SESSION['usuario_local']['cargo'] > 1): ?>
+                    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
                     <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>agente" class="navegacao-lateral__link">
+                        <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-lateral__link">
                             <svg class="navegacao-lateral__icone">
                                 <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
                             </svg>
@@ -98,6 +92,16 @@ $agente = true; //verdadeiro
                     </li>
                 </ul>
 
+                <ul class="navegacao-lateral">
+                    <li class="navegacao-lateral__item">
+                        <a href="<?php echo ROOT_URL; ?>agentes/sair" class="navegacao-lateral__link">
+                            <svg class="navegacao-lateral__icone">
+                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                            </svg>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
       
         <?php endif;?>
@@ -107,7 +111,7 @@ $agente = true; //verdadeiro
                 <header class=" cabecalho--top">
 
                     <div class=" cabecalho">
-                    <?php if($_SESSION['is_logged_in']): ?>
+                    <?php if(isset($_SESSION['is_logged_in'])): ?>
                         
                         
                         <div class="cabecalho-direito cont cont--side">
@@ -171,7 +175,6 @@ $agente = true; //verdadeiro
                 echo '<div class="cont mgt-20 mgb-20">';
                 
                 Messages::displayMessage();
-                
                 require $view; 
                 echo '</div>';
                 ?>

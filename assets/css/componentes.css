@@ -274,13 +274,16 @@ img {
     border: none;
 }
 .caixa-info__cabecalho {
-    flex: 1;
+    flex: 2;
 }
 
 .caixa-info__descricao {
-    flex: 4;
+    flex: 5;
 }
 
+.caixa-info__input {
+    width: 50%;
+}
 .caixa-info__titulo {
     font-size: 1.5rem;
     font-weight: 300;
@@ -305,6 +308,12 @@ img {
 .caixa-info__header {
     font-size: 1rem;
     font-weight: 100;   
+}
+
+.caixa-info__img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 /* LOGIN E CADASTRO */
 .login-box {
@@ -341,6 +350,13 @@ img {
   .formulario__input {
       width: 100%;
       margin-bottom: 10px;
+  }
+
+  .formulario__label {
+    margin-bottom: 10px;
+    font-size: inherit;
+    line-height: 1.5;
+    text-align: left;
   }
 
   .formulario__link {
@@ -531,6 +547,10 @@ img {
 
     .cabecalho-direito__links-direito {
         padding-bottom: 10px;
+    }
+
+    .formulario {
+        width: 100%;
     }
     
     

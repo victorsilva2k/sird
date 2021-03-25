@@ -1,20 +1,153 @@
 -- PROJECT
 
-SELECT a.id_agente, a.nome, a.foto_arquivo, ac.password, ac.estado_conta
+SELECT a.id_agente id, a.nome, a.foto_arquivo foto, ac.password, ac.estado_conta estado
 FROM agente_conta ac 
 JOIN agente a ON ac.id_agente = a.id_agente 
 WHERE ac.nip =  1921765;
 
-SELECT ap.id_posto, ap.cargo 
+SELECT ap.id_posto posto, ap.cargo 
 FROM agente_conta ac 
 JOIN agente_posto ap ON ac.id_agente = ap.id_agente 
-WHERE ac.nip =  1921765;
+WHERE ac.id_agente =  1;
 
 -- Caso 
 SELECT acm.id_cm, acm.cargo 
 FROM agente_conta ac 
 JOIN agente_comando_municipal acm ON ac.id_agente = acm.id_agente 
-WHERE ac.nip =  1921765;
+WHERE ac.id_agente =  1;
+
+-- Criar agente
+
+INSERT INTO `sird-db`.`agente`
+(`id_agente`, `nome`,
+`sobrenome`,
+`foto_arquivo`,
+`data_nasc`,
+`genero`)
+VALUES
+(NULL,
+'Vic',
+'Kioz',
+'usuario.png',
+'2021-04-01',
+'Masculino');
+
+-- Adicionar dados de conta
+
+INSERT INTO `sird-db`.`agente_conta`
+(`id_agente`,
+`nip`,
+`password`,
+`estado_conta`,
+`data_cadastro`)
+VALUES
+(3,
+1231543,
+'fdkuagdkuagdkugwdg',
+0,
+CURRENT_TIMESTAMP);
+
+-- Adicionar Agente a um posto
+
+INSERT INTO `sird-db`.`agente_posto`
+(`id_agente`,
+`id_posto`)
+VALUES
+(1,
+1);
+
+-- Adicionando agente a um comando municipal
+
+INSERT INTO `sird-db`.`agente_comando_municipal`
+(`id_agente`,
+`id_cm`,
+`cargo`)
+VALUES
+(7,
+1,
+1);
+
+
+
+
+SELECT nip FROM agente_conta WHERE nip =  1921765;
+
+INSERT INTO `sird-db`.`agente_comando_municipal`
+(`id_agente`,
+`id_cm`,
+`cargo`)
+VALUES
+(7,
+1,
+2);
+
+-- Cadastros
+
+SELECT a.id_agente id, a.nome, a.sobrenome, a.genero, ac.nip 
+FROM agente a 
+JOIN agente_conta ac ON ac.id_agente = a.id_agente 
+WHERE ac.estado_conta = 0;
+
+-- Permitir
+
+SELECT a.nome, a.sobrenome, a.genero, a.data_nasc data_nascimento, ac.nip, a.foto_arquivo foto 
+FROM agente_conta ac 
+JOIN agente a ON ac.id_agente = a.id_agente 
+WHERE a.id_agente = 1;
+
+SELECT id_posto, nome, tipo FROM posto WHERE estado_actividade = 1;
+
+SELECT id_agente FROM agente_conta WHERE estado_conta > 0 AND id_agente = 17;
+
+SELECT id_agente FROM agente WHERE  id_agente = 17;
+
+DELETE FROM agente WHERE id_agente = 17;
+DELETE FROM agente_conta WHERE id_agente = 17;
+
+SELECT foto_arquivo foto FROM agente WHERE id_agente = 16;
+
+SELECT a.nome, a.sobrenome, p.nome, p.tipo,  ac.nip
+                    FROM agente_conta ac 
+                    JOIN agente a ON ac.id_agente = a.id_agente
+                    JOIN agente_posto ap ON ac.id_agente = ap.id_agente
+                    JOIN posto p ON ap.id_posto = p.id_posto;
+                    
+-- Postos
+
+CREATE VIEW listar_postos AS SELECT p.id_posto, p.tipo, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
+FROM posto p 
+JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+JOIN bairro b ON b.id_bairro= pl.bairro
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm 
+WHERE p.estado_actividade = 1;
+
+select * from listar_postos;
+
+CREATE VIEW ver_posto AS SELECT p.id_posto, p.tipo, p.data_criacao, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
+FROM posto p 
+JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+JOIN bairro b ON b.id_bairro= pl.bairro
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.estado_actividade = 1 AND p.id_posto = 1;
+
+select * from listar_postos;
+
+SELECT * FROM ver_posto WHERE id_posto = 1;
+
+SELECT acm.id_cm, acm.cargo,acm.id_cm
+                                        FROM agente_conta ac 
+                                        JOIN agente_comando_municipal acm 
+                                        ON ac.id_agente = acm.id_agente  
+                                        WHERE ac.id_agente =  7;
+
+select
+
+
+
+
+
+
+
+
 
 
 CREATE VIEW comando_municipal_informacao AS SELECT cm.data_criacao, cml.provincia, cml.municipio, cml.distrito, cml.bairro, cml.rua  FROM comando_municipal cm JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm;

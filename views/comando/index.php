@@ -30,7 +30,6 @@
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Data de Criação</h3></div>
-                <!-- TODO tratar a data para aparecer em português -->
                 <div class="caixa-info__descricao"><p ><?php echo $this->tratarData($data_criacao, true)?></p></div>
             </div>
             <?php endforeach;?>

@@ -21,5 +21,42 @@ $(document).ready(function () { // faz com que as funções Javascript só funci
         })
     });
 
+    // Função para esconder a opção de postos em permitir.php
+
+    $('#selecionarComando').hide();
+
+    $("select").on("change", function() {
+        var valor = $(this).val();   // aqui vc pega cada valor selecionado com o this
+        switch (valor) {
+            case 'Posto':
+                $('#selecionarComando').hide();
+                $('#selecionarPostos').show();
+              break;
+            case 'Comando':
+                $('#selecionarComando').show();
+                $('#selecionarPostos').hide();
+              break;
+            default:
+                $('#selecionarComando').hide();
+                $('#selecionarPostos').show();
+              break;
+          }
+    });
+
+    
+    
+
+    $('#posto_check').select(function () {
+        $('#selecionarComando').hide();
+        $('#selecionarPostos').show();
+
+    });
+    $('#comando_check').click(function () {
+        $('#selecionarComando').show();
+        $('#selecionarPostos').hide();
+        
+        
+    });
+
     
 });

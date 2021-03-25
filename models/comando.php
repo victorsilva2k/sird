@@ -25,7 +25,7 @@ class ComandoModel extends Model{
         
             extract($post);
             $id_cm = 1;//HACK dado deve ser automatico
-            $id_agente = 1;//HACK dado deve ser automatico
+            
             // Caso o utizador não escrever ou deixar em branco um dos campos
             if ($cm_distrito == '' || $cm_bairro == '' || $cm_rua == '' ) {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
@@ -47,7 +47,7 @@ class ComandoModel extends Model{
 
                 // Registrando a alteração
                 $this->query("INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 2, CURRENT_TIMESTAMP);");
-                $this->bind(':ID_AGENTE', $id_agente);
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
                 $this->bind(':ID_CM', $id_cm);//HACK esse valor deve vir de uma consulta relacional do agente para o posto e do posto para o comando municipal
                 $this->execute();
 
@@ -62,6 +62,7 @@ class ComandoModel extends Model{
 
             if ($this->rowCounte() >= 1) {
                 //Redirect  
+                Messages::setMessage("Edição feita com sucesso", "success");
                 header('Location: ' . ROOT_URL . 'comando');
             }
             

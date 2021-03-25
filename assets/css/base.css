@@ -93,6 +93,13 @@ body {
   background-color: #007bff;
   border-color: #007bff;
 }
+
+.btn-semi-primary {
+  color: #007bff;
+  background-color: #fff;
+  border-color: #007bff;
+
+}
 .btn-secondary {
   color: #fff;
   background-color: #6c757d;
@@ -113,6 +120,12 @@ body {
   border: none;
   background-color: transparent;
 
+}
+
+/* FORMULARIOS */
+
+.input--medio {
+  width: 50%;
 }
 
 /* CORES E SOMBRES */
@@ -177,7 +190,10 @@ body {
   border-color: #b6d4fe;
 }
 /* IMAGENS */
-
+.img--perfil {
+  object-fit: cover;
+  object-position: center right;
+}
 /* ICONES */
 
 .icone--padrao {
@@ -185,6 +201,8 @@ body {
   height: 2rem;
   fill: var(--color-grey-dark-1);
 }
+
+
 
 /* LINKS */
 a {

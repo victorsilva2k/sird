@@ -7,8 +7,6 @@ define("DB_USER", "root");
 define("DB_PASS", "SUPERincu1060");
 define("DB_NAME", "sird-db");
 
-// TODO
-
 define("ROOT_PATH", "/sird/");
 define('ROOT_URL', "http://localhost/sird/");
 define('ROOT_IMG', ROOT_URL."assets/img/");

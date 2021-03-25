@@ -9,7 +9,6 @@ class Inicio extends Controller{
             header('Location: ' . ROOT_URL . 'inicio/agente');
         } else {
             header('Location: ' . ROOT_URL . 'inicio/cidadao');
-
         }
         
 

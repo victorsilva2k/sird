@@ -17,6 +17,20 @@ abstract class Controller{
 
     }
 
+    public function verificarNivel($nivel){
+
+        if (isset($_SESSION['usuario_local'])) {
+
+            if (!($_SESSION['usuario_local']['tipo_local'] == $nivel)) {
+                Messages::setMessage("Você não tem permissão para executar esta acção", "error");
+                header('Location: ' . ROOT_URL);
+            }
+        } else {
+
+            header('Location: ' . ROOT_URL);
+
+        }
+    }
 
     public function executeAction()
     {
@@ -51,12 +65,14 @@ abstract class Controller{
     {
         // recebe uma data e calcula quanto tempo se passou até a data presente
         $ts = strtotime($tempo);
-    
         if ($hora) {
-            $tr = strftime("%e de %B de %G ás %H:%M", $ts);
+            $data = ucwords(utf8_encode(strftime("%e de %B de %G", $ts)));
+            $hora = utf8_encode(strftime("%H:%M", $ts));
+            $tempo = "$data ás $hora";
+
         } else {
-            $tr = strftime("%e de %B de %G", $ts);
+            $tempo = utf8_encode(strftime("%e de %B de %G", $ts));
         }
-        return $tr;
+        return $tempo;
     }
 }
