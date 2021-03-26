@@ -40,5 +40,7 @@
         
         
     </div>
-    <a href="<?php echo ROOT_URL?>comando/editar" class="  btn btn-success mgt-10 ">Editar</a>
 
+    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
+    <a href="<?php echo ROOT_URL?>comando/editar" class="  btn btn-success mgt-10 ">Editar</a>
+    <?php endif;?>

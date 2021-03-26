@@ -127,9 +127,9 @@ CREATE VIEW ver_posto AS SELECT p.id_posto, p.tipo, p.data_criacao, p.nome, pl.d
 FROM posto p 
 JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
 JOIN bairro b ON b.id_bairro= pl.bairro
-JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.estado_actividade = 1 AND p.id_posto = 1;
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.estado_actividade = 1;
 
-select * from listar_postos;
+select * from listar_postos  WHERE id_posto = 1 ;
 
 SELECT * FROM ver_posto WHERE id_posto = 1;
 
@@ -139,7 +139,86 @@ SELECT acm.id_cm, acm.cargo,acm.id_cm
                                         ON ac.id_agente = acm.id_agente  
                                         WHERE ac.id_agente =  7;
 
-select
+select * FROM bairro;
+
+SELECT * FROM ver_posto WHERE id_posto = 1;
+
+-- Actualizar postos
+UPDATE `sird-db`.`posto`
+SET
+`tipo` = ,
+`nome` = 
+WHERE `id_posto` = ;
+
+UPDATE `sird-db`.`posto_localizacao`
+SET
+`distrito` = ,
+`bairro` = ,
+`rua` = 
+WHERE `id_posto` = ;
+
+
+-- Eliminar Posto
+
+-- - Verificando a seleção
+SELECT `agente_posto`.`id_agente`
+FROM `sird-db`.`agente_posto`
+WHERE id_posto = 6;
+
+-- - Suspender a conta
+
+UPDATE `sird-db`.`agente_conta`
+SET
+`estado_conta` = 2
+WHERE id_agente = 19;
+
+-- - Eliminando a relação
+DELETE FROM `sird-db`.`agente_posto`
+WHERE id_agente = 19;
+
+-- - eliminando as operações
+
+DELETE FROM `sird-db`.`operacao_posto`
+WHERE id_posto = 6;
+
+-- - Eliminando a localização do posto
+
+DELETE FROM `sird-db`.`posto_localizacao`
+WHERE id_posto = 6;
+
+-- - Eliminando o Posto
+
+DELETE FROM `sird-db`.`posto`
+WHERE id_posto = 6;
+
+-- Consultando registro de alterações
+
+SELECT op.tipo, op.data, a.nome, a.sobrenome
+FROM `sird-db`.operacao_posto op 
+JOIN agente a ON a.id_agente = op.id_agente
+WHERE id_posto = 1;
+
+-- Consultando Bairros
+
+select * FROM bairro;
+
+
+-- Consultando categoria de documentos
+
+SELECT * FROM categoria_documento;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,32 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/postos.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/postos/adicionar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/postos/editar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/postos/eliminar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/postos/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/postos/ver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/mais.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mais/adicionar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mais/editar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mais/eliminar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/componentes.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/componentes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/layout.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/agentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/agentes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/inicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/postos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comando.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comando.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/cadastrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/cadastrar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/comando/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/postos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/postos/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/eliminar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/postos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/postos/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/ver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,15 +46,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/postos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
-      <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
       <recent name="H:\Programas\xampp\htdocs\sird\models" />
+      <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
       <recent name="H:\Programas\xampp\htdocs\sird\views" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -75,7 +70,9 @@
       <workItem from="1602165154959" duration="788000" />
       <workItem from="1602595871694" duration="600000" />
       <workItem from="1605974561691" duration="1268000" />
-      <workItem from="1616677041466" duration="12517000" />
+      <workItem from="1616677041466" duration="13409000" />
+      <workItem from="1616764834416" duration="6351000" />
+      <workItem from="1616798423633" duration="2380000" />
     </task>
     <servers />
   </component>
@@ -87,26 +84,30 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="463" y="159" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1616701833207" />
-    <state x="184" y="46" key="SettingsEditor" timestamp="1616678414434">
+    <state x="184" y="46" key="SettingsEditor" timestamp="1616765704676">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1616678414434" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1616703903750">
+    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1616765704676" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1616766145787">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1616703903750" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1616677042276">
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1616766145787" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1616798461588">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1616677042276" />
-    <state x="0" y="40" width="607" height="728" key="find.popup" timestamp="1616704039770">
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1616798461588" />
+    <state x="-1" y="40" width="737" height="728" key="find.popup" timestamp="1616772258676">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="0" y="40" width="607" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1616704039770" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1616685441257">
+    <state x="-1" y="40" width="737" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1616772258676" />
+    <state x="324" y="130" width="700" height="530" key="recent.locations.popup" timestamp="1616765076805">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1616685441257" />
+    <state x="324" y="130" width="700" height="530" key="recent.locations.popup/0.40.1366.728@0.40.1366.728" timestamp="1616765076805" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1616800003692">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1616800003692" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -247,6 +247,25 @@ img {
 
 /* INFORMAÇÕES - CAIXAS */
 
+.content-div {
+
+    border: 1px solid rgba(0,0,0,.125);
+
+}
+
+.content-div > div {
+    padding: .75rem;
+}
+
+.content-div__cima {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.content-div__titulo {
+    border: none;
+    margin: 0;
+}
+
 .caixa-info {
 
     border: 1px solid rgba(0,0,0,.125);

@@ -14,7 +14,7 @@ class Postos extends Controller{
         $viewmodel = new PostoModel();
         $this->returnView($viewmodel->ver($this->param), true);
     }
-    protected function Editar()
+    protected function editar()
     {
         $this->verificarNivel("comando");
         $viewmodel = new PostoModel();

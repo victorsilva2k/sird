@@ -49,59 +49,69 @@
                     
                 
                 </div>
-                <ul class="navegacao-lateral">
-                    <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-lateral__link">
-                            <svg class="navegacao-lateral__icone">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
-                            </svg>
-                            <span>Documentos</span>
-                        </a>
-                    </li>
-                    <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
-                            <svg class="navegacao-lateral__icone">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
-                            </svg>
-                            <span>Postos</span>
-                        </a>
-                    </li>
-                    
-                    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
-                    <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-lateral__link">
-                            <svg class="navegacao-lateral__icone">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
-                            </svg>
-                            <span>agentes</span>
-                        </a>
-                    </li>
-                    <?php endif;?>
-                    <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
-                            <svg class="navegacao-lateral__icone">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
-                            </svg>
-                            <span>Comando Municipal</span>
-                        </a>
-                    </li>
-                    <li class="navegacao-lateral__item">
+                <div class="barra-lateral__navegacao">
+                    <ul class="navegacao-lateral">
+                        <li class="navegacao-lateral__item">
+                            <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-lateral__link">
+                                <svg class="navegacao-lateral__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                                </svg>
+                                <span>Documentos</span>
+                            </a>
+                        </li>
+                        <li class="navegacao-lateral__item">
+                            <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
+                                <svg class="navegacao-lateral__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
+                                </svg>
+                                <span>Postos</span>
+                            </a>
+                        </li>
 
-                        <a href="" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
+                        <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
+                            <li class="navegacao-lateral__item">
+                                <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-lateral__link">
+                                    <svg class="navegacao-lateral__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
+                                    </svg>
+                                    <span>agentes</span>
+                                </a>
+                            </li>
+                        <?php endif;?>
+                        <li class="navegacao-lateral__item">
+                            <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
+                                <svg class="navegacao-lateral__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
+                                </svg>
+                                <span>Comando Municipal</span>
+                            </a>
+                        </li>
+                        <li class="navegacao-lateral__item">
+                            <a href="<?php echo ROOT_URL; ?>mais" class="navegacao-lateral__link">
+                                <svg class="navegacao-lateral__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-plus"></use>
+                                </svg>
+                                <span>Mais</span>
+                            </a>
+                        </li>
+                        <li class="navegacao-lateral__item">
 
-                    </li>
-                </ul>
+                            <a href="" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
 
-                <ul class="navegacao-lateral">
-                    <li class="navegacao-lateral__item">
-                        <a href="<?php echo ROOT_URL; ?>agentes/sair" class="navegacao-lateral__link">
-                            <svg class="navegacao-lateral__icone">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
-                            </svg>
-                            <span>Sair</span>
-                        </a>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="navegacao-lateral">
+                        <li class="navegacao-lateral__item">
+                            <a href="<?php echo ROOT_URL; ?>agentes/sair" class="navegacao-lateral__link">
+                                <svg class="navegacao-lateral__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-arrow-left"></use>
+                                </svg>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
       
         <?php endif;?>

@@ -20,6 +20,7 @@ require_once "controllers/documentos.php";
 require_once "controllers/comandos.php";
 require_once "controllers/agentes.php";
 require_once "controllers/postos.php";
+require_once "controllers/mais.php";
 // Models
 require_once "models/inicio.php";
 require_once "models/share.php";
@@ -29,6 +30,7 @@ require_once "models/documentos.php";
 require_once "models/comando.php";
 require_once "models/agente.php";
 require_once "models/posto.php";
+require_once "models/mais.php";
 $bt = new Bootstrap($_GET);
 $controller = $bt->createController();
 if ($controller) {

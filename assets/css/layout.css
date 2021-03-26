@@ -4,7 +4,12 @@
     align-items: center;
 }
 
-
+.barra-lateral__navegacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+}
 
 .conteudo {
     display: flex;
@@ -31,6 +36,16 @@
 
 .main {
     flex: 1;
+}
+
+.mais {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mais > div {
+    flex-basis: 49%;
 }
 
 @media (max-width: 576px) {

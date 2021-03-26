@@ -68,7 +68,7 @@ class AgenteModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: {$erro->getMessage()} | $permitirPosto" , "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO:  | $permitirPosto" , "error");
 
             }
             //Verify
@@ -139,7 +139,7 @@ class AgenteModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: {$erro->getMessage()}" , "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: " , "error");
 
             }
             //Verify
@@ -156,6 +156,10 @@ class AgenteModel extends Model{
                       JOIN agente_conta ac ON ac.id_agente = a.id_agente 
                       WHERE ac.estado_conta = 0;');
         $row = $this->resultSet();
+        if ($this->rowCounte() < 1){
+            header('Location: ' . ROOT_URL . 'agentes/');
+
+        }
         return $row;    
     }
     public function cadastrar()
@@ -260,7 +264,7 @@ class AgenteModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
                 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: {$erro->getMessage()}", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: ", "error");
 
             }
             //Verify

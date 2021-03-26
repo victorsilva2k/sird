@@ -68,7 +68,7 @@ abstract class Controller{
         if ($hora) {
             $data = ucwords(utf8_encode(strftime("%e de %B de %G", $ts)));
             $hora = utf8_encode(strftime("%H:%M", $ts));
-            $tempo = "$data ás $hora";
+            $tempo = "$data às $hora";
 
         } else {
             $tempo = utf8_encode(strftime("%e de %B de %G", $ts));
