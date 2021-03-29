@@ -1,5 +1,5 @@
 <style>
-    .navegacao-lateral__item:nth-child(2) {
+    .mais-link {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }
@@ -29,17 +29,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($viewmodel["categorias"] as $item) : extract($item);?>
+                            <?php foreach($viewmodel["categorias"] as $item) : extract($item);?>
 
-                        <tr>
+                                <tr>
 
-                            <td><?php echo $categoria?></td>
-                            <td>
-                                <a href="<?php echo ROOT_URL; ?>categorias/editar/<?php echo $categoria?>" class="center-t btn btn-success mb-4 ">Editar</a>
-                                <a href="<?php echo ROOT_URL; ?>categorias/eliminar/<?php echo $categoria?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
-                            </td>
+                                    <td><?php echo $categoria?></td>
+                                    <td>
+                                        <a href="<?php echo ROOT_URL; ?>categorias/editar/<?php echo $id_categoria_documento?>" class="center-t btn btn-success mb-4 ">Editar</a>
+                                        <a href="<?php echo ROOT_URL; ?>categorias/eliminar/<?php echo $id_categoria_documento?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                                    </td>
 
-
+                                </tr>
                             <?php endforeach;?>
 
                         </tbody>

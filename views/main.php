@@ -86,7 +86,7 @@
                                 <span>Comando Municipal</span>
                             </a>
                         </li>
-                        <li class="navegacao-lateral__item">
+                        <li class="navegacao-lateral__item mais-link">
                             <a href="<?php echo ROOT_URL; ?>mais" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
                                     <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-plus"></use>

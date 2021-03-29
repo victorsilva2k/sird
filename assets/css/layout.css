@@ -53,4 +53,14 @@
     .barra-lateral {
         display: none;
       }
+
+    .mais {
+        flex-direction: column;
+    }
+
+    .mais > div {
+        width: 100%;
+        margin-bottom: 30px ;
+    }
+
 }

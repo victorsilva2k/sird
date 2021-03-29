@@ -7,10 +7,5 @@ class Mais extends Controller{
         $this->returnView($viewmodel->index(), true);
     }
 
-    protected function Editar()
-    {
-        
-        $viewmodel = new ComandoModel();
-        $this->returnView($viewmodel->Editar($this->param), true);
-    }
+
 }

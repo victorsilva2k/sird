@@ -207,13 +207,36 @@ select * FROM bairro;
 
 SELECT * FROM categoria_documento;
 
+-- Adicionando Bairro
 
+INSERT INTO `sird-db`.`bairro`
+(`bairro`)
+VALUES
+('Nova Vida');
 
+SELECT `bairro`.`id_bairro`,
+    `bairro`.`bairro`
+FROM `sird-db`.`bairro`;
 
+select * from bairro WHERE id_bairro = 2;
 
+-- Editando bairro
 
+UPDATE `sird-db`.`bairro`
+SET
+`bairro` = 'Danjaré'
+WHERE `id_bairro` = 2;
 
+-- eliminando bairro
 
+DELETE FROM `sird-db`.`bairro`
+WHERE id_bairro = 5;
+
+-- Ver categorias
+
+SELECT `categoria_documento`.`id_categoria_documento`,
+    `categoria_documento`.`categoria`
+FROM `sird-db`.`categoria_documento`;
 
 
 
