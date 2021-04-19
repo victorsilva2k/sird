@@ -16,7 +16,7 @@ class Inicio extends Controller{
 
     protected function Agente()
     {
-
+        $this->verificarNivel(1);
         $viewmodel = new InicioModel();
         $this->returnView($viewmodel->Agente(), true);
     }

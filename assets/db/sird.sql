@@ -239,6 +239,11 @@ SELECT `categoria_documento`.`id_categoria_documento`,
 FROM `sird-db`.`categoria_documento`;
 
 
+CREATE TABLE `distrito` (
+  `id_bairro` smallint NOT NULL AUTO_INCREMENT,
+  `bairro` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_bairro`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
 

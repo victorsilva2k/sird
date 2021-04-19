@@ -2,6 +2,10 @@
     .cabecalho--top, .barra-lateral {
         display: none;
     }
+    .principal {
+     margin-left: auto; 
+     margin-top: 0; 
+    }
 </style>
 
 <div class="cont mt-4">
@@ -45,6 +49,7 @@
 
                     <input type="submit" name="submit" value="Cadastrar" class="formulario__input btn btn-lg btn-primary btn-block">
                     <a href="<?php echo ROOT_URL ?>agentes/entrar" class="link formulario__link mgb-10">Já tem conta? Iniciar Sessão</a>
+                    
 
 
                     <p class="mt-5 mb-3 text--cinza">SIRD &copy; 2021</p>

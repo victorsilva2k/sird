@@ -1,23 +1,9 @@
 <?php
 
-class BairroModel extends Model{
-    public function Index()
-    {
-        // Pegando dados das categorias de documentos
-        $this->query('SELECT * FROM categoria_documento;');
-        $row["categorias"] = $this->resultSet();
-
-        // Pegando dados dos bairros
-        $this->query('select * from bairro;');
-        $row["bairros"] = $this->resultSet();
-        return $row;
-    }
+class DistritoModel extends Model{
 
     public function adicionar()
     {
-
-
-
 
         //Limpando POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -28,7 +14,7 @@ class BairroModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarBairroNome == '') {
+            if ($adicionarDistritoNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -38,19 +24,19 @@ class BairroModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("INSERT INTO `sird-db`.`bairro`
-                                    (`bairro`)
+                $this->query("INSERT INTO `sird-db`.`Distrito`
+                                    (`Distrito`)
                                     VALUES
                                     (:NOME);");
 
-                $this->bind(':NOME', $adicionarBairroNome);
+                $this->bind(':NOME', $adicionarDistritoNome);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Bairro adicionado com sucesso", "success");
+                    Messages::setMessage("Distrito adicionado com sucesso", "success");
                     header('Location: ' . ROOT_URL . 'mais');
                 }
             } catch (\PDOException $erro) {
@@ -64,14 +50,14 @@ class BairroModel extends Model{
 
 
         }
-        $this->query('select * from bairro;');
+        $this->query('select * from Distrito;');
         $row = $this->resultSet();
         return $row;
 
 
 
     }
-    public function editar($id_bairro)
+    public function editar($id_Distrito)
     {
 
 
@@ -86,7 +72,7 @@ class BairroModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($editarBairroNome == '') {
+            if ($editarDistritoNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -96,21 +82,21 @@ class BairroModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("UPDATE `sird-db`.`bairro`
+                $this->query("UPDATE `sird-db`.`Distrito`
                                     SET
-                                    `bairro` = :NOME
-                                    WHERE `id_bairro` = :ID_BAIRRO;");
+                                    `Distrito` = :NOME
+                                    WHERE `id_Distrito` = :ID_Distrito;");
 
-                $this->bind(':NOME', $editarBairroNome);
-                $this->bind(':ID_BAIRRO', $id_bairro);
+                $this->bind(':NOME', $editarDistritoNome);
+                $this->bind(':ID_Distrito', $id_Distrito);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Bairro editado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'mais');
+                    Messages::setMessage("Distrito editado com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'mais/index/distrito');
                 }
             } catch (\PDOException $erro) {
                 $this->rollBack();
@@ -123,21 +109,16 @@ class BairroModel extends Model{
 
 
         }
-        $this->query('select d.distrito from bairro b 
-                            JOIN distrito d ON d.id_distrito = b.distrito');
-        $this->bind(":ID_BAIRRO", $id_bairro);
-        $row["distrito"] = $this->resultSet();
-
-        $this->query('select * from bairro WHERE id_bairro = :ID_BAIRRO;');
-        $this->bind(":ID_BAIRRO", $id_bairro);
-        $row["bairros"] = $this->resultSet();
+        $this->query('select * from Distrito WHERE id_Distrito = :ID_Distrito;');
+        $this->bind(":ID_Distrito", $id_Distrito);
+        $row = $this->resultSet();
         return $row;
 
 
 
 
     }
-    public function eliminar($id_bairro)
+    public function eliminar($id_Distrito)
     {
 
 
@@ -145,16 +126,16 @@ class BairroModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("DELETE FROM `sird-db`.`bairro`
-                                    WHERE id_bairro = :ID_BAIRRO;");
-                $this->bind(':ID_BAIRRO', $id_bairro);
+                $this->query("DELETE FROM `sird-db`.`Distrito`
+                                    WHERE id_Distrito = :ID_Distrito;");
+                $this->bind(':ID_Distrito', $id_Distrito);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Bairro eliminado com sucesso", "success");
+                    Messages::setMessage("Distrito eliminado com sucesso", "success");
                     header('Location: ' . ROOT_URL . 'mais');
                 }
             } catch (\PDOException $erro) {

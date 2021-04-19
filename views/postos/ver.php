@@ -71,10 +71,13 @@
                         <td><?php echo "$nome $sobrenome"?></td>
                         <td><?php
                             if ($tipo == 1) {
-                                $tipo_extenso = "Criar";
+                                $tipo_extenso = "Criado";
                             }
                             elseif ($tipo == 2) {
-                                $tipo_extenso = "Editar";
+                                $tipo_extenso = "Editado";
+                            }
+                            elseif ($tipo == 3) {
+                                $tipo_extenso = "Eliminado";
                             }
 
                             echo "$tipo_extenso";

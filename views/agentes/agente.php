@@ -34,7 +34,7 @@
 
                 <th scope="col">Nome Completo</th>
                 <th scope="col">Documentos</th>
-                <th scope="col">Data de Publicacação</th>
+                <th scope="col">Data de Publicação</th>
                 </tr>
             </thead>
             <tbody>

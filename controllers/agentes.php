@@ -4,34 +4,36 @@ class agentes extends Controller{
     
     protected function index()
     {
-        $this->verificarNivel("comando");
+        $this->verificarNivel(2);
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->index(), true);
-    } 
-    protected function adicionar()
+    }
+
+    protected function perfil()
     {
-        $this->verificarNivel("comando");
+        $this->verificarNivel(1);
         $viewmodel = new AgenteModel();
-        $this->returnView($viewmodel->adicionar(), true);
+        $this->returnView($viewmodel->perfil(), true);
     }
 
     protected function cadastros()
     {
-        $this->verificarNivel("comando");
+        $this->verificarNivel(2);
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->cadastros(), true);
     }
     protected function permitir()
     {
-        $this->verificarNivel("comando");
+        $this->verificarNivel(2);
         $viewmodel = new AgenteModel();
-        $this->returnView($viewmodel->permitir($this->param), true);
+        $this->returnView($viewmodel->permitirCadastro($this->param), true);
     }
     protected function rejeitar()
     {
-        $this->verificarNivel("comando");
+        // TODO verificiar se esse metodo ainda funciona bem uma vez que foi refactorado
+        $this->verificarNivel(2);
         $viewmodel = new AgenteModel();
-        $this->returnView($viewmodel->rejeitar($this->param), true);
+        $this->returnView($viewmodel->rejeitarCadastro($this->param), true);
     }
     protected function Entrar()
     {

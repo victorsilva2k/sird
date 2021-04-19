@@ -20,8 +20,17 @@ abstract class Controller{
     public function verificarNivel($nivel){
 
         if (isset($_SESSION['usuario_local'])) {
-
-            if (!($_SESSION['usuario_local']['tipo_local'] == $nivel)) {
+            switch ($_SESSION['usuario_local']['tipo_local']) {
+                case "posto":
+                    $nivel_num = 1;
+                    break;
+                case "comando":
+                    $nivel_num = 2;
+                    break;
+                default:
+                    $nivel_num = 0;
+            }
+            if (!($nivel_num >= $nivel)) {
                 Messages::setMessage("Você não tem permissão para executar esta acção", "error");
                 header('Location: ' . ROOT_URL);
             }

@@ -5,6 +5,11 @@ CRUD números
 Criar - 1
 Editar - 2
 Eliminar - 3
+
+Estados números
+Activo - 1
+Eliminado - 2
+Inactivo - 0
 */
 
 // Classe base para os modelos, ou seja, classes para tratar a base de dados

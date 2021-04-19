@@ -5,6 +5,11 @@ class DocumentosModel extends Model{
     {
         return;
     }
+
+    public function publicar()
+    {
+        return;
+    }
     public function Editar($param)
     {
         

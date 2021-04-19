@@ -26,6 +26,7 @@
                     <th scope="col">Munícipio</th>
                     <th scope="col">Distrito</th>
                     <th scope="col">Bairro</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Ações</th>
                 </tr>
                 </thead>
@@ -51,6 +52,22 @@
                         <td><?php echo $municipio?></td>
                         <td><?php echo $distrito?></td>
                         <td><?php echo $bairro?></td>
+                        <td>
+                            <?php
+                                switch ($estado_actividade) {
+                                    case 1:
+                                        $estado = "Activo";
+                                        break;
+                                    case 2:
+                                        $estado = "Eliminado";
+                                        break;
+                                    default:
+                                        $estado = "Activo";
+                                }
+                                echo ucfirst($estado);
+
+                            ?>
+                        </td>
                         <td>
                             <a href="<?php echo ROOT_URL; ?>postos/editar/<?php echo $id_posto?>" class="center-t btn btn-success mb-4 ">Editar</a>
                             <a href="<?php echo ROOT_URL; ?>postos/ver/<?php echo $id_posto?>" class="center-t btn btn-secondary mb-4 ">Ver</a>

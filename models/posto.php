@@ -18,7 +18,7 @@ class PostoModel extends Model{
             $this->query('SELECT op.tipo, op.data, a.nome, a.sobrenome
                         FROM `sird-db`.operacao_posto op 
                         JOIN agente a ON a.id_agente = op.id_agente
-                        WHERE id_posto = :ID_POSTO');
+                        WHERE id_posto = :ID_POSTO ');
             $this->bind(':ID_POSTO', $_SESSION['usuario_local']['id_local']);
 
             $row["alteracoes"] = $this->resultSet();
@@ -142,7 +142,7 @@ class PostoModel extends Model{
             $this->query('SELECT op.tipo, op.data, a.nome, a.sobrenome
                         FROM `sird-db`.operacao_posto op 
                         JOIN agente a ON a.id_agente = op.id_agente
-                        WHERE id_posto = :ID_POSTO');
+                        WHERE id_posto = :ID_POSTO ORDER BY data DESC');
             $this->bind(':ID_POSTO', $id_posto);
 
             $row["alteracoes"] = $this->resultSet();
@@ -271,34 +271,24 @@ class PostoModel extends Model{
                         $this->bind(':ID_AGENTE', $id_agente);
                         $this->execute();
 
-                        // Eliminando a relação
-                        $this->query("DELETE FROM `sird-db`.`agente_posto`
-                                            WHERE id_agente = :ID_AGENTE;");
-                        $this->bind(':ID_AGENTE', $id_agente);
-                        $this->execute();
 
                     }
                 }
 
-                // eliminando as operações
-                $this->query("DELETE FROM `sird-db`.`operacao_posto`
-                                    WHERE id_posto = :ID_POSTO");
-                $this->bind(':ID_POSTO', $id_posto);
-                $this->execute();
 
-                // Eliminando a localização do posto
-                $this->query("DELETE FROM `sird-db`.`posto_localizacao`
+                // Alterar estado do Posto
+                $this->query("UPDATE `sird-db`.`posto` SET estado_actividade = 2
                                     WHERE id_posto = :ID_POSTO;");
                 $this->bind(':ID_POSTO', $id_posto);
                 $this->execute();
 
-                // Eliminando o Posto
-                $this->query("DELETE FROM `sird-db`.`posto`
-                                    WHERE id_posto = :ID_POSTO;");
+                // Registrando a alteração
+                $this->query("INSERT INTO `sird-db`.`operacao_posto` (`id_operacao`, `id_agente`, `id_posto`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_POSTO, 3, CURRENT_TIMESTAMP);");
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
                 $this->bind(':ID_POSTO', $id_posto);
                 $this->execute();
 
-
+                // TODO ao eliminar um posto todos os documentos desse posto passam para o comando municipal
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect

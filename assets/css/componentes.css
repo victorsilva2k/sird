@@ -334,6 +334,12 @@ img {
     height: 50px;
     border-radius: 50%;
 }
+.caixa-info__img--grande {
+    width: 90%;
+}
+.caixa-info__grupo-img {
+    display: flex;
+}
 /* LOGIN E CADASTRO */
 .login-box {
     position: relative;

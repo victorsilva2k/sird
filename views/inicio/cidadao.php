@@ -1,3 +1,9 @@
+<style>
+    .principal {
+     margin-left: auto; 
+     margin-top: 0; 
+    }
+</style>
 <div class="cont">
     <div class="img-principal mx-auto">
         <img src="<?php echo ROOT_IMG; ?>site/logo_pna.png" alt="">

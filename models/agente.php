@@ -13,7 +13,20 @@ class AgenteModel extends Model{
     
         return $row;  
     }
-    public function permitir($id_agente)
+    public function perfil()
+    {
+        $this->query('SELECT a.nome , a.sobrenome, p.nome posto_nome,
+                    a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
+                    p.tipo,  ac.nip, a.id_agente
+                    FROM agente_conta ac 
+                    JOIN agente a ON ac.id_agente = a.id_agente
+                    JOIN agente_posto ap ON ac.id_agente = ap.id_agente
+                    JOIN posto p ON ap.id_posto = p.id_posto');
+        $row = $this->resultSet();
+
+        return $row;
+    }
+    public function permitirCadastro($id_agente)
     {
         //Limpando POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -88,7 +101,7 @@ class AgenteModel extends Model{
     
         return $row;  
     }
-    public function rejeitar($id_agente)
+    public function rejeitarCadastro($id_agente)
     {
 
 

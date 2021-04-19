@@ -26,7 +26,7 @@
     </div>
     <div class="documentos-recentes">
     
-        <h1 class="titulo--normal">Documentos Recebidos</h1>
+        <h1 class="titulo--normal">Documentos Perdidos</h1>
     
         <table class="tabela tabela-striped">
             <thead>
