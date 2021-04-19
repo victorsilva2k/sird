@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comando.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comando.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comando/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comando/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
       <workItem from="1617104983061" duration="2664000" />
       <workItem from="1617883053066" duration="585000" />
       <workItem from="1618166481669" duration="5927000" />
-      <workItem from="1618858847888" duration="6048000" />
+      <workItem from="1618858847888" duration="7131000" />
     </task>
     <servers />
   </component>
@@ -84,18 +86,18 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1616765704676" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1618865194108">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1618866926373">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618865194108" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618866926373" />
     <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1618859308771">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1618859308771" />
-    <state x="288" y="40" width="737" height="728" key="find.popup" timestamp="1618864333156">
+    <state x="288" y="40" width="737" height="728" key="find.popup" timestamp="1618866745537">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="288" y="40" width="737" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1618864333155" />
+    <state x="288" y="40" width="737" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1618866745537" />
     <state x="324" y="130" width="700" height="530" key="recent.locations.popup" timestamp="1616765076805">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -104,10 +106,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="339" y="182" key="run.anything.popup/0.40.1366.728@0.40.1366.728" timestamp="1618863212757" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1618865426001">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1618866098360">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1618865426001" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1618866098360" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
