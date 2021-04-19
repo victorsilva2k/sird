@@ -196,7 +196,7 @@ WHERE id_posto = 6;
 SELECT op.tipo, op.data, a.nome, a.sobrenome
 FROM `sird-db`.operacao_posto op 
 JOIN agente a ON a.id_agente = op.id_agente
-WHERE id_posto = 1;
+WHERE id_posto = 1 order by data desc;
 
 -- Consultando Bairros
 
@@ -246,14 +246,41 @@ CREATE TABLE `distrito` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
+SELECT b.bairro, d.distrito FROM bairro b 
+JOIN distrito d ON b.bairro;
 
 
+CREATE TABLE `distrito` (
+  `id_bairro` mediumint(7zzyyyy NOT NULL AUTO_INCREMENT,
+  `bairro` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_bairro`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
+ALTER TABLE bairro ADD INDEX dis_d ( distrito );
+ALTER TABLE bairro ADD CONSTRAINT distrito_d
+FOREIGN KEY ( distrito ) REFERENCES distrito ( distrito ) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+ALTER TABLE Contact ADD INDEX par_ind ( Person_Id );
+ALTER TABLE Contact ADD CONSTRAINT fk_person.
+FOREIGN KEY ( Person_Id ) REFERENCES Person ( ID ) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+ALTER TABLE bairro ADD CONSTRAINT distrito_d FOREIGN KEY (distrito) REFERENCES distrito(id_distrito);
 
 
+INSERT INTO `sird-db`.`distrito`
+(`id_distrito`,
+`distrito`)
+VALUES
+(<{id_distrito: }>,
+<{distrito: }>);
 
+UPDATE `sird-db`.`comando_municipal_localizacao`
+SET
 
+`distrito` = 1
+
+WHERE id_cm = 1;
 
 
 
