@@ -121,10 +121,11 @@
 
                             <tr>
 
+
                                 <td><?php echo $distrito?></td>
                                 <td>
                                     <a href="<?php echo ROOT_URL; ?>distritos/editar/<?php echo $id_distrito?>" class="center-t btn btn-success mb-4 ">Editar</a>
-                                    <a href="<?php echo ROOT_URL; ?>distritos/eliminar/<?php echo $id_distrito?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+
                                 </td>
 
 

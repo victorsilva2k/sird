@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/bairro.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/bairro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bairros/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bairros/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/mais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
       <workItem from="1617104983061" duration="2664000" />
       <workItem from="1617883053066" duration="585000" />
       <workItem from="1618166481669" duration="5927000" />
-      <workItem from="1618858847888" duration="4911000" />
+      <workItem from="1618858847888" duration="5400000" />
     </task>
     <servers />
   </component>
@@ -86,10 +84,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1616765704676" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1618864972794">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1618865194108">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618864972794" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618865194108" />
     <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1618859308771">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
