@@ -16,9 +16,19 @@
     <div class="caixa-info__item">
         <div class="caixa-info__cabecalho"><h3 >Nome do Bairro</h3></div>
         <div class="caixa-info__descricao  ">
-            <?php foreach($viewmodel as $item) : extract($item);?>
+            <?php foreach($viewmodel["bairros"] as $item) : extract($item);?>
             <input  type="text" class="caixa-info__input input--text" value="<?php echo $bairro?>" name="editarBairroNome" placeholder="Ex: Mundo Verde" id="" required maxlength="55" minlength="2">
             <?php endforeach;?>
+        </div>
+    </div>
+    <div class="caixa-info__item">
+        <div class="caixa-info__cabecalho"><h3 >Distrito</h3></div>
+        <div class="caixa-info__descricao  ">
+            <select class="caixa-info__input input--text" name="editarBairroDistrito">
+                <?php foreach($viewmodel["distritos"] as $item) : extract($item);?>
+                    <option  value="<?php echo $id_distrito?>"><?php echo $distrito?></option>
+                <?php endforeach;?>
+            </select>
         </div>
     </div>
 

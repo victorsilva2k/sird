@@ -2,47 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/distritos.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/distrito.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/agentes/perfil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/distritos/adicionar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/distritos/editar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/distritos/eliminar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/componentes.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/componentes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/agentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/agentes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bairros.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/bairros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/categorias.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/categorias.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comandos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/inicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/mais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/postos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/agente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/bairro.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/bairro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/cadastrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/cadastrar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/entrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/entrar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/bairros/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/adicionar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/bairros/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comando/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/documentos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/inicio/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/inicio/cidadao.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/cidadao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/mais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/ver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +62,7 @@
       <workItem from="1617104983061" duration="2664000" />
       <workItem from="1617883053066" duration="585000" />
       <workItem from="1618166481669" duration="5927000" />
-      <workItem from="1618858847888" duration="4108000" />
+      <workItem from="1618858847888" duration="4911000" />
     </task>
     <servers />
   </component>
@@ -123,18 +86,18 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1616765704676" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1618864057124">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1618864972794">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618864057124" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618864972794" />
     <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1618859308771">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1618859308771" />
-    <state x="288" y="40" width="737" height="728" key="find.popup" timestamp="1618863794392">
+    <state x="288" y="40" width="737" height="728" key="find.popup" timestamp="1618864333156">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="288" y="40" width="737" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1618863794392" />
+    <state x="288" y="40" width="737" height="728" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1618864333155" />
     <state x="324" y="130" width="700" height="530" key="recent.locations.popup" timestamp="1616765076805">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -143,10 +106,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="339" y="182" key="run.anything.popup/0.40.1366.728@0.40.1366.728" timestamp="1618863212757" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1616800003692">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1618864379168">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1616800003692" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1618864379168" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -155,11 +118,6 @@
           <url>file://$PROJECT_DIR$/views/postos/index.php</url>
           <line>87</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/models/bairro.php</url>
-          <line>83</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

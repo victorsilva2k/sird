@@ -28,7 +28,7 @@ class BairroModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarBairroNome == '') {
+            if ($adicionarBairroNome == '' OR $adicionarBairroDistrito == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -39,11 +39,12 @@ class BairroModel extends Model{
 
                 // Alterando os dados do posto
                 $this->query("INSERT INTO `sird-db`.`bairro`
-                                    (`bairro`)
+                                    (`bairro`, `distrito`)
                                     VALUES
-                                    (:NOME);");
+                                    (:NOME, :ID_DISTRITO);");
 
                 $this->bind(':NOME', $adicionarBairroNome);
+                $this->bind(':ID_DISTRITO', $adicionarBairroDistrito);
                 $this->execute();
 
 
@@ -64,7 +65,7 @@ class BairroModel extends Model{
 
 
         }
-        $this->query('select * from bairro;');
+        $this->query('select * from distrito');
         $row = $this->resultSet();
         return $row;
 
@@ -98,11 +99,13 @@ class BairroModel extends Model{
                 // Alterando os dados do posto
                 $this->query("UPDATE `sird-db`.`bairro`
                                     SET
-                                    `bairro` = :NOME
+                                    `bairro` = :NOME,
+                                    `distrito` = :ID_DISTRITO
                                     WHERE `id_bairro` = :ID_BAIRRO;");
 
                 $this->bind(':NOME', $editarBairroNome);
                 $this->bind(':ID_BAIRRO', $id_bairro);
+                $this->bind(':ID_DISTRITO', $editarBairroDistrito);
                 $this->execute();
 
 
@@ -123,10 +126,9 @@ class BairroModel extends Model{
 
 
         }
-        $this->query('select d.distrito from bairro b 
-                            JOIN distrito d ON d.id_distrito = b.distrito');
+        $this->query('select * from distrito');
         $this->bind(":ID_BAIRRO", $id_bairro);
-        $row["distrito"] = $this->resultSet();
+        $row["distritos"] = $this->resultSet();
 
         $this->query('select * from bairro WHERE id_bairro = :ID_BAIRRO;');
         $this->bind(":ID_BAIRRO", $id_bairro);

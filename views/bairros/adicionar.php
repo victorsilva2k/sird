@@ -19,6 +19,17 @@
                     <input  type="text" class="caixa-info__input input--text" name="adicionarBairroNome" placeholder="Ex: Mundo Verde" id="" required maxlength="55" minlength="2">
                 </div>
             </div>
+                <div class="caixa-info__item">
+                    <div class="caixa-info__cabecalho"><h3 >Distrito</h3></div>
+                    <div class="caixa-info__descricao  ">
+                        <select class="caixa-info__input input--text" name="adicionarBairroDistrito" id="">
+                            <?php foreach($viewmodel as $item) : extract($item);?>
+                                <option  value="<?php echo $id_distrito?>"><?php echo $distrito?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+
 
             <button type="submit" name="submit" value="Adicionar" class="caixa-info__botao  btn btn-success mgt-10 ">Adicionar</button>
 
