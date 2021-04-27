@@ -12,8 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Javascript -->
-    <script src="<?php echo ROOT_JS; ?>jquery-3.2.1.js"></script>
-    <script src="<?php echo ROOT_JS; ?>app.js"></script>
 
     <!-- Icones -->
     <script src="https://kit.fontawesome.com/d48820cda4.js" crossorigin="anonymous"></script>
@@ -193,5 +191,7 @@
         </main><!-- /.container -->
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="<?php echo ROOT_JS; ?>app.js"></script>    
 
 </html>

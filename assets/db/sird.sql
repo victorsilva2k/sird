@@ -283,6 +283,156 @@ SET
 WHERE id_cm = 1;
 
 
+LOCK TABLES 
+    propietario_documento WRITE,
+    proprietario_telefone WRITE,
+    entregador_proprietario WRITE,
+    local_documento WRITE,
+    documentos WRITE;
+
+
+
+ALTER TABLE entregador_proprietario
+    DROP FOREIGN KEY `id_proprietario-ep`,
+    MODIFY id_proprietario MEDIUMINT UNSIGNED;
+    
+ALTER TABLE propietario_documento MODIFY id_proprietario MEDIUMINT UNSIGNED AUTO_INCREMENT;
+
+ALTER TABLE entregador_proprietario
+    ADD CONSTRAINT `id_proprietario-ep` FOREIGN KEY (id_proprietario)
+          REFERENCES proprietario_documento (id_proprietario);
+
+ALTER TABLE local_documento
+    DROP FOREIGN KEY `id_proprietario-ld`,
+    MODIFY id_proprietario MEDIUMINT UNSIGNED;
+ 
+ ALTER TABLE local_documento
+    ADD CONSTRAINT `id_proprietario-ld` FOREIGN KEY (id_proprietario)
+          REFERENCES propietario_documento (id_proprietario);
+          
+    ALTER TABLE documentos
+    DROP FOREIGN KEY `id_proprietario-d`,
+    MODIFY id_proprietario MEDIUMINT UNSIGNED;
+
+ALTER TABLE documentos
+    ADD CONSTRAINT `id_proprietario-d` FOREIGN KEY (id_proprietario)
+          REFERENCES propietario_documento (id_proprietario);
+          
+    ALTER TABLE proprietario_telefone
+    DROP FOREIGN KEY `id_proprietario-pt`,
+    MODIFY id_proprietario MEDIUMINT UNSIGNED;
+  
+  ALTER TABLE proprietario_telefone
+    ADD CONSTRAINT `id_proprietario-pt` FOREIGN KEY (id_proprietario)
+          REFERENCES propietario_documento (id_proprietario);
+   
+UNLOCK TABLES;
+
+
+INSERT INTO `sird-db`.`operacao_documento`
+(`id_operacao`,
+`id_documento`,
+`id_agente`,
+`tipo`,
+`data`)
+VALUES(
+NULL,
+1,
+1,
+1,
+CURRENT_TIMESTAMP);
+-- Pubicar ocumento	
+
+INSERT INTO `sird-db`.`propietario_documento`
+                            (`id_proprietario`,
+                            `nome_completo`)
+                            VALUES
+                            (1,
+                            'victor');
+                            
+INSERT INTO `sird-db`.`proprietario_telefone`
+                            (`id_proprietario`,
+                            `telefone`)
+                            VALUES
+                            (1,
+                            '923435643');
+                            
+                            
+INSERT INTO `sird-db`.`entregador_documento`
+                (`id_entregador`,
+                `nome_completo`,
+                `telefone`)
+                VALUES
+                (NULL,
+                'mano',
+                91145254);
+INSERT INTO `sird-db`.`entregador_proprietario`
+                            (`id_entregador`,
+                            `id_proprietario`)
+                            VALUES
+                            (1,
+                            1);
+INSERT INTO `sird-db`.`documentos`
+                            (`id_documento`,
+                            `categoria_documento`,
+                            `data_emissao`,
+                            `identifacador`,
+                            `id_proprietario`,
+                            `estado`)
+                            VALUES
+                            (NULL,
+                            1,
+                            '2021-04-25',
+                            'poohh5155',
+                            1,
+                            1);
+INSERT INTO `sird-db`.`foto_documento`
+(`id_foto`,
+`id_documento`,
+`arquivo`)
+VALUES
+(NULL,
+1,
+'no-img.png');
+
+
+INSERT INTO `sird-db`.`local_documento`
+                            (`tipo_local`,
+                            `id_proprietario`,
+                            `id_local`)
+                            VALUES
+                            ('posto',
+                            1,
+                            1);
+INSERT INTO `sird-db`.`operacao_documento` 
+                                    (`id_operacao`, 
+                                    `id_agente`, 
+                                    `id_documento`, 
+                                    `tipo`, 
+                                    `data`) 
+                                    VALUES(NULL, 
+                                    1, 
+                                    1, 
+                                    1, 
+                                    CURRENT_TIMESTAMP);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 CREATE VIEW comando_municipal_informacao AS SELECT cm.data_criacao, cml.provincia, cml.municipio, cml.distrito, cml.bairro, cml.rua  FROM comando_municipal cm JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm;
 SELECT * FROM comando_municipal_informacao;
@@ -522,22 +672,22 @@ ENGINE = InnoDB;
 -- Table `sird-db`.`propietario_documento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sird-db`.`propietario_documento` (
-  `id_proprietario` MEDIUMINT(8) NOT NULL,
+  `id_propietario` MEDIUMINT(8) NOT NULL,
   `nome_completo` VARCHAR(300) NOT NULL,
-  PRIMARY KEY (`id_proprietario`))
+  PRIMARY KEY (`id_propietario`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sird-db`.`proprietario_telefone`
+-- Table `sird-db`.`propietario_telefone`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sird-db`.`proprietario_telefone` (
-  `id_proprietario` MEDIUMINT NOT NULL,
+CREATE TABLE IF NOT EXISTS `sird-db`.`propietario_telefone` (
+  `id_propietario` MEDIUMINT NOT NULL,
   `telefone` MEDIUMINT(20) NOT NULL,
-  INDEX `id_proprietario_idx` (`id_proprietario` ASC),
-  CONSTRAINT `id_proprietario-pt`
-    FOREIGN KEY (`id_proprietario`)
-    REFERENCES `sird-db`.`propietario_documento` (`id_proprietario`)
+  INDEX `id_propietario_idx` (`id_propietario` ASC),
+  CONSTRAINT `id_propietario-pt`
+    FOREIGN KEY (`id_propietario`)
+    REFERENCES `sird-db`.`propietario_documento` (`id_propietario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -552,19 +702,19 @@ CREATE TABLE IF NOT EXISTS `sird-db`.`documentos` (
   `tipo` VARCHAR(60) NOT NULL,
   `data_emissao` DATE NULL,
   `identifacador` VARCHAR(20) NULL,
-  `id_proprietario` MEDIUMINT NOT NULL,
+  `id_propietario` MEDIUMINT NOT NULL,
   `estado` TINYINT(2) NOT NULL,
   PRIMARY KEY (`id_documento`),
   INDEX `id_posto_idx` (`id_posto` ASC),
-  INDEX `id_proprietario_idx` (`id_proprietario` ASC),
+  INDEX `id_propietario_idx` (`id_propietario` ASC),
   CONSTRAINT `id_posto-d`
     FOREIGN KEY (`id_posto`)
     REFERENCES `sird-db`.`posto` (`id_posto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `id_proprietario-d`
-    FOREIGN KEY (`id_proprietario`)
-    REFERENCES `sird-db`.`propietario_documento` (`id_proprietario`)
+  CONSTRAINT `id_propietario-d`
+    FOREIGN KEY (`id_propietario`)
+    REFERENCES `sird-db`.`propietario_documento` (`id_propietario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

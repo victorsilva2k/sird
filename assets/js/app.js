@@ -1,6 +1,11 @@
-$(document).ready(function () { // faz com que as funções Javascript só funcionem após todo o documento html ser carregado
+document.addEventListener('DOMContentLoaded', function () { // faz com que as funções Javascript só funcionem após todo o documento html ser carregado
 
 
+
+    // FUNÇÃO PARA ADICIONAR CAMPO DE FORMULÁRIO
+    $( '#add-campo' ).click(function() {
+        appendTo()
+      });
     // FUNÇÃO PARA O MENU 
     $('#abrir-menu').click(function(){
         $('.barra-lateral').animate({

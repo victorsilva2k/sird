@@ -29,7 +29,7 @@ require_once "models/inicio.php";
 require_once "models/share.php";
 require_once "models/user.php";
 require_once "models/pesquisar.php";
-require_once "models/documentos.php";
+require_once "models/documento.php";
 require_once "models/comando.php";
 require_once "models/agente.php";
 require_once "models/posto.php";

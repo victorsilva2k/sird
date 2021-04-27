@@ -1,5 +1,5 @@
 <style>
-    .navegacao-lateral__item:nth-child(1) {
+    #documentos_nav {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }
