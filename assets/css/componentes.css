@@ -220,8 +220,14 @@ ul li {
     
     
     
+    
 }
 
+.cartoes__img{
+width: 300px;
+    height: 300px;
+
+}
 .cartoes__texto {
     padding: 10px;
     border-top: 1px solid #6c757d;

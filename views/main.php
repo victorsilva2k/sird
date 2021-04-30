@@ -1,3 +1,16 @@
+<?php if(!(isset($_SESSION['is_logged_in']))): ?>
+    <style>
+        .cabecalho--top {
+            width: 100% !important;
+            
+        }
+
+        .principal {
+            margin-left: auto !important;
+        }
+    </style>
+<?php endif;?>
+
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -31,7 +44,7 @@
                     
                     <!-- PARA O agente -->
                     
-                    <a href="" class="cabecalho__link">
+                    <a href="<?php echo ROOT_URL; ?>inicio/agente" class="cabecalho__link">
                         <div class="cabecalho__nav">
                             <img src="<?php echo ROOT_IMG; ?>site/logo_pna.png" alt="Aplicação" class="cabecalho__logo cabecalho__img">
                             <span class="cabecalho__nome-aplicacao">SIRD</span>
@@ -193,5 +206,5 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?php echo ROOT_JS; ?>app.js"></script>    
-
+<script src="<?php echo ROOT_JS; ?>jquery-3.2.1.js"></script>
 </html>

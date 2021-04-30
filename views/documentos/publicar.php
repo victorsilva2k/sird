@@ -72,7 +72,7 @@
 
         <!-- Informações do Documento -->
 
-        <div class="caixa-info_documentos">
+        <div class="caixa-info_documentos" id="caixa-documentos">
             <div class="caixa-info br-25 mbg-20">
                 <div class="caixa-info__titulo">
                     <p>Informações do Documento</p>
@@ -121,25 +121,7 @@
                         <input id="filetype2" type="file" name="adicionarDocumentoFoto2" class="file-chooser2" hidden />
                     </div>
                 </div>
-
-
-
-
-            
-               
-            
-            
-            </div>
-        </div>
-        <a  class="  btn btn-primary mgt-10 ">Adicionar Documento</a>
-        <br>
-        <div class="btn-grupo mgt-10">
-        <button type="submit" name="submit" value="Adicionar" type="submit" name="submit" value="Adicionar" class="  btn btn-success ">Publicar Documentos</button>
-        <a href="<?php echo ROOT_URL; ?>documentos" class="  btn btn-secondary mb-4 ">Voltar</a>
-        </div>
-
-    </form>
-    <script>
+                <script>
                             const $a = document.querySelector.bind(document);
                             const previewImg = $a('.preview-img');
                             const fileChooser = $a('.file-chooser');
@@ -173,5 +155,23 @@
                                 reader2.readAsDataURL(fileToUpload2);
                             };
                         </script>
+
+
+
+            
+               
+            
+            
+            </div>
+        </div>
+        <a  class="  btn btn-primary mgt-10 " id="add-documentos">Adicionar Documento</a>
+        <br>
+        <div class="btn-grupo mgt-10">
+        <button type="submit" name="submit" value="Adicionar" type="submit" name="submit" value="Adicionar" class="  btn btn-success ">Publicar Documentos</button>
+        <a href="<?php echo ROOT_URL; ?>documentos" class="  btn btn-secondary mb-4 ">Voltar</a>
+        </div>
+
+    </form>
+ 
 
 

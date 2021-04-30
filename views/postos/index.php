@@ -73,7 +73,7 @@
                             <a href="<?php echo ROOT_URL; ?>postos/ver/<?php echo $id_posto?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
                             <a href="<?php echo ROOT_URL; ?>postos/eliminar/<?php echo $id_posto?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
                         </td>
-
+                    </tr>
 
                 <?php endforeach;?>
 

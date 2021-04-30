@@ -357,6 +357,7 @@ INSERT INTO `sird-db`.`proprietario_telefone`
                             (1,
                             '923435643');
                             
+SELECT id_proprietario FROM propietario_documento order by id_proprietario desc LIMIT 1;
                             
 INSERT INTO `sird-db`.`entregador_documento`
                 (`id_entregador`,
@@ -381,10 +382,10 @@ INSERT INTO `sird-db`.`documentos`
                             `estado`)
                             VALUES
                             (NULL,
-                            1,
+                            3,
                             '2021-04-25',
                             'poohh5155',
-                            1,
+                            99,
                             1);
 INSERT INTO `sird-db`.`foto_documento`
 (`id_foto`,
@@ -522,15 +523,79 @@ current_timestamp());
 
 INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, 1, 1, 2, CURRENT_TIMESTAMP);
 
+-- listar documentos
 
+SELECT d.categoria_documento, pd.id_proprietario, pd.nome_completo, od.data, 
+GROUP_CONCAT( d.categoria_documento ) as "categoria_documentos" 
+FROM propietario_documento pd 
+JOIN documento d 
+ON d.id_proprietario = pd.id_proprietario
+JOIN operacao_documento od 
+ON d.id_documento = od.id_documento
+group by pd.id_proprietario;
 
+SELECT d.categoria_documento, DISTINCT(pd.id_proprietario), pd.nome_completo, od.data, 
+GROUP_CONCAT( d.categoria_documento ) as "categoria_documentos" 
+FROM propietario_documento AS pd
+INNER JOIN documentos  AS d ON d.id_proprietario=pd.id_proprietario
+INNER JOIN operacao_documento   AS od ON d.id_documento = od.id_documento
+GROUP BY d.id_proprietario;
 
+   SELECT pd.*,
+          (SELECT GROUP_CONCAT(d.categoria_documento)
+             FROM documentos d 
+            WHERE d.id_proprietario = pd.id_proprietario) AS categorias
+     FROM propietario_documento pd;
+     
+     SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) AS categorias
+     FROM propietario_documento pd 
+     JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+	 JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento WHERE d.estado = 1 GROUP BY pd.id_proprietario limit 10;
+     
+     -- Pagina Principal
+     
+     -- Cidadao
+     
+     SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) 
+     AS categorias,  group_concat(fd.arquivo) AS fotos,
+     ld.*
+     FROM propietario_documento pd 
+     JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+	 JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+     JOIN foto_documento fd ON d.id_documento = fd.id_documento
+     JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+     WHERE pd.id_proprietario = 1 GROUP BY pd.id_proprietario;
+     
+     SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+	 FROM posto p 
+	JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+	JOIN bairro b ON b.id_bairro= pl.bairro
+    JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
+	JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.id_posto = 1;
+     
+	SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+	 FROM posto p 
+	JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+	JOIN bairro b ON b.id_bairro= pl.bairro
+    JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
+	JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.id_posto = 1;
+    
 
+	SELECT cml.provincia, cml.municipio, d.distrito, b.bairro, cml.rua  
+    FROM comando_municipal cm 
+    JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm
+    JOIN bairro b ON b.id_bairro= pl.bairro
+    JOIN distrito d ON ((d.id_distrito = cml.distrito));
 
-
-
-
-
+SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) 
+                        AS categorias,  group_concat(fd.arquivo) AS fotos,
+                        ld.tipo_local, ld.id_local
+                        FROM propietario_documento pd 
+                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+				JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                        WHERE pd.id_proprietario = 1  GROUP BY pd.id_proprietario;	
 
 
 

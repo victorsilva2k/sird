@@ -2,170 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.dev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/exemplos.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/exemplos.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/componentes.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/componentes.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/alert-circle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/alert-circle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/alert-octagon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/alert-octagon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/alert-triangle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/alert-triangle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/archive.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/archive.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/arrow-left.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/arrow-left.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/arrow-right.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/arrow-right.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/bell.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/bell.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/book-open.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/book-open.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/bookmark.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/bookmark.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/calendar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/calendar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/camera.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/camera.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/chevron-left.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/chevron-left.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/chevron-right.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/chevron-right.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/clipboard.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/clipboard.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/clock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/clock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/copy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/copy.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-down-left.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-down-left.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-down-right.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-down-right.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-left-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-left-down.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-left-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-left-up.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-right-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-right-down.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-right-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-right-up.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-up-left.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-up-left.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/corner-up-right.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/corner-up-right.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/edit-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/edit-2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/edit.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/edit.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/eye-off.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/eye-off.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/eye.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/eye.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/file-minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/file-minus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/file-plus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/file-plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/file-text.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/file-text.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/file.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/file.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/folder-minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/folder-minus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/folder-plus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/folder-plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/folder.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/folder.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/gift.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/gift.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/hard-drive.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/hard-drive.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/help-circle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/help-circle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/home.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/home.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/home1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/home1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/home2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/home2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/home3.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/home3.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/image.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/image.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/info.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/info.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/link.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/link.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/list.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/list.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/lock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/lock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/mail.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/mail.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/map-pin.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/map-pin.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/map.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/map.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/minus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/office.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/office.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/paperclip.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/paperclip.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/phone.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/phone.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/pie-chart.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/pie-chart.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/plus-circle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/plus-circle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/plus-square.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/plus-square.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/plus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/power.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/power.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/printer.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/printer.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/search.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/slash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/slash.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/smartphone.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/smartphone.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/tool.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/tool.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/trash-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/trash-2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/trash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/trash.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/unlock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/unlock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/user-check.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/user-check.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/user-minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/user-minus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/user-plus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/user-plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/user-x.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/user-x.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/user.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/user.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/x-circle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/x-circle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/x-square.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/x-square.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/SVG/x.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/SVG/x.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/site/sprite.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/site/sprite.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/jquery-3.2.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/jquery-3.2.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/agentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/agentes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bairros.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/bairros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/categorias.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/categorias.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comandos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/distritos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/distritos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/inicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/mais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/pesquisar.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/pesquisar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/postos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/shares.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shares.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/info.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/bairro.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/bairro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/categoria.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/categoria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comando.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comando.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/distrito.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/distrito.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/documento.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/documento.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/inicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/pesquisar.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/pesquisar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/share.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/share.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/agentes/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/aguardar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/aguardar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/cadastrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/cadastrar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/cadastros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/cadastros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/entrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/entrar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/perfil.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/perfil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/permitir.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/permitir.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/rejeitar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/rejeitar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bairros/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bairros/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bairros/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bairros/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/categorias/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/categorias/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/categorias/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/categorias/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/categorias/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/categorias/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comando/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comando/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comando/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/distritos/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/distritos/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/distritos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/distritos/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/distritos/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/distritos/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/documentos/documento.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/documento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/documentos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/documentos/documento.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/documentos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/documentos/publicar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/publicar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/inicio/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/agente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/inicio/cidadao.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/cidadao.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/mais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pesquisar/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pesquisar/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/postos/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/adicionar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/postos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/eliminar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/postos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/ver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shares/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/shares/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shares/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/shares/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/users/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/users/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/users/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,6 +81,7 @@
       <workItem from="1619122163899" duration="96000" />
       <workItem from="1619122464552" duration="3608000" />
       <workItem from="1619385433498" duration="237000" />
+      <workItem from="1619770829271" duration="4000" />
     </task>
     <servers />
   </component>

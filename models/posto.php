@@ -117,9 +117,15 @@ class PostoModel extends Model{
 
 
             }
-            $this->query('select * from bairro;');
-            $row = $this->resultSet();
-            return $row;
+                    // Pegando dados dos bairros
+        $this->query('select * from bairro;');
+        $row["bairros"] = $this->resultSet();
+        
+        // Pegando dados dos distritos
+        $this->query('select * from distrito');
+        $row['distritos'] = $this->resultSet();
+        return $row;
+
 
 
 
@@ -234,6 +240,11 @@ class PostoModel extends Model{
         // Pegando dados dos bairros
         $this->query('select * from bairro;');
         $row["bairros"] = $this->resultSet();
+        
+        // Pegando dados dos distritos
+        $this->query('select * from distrito');
+        $row['distritos'] = $this->resultSet();
+        return $row;
 
     
         return $row;  

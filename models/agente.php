@@ -183,7 +183,8 @@ class AgenteModel extends Model{
         if (isset($post['submit'])) {
 
             extract($post);
-
+            var_dump($post);
+            return;
             // VERIFICAÇÕES
             // Verifica se as palavras-passe são iguais
             if ($cadastroPassword !== $cadastroConfirmarPassword) {

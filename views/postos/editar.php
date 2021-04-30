@@ -32,13 +32,10 @@
             <div class="caixa-info__cabecalho"><h3 >Distrito</h3></div>
             <div class="caixa-info__descricao  ">
                 <select class="caixa-info__input input--text" name="editarPostoDistrito">
-                    <option value="<?php echo $distrito?>" selected><?php echo $distrito?></option>
-                    <option value="Benfica">Benfica</option>
-                    <option value="Futungo de Belas">Futungo de Belas</option>
-                    <option value="Lar do Patriota">Lar do Patriota</option>
-                    <option value="Talatona">Talatona</option>
-                    <option value="Camama">Camama</option>
-                    <option value="Cidade Universitária">Cidade Universitária</option>
+                    <!-- HACK POR EM PRIMEIRO O DISTRITO ACTUAL -->
+                <?php foreach($viewmodel['distritos'] as $item) : extract($item);?>
+                                <option  value="<?php echo $id_distrito?>"><?php echo $distrito?></option>
+                            <?php endforeach;?>
 
                 </select>
             </div>

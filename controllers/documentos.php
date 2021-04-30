@@ -8,6 +8,12 @@ class Documentos extends Controller{
         $viewmodel = new DocumentosModel();
         $this->returnView($viewmodel->Index(), true);
     }
+
+    protected function ver()
+    {
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->ver($this->param), true);
+    }
     public function Editar()
     {
         

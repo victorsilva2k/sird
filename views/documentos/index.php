@@ -9,7 +9,7 @@
 </style>
 <div class="btn-groupo">
     <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
-    <a href="" class="btn-groupo__botao center-t btn btn-success mb-4 ">Devolver Documento</a>
+    <a href="<?php echo ROOT_URL; ?>documentos/devolver" class="btn-groupo__botao center-t btn btn-success mb-4 ">Devolver Documento</a>
 
     </div>
 <div class="paginacao">
@@ -49,67 +49,23 @@
 
       <th scope="col">Nome Completo</th>
       <th scope="col">Documentos</th>
-      <th scope="col">Data de Publicacação</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Victorino Bimbe Da Silva Kioza</td>
-      <td>BI, Carta de Condução</td>
-      <td>1 de Janeiro de 2021</td>
+                <?php foreach($viewmodel as $item) : extract($item);?>
 
-    </tr>
-    <tr>
+                      <tr>
+                        <td><?php echo ucwords($nome_completo);?></td>
+                        <td><?php echo $categorias?></td>
+                        <td>
+                            <a href="<?php echo ROOT_URL; ?>documentos/editar/<?php echo $id_proprietario?>" class="center-t btn btn-success mb-4 ">Editar</a>
+                            <a href="<?php echo ROOT_URL; ?>documentos/ver/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
+                            <a href="<?php echo ROOT_URL; ?>documentos/eliminar/<?php echo $id_proprietario?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                        </td>
+                      </tr>
 
-      <td >João Bastos de Oliveira</td>
-      <td>BI, Recensseamento Militar</td>
-      <td>20 de Junho de 2020</td>
+                <?php endforeach;?>
 
-    </tr>
-    <tr>
-
-      <td>José Morais Dala</td>
-      <td>Cartão de Eleitor, NIF</td>
-      <td>14 de Dezembro de 2019</td>
-    </tr>
-    <tr>
-      <td>Miguel Januário</td>
-      <td>Livrete</td>
-      <td>1 de Fevereiro de 2021</td>
-
-    </tr>
-    <tr>
-
-      <td >Armando Pedro de Novais</td>
-      <td>Recensseamento Militar</td>
-      <td>20 de Julho de 2020</td>
-
-    </tr>
-    <tr>
-
-      <td>Jovani Kalunga Mateus</td>
-      <td>NIF</td>
-      <td>14 de Agosto de 2020</td>
-    </tr>
-    <tr>
-      <td>Carla Sachimo Oliveira</td>
-      <td>Multicaixa</td>
-      <td>2 de Junho de 2020</td>
-
-    </tr>
-    <tr>
-
-      <td >Célio da Silva João</td>
-      <td>BI, Recensseamento Militar</td>
-      <td>20 de Junho de 2020</td>
-
-    </tr>
-    <tr>
-
-      <td>José Morais Dala</td>
-      <td>Cartão de Eleitor, NIF</td>
-      <td>14 de Dezembro de 2019</td>
-    </tr>
-    
-  </tbody>
+                </tbody>
 </table>
