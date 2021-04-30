@@ -15,7 +15,17 @@
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Data</h3></div>
-                <div class="caixa-info__descricao"><p >2 de Fevereiro de 2020</p></div>
+                <div class="caixa-info__descricao"><p >
+                <?php 
+
+
+                    $data_array = explode(",",$datas);
+                    $data = $data_array[0];
+                    echo $this->tratarData($data, true);
+
+                    
+                ?>
+                </p></div>
             </div>
             <?php endforeach;?>
             <?php foreach($viewmodel['local'] as $item) : extract($item);?>
@@ -54,7 +64,7 @@
             $foto2 = $foto_array[1];
         ?>              
         <div class="br-25 bd-1 mgb-10 galeria__item">
-            <img     class="cartoes__img img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto1R; ?>" alt="Nome do Cidadão">
+            <img     class="cartoes__img img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto1; ?>" alt="Nome do Cidadão">
         </div>
         <div class="br-25 bd-1 mgb-10 galeria__item">
             <img     class="cartoes__img img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto2; ?>" alt="Nome do Cidadão">

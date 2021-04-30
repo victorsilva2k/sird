@@ -168,11 +168,12 @@
                     <?php else:?>
                             <div class="cabecalho-direito cont cont--side">
                             <!-- PARA O CIDADÃO -->
-                            <button class="cabecalho__botao btn-icone esconde-grande">
-                                <svg class="cabecalho__icone icone--padrao">
-                                <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                            <a href="<?php echo ROOT_URL; ?>postos" class="pl-10">
+                                <svg class="icone--padrao cabecalho-direito__icone">
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
                                 </svg>
-                            </button>  
+
+                            </a>
                             <form class="pesquisa-form" action="pesquisar" method="get">
                                 <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
                                 <button class="pesquisa-form__botao btn-icone">

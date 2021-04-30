@@ -10,21 +10,22 @@ class DocumentosModel extends Model{
 
     public function ver($id_proprietario)
     {
-        $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) 
-                        AS categorias,  group_concat(fd.arquivo) AS fotos,
-                        ld.tipo_local, ld.id_local
-                        FROM propietario_documento pd 
-                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
-                        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
-                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
-                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
-                        WHERE pd.id_proprietario = :ID_PROPRIETARIO GROUP BY pd.id_proprietario;');
+        $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+        AS categorias, group_concat(od.data) 
+        AS datas,   group_concat(fd.arquivo) AS fotos,
+        ld.tipo_local, ld.id_local
+        FROM propietario_documento pd 
+        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+        JOIN operacao_documento od ON od.id_documento = d.id_documento
+        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+        WHERE pd.id_proprietario = :ID_PROPRIETARIO GROUP BY pd.id_proprietario;');
         $this->bind(':ID_PROPRIETARIO', $id_proprietario);
+        $ro = $this->singleResult();
         $row['documento'] = $this->resultSet();
-        
-        extract($row);
-        $t_local = $tipo_local;
-        if ($t_local == 'posto') {
+        extract($ro);
+        if ($tipo_local == 'posto') {
             $this->query('SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
                         FROM posto p 
                         JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
