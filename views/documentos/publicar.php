@@ -114,11 +114,11 @@
                         <label for="filetype" class="botao cancel">
                                 <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="" class="caixa-info__img--grande bd--grey preview-img ">                                    
                         </label>
-                        <input id="filetype" type="file" name="adicionarDocumentoFoto1" class="file-chooser" hidden />
+                        <input id="filetype" type="file" name="adicionarDocumentoFotoFrente[]" class="file-chooser" hidden />
                         <label for="filetype2" class="botao cancel">
                                 <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="" class="caixa-info__img--grande bd--grey preview-img2 ">                                    
                         </label>
-                        <input id="filetype2" type="file" name="adicionarDocumentoFoto2" class="file-chooser2" hidden />
+                        <input id="filetype2" type="file" name="adicionarDocumentoFotoTraz[]" class="file-chooser2" hidden />
                     </div>
                 </div>
                 <script>

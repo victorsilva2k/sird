@@ -31,8 +31,8 @@
     
     <nav class="navbar" >
             
-    <form class="pesquisa-form" action="pesquisar" method="get">
-                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+    <form class="pesquisa-form" action="<?php echo ROOT_URL; ?>cidadaos/pesquisar" method="get">
+                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar" id="" placeholder="Pesquisar por nome, BI, Número">
                                 <button class="pesquisa-form__botao btn-icone">
                                     <svg class="pesquisa-form__icone  icone-padrao">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
@@ -65,16 +65,6 @@
             <?php endforeach;?>
             
         
-
-<div class="selectors">
-            <a href="1"><i class="fas fa-chevron-left"></i></a>
-            <a href="1">1</a>
-            <a href="2">2</a>
-            <a href="3">3</a>
-            <a href="4">4</a>
-            <a href="5">5</a>
-            <a href="6"><i class="fas fa-chevron-right"></i></a>
-        </div>
 
 <style>
     header {

@@ -169,7 +169,7 @@ class BairroModel extends Model{
 
 
 
-        }
+    }
 
 
 

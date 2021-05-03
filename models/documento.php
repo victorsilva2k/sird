@@ -64,7 +64,6 @@ class DocumentosModel extends Model{
             return $row;
         }
     }
-
     public function verCidadao($id_proprietario)
     {
         $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
@@ -159,7 +158,51 @@ class DocumentosModel extends Model{
                // INSERT MySQL
                if (isset($post['submit'])) {
        
-                   extract($post);
+                try {
+                    $this->beginTransaction();
+    
+                    // Alterando os dados do posto
+                    $this->query("SELECT id_documento FROM documentos WHERE id_proprietario = :ID_PROPRIETARIO;");
+                    $this->bind(':ID_PROPRIETARIO', $id_proprietario);
+                    $this->execute();
+    
+                    $row = $this->resultSet();
+                    foreach ($row as $item) {
+                        extract($item);
+                        
+                        $this->query("UPDATE documentos SET estado = 3 WHERE id_documento = :ID_DOCUMENTO;");
+                        $this->bind(':ID_DOCUMENTO', $id_documento);
+                        $this->execute();
+         
+                        // Registrando a alteração
+                        $this->query("INSERT INTO `sird-db`.`operacao_documento` 
+                                    (`id_operacao`, 
+                                    `id_agente`, 
+                                    `id_documento`, 
+                                    `tipo`, 
+                                    `data`) 
+                                    VALUES(NULL, 
+                                    :ID_AGENTE, 
+                                    :ID_DOCUMENTO, 
+                                    4, 
+                                    CURRENT_TIMESTAMP);");
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->bind(':ID_DOCUMENTO', $id_documento);
+                        $this->execute();
+                    }
+    
+                    $this->commit();
+                    if ($this->rowCounte() >= 1) {
+                        //Redirect
+                        Messages::setMessage("Documento devolvido com sucesso", "success");
+                        header('Location: ' . ROOT_URL . 'documentos');
+                    }
+                } catch (\PDOException $erro) {
+                    $this->rollBack();
+    
+                    Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+    
+                }
           
 
                        
@@ -245,10 +288,6 @@ class DocumentosModel extends Model{
 
             extract($post);
 
-
-            
-
-            
             // VERIFICAÇÕES
                           
 
@@ -349,11 +388,11 @@ class DocumentosModel extends Model{
                     $id_documento = $this->lastInsertId();
 
                     // Verifica se uma imagem 1 foi selecionada
-                    if ($_FILES["adicionarDocumentoFoto1"]["error"] > 0) {
+                    if ($_FILES["adicionarDocumentoFotoFrente"]["error"][$i] > 0) {
                         $foto = "no-img.png";
                     } else {
                         $n = rand(0, 10000);
-                        $exp = explode("/", $_FILES["adicionarDocumentoFoto1"]["type"]);
+                        $exp = explode("/", $_FILES["adicionarDocumentoFotoFrente"]["type"][$i]);
                         $tipo_ficheiro = $exp[1];
     
                         if ($tipo_ficheiro !== 'jpeg' && $tipo_ficheiro !== 'png' && $tipo_ficheiro !== 'jpg') {
@@ -363,7 +402,7 @@ class DocumentosModel extends Model{
                         $data = date("Y-m-d");
                         $foto = $n . '-' . $data . '.' . $tipo_ficheiro;
                         $destino = "assets/img/documentos/" . $foto;
-                        move_uploaded_file($_FILES['adicionarDocumentoFoto1']['tmp_name'], $destino);
+                        move_uploaded_file($_FILES['adicionarDocumentoFotoFrente']['tmp_name'][$i], $destino);
                     }
 
                 
@@ -386,11 +425,11 @@ class DocumentosModel extends Model{
                     // Inserindo foto 2
 
                     // Verifica se uma imagem 2 foi selecionada
-                    if ($_FILES["adicionarDocumentoFoto2"]["error"] > 0) {
+                    if ($_FILES["adicionarDocumentoFotoTraz"]["error"][$i] > 0) {
                         $foto = "no-img.png";
                     } else {
                         $n = rand(0, 10000);
-                        $exp = explode("/", $_FILES["adicionarDocumentoFoto2"]["type"]);
+                        $exp = explode("/", $_FILES["adicionarDocumentoFotoTraz"]["type"][$i]);
                         $tipo_ficheiro = $exp[1];
     
                         if ($tipo_ficheiro !== 'jpeg' && $tipo_ficheiro !== 'png' && $tipo_ficheiro !== 'jpg') {
@@ -400,7 +439,7 @@ class DocumentosModel extends Model{
                         $data = date("Y-m-d");
                         $foto = $n . '-' . $data . '.' . $tipo_ficheiro;
                         $destino = "assets/img/documentos/" . $foto;
-                        move_uploaded_file($_FILES['adicionarDocumentoFoto2']['tmp_name'], $destino);
+                        move_uploaded_file($_FILES['adicionarDocumentoFotoTraz']['tmp_name'][$i], $destino);
                     }
                     // HACK o codigo actual não aceita mais de duas imagens, melhorar isso
                     $this->query("INSERT INTO `sird-db`.`foto_documento`
@@ -467,6 +506,61 @@ class DocumentosModel extends Model{
         $this->query('SELECT * FROM categoria_documento');
         $row = $this->resultSet();
         return $row;  
+    }
+
+    public function eliminar($id_proprietario)
+    {
+
+
+            try {
+                $this->beginTransaction();
+
+                // Alterando os dados do posto
+                $this->query("SELECT id_documento FROM documentos WHERE id_proprietario = :ID_PROPRIETARIO;");
+                $this->bind(':ID_PROPRIETARIO', $id_proprietario);
+                $this->execute();
+
+                $row = $this->resultSet();
+                foreach ($row as $item) {
+                    extract($item);
+                    
+                    $this->query("UPDATE documentos SET estado = 3 WHERE id_documento = :ID_DOCUMENTO;");
+                    $this->bind(':ID_DOCUMENTO', $id_documento);
+                    $this->execute();
+     
+                    // Registrando a alteração
+                    $this->query("INSERT INTO `sird-db`.`operacao_documento` 
+                                (`id_operacao`, 
+                                `id_agente`, 
+                                `id_documento`, 
+                                `tipo`, 
+                                `data`) 
+                                VALUES(NULL, 
+                                :ID_AGENTE, 
+                                :ID_DOCUMENTO, 
+                                4, 
+                                CURRENT_TIMESTAMP);");
+                    $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                    $this->bind(':ID_DOCUMENTO', $id_documento);
+                    $this->execute();
+                }
+
+                $this->commit();
+                if ($this->rowCounte() >= 1) {
+                    //Redirect
+                    Messages::setMessage("Documento eliminado com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'documentos');
+                }
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+
+            }
+            //Verify
+
+
+
     }
     public function Editar($param)
     {

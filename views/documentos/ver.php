@@ -72,7 +72,7 @@
     <div class="galeria galeria-info"> 
         <?php foreach($viewmodel['documento'] as $item){
            extract($item);
-
+            $fotos = $this->verificarRepeticao($fotos);
             $foto_array = explode(",",$fotos);
 
         } 

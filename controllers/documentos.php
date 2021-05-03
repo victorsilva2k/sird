@@ -64,4 +64,13 @@ class Documentos extends Controller{
         $this->returnView($viewmodel->publicar(), true);
         
     }
+
+    public function eliminar()
+    {
+        
+        $this->verificarNivel(1);
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->eliminar($this->param), true);
+        
+    }
 }

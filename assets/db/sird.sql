@@ -598,7 +598,7 @@ GROUP BY d.id_proprietario;
 						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
                         JOIN foto_documento fd ON d.id_documento = fd.id_documento
                         JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
-                         WHERE d.estado = 1 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;	
+                         WHERE d.estado = 1 AND pd.id_proprietario = 126 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;	
           
 -- ver documento principal 
 
@@ -651,6 +651,7 @@ GROUP BY d.id_proprietario;
                         JOIN foto_documento fd ON d.id_documento = fd.id_documento
                         JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
 						WHERE d.estado = 3 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;
+                        
                          
 -- estatisticas da pagina principal - COMANDO MUNICIPAL
 CREATE VIEW estatisticas_comando_municipal AS SELECT COUNT(*) AS total_documentos FROM documentos 
@@ -690,7 +691,40 @@ INSERT INTO `sird-db`.`operacao_documento`
                                 4, 
                                 CURRENT_TIMESTAMP);
 
+-- procurar documento
 
+	SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+        AS categorias, group_concat(od.data) 
+        AS datas,   group_concat(fd.arquivo) AS fotos,
+        ld.tipo_local, ld.id_local
+        FROM propietario_documento pd 
+        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+        JOIN operacao_documento od ON od.id_documento = d.id_documento
+        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+        JOIN proprietario_telefone pt ON pt.id_proprietario = pd.id_proprietario
+         WHERE d.estado = 3 AND d.identifacador LIKE '%a%' 
+         OR pd.nome_completo LIKE '%a%' OR cd.categoria LIKE '%a%' 
+         OR pt.telefone LIKE '%a%'
+         GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;
+
+-- eliminar documento
+
+SELECT id_documento FROM documentos WHERE id_proprietario = 126;
+
+UPDATE documentos SET estado = 3 WHERE id_documento =;
+INSERT INTO `sird-db`.`operacao_documento` 
+                                (`id_operacao`, 
+                                `id_agente`, 
+                                `id_documento`, 
+                                `tipo`, 
+                                `data`) 
+                                VALUES(NULL, 
+                                7, 
+                                32, 
+                                2, 
+                                CURRENT_TIMESTAMP);
 
 
 

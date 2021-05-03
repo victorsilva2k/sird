@@ -103,7 +103,7 @@
                         </li>
                         <li class="navegacao-lateral__item">
 
-                            <a href="" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
+                            <a href="<?php echo ROOT_URL; ?>documentos" class="center-t navegacao-lateral__link navegacao-lateral__botao  btn btn-success mb-4 ">Devolver</a>
 
                         </li>
                     </ul>
@@ -170,8 +170,8 @@
                                 </svg>
 
                             </a>
-                            <form class="pesquisa-form" action="pesquisar" method="get">
-                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+                            <form class="pesquisa-form" action="<?php echo ROOT_URL; ?>cidadaos/pesquisar" method="get">
+                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar" id="" placeholder="Pesquisar por nome, BI, Número">
                                 <button class="pesquisa-form__botao btn-icone">
                                     <svg class="pesquisa-form__icone  icone-padrao">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 

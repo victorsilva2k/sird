@@ -6,7 +6,7 @@
     
     <div class="btn-groupo">
         <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
-        <a href="<?php echo ROOT_URL; ?>documentos/devolver" class="btn-groupo__botao center-t btn btn-success mb-4 ">Devolver Documento</a>
+        <a href="<?php echo ROOT_URL; ?>documentos/" class="btn-groupo__botao center-t btn btn-success mb-4 ">Devolver Documento</a>
     </div>
     <?php if($_SESSION['usuario_local']['tipo_local'] === 'comando'): ?>
         <div class="visao-geral mgt-20">
