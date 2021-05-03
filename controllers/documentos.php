@@ -4,15 +4,48 @@ class Documentos extends Controller{
 
     protected function Index()
     {
+
+        $this->verificarNivel(1);
+        header('Location: ' . ROOT_URL . 'documentos/listar');
+
+    }
+    protected function listar()
+    {
+        switch ($this->param) {
+            case 'entregues':
+                $estado = 3;
+                break;
+            
+            default:
+                $estado = 1;
+
+                break;
+        }
         $this->verificarNivel(1);
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->Index(), true);
+        $this->returnView($viewmodel->Index($estado), true);
+    }
+
+    protected function pesquisar()
+    {
+        $this->verificarNivel(1);
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->pesquisar(), true);
     }
 
     protected function ver()
     {
+        $this->verificarNivel(1);
+        $this->verificarParametro();
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->ver($this->param), true);
+        $this->returnView($viewmodel->verAgente($this->param), true);
+    }
+    protected function devolver()
+    {
+        $this->verificarNivel(1);
+        $this->verificarParametro();
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->devolver($this->param), true);
     }
     public function Editar()
     {

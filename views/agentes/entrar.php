@@ -26,7 +26,7 @@
 
                     <input type="submit" name="submit" value="Entrar" class="formulario__input btn btn-lg btn-primary btn-block">
                     <!-- <a href="" class="link formulario__link mgb-10">Esqueceu a palavra-passe</a> HACK -->
-                    <a href="" class="link formulario__link mgb-10">Criar conta</a>
+                    <a href="<?php echo ROOT_URL ?>agentes/cadastrar" class="link formulario__link mgb-10">Criar conta</a>
                     <a href="<?php echo ROOT_URL ?>agentes/entrar" class="link formulario__link mgb-10">Esqueceu a palavra-passe? </a>
 
                     <p class="mt-5 mb-3 text--cinza">SIRD &copy; 2021</p>

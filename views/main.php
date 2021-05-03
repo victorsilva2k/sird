@@ -21,13 +21,9 @@
 
     <!-- Links Externos -->
     <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Javascript -->
 
-    <!-- Icones -->
-    <script src="https://kit.fontawesome.com/d48820cda4.js" crossorigin="anonymous"></script>
+
     <title>SIRD - PNA</title>
 </head>
 
@@ -132,13 +128,13 @@
                 <header class=" cabecalho--top">
 
                     <div class=" cabecalho">
-                    <?php if(isset($_SESSION['is_logged_in'])): ?>
+
                         
                         
-                        <div class="cabecalho-direito cont cont--side">
+                        <div class="cabecalho-direito cabecalho-direito__agente cont cont--side">
                             
-                            <form class="pesquisa-form" action="pesquisar" method="get">
-                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar_documento" id="" placeholder="Pesquisar por nome, BI, Número">
+                            <form class="pesquisa-form" action="<?php echo ROOT_URL; ?>documentos/pesquisar" method="get">
+                                <input class="pesquisa-form__input input--text" type="text" name="pesquisar" id="" placeholder="Pesquisar por nome, BI, Número">
                                 <button class="pesquisa-form__botao btn-icone">
                                     <svg class="pesquisa-form__icone  icone-padrao">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-search"></use> 
@@ -165,10 +161,10 @@
                             </div>
                             </div>
                         </div>
-                    <?php else:?>
-                            <div class="cabecalho-direito cont cont--side">
+
+                            <div class="cabecalho-direito cabecalho-direito__cidadao cont cont--side">
                             <!-- PARA O CIDADÃO -->
-                            <a href="<?php echo ROOT_URL; ?>postos" class="pl-10">
+                            <a href="<?php echo ROOT_URL; ?>cidadaos" class="pl-10">
                                 <svg class="icone--padrao cabecalho-direito__icone">
                                     <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
                                 </svg>
@@ -186,7 +182,7 @@
 
                             
                         </div>
-                    <?php endif;?>
+
                     </div>
 
                 </header>
@@ -205,7 +201,6 @@
         </main><!-- /.container -->
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?php echo ROOT_JS; ?>app.js"></script>    
 <script src="<?php echo ROOT_JS; ?>jquery-3.2.1.js"></script>
 </html>

@@ -41,6 +41,10 @@
     font-size: 1.5rem;
 
 }
+
+.cabecalho-direito__cidadao {
+    display: none;
+}
 .cabecalho__nome-usuario, .cabecalho__nome-aplicacao{
         padding: 0 1rem;
         cursor: pointer;
@@ -212,6 +216,7 @@ ul li {
 
 .galeria__item {
     background-color: #fff;
+    max-width: 49%;
 }
 
 .cartoes__cartao {
@@ -225,7 +230,13 @@ ul li {
 }
 
 .cartoes__img{
-width: 300px;
+    width: 300px;
+    height: 300px;
+
+}
+
+.cartoes__img-ver{
+    width: auto;
     height: 300px;
 
 }
@@ -497,11 +508,18 @@ img {
     padding: 10px;
     font-weight: 500;
 }
+.opcoes-documentos__link {
+    color: var(--cor-secundaria);
+}
 .opcoes-documento__link--desactivado {
     color: var(--cor-secundaria);
 }
 .opcoes-documento__div--activada {
     border-bottom: 2px solid var(--cor-primaria);
+}
+
+.opcoes-documento__div--activada a {
+    color: var(--cor-primaria) !important;
 }
 /* TABELAS */
 

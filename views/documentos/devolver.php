@@ -1,29 +1,29 @@
 
-      
+        <div class="btn-grupo mgt-10 mgb-10">
+            <form method="POST" class="">
+                <button type="submit" name="submit" value="Devolver" type="submit" name="submit"  class="  btn btn-success ">Devolver Documentos</button>
+                <?php foreach($viewmodel['documento'] as $item) : extract($item);?>
+                <input type="hidden" name="devolverIdDocumento" value="<?php 
+                $id_raw = explode(",",$ids );
+                echo $id_raw[0]?>
+                
+                ">
+                <?php endforeach;?>
+                <a href="<?php echo ROOT_URL; ?>documentos" class="  btn btn-secondary mb-4 ">Voltar</a>
+            </form>    
+        </div>
     <div class="caixa-info br-25">
         <div class="caixa-info__titulo">
             <p>Informações do cidadão</p>
         </div>
         <?php foreach($viewmodel['documento'] as $item) : extract($item);?>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Nome Do Proprietário</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $nome_proprietario?></p></div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Número de Telefone/s</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $this->verificarRepeticao($telefone_proprietario)?></p></div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Nome do Entregador</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $nome_entregador?></p></div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Número do Entregador</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $telefone_entregador?></p></div>
+                <div class="caixa-info__cabecalho"><h3 >Nome</h3></div>
+                <div class="caixa-info__descricao"><p ><?php echo $nome_completo?></p></div>
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Documentos</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $this->verificarRepeticao($categorias)?></p></div>
+                <div class="caixa-info__descricao"><p><?php echo $this->verificarRepeticao($categorias)?></p></div>
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Data</h3></div>
@@ -70,7 +70,7 @@
         
     </div>
     <div class="galeria galeria-info"> 
-        <?php foreach($viewmodel['documento'] as $item){
+    <?php foreach($viewmodel['documento'] as $item){
            extract($item);
 
             $foto_array = explode(",",$fotos);
@@ -83,8 +83,6 @@
             <img     class="cartoes__img-ver img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto; ?>" alt="Nome do Cidadão">
         </div>
         <?php endforeach;?>    
-
-
 
                 
     </div>

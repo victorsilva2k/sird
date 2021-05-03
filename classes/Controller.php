@@ -40,6 +40,26 @@ abstract class Controller{
 
         }
     }
+    public function verificarParametro(){
+
+        if (!isset($this->param)) {
+            $this->action = "index";
+            header('Location: ' . ROOT_URL);
+
+            
+        } 
+    }
+
+    public function verificarRepeticao($string){
+
+        $str = implode(',',array_unique(explode(',', $string)));
+        return $str;
+    }
+
+    public function pegarPrimeiro($array = []){
+        $exp = explode(",", $array);
+        return $exp[0];
+    }
 
     public function executeAction()
     {

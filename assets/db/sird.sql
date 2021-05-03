@@ -524,11 +524,11 @@ current_timestamp());
 INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, 1, 1, 2, CURRENT_TIMESTAMP);
 
 -- listar documentos
-
+	SELECT * FROM listar_documentos;
 SELECT d.categoria_documento, pd.id_proprietario, pd.nome_completo, od.data, 
 GROUP_CONCAT( d.categoria_documento ) as "categoria_documentos" 
 FROM propietario_documento pd 
-JOIN documento d 
+JOIN documentos d 
 ON d.id_proprietario = pd.id_proprietario
 JOIN operacao_documento od 
 ON d.id_documento = od.id_documento
@@ -550,7 +550,7 @@ GROUP BY d.id_proprietario;
      SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) AS categorias
      FROM propietario_documento pd 
      JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
-	 JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento WHERE d.estado = 1 GROUP BY pd.id_proprietario limit 10;
+	 JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento WHERE d.estado = 1 GROUP BY pd.id_proprietario ;
      
      -- Pagina Principal
      
@@ -587,16 +587,108 @@ GROUP BY d.id_proprietario;
     JOIN bairro b ON b.id_bairro= pl.bairro
     JOIN distrito d ON ((d.id_distrito = cml.distrito));
 
-SELECT DISTINCT pd.nome_completo, pd.id_proprietario, group_concat(cd.categoria) 
-                        AS categorias,  group_concat(fd.arquivo) AS fotos,
+			SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+                        AS categorias, group_concat(od.data) 
+                        AS datas, group_concat(d.id_documento) 
+                        AS ids,  group_concat(fd.arquivo) AS fotos,
                         ld.tipo_local, ld.id_local
                         FROM propietario_documento pd 
                         JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
-				JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN operacao_documento od ON od.id_documento = d.id_documento
+						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
                         JOIN foto_documento fd ON d.id_documento = fd.id_documento
                         JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
-                        WHERE pd.id_proprietario = 1  GROUP BY pd.id_proprietario;	
+                         WHERE d.estado = 1 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;	
+          
+-- ver documento principal 
 
+						CREATE VIEW ver_documento_principal AS SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+                        AS categorias, group_concat(od.data) 
+                        AS datas, group_concat(d.id_documento) 
+                        AS ids,
+                        ld.tipo_local, ld.id_local
+                        FROM propietario_documento pd 
+                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                        JOIN operacao_documento od ON od.id_documento = d.id_documento
+						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                         WHERE d.estado = 1 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;	
+                         
+                         SELECT * FROM ver_documento_principal LIMIT 1, 10;
+                         
+                         -- 
+                         SELECT DISTINCT pd.nome_completo AS nome_proprietario, pd.id_proprietario, ed.nome_completo 
+                         AS nome_entregador, ed.telefone AS telefone_entregador,  group_concat(cd.categoria) 
+                        AS categorias, group_concat(od.data)
+                        AS datas,   group_concat(fd.arquivo) AS fotos,
+                        group_concat(pt.telefone) 
+                        AS telefone_proprietario, group_concat(d.id_documento) 
+                        AS ids,
+                        ld.tipo_local, ld.id_local
+                        FROM propietario_documento pd 
+                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                        JOIN operacao_documento od ON od.id_documento = d.id_documento
+						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                        JOIN proprietario_telefone pt ON pt.id_proprietario = pd.id_proprietario
+                        JOIN entregador_proprietario ep ON ep.id_proprietario = pd.id_proprietario
+                        JOIN entregador_documento ed ON ed.id_entregador = ep.id_entregador
+                         WHERE d.estado = 1 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;
+                         
+                         -- entregues
+                         
+						CREATE VIEW ver_documentos_entregues AS SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+                        AS categorias, group_concat(od.data) 
+                        AS datas, group_concat(d.id_documento) 
+                        AS ids,
+                        ld.tipo_local, ld.id_local
+                        FROM propietario_documento pd 
+                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                        JOIN operacao_documento od ON od.id_documento = d.id_documento
+						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+						WHERE d.estado = 3 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;
+                         
+-- estatisticas da pagina principal - COMANDO MUNICIPAL
+CREATE VIEW estatisticas_comando_municipal AS SELECT COUNT(*) AS total_documentos FROM documentos 
+UNION SELECT COUNT(*) AS total_perdidos FROM documentos WHERE estado = 1 
+UNION SELECT COUNT(*) AS total_perdidos FROM documentos WHERE estado = 3;
+
+-- estatisticas da pagina principal - POSTO
+SELECT COUNT(*) AS total_documentos FROM documentos 
+UNION SELECT COUNT(*) FROM documentos WHERE estado = 1 
+UNION SELECT COUNT(*) FROM documentos WHERE estado = 3;
+
+
+SELECT COUNT(*) AS total_documentos
+FROM propietario_documento pd 
+JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+WHERE ld.tipo_local LIKE '%posto%' AND ld.id_local = 1 AND d.estado = 1
+UNION
+SELECT COUNT(*) AS total_documentos
+FROM propietario_documento pd 
+JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+WHERE ld.tipo_local LIKE '%posto%' AND ld.id_local = 1 AND d.estado = 3;
+-- devolver documento 
+
+UPDATE documentos SET estado = 3 WHERE id_documento = 114;
+
+INSERT INTO `sird-db`.`operacao_documento` 
+                                (`id_operacao`, 
+                                `id_agente`, 
+                                `id_documento`, 
+                                `tipo`, 
+                                `data`) 
+                                VALUES(NULL, 
+                                1, 
+                                18, 
+                                4, 
+                                CURRENT_TIMESTAMP);
 
 
 

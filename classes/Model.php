@@ -9,6 +9,7 @@ Eliminar - 3
 Estados números
 Activo - 1
 Eliminado - 2
+entregue - 3
 Inactivo - 0
 */
 

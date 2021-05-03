@@ -6,38 +6,23 @@
     .navegacao-lateral__botao, .pesquisa-form__botao--normal {
         display: none !important;
     }
+
 </style>
 <div class="btn-groupo">
     <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
 
     </div>
 <div class="paginacao">
-    <p class="paginacao__paragrafo">Páginas</p>
-    <div class="paginacao__digitos">
-        <span class="paginacao__resultados">1-20 de 38</span>
-        <div class="paginacao__controles">
-            <a href="<?php echo ROOT_URL; ?>postos" class="paginacao__link">
-                <svg class="paginacao__icone ">
-                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-chevron-left"></use>
-                </svg>
-            </a>
-            <a href="<?php echo ROOT_URL; ?>postos" class="paginacao__link">
-                <svg class="paginacao__icone ">
-                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-chevron-right"></use>
-                </svg>
-            </a>
-        </div>
-    </div>
-
+<!-- removi a paginação -->
 </div>
 <div class="opcoes-documentos">
-    <div class="opcoes-documentos__div opcoes-documento__div--activada">
+    <div class="opcoes-documentos__div <?php echo ($this->param === 'recebidos' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
         <a href="<?php echo ROOT_URL; ?>documentos/listar/recebidos" class="opcoes-documentos__link opcoes-documento__link--activado">
             Recebidos
         </a>
     </div>
-    <div class="opcoes-documentos__div ">
-        <a href="<?php echo ROOT_URL; ?>documentos/listar/entregues" class="opcoes-documentos__link opcoes-documento__link--desactivado">
+    <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>>">
+        <a href="<?php echo ROOT_URL; ?>documentos/listar/entregues" class="opcoes-documentos__link opcoes-documento__link--activado ">
             Entregues
         </a>
     </div>
@@ -53,7 +38,7 @@
     </tr>
   </thead>
   <tbody>
-                <?php foreach($viewmodel['perdidos'] as $item) : extract($item);?>
+                <?php foreach($viewmodel as $item) : extract($item);?>
 
                       <tr>
                         <td><?php echo ucwords($nome_completo);?></td>

@@ -1,13 +1,28 @@
-<style>
-    .principal {
-     margin-left: auto; 
-     margin-top: 0; 
-    }
-    c.navegacao-lateral__botao, .pesquisa-form__botao--normal, .barra-lateral {
-        display: none !important;
-    }
-</style>
+    <style>
 
+        c.navegacao-lateral__botao, .pesquisa-form__botao--normal, .barra-lateral, .cabecalho-direito__links-direito {
+            display: none !important;
+        }
+
+        .cabecalho--top {
+            width: 100% !important;
+            
+        }
+
+        .principal {
+            margin-left: auto !important;
+        }
+        .cabecalho-direito__agente {
+            display: none !important;
+        }
+        .cabecalho-direito__agente {
+            display: none !important;
+        }
+
+        .cabecalho-direito__cidadao {
+            display: flex;
+        }
+    </style>
     <div class="img-principal mx-auto">
         <img src="<?php echo ROOT_IMG; ?>site/logo_pna.png" alt="">
         <h1>SIRD</h1>
@@ -33,7 +48,7 @@
                 $foto_array = explode(",",$fotos);
                 $foto = $foto_array[0];
             ?>
-                <a href="<?php echo ROOT_URL; ?>documentos/ver/<?php echo $id_proprietario; ?>" class="responsive-item ">
+                <a href="<?php echo ROOT_URL; ?>cidadaos/ver/<?php echo $id_proprietario; ?>" class="responsive-item ">
                     <div class="cartoes__cartao br-25 ">
                         <div class="cartoes__div-img">
                             <img     class="cartoes__img img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto; ?>" alt="Nome do Cidadão">
@@ -41,7 +56,7 @@
                         <div class="cartoes__texto">
                             <ul class="cartoes__lista">
                                 <li>Nome: <?php echo $nome_completo; ?></li>
-                                <li>Documentos: <?php echo $categorias; ?></li>
+                                <li>Documentos: <?php echo $this->verificarRepeticao($categorias); ?></li>
                             </ul>
                         </div>
                         

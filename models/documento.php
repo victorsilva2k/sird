@@ -1,14 +1,71 @@
 <?php
 
 class DocumentosModel extends Model{
-    public function Index()
+    public function Index($estado)
     {
-        $this->query('SELECT * FROM listar_documentos;');
+        switch ($estado) {
+            case 3:
+                $this->query('SELECT * FROM ver_documentos_entregues');
+                break;
+            
+            default:
+                $this->query('SELECT * FROM ver_documento_principal');
+                break;
+        }
+          //hack adicionar data de publicacção na table dos agentes view
         $row = $this->resultSet();
         return $row;
     }
+    public function Cidadao()
+    {
+        
+        $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+        AS categorias, group_concat(od.data) 
+        AS datas,   group_concat(fd.arquivo) AS fotos,
+        ld.tipo_local, ld.id_local
+        FROM propietario_documento pd 
+        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+        JOIN operacao_documento od ON od.id_documento = d.id_documento
+        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+         WHERE d.estado = 1 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC ');
+      //hack adicionar data de publicacção na table dos agentes view
+        $row = $this->resultSet();
+        return $row;
+    }
+    public function pesquisar()
+    {
+        
+        $string =  substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1); 
+        $pesquisar = substr($string, strpos($string, "=") + 1); 
 
-    public function ver($id_proprietario)
+
+        if (isset($pesquisar)) {
+            
+            $this->query("SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+                        AS categorias, group_concat(od.data) 
+                        AS datas,   group_concat(fd.arquivo) AS fotos,
+                        ld.tipo_local, ld.id_local
+                        FROM propietario_documento pd 
+                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                        JOIN operacao_documento od ON od.id_documento = d.id_documento
+                        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                        JOIN proprietario_telefone pt ON pt.id_proprietario = pd.id_proprietario
+                        WHERE d.estado = 1 AND d.identifacador LIKE :PESQUISA 
+                        OR pd.nome_completo LIKE :PESQUISA OR cd.categoria LIKE :PESQUISA 
+                        OR pt.telefone LIKE :PESQUISA
+                        GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;");
+            $this->bind(':PESQUISA', "%$pesquisar%");
+
+            $row = $this->resultSet();
+            return $row;
+        }
+    }
+
+    public function verCidadao($id_proprietario)
     {
         $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
         AS categorias, group_concat(od.data) 
@@ -47,6 +104,137 @@ class DocumentosModel extends Model{
             
         }
         return $row;  
+    }
+    public function verAgente($id_proprietario)
+    {
+        $this->query('SELECT DISTINCT pd.nome_completo AS nome_proprietario, pd.id_proprietario, ed.nome_completo 
+                    AS nome_entregador, ed.telefone AS telefone_entregador, group_concat(fd.arquivo) AS fotos,  group_concat(cd.categoria) 
+                    AS categorias, group_concat(od.data) 
+                    AS datas,  group_concat(pt.telefone) 
+                    AS telefone_proprietario, group_concat(d.id_documento) 
+                    AS ids,
+                    ld.tipo_local, ld.id_local
+                    FROM propietario_documento pd 
+                    JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                    JOIN operacao_documento od ON od.id_documento = d.id_documento
+                    JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                    JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                    JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                    JOIN proprietario_telefone pt ON pt.id_proprietario = pd.id_proprietario
+                    JOIN entregador_proprietario ep ON ep.id_proprietario = pd.id_proprietario
+                    JOIN entregador_documento ed ON ed.id_entregador = ep.id_entregador
+                    WHERE pd.id_proprietario = :ID_PROPRIETARIO GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;');
+        $this->bind(':ID_PROPRIETARIO', $id_proprietario);
+        $ro = $this->singleResult();
+        $row['documento'] = $this->resultSet();
+        extract($ro);
+        if ($tipo_local == 'posto') {
+            $this->query('SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+                        FROM posto p 
+                        JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+                        JOIN bairro b ON b.id_bairro= pl.bairro
+                        JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
+                        JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.id_posto = :ID_POSTO;');
+            $this->bind(':ID_POSTO', $id_local);
+            $row['local'] = $this->resultSet();
+        } else {
+            
+                $this->query('SELECT cml.provincia, cml.municipio, d.distrito, b.bairro, cml.rua  
+                FROM comando_municipal cm 
+                JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm
+                JOIN bairro b ON b.id_bairro= cml.bairro
+                JOIN distrito d ON ((d.id_distrito = cml.distrito))');
+                $row['local'] = $this->resultSet();
+                $nome = "Comando Municipal Talatona";
+
+            
+        }
+        return $row;  
+    }
+    public function devolver($id_proprietario)
+    {
+
+               //Sanitizing POST
+               $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+               // INSERT MySQL
+               if (isset($post['submit'])) {
+       
+                   extract($post);
+          
+
+                       
+                        // Inserindo os dados do local do documento
+           
+                    $this->query("UPDATE documentos SET estado = 3 WHERE id_documento = :ID_DOCUMENTO;");
+                    $this->bind(':ID_DOCUMENTO', $devolverIdDocumento);
+                    $this->execute();
+
+                              
+                    // Registrando a alteração
+                    $this->query("INSERT INTO `sird-db`.`operacao_documento` 
+                                (`id_operacao`, 
+                                `id_agente`, 
+                                `id_documento`, 
+                                `tipo`, 
+                                `data`) 
+                                VALUES(NULL, 
+                                :ID_AGENTE, 
+                                :ID_DOCUMENTO, 
+                                4, 
+                                CURRENT_TIMESTAMP);");
+                    $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                    $this->bind(':ID_DOCUMENTO', $devolverIdDocumento);
+                    $this->execute();
+
+                    
+                      
+                   
+                       //Redirect  
+                       Messages::setMessage("Devolução feita com sucesso", "success");
+                       header('Location: ' . ROOT_URL . 'documentos/');
+        
+       
+               }
+        
+               $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+               AS categorias, group_concat(od.data) 
+               AS datas, group_concat(d.id_documento) 
+               AS ids,  group_concat(fd.arquivo) AS fotos,
+               ld.tipo_local, ld.id_local
+               FROM propietario_documento pd 
+               JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+               JOIN operacao_documento od ON od.id_documento = d.id_documento
+               JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+               JOIN foto_documento fd ON d.id_documento = fd.id_documento
+               JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+               WHERE pd.id_proprietario = :ID_PROPRIETARIO GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;');
+                    $this->bind(':ID_PROPRIETARIO', $id_proprietario);
+
+                $ro = $this->singleResult();
+                $row['documento'] = $this->resultSet();
+                extract($ro);
+                if ($tipo_local == 'posto') {
+                    $this->query('SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+                                FROM posto p 
+                                JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+                                JOIN bairro b ON b.id_bairro= pl.bairro
+                                JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
+                                JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.id_posto = :ID_POSTO;');
+                    $this->bind(':ID_POSTO', $id_local);
+                    $row['local'] = $this->resultSet();
+                } else {
+                    
+                        $this->query('SELECT cml.provincia, cml.municipio, d.distrito, b.bairro, cml.rua  
+                        FROM comando_municipal cm 
+                        JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm
+                        JOIN bairro b ON b.id_bairro= cml.bairro
+                        JOIN distrito d ON ((d.id_distrito = cml.distrito))');
+                        $row['local'] = $this->resultSet();
+                        $nome = "Comando Municipal Talatona";
+
+                    
+                }
+                return $row;  
     }
     public function publicar()
     {

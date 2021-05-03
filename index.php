@@ -24,6 +24,7 @@ require_once "controllers/mais.php";
 require_once "controllers/bairros.php";
 require_once "controllers/categorias.php";
 require_once "controllers/distritos.php";
+require_once "controllers/cidadaos.php";
 // Models
 require_once "models/inicio.php";
 require_once "models/share.php";
