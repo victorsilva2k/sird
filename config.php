@@ -8,7 +8,7 @@ define("DB_PASS", "SUPERincu1060");
 define("DB_NAME", "sird-db");
 
 define("ROOT_PATH", "/sird/");
-define('ROOT_URL', "https://cegsird.herokuapp.com/");
+define('ROOT_URL', "http://localhost/sird/");
 define('ROOT_IMG', ROOT_URL."assets/img/");
 define('ROOT_CSS', ROOT_URL."assets/css/");
 define('ROOT_JS', ROOT_URL."assets/js/");
