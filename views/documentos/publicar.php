@@ -30,7 +30,7 @@
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
                 <div class="caixa-info__descricao  " id="caixa-numero">
-                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoProprietarioNumero[]" placeholder="Ex: 923432123" id="" required minlength="7" maxlength="10">
+                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoProprietarioNumero[]" placeholder="Ex: 923432123" id="" required minlength="9" maxlength="12">
                     
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNumero" placeholder="Ex: 923432123" id="" required minlength="3" maxlength="10">
+                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNumero" placeholder="Ex: 923432123" id="" requiredminlength="9" maxlength="12">
                 </div>
             </div>
 

@@ -21,7 +21,7 @@
             Recebidos
         </a>
     </div>
-    <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>>">
+    <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' OR $this->param === '' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>>">
         <a href="<?php echo ROOT_URL; ?>documentos/listar/entregues" class="opcoes-documentos__link opcoes-documento__link--activado ">
             Entregues
         </a>

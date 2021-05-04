@@ -17,11 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo ROOT_CSS; ?>main.css">
-  
-
-    <!-- Links Externos -->
-    <!-- Fontes -->
-
+    <link rel="icon" href="<?php echo ROOT_IMG; ?>site/logo_pna.ico">
 
 
     <title>SIRD - PNA</title>
@@ -151,7 +147,7 @@
                                 </svg>
                             </a>
                             <div class="cabecalho-direito__links-2">
-                                <a href="" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
+                                <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
                                 <a href="<?php echo ROOT_URL; ?>agentes/perfil" class="cabecalho__link-usuario">
                                     <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
                                         <span class="cabecalho__nome-usuario"><?php echo $_SESSION['dados_usuario']['nome']; ?></span>

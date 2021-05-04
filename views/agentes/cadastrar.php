@@ -40,7 +40,7 @@
                     <label for="" class="formulario__label">Data de nascimento</label>
                     <input  type="date" class="formulario__input input--text" id="date-input" name="cadastroDataNascimento" />
 
-                    <input type="text" name="cadastroNIP"  class="formulario__input input--text" placeholder="NIP" minlength="6" maxlength="7" required>
+                    <input type="number" name="cadastroNIP"  class="formulario__input input--text" placeholder="NIP" minlength="6" maxlength="7" required>
 
                     <input type="password" minlength="12" name="cadastroPassword" maxlength="200"  class="formulario__input input--text" placeholder="Palavra-passe" required>
                     

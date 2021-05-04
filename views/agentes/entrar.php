@@ -19,7 +19,7 @@
                     </div>
                     <h1 class="mgb-10 fonte--normal formulario__titulo">Iniciar Sessão</h1>
                     
-                    <input type="text" name="loginNIP"  class="formulario__input input--text" placeholder="Seu NIP" required
+                    <input type="number" name="loginNIP"  class="formulario__input input--text" placeholder="Seu NIP" minlength="6" maxlength="7" required
                         autofocus>
 
                     <input type="password" name="loginPassword"  class="formulario__input input--text" placeholder="Password" required>
