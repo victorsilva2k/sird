@@ -55,9 +55,9 @@
                     <p class="mt-5 mb-3 text--cinza">SIRD &copy; 2021</p>
                 </form>
                 <script>
-                        const $ = document.querySelector.bind(document);
-                        const previewImg = $('.preview-img');
-                        const fileChooser = $('.file-chooser');
+                        const $a = document.querySelector.bind(document);
+                        const previewImg = $a('.preview-img');
+                        const fileChooser = $a('.file-chooser');
 
                         fileChooser.onchange = e => {
                             const fileToUpload = e.target.files.item(0);
@@ -71,7 +71,7 @@
                             // Isso disparará o evento reader.onload.
                             reader.readAsDataURL(fileToUpload);
                         };
-                    </script>
+                </script>
         </div>
     </div>
 </div>

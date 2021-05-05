@@ -151,7 +151,7 @@
                                 <a href="<?php echo ROOT_URL; ?>agentes/perfil" class="cabecalho__link-usuario">
                                     <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
                                         <span class="cabecalho__nome-usuario"><?php echo $_SESSION['dados_usuario']['nome']; ?></span>
-                                        <img src="<?php echo ROOT_IMG; ?>site/<?php echo $_SESSION['dados_usuario']['foto']; ?>" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
+                                        <img src="<?php echo ROOT_IMG; ?>agentes/<?php echo $_SESSION['dados_usuario']['foto']; ?>" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
                                     </div>
                                 </a>
                             </div>

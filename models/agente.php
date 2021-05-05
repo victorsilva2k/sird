@@ -4,24 +4,24 @@ class AgenteModel extends Model{
 
     public function index()
     {
-        $this->query('SELECT a.nome agente_nome, a.sobrenome, p.nome posto_nome, p.tipo,  ac.nip, a.id_agente
-                    FROM agente_conta ac 
-                    JOIN agente a ON ac.id_agente = a.id_agente
-                    JOIN agente_posto ap ON ac.id_agente = ap.id_agente
-                    JOIN posto p ON ap.id_posto = p.id_posto');
+
+        $this->query('SELECT a.nome , a.sobrenome, 
+        a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
+         ac.nip, a.id_agente, ac.password
+        FROM agente_conta ac 
+        JOIN agente a ON ac.id_agente = a.id_agente WHERE a.id_agente = :ID_AGENTE');
+        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+
         $row = $this->resultSet();
-    
-        return $row;  
     }
     public function perfil()
     {
-        $this->query('SELECT a.nome , a.sobrenome, p.nome posto_nome,
-                    a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
-                    p.tipo,  ac.nip, a.id_agente
-                    FROM agente_conta ac 
-                    JOIN agente a ON ac.id_agente = a.id_agente
-                    JOIN agente_posto ap ON ac.id_agente = ap.id_agente
-                    JOIN posto p ON ap.id_posto = p.id_posto');
+        $this->query('SELECT a.nome , a.sobrenome, 
+                a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
+                 ac.nip, a.id_agente, ac.password
+                FROM agente_conta ac 
+                JOIN agente a ON ac.id_agente = a.id_agente WHERE a.id_agente = :ID_AGENTE');
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
         $row = $this->resultSet();
 
         return $row;
@@ -290,7 +290,127 @@ class AgenteModel extends Model{
         }
         return;
     }
+    public function alterar()
+    {   
+        //Sanitizing POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // INSERT MySQL
 
+                if (isset($post['submit'])) {
+
+                    extract($post);
+            
+                    // VERIFICAÇÕES
+
+                    // Verifica se todos os campos já foram preenchidos
+                    if ($editarAgenteNome == '' || $editarAgenteSobrenome == '' ) {
+                        Messages::setMessage("Por favor preencha todos os campos", "error");
+                        return;
+                    } 
+                        // Verifica se uma imagem foi selecionada
+                        if ($_FILES["editarAgenteFoto"]["error"] > 0) {
+                            $foto = "usuario.png";
+                        } else {
+                            $n = rand(0, 10000);
+                            $exp = explode("/", $_FILES["editarAgenteFoto"]["type"]);
+                            $tipo_ficheiro = $exp[1];
+        
+                            if ($tipo_ficheiro !== 'jpeg' && $tipo_ficheiro !== 'png' && $tipo_ficheiro !== 'jpg') {
+                                Messages::setMessage("Ficheiro não suportado", "error");
+                                return;
+                            }
+                            $data = date("Y-m-d");
+                            $foto = $n . '-' . $data . '.' . $tipo_ficheiro;
+                            $destino = "assets/img/agentes/" . $foto;
+                            move_uploaded_file($_FILES['editarAgenteFoto']['tmp_name'], $destino);
+                        }
+
+                        // Inserindo os dados pessoais de um agente
+                        $this->query("UPDATE agente SET nome = :NOME, sobrenome = :SOBRENOME, data_nasc = :NASC, genero = :GENERO, foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
+                        $this->bind(':NOME', $editarAgenteNome);
+                        $this->bind(':SOBRENOME', $editarAgenteSobrenome);
+                        $this->bind(':NASC', $editarAgenteDataNascimento);
+                        $this->bind(':FOTO', $foto);
+                        $this->bind(':GENERO', $editarAgenteGenero);
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->execute();
+
+                        Messages::setMessage("Edição feita com sucesso", "success");
+                        header('Location: ' . ROOT_URL . 'agentes/perfil');
+        
+        
+                }
+                
+
+                $this->query('SELECT a.nome , a.sobrenome, 
+                a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
+                 ac.nip, a.id_agente, ac.password
+                FROM agente_conta ac 
+                JOIN agente a ON ac.id_agente = a.id_agente WHERE a.id_agente = :ID_AGENTE');
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+
+                $row = $this->resultSet();
+
+                return $row;
+
+    }
+
+
+    public function editar()
+    {
+        //Sanitizing POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // INSERT MySQL
+        if (isset($post['submit'])) {
+            
+            extract($post);
+            
+            
+
+
+
+                
+            $this->query("SELECT 
+            ac.password as pass
+            FROM agente_conta ac 
+            WHERE ac.id_agente =  :ID_AGENTE");
+            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+            $row = $this->singleResult();
+            
+            // Verifica se existe um oficial na base de dados com o NIP inserido
+          
+                extract($row);
+                // verifica se a conta está activa ou não
+                
+                if ($editarPassword === $editarConfirmarPassword) {
+                    // verifica se a palavra passe está correcta
+                    if (password_verify($editarPasswordAntiga, $pass)) {
+          
+                        $password_f = password_hash($editarPassword, PASSWORD_DEFAULT);
+                        $this->query("UPDATE agente_conta SET password = '$2y$10$i6dO6LTDKNQYhJf42TPEQeVcWwHAmmF7qr77ytA.bQ0waGoG.I7Oi' WHERE id_agente = 7");
+                        $this->bind(':PASSWORD', $password_f);
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->execute();
+                        header('Location: ' . ROOT_URL . 'agentes/perfil');
+        
+                        
+                                   
+                    }else {
+                        Messages::setMessage("Palavras-Passe Não concidem", "error");
+                    }
+                } else {
+                    # code...
+                    Messages::setMessage("As palavras-passe são diferentes", "error");
+                    
+                }
+                    
+
+
+
+                
+        }
+        return;
+    }
     public function entrar()
     {
         //Sanitizing POST

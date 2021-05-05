@@ -39,6 +39,6 @@
 
     </div>
 
-    <a href="<?php echo ROOT_URL; ?>agentes/editar/perfil" class="  btn btn-primary mgt-10 ">Editar Perfil</a>
+    <a href="<?php echo ROOT_URL; ?>agentes/alterar/" class="  btn btn-primary mgt-10 ">Editar Perfil</a>
     <a href="<?php echo ROOT_URL; ?>agentes/editar/passe" class="  btn btn-primary mgt-10 ">Editar Palavra Passe</a>
     <a href="<?php echo ROOT_URL; ?>inicio/agente" class="  btn btn-secondary mgt-10 ">Voltar</a>

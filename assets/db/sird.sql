@@ -726,12 +726,18 @@ INSERT INTO `sird-db`.`operacao_documento`
                                 2, 
                                 CURRENT_TIMESTAMP);
 
+-- editar perfil
+
+UPDATE agente SET nome = 'Joao', sobrenome = 'bastos', data_nasc = '1990-01-05', genero = 'Masculino', foto_arquivo = 'usuario.png' WHERE id_agente = 1;
+
+UPDATE agente SET nome = NOME, sobrenome = SOBRENOME, data_nasc = DATA, genero = GENERO WHERE id_agente = ID_AGENTE;
 
 
-
-
-
-
+SELECT a.nome , a.sobrenome, 
+                a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
+                 ac.nip, a.id_agente, ac.password
+                FROM agente_conta ac 
+                JOIN agente a ON ac.id_agente = a.id_agente;
 
 
 

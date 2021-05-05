@@ -55,6 +55,17 @@ class agentes extends Controller{
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->cadastrar(), true);
     }
+    protected function editar()
+    {
+        $viewmodel = new AgenteModel();
+        $this->returnView($viewmodel->editar(), true);
+    }
+
+    protected function alterar()
+    {
+        $viewmodel = new AgenteModel();
+        $this->returnView($viewmodel->alterar(), true);
+    }
     protected function aguardar()
     {
         $viewmodel = new AgenteModel();
