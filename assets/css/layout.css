@@ -2,6 +2,8 @@
     font-size: 1.4rem;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    
 }
 
 .barra-lateral__navegacao {
@@ -24,6 +26,7 @@
     top: 0;
     right: 0;
     background-color: #fff;
+    
 }
 .barra-lateral {
     background-color: var(--color-grey-light-3);
@@ -43,6 +46,7 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 90%;
 }
 
 .main {
@@ -59,7 +63,7 @@
     flex-basis: 49%;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
       
     .barra-lateral {
         display: none;

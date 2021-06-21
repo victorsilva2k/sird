@@ -7,12 +7,15 @@ class DocumentosModel extends Model{
             case 3:
                 $this->query('SELECT * FROM ver_documentos_entregues');
                 break;
+            case 2:
+                $this->query('SELECT * FROM ver_documentos_eliminados');
+                break;
             
             default:
                 $this->query('SELECT * FROM ver_documento_principal');
                 break;
         }
-          //hack adicionar data de publicacção na table dos agentes view
+         
         $row = $this->resultSet();
         return $row;
     }
@@ -148,7 +151,18 @@ class DocumentosModel extends Model{
 
             
         }
-        return $row;  
+
+        $exp = explode(",", $ids);
+    
+            $this->query('SELECT od.tipo, od.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_documento od 
+                        JOIN agente a ON a.id_agente = od.id_agente
+                        WHERE id_documento = :ID_DOCUMENTO ORDER BY data DESC');
+            $this->bind(':ID_DOCUMENTO', $exp[0]);
+
+            $row["alteracoes"] = $this->resultSet();
+            return $row;
+
     }
     public function devolver($id_proprietario)
     {
@@ -195,7 +209,7 @@ class DocumentosModel extends Model{
                     if ($this->rowCounte() >= 1) {
                         //Redirect
                         Messages::setMessage("Documento devolvido com sucesso", "success");
-                        header('Location: ' . ROOT_URL . 'documentos');
+                        header('Location: ' . ROOT_URL . 'documentos/listar/entregues');
                     }
                 } catch (\PDOException $erro) {
                     $this->rollBack();
@@ -441,7 +455,7 @@ class DocumentosModel extends Model{
                         $destino = "assets/img/documentos/" . $foto;
                         move_uploaded_file($_FILES['adicionarDocumentoFotoTraz']['tmp_name'][$i], $destino);
                     }
-                    // HACK o codigo actual não aceita mais de duas imagens, melhorar isso
+                    
                     $this->query("INSERT INTO `sird-db`.`foto_documento`
                                 (`id_foto`,
                                 `id_documento`,
@@ -524,7 +538,7 @@ class DocumentosModel extends Model{
                 foreach ($row as $item) {
                     extract($item);
                     
-                    $this->query("UPDATE documentos SET estado = 3 WHERE id_documento = :ID_DOCUMENTO;");
+                    $this->query("UPDATE documentos SET estado = 2 WHERE id_documento = :ID_DOCUMENTO;");
                     $this->bind(':ID_DOCUMENTO', $id_documento);
                     $this->execute();
      

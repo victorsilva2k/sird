@@ -2,25 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/componentes.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/componentes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-model.mwb.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/inicio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/agente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/documento.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/documento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/inicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/documentos/documento.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/documentos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/agentes/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/agentes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cidadaos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/cidadaos/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cidadaos/pesquisar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/cidadaos/pesquisar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cidadaos/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/cidadaos/ver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/documentos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/documentos/listar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/listar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/documentos/publicar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/publicar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/documentos/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/documentos/ver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/inicio/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/inicio/cidadao.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inicio/cidadao.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cms" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
   </component>
@@ -82,6 +86,7 @@
       <workItem from="1619122464552" duration="3608000" />
       <workItem from="1619385433498" duration="237000" />
       <workItem from="1619770829271" duration="4000" />
+      <workItem from="1621516511064" duration="2263000" />
     </task>
     <servers />
   </component>
@@ -93,10 +98,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="92" y="132" width="1182" height="544" key="DiffContextDialog/0.40.1366.728@0.40.1366.728" timestamp="1617045476486" />
-    <state x="463" y="159" key="FileChooserDialogImpl" timestamp="1618861269553">
+    <state x="463" y="159" key="FileChooserDialogImpl" timestamp="1621522285885">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="463" y="159" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1618861269553" />
+    <state x="463" y="159" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1621522285885" />
     <state x="511" y="115" key="RollbackChangesDialog" timestamp="1618171080051">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -109,10 +114,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1618866926373" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1619385670449">
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1621516656323">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1619385670449" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1621516656323" />
     <state x="288" y="40" width="737" height="728" key="find.popup" timestamp="1618866745537">
       <screen x="0" y="40" width="1366" height="728" />
     </state>

@@ -5,14 +5,14 @@ class AgenteModel extends Model{
     public function index()
     {
 
-        $this->query('SELECT a.nome , a.sobrenome, 
-        a.data_nasc as data_nascimento, a.genero, a.foto_arquivo as foto,
-         ac.nip, a.id_agente, ac.password
+        $this->query('SELECT a.nome as agente_nome, a.sobrenome, p.nome as posto_nome, p.tipo,  ac.nip
         FROM agente_conta ac 
-        JOIN agente a ON ac.id_agente = a.id_agente WHERE a.id_agente = :ID_AGENTE');
-        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-
+        JOIN agente a ON ac.id_agente = a.id_agente
+        JOIN agente_posto ap ON ac.id_agente = ap.id_agente
+        JOIN posto p ON ap.id_posto = p.id_posto WHERE ac.estado_conta = 1');
         $row = $this->resultSet();
+        return $row;
+
     }
     public function perfil()
     {

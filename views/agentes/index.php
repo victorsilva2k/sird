@@ -45,7 +45,6 @@
 
                     <?php echo "$tipo_extenso $posto_nome"?></td>
                 <td>
-                <a href="<?php echo ROOT_URL; ?>agentes/editar/<?php echo $id_agente?>" class="center-t btn btn-success mb-4 ">Editar</a>
                 <a href="<?php echo ROOT_URL; ?>agentes/eliminar/<?php echo $id_agente?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
                 </td>
 

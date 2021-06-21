@@ -21,9 +21,14 @@
             Recebidos
         </a>
     </div>
-    <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' OR $this->param === '' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>>">
+    <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
         <a href="<?php echo ROOT_URL; ?>documentos/listar/entregues" class="opcoes-documentos__link opcoes-documento__link--activado ">
             Entregues
+        </a>
+    </div>
+    <div class="opcoes-documentos__div  <?php echo ($this->param === 'eliminados' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
+        <a href="<?php echo ROOT_URL; ?>documentos/listar/eliminados" class="opcoes-documentos__link opcoes-documento__link--activado ">
+            Eliminados
         </a>
     </div>
 </div>
@@ -49,10 +54,14 @@
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo ROOT_URL; ?>documentos/editar/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Editar</a>
-                            <a href="<?php echo ROOT_URL; ?>documentos/devolver/<?php echo $id_proprietario?>" class="center-t btn btn-success mb-4 ">Devolver</a>
+                            
                             <a href="<?php echo ROOT_URL; ?>documentos/ver/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
-                            <a href="<?php echo ROOT_URL; ?>documentos/eliminar/<?php echo $id_proprietario?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                            
+                            <?php if($this->param !== 'entregues'): ?>
+                                <a href="<?php echo ROOT_URL; ?>documentos/editar/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Editar</a>
+                                <a href="<?php echo ROOT_URL; ?>documentos/devolver/<?php echo $id_proprietario?>" class="center-t btn btn-success mb-4 ">Devolver</a>
+                                <a href="<?php echo ROOT_URL; ?>documentos/eliminar/<?php echo $id_proprietario?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                            <?php endif;?>
                         </td>
                       </tr>
 

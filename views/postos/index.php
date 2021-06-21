@@ -69,9 +69,12 @@
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo ROOT_URL; ?>postos/editar/<?php echo $id_posto?>" class="center-t btn btn-success mb-4 ">Editar</a>
                             <a href="<?php echo ROOT_URL; ?>postos/ver/<?php echo $id_posto?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
+                        <?php if($estado_actividade == 1):?>
+                            <a href="<?php echo ROOT_URL; ?>postos/editar/<?php echo $id_posto?>" class="center-t btn btn-primary mb-4 ">Editar</a>
+                            
                             <a href="<?php echo ROOT_URL; ?>postos/eliminar/<?php echo $id_posto?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                        <?php endif;?>
                         </td>
                     </tr>
 

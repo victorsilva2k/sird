@@ -574,9 +574,51 @@ img {
   .tabela-hover tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.075);
   }
+  .barra-inferior__navegacao {
+      display: none;
+  }
   
   
-@media (max-width: 576px) {
+@media (max-width: 800px) {
+    .pesquisa-form__input {
+        width: 90%;
+    }
+    .caixa-info__input {
+        width: 100%;
+    }
+    .caixa-info__descricao  {
+        width: 100%;
+    }
+    .barra-inferior__navegacao {
+        display: flex;
+        margin: 20px 0px;
+        width: 90%;
+
+        
+    }
+
+    .navegacao-inferior {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .navegacao-inferior__icone {
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: currentColor;
+    }
+
+    .navegacao-inferior__link:link, .navegacao-inferior__link:visited {
+        color: var(--color-grey-dark-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
     
     .caixa-info__item {
 
@@ -590,18 +632,36 @@ img {
         flex-direction: column-reverse;
         justify-content: space-between;
     }
+    .cabecalho-direito__cidadao {
+        display: none;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+    }
+    .cabecalho--top {
 
+        width: 100%;
+    }
+    .principal {
+        margin-left: 0;
+        margin-top: 200px;
+    }
     .cabecalho-direito > * {
         width: 100%;
         
     }
 
+    .pesquisa-form__input {
+        width: 90%;
+    }
     .cabecalho-direito__links-direito {
         padding-bottom: 10px;
     }
 
     .formulario {
         width: 100%;
+    }
+    .cabecalho-direito__cidadao {
+        display: none;
     }
     
     

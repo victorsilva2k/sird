@@ -738,6 +738,93 @@ SELECT a.nome , a.sobrenome,
                  ac.nip, a.id_agente, ac.password
                 FROM agente_conta ac 
                 JOIN agente a ON ac.id_agente = a.id_agente;
+                
+SELECT 
+            ac.password
+            FROM agente_conta ac 
+            WHERE ac.id_agente = 7;
+            
+UPDATE agente_conta SET password = '$2y$10$/rXOVS8ZJu9E/uVHln3ebuI57d4jjO.Zu6uanzioOkmmPWgESDuaa' WHERE id_agente = 7;
+
+-- Criando Comando Provincial
+
+CREATE TABLE `comando_provincial` (
+  `id_comando_provincial` tinyint NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(70) NOT NULL,
+  `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_comando_provincial`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `comando_provincial_localizacao` (
+  `id_cp` tinyint NOT NULL,
+  `provincia` mediumint NOT NULL,
+  `municipio` mediumint NOT NULL,
+  `distrito` mediumint NOT NULL,
+  `bairro` smallint NOT NULL,
+  `rua` varchar(40) DEFAULT NULL,
+  KEY `id_cp_idx` (`id_cp`),
+  CONSTRAINT `id_cp-cpl` FOREIGN KEY (`id_cp`) REFERENCES `comando_provincial` (`id_comando_provincial`),
+  KEY `distrito_idx` (`distrito`),
+  CONSTRAINT `distrito-cpl` FOREIGN KEY (`distrito`) REFERENCES `distrito` (`id_distrito`),
+  KEY `bairro_idx` (`bairro`),
+  CONSTRAINT `bairro-cpl` FOREIGN KEY (`bairro`) REFERENCES `bairro` (`id_bairro`),
+  KEY `municipio_idx` (`municipio`),
+  CONSTRAINT `municipio-cpl` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`id_municipio`),
+  KEY `provincia_idx` (`provincia`),
+  CONSTRAINT `provincia-cpl` FOREIGN KEY (`provincia`) REFERENCES `provincia` (`id_provincia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `posto_localizacao` (
+  `id_posto` mediumint NOT NULL,
+  `distrito` varchar(45) NOT NULL,
+  `bairro` smallint NOT NULL,
+  `rua` varchar(40) DEFAULT NULL,
+  KEY `id_posto_idx` (`id_posto`),
+  KEY `bairro-pl_idx` (`bairro`),
+  CONSTRAINT `bairro-pl` FOREIGN KEY (`bairro`) REFERENCES `bairro` (`id_bairro`),
+  CONSTRAINT `id_posto-pl` FOREIGN KEY (`id_posto`) REFERENCES `posto` (`id_posto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `agente_comando_provincial` (
+  `id_agente` int NOT NULL,
+  `id_comando_provincial` tinyint NOT NULL,
+  `cargo` tinyint NOT NULL DEFAULT '1',
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_comando_provincial_idx` (`id_comando_provincial`),
+  CONSTRAINT `id_agente-acp` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_comando_provincial-acp` FOREIGN KEY (`id_comando_provincial`) REFERENCES `comando_provincial` (`id_comando_provincial`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `provincia` (
+  `id_provincia` mediumint NOT NULL AUTO_INCREMENT,
+  `provincia` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id_provincia`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

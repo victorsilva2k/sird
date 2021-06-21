@@ -277,7 +277,7 @@ class PostoModel extends Model{
                         // Suspender a conta
                         $this->query("UPDATE `sird-db`.`agente_conta`
                                         SET
-                                        `estado_conta` = 2
+                                        `estado_conta` = 3
                                         WHERE id_agente = :ID_AGENTE;");
                         $this->bind(':ID_AGENTE', $id_agente);
                         $this->execute();
@@ -288,7 +288,7 @@ class PostoModel extends Model{
 
 
                 // Alterar estado do Posto
-                $this->query("UPDATE `sird-db`.`posto` SET estado_actividade = 2
+                $this->query("UPDATE `sird-db`.`posto` SET estado_actividade = 3
                                     WHERE id_posto = :ID_POSTO;");
                 $this->bind(':ID_POSTO', $id_posto);
                 $this->execute();

@@ -84,9 +84,54 @@
         </div>
         <?php endforeach;?>    
 
+        
+
 
 
                 
     </div>
+
+    <div class="alteracoes-documento registro-alteracoes">
+            <h1 class="titulo--normal">Registro de Alterações</h1>
+
+            <table class="tabela tabela-striped">
+                <thead>
+                <tr>
+
+                    <th scope="col">Agente</th>
+                    <th scope="col">Acção</th>
+                    <th scope="col">Data</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($viewmodel["alteracoes"] as $item) : extract($item);?>
+
+                    <tr>
+                        
+                        <td><?php echo "$nome $sobrenome"?></td>
+                        <td><?php
+                            if ($tipo == 1) {
+                                $tipo_extenso = "Criado";
+                            }
+                            elseif ($tipo == 2) {
+                                $tipo_extenso = "Editado";
+                            }
+                            elseif ($tipo == 3) {
+                                $tipo_extenso = "Eliminado";
+                            }
+                            elseif ($tipo == 4) {
+                                $tipo_extenso = "Entregue";
+                            }
+
+                            echo "$tipo_extenso";
+                            ?>
+
+                        </td>
+                        <td><?php echo $this->tratarData($data, true)?></td>
+
+                    </tr>
+
+                <?php endforeach;?>
+
 
 

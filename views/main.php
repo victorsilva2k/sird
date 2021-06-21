@@ -125,7 +125,7 @@
 
                     <div class=" cabecalho">
 
-                        
+                    
                         
                         <div class="cabecalho-direito cabecalho-direito__agente cont cont--side">
                             
@@ -140,24 +140,80 @@
                             </form> 
                             <div class="cabecalho-direito__links-direito">
                                 
-                            <a href="#" class="cabecalho-direito__botao-menu esconde-grande" id="abrir-menu">
+                            <a href="<?php echo ROOT_URL; ?>agentes/sair" class="cabecalho-direito__botao-menu esconde-grande" >
                                 <!-- HACK -->
                                 <svg class="cabecalho-direito__icone  icone-padrao">
-                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-list"></use> 
+                                    <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-arrow-left"></use> 
                                 </svg>
                             </a>
                             <div class="cabecalho-direito__links-2">
                                 <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="pesquisa-form__botao--normal btn btn-primary mb-4 ">Publicar</a>
                                 <a href="<?php echo ROOT_URL; ?>agentes/perfil" class="cabecalho__link-usuario">
                                     <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
-                                        <span class="cabecalho__nome-usuario"><?php echo $_SESSION['dados_usuario']['nome']; ?></span>
+                                        <?php
+                                           if($_SESSION['usuario_local']['tipo_local'] === "comando"){
+                                               $nivel = "Of. ";
+                                           } else {
+                                               $nivel = "Ag. ";
+                                           } 
+                                        ?>
+
+                                        <span class="cabecalho__nome-usuario"><?php echo $nivel . $_SESSION['dados_usuario']['nome']; ?></span>
                                         <img src="<?php echo ROOT_IMG; ?>agentes/<?php echo $_SESSION['dados_usuario']['foto']; ?>" alt="Foto Usuário" class="cabecalho__foto-usuario cabecalho__img">
                                     </div>
                                 </a>
                             </div>
                             </div>
                         </div>
+                        <div class="barra-inferior__navegacao">
+                        <ul class="navegacao-inferior">
+                            <li class="navegacao-lateral__item" id="documentos_nav">
+                                <a href="<?php echo ROOT_URL; ?>documentos" class="navegacao-inferior__link">
+                                    <svg class="navegacao-inferior__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-archive"></use>
+                                    </svg>
+                                    
+                                </a>
+                            </li>
+                            <li class="navegacao-lateral__item" id="postos_nav">
+                                <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-inferior__link">
+                                    <svg class="navegacao-inferior__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home"></use>
+                                    </svg>
+                                    
+                                </a>
+                            </li>
 
+                            <?php if(($_SESSION['usuario_local']['tipo_local'] === "comando") AND !(isset($_SESSION['usuario_local']))): ?>
+                                <li class="navegacao-lateral__item" id="agentes_nav">
+                                    <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-inferior__link">
+                                        <svg class="navegacao-inferior__icone">
+                                            <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
+                                        </svg>
+                                        
+                                    </a>
+                                </li>
+                            <?php endif;?>
+                            <li class="navegacao-lateral__item" id="comando_nav">
+                                <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-inferior__link">
+                                    <svg class="navegacao-inferior__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
+                                    </svg>
+                                    
+                                </a>
+                            </li>
+                            <li class="navegacao-lateral__item mais-link" id="mais_nav">
+                                <a href="<?php echo ROOT_URL; ?>mais" class="navegacao-inferior__link">
+                                    <svg class="navegacao-inferior__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-plus"></use>
+                                    </svg>
+                                   
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>              
                             <div class="cabecalho-direito cabecalho-direito__cidadao cont cont--side">
                             <!-- PARA O CIDADÃO -->
                             <a href="<?php echo ROOT_URL; ?>cidadaos" class="pl-10">

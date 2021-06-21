@@ -9,10 +9,11 @@
     <form method="post" enctype="multipart/form-data" class="caixa-info br-25">
 
             <div class="caixa-info__titulo">
-                <p>Informações do Comando Municipal</p>
+                <p>Alterar palavra passe</p>
             </div>
 
-
+           
+                 
 
                 <div class="caixa-info__item">
                     <div class="caixa-info__cabecalho"><h3 >Palavra Passe Antiga</h3></div>

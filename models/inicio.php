@@ -20,7 +20,7 @@ class InicioModel extends Model{
     public function Agente()
     {
         $this->query('SELECT * FROM ver_documento_principal');
-     //hack adicionar data de publicacção na table dos agentes view
+        
         $row['documentos'] = $this->resultSet();
         if ($_SESSION['usuario_local']['tipo_local'] === 'comando') {
             $this->query('SELECT * FROM estatisticas_comando_municipal');

@@ -48,7 +48,7 @@ class ComandoModel extends Model{
                 // Registrando a alteração
                 $this->query("INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 2, CURRENT_TIMESTAMP);");
                 $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);//HACK esse valor deve vir de uma consulta relacional do agente para o posto e do posto para o comando municipal
+                $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
                 $this->execute();
 
                 $this->commit();

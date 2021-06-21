@@ -19,7 +19,7 @@
                     <p class="visao-geral__texto-normal">Documentos Retidos</p>
                 </div>
                 <div class="visao-geral__doc-devolvido visao-geral__div br-25">
-                    <h1 class="visao-geral__titulo"><?php echo $viewmodel['estatisticas'][2]['total_documentos'];?></h1>
+                    <h1 class="visao-geral__titulo"><?php echo $viewmodel['estatisticas'][0]['total_documentos'] - $viewmodel['estatisticas'][1]['total_documentos'];?></h1>
                     <p class="visao-geral__texto-normal">Documentos Devolvidos</p>
                 </div>
 

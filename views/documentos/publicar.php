@@ -28,16 +28,16 @@
                 </div>
             </div>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
+                <div class="caixa-info__cabecalho"><h3 >Telefone</h3></div>
                 <div class="caixa-info__descricao  " id="caixa-numero">
-                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoProprietarioNumero[]" placeholder="Ex: 923432123" id="" required minlength="9" maxlength="12">
+                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoProprietarioNumero[]" placeholder="Ex: 923432123" id="" value=" "  minlength="9" maxlength="12">
                     
                 </div>
             </div>
 
 
 
-            <a class="caixa-info__botao  btn btn-primary mgt-10 " id="add-campo">Adicionar Número</a>
+            <a class="caixa-info__botao  btn btn-primary mgt-10 " id="add-campo">Adicionar Número de Telefone</a>
             
 
            
@@ -58,13 +58,13 @@
 
                 <div class="caixa-info__cabecalho"><h3 >Nome Completo</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNome" placeholder="Ex: Miguel Santos" id="" required minlength="3" maxlength="300">
+                    <input  type="text" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNome" placeholder="Ex: Miguel Santos" id=""  required minlength="3" maxlength="300">
                 </div>
             </div>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
+                <div class="caixa-info__cabecalho"><h3 >Telefone</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNumero" placeholder="Ex: 923432123" id="" requiredminlength="9" maxlength="12">
+                    <input  type="number" class="caixa-info__input input--text" name="adicionarDocumentoEntregadorNumero" placeholder="Ex: 923432123" id="" value="  minlength="9" maxlength="12">
                 </div>
             </div>
 
@@ -95,7 +95,7 @@
                     <div class="caixa-info__cabecalho"><h3 >Identificador / Número</h3></div>
 
                     <div class="caixa-info__descricao  ">
-                        <input  type="text" class="caixa-info__input input--text" name="adicionarDocumentoIdentificador[]" placeholder="Ex: 091BEAO1J1221" id=""  minlength="3" maxlength="20">
+                        <input  type="text" class="caixa-info__input input--text" name="adicionarDocumentoIdentificador[]" placeholder="Ex: 091BEAO1J1221" id=""  minlength="3" maxlength="20" value=" ">
                     </div>
                     
                 </div>
@@ -105,7 +105,7 @@
                 <div class="caixa-info__item">
                     <div class="caixa-info__cabecalho"><h3 >Data de emissão </h3></div>
                     <div class="caixa-info__descricao  ">
-                        <input  type="date" class="caixa-info__input input--text" id="date-input" name="adicionarDocumentoEmissao[]" />
+                        <input  type="date" class="caixa-info__input input--text" id="date-input" name="adicionarDocumentoEmissao[]" required />
                     </div>
                 </div>
                 <div class="caixa-info__item">

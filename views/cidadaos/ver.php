@@ -1,6 +1,6 @@
     <style>
 
-    c.navegacao-lateral__botao, .pesquisa-form__botao--normal, .barra-lateral, .cabecalho-direito__links-direito {
+    c.navegacao-lateral__botao, .barra-inferior__navegacao, .pesquisa-form__botao--normal, .barra-lateral, .cabecalho-direito__links-direito {
         display: none !important;
     }
 

@@ -22,6 +22,14 @@
         .cabecalho-direito__cidadao {
             display: flex;
         }
+
+        @media (max-width: 576px) {
+        .cabecalho-direito {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-between;
+            }
+        }
     </style>
     <div class="img-principal mx-auto">
         <img src="<?php echo ROOT_IMG; ?>site/logo_pna.png" alt="">

@@ -25,7 +25,7 @@
                     <input type="password" name="loginPassword"  class="formulario__input input--text" placeholder="Password" required>
 
                     <input type="submit" name="submit" value="Entrar" class="formulario__input btn btn-lg btn-primary btn-block">
-                    <!-- <a href="" class="link formulario__link mgb-10">Esqueceu a palavra-passe</a> HACK -->
+
                     <a href="<?php echo ROOT_URL ?>agentes/cadastrar" class="link formulario__link mgb-10">Criar conta</a>
                     <a href="<?php echo ROOT_URL ?>agentes/entrar" class="link formulario__link mgb-10">Esqueceu a palavra-passe? </a>
 

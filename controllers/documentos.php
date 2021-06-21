@@ -15,6 +15,9 @@ class Documentos extends Controller{
             case 'entregues':
                 $estado = 3;
                 break;
+            case 'eliminados':
+                $estado = 2;
+                break;
             
             default:
                 $estado = 1;
