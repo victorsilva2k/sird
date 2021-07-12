@@ -8,7 +8,7 @@ define("DB_PASS", "SUPERincu1060");
 define("DB_NAME", "sird-db");
 
 define("ROOT_PATH", "/sird/");
-define('ROOT_URL', "http://192.168.1.27/sird/");// mudar de acordo com
+define('ROOT_URL', "http://localhost/sird/");// mudar de acordo com
 define('ROOT_IMG', ROOT_URL."assets/img/");
 define('ROOT_CSS', ROOT_URL."assets/css/");
 define('ROOT_JS', ROOT_URL."assets/js/");

@@ -9,7 +9,7 @@
     <form method="post" enctype="multipart/form-data" class="caixa-info br-25">
 
             <div class="caixa-info__titulo">
-                <p>Informações do Comando Municipal</p>
+                <p>Editar Perfil</p>
             </div>
 
             <?php foreach($viewmodel as $item) : extract($item);?>
@@ -44,6 +44,7 @@
                         <input  type="date" class="caixa-info__input input--text" id="date-input" name="editarAgenteDataNascimento" required />
                     </div>
                 </div>
+                <!-- HACK -->
                 <div class="caixa-info__item">
                     <div class="caixa-info__cabecalho"><h3 >Gênero</h3></div>
                     <div class="caixa-info__descricao">

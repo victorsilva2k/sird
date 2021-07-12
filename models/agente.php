@@ -175,6 +175,20 @@ class AgenteModel extends Model{
         }
         return $row;    
     }
+
+    public function alteracoes()
+    {
+        $this->query('SELECT a.id_agente id, a.nome, a.sobrenome, a.genero, ac.nip 
+                      FROM agente a 
+                      JOIN agente_conta ac ON ac.id_agente = a.id_agente 
+                      WHERE ac.estado_conta = 0;');
+        $row = $this->resultSet();
+        if ($this->rowCounte() < 1){
+            // header('Location: ' . ROOT_URL . 'agentes/');
+            
+        }
+        return $row;    
+    }
     public function cadastrar()
     {   
         //Sanitizing POST
@@ -325,7 +339,72 @@ class AgenteModel extends Model{
                             move_uploaded_file($_FILES['editarAgenteFoto']['tmp_name'], $destino);
                         }
 
-                        // Inserindo os dados pessoais de um agente
+                        // Verifica se o nivel do usuário
+                        if ($_SESSION['usuario_local']['tipo_local'] === "posto") {
+
+                        // Inserindo alteração de nome
+                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                    (`id_permissao`,
+                                    `id_agente`,
+                                    `campo_editado`,
+                                    `novo_valor`,
+                                    `estado`,
+                                    `agente_responsavel`)
+                                    VALUES
+                                    (NULL,
+                                    :ID_AGENTE,
+                                    :CAMPO_EDITADO,
+                                    :NOVO_VALOR,
+                                    1,
+                                    NULL);");
+                        $this->bind(':CAMPO_EDITADO', 'nome');
+                        $this->bind(':NOVO_VALOR', $editarAgenteNome);
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->execute();
+
+
+                        // Inserindo alteração de sobrenome
+                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                    (`id_permissao`,
+                                    `id_agente`,
+                                    `campo_editado`,
+                                    `novo_valor`,
+                                    `estado`,
+                                    `agente_responsavel`)
+                                    VALUES
+                                    (NULL,
+                                    :ID_AGENTE,
+                                    :CAMPO_EDITADO,
+                                    :NOVO_VALOR,
+                                    1,
+                                    NULL);");
+                        $this->bind(':CAMPO_EDITADO', 'sobrenome');
+                        $this->bind(':NOVO_VALOR', $editarAgenteSobrenome);
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->execute();
+                        
+                        // Inserindo alteração de foto
+                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                    (`id_permissao`,
+                                    `id_agente`,
+                                    `campo_editado`,
+                                    `novo_valor`,
+                                    `estado`,
+                                    `agente_responsavel`)
+                                    VALUES
+                                    (NULL,
+                                    :ID_AGENTE,
+                                    :CAMPO_EDITADO,
+                                    :NOVO_VALOR,
+                                    1,
+                                    NULL);");
+                        $this->bind(':CAMPO_EDITADO', 'foto_arquivo');
+                        $this->bind(':NOVO_VALOR', $foto);
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $this->execute();
+
+                        } else {
+                            // Inserindo os dados pessoais de um agente
                         $this->query("UPDATE agente SET nome = :NOME, sobrenome = :SOBRENOME, data_nasc = :NASC, genero = :GENERO, foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
                         $this->bind(':NOME', $editarAgenteNome);
                         $this->bind(':SOBRENOME', $editarAgenteSobrenome);
@@ -337,6 +416,7 @@ class AgenteModel extends Model{
 
                         Messages::setMessage("Edição feita com sucesso", "success");
                         header('Location: ' . ROOT_URL . 'agentes/perfil');
+                        }
         
         
                 }
@@ -446,22 +526,32 @@ class AgenteModel extends Model{
                             "nome" => $nome,
                             "foto" => $foto
                         );
-                        
-                        $this->query("SELECT ap.id_posto posto, ap.cargo 
+                        // Verifica se o agente está ligado a que local
+                        $this->query("SELECT local 
+                                      FROM agente_conta 
+                                      WHERE id_agente =  :ID_AGENTE");
+                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                        $local_row = $this->singleResult();
+                        extract($local_sel);
+                        // Caso for posto
+                        if ($local === "posto") {
+
+                            $this->query("SELECT ap.id_posto posto, ap.cargo 
                                       FROM agente_conta ac 
                                       JOIN agente_posto ap ON ac.id_agente = ap.id_agente 
                                       WHERE ac.id_agente =  :ID_AGENTE");
-                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                        $local_row = $this->singleResult();
-                        if ($this->rowCounte() > 0) {
-                            extract($local_row);
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $local_sel = $this->singleResult();
+                            extract($local_sel);
                             $_SESSION['usuario_local'] = array(
                                 "id_local"      => $posto,
                                 "cargo"         => $cargo,
                                 "tipo_local"    => "posto"
                             );
                             
-                        } else {
+                        } elseif ($local === "comando_municipal") {
+                            # code...
+                        
                             $this->query("SELECT acm.id_cm, acm.cargo, acm.id_cm 
                                         FROM agente_conta ac 
                                         JOIN agente_comando_municipal acm 
@@ -475,7 +565,41 @@ class AgenteModel extends Model{
                                 "cargo" => $cargo,
                                 "tipo_local" => "comando"
                             );
-                        } 
+                        } elseif ($local === "comando_provincial") {
+                            # code...
+                        
+                            $this->query("SELECT acp.id_cm, acp.cargo, acp.id_cm 
+                                        FROM agente_conta ac 
+                                        JOIN agente_comando_provincial acp 
+                                        ON ac.id_agente = acp.id_agente  
+                                        WHERE ac.id_agente =  :ID_AGENTE");
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $local_row = $this->singleResult();
+                            extract($local_row);
+                            $_SESSION['usuario_local'] = array(
+                                "id_local"    => $id_cm,
+                                "cargo" => $cargo,
+                                "tipo_local" => "comando"
+                            );
+                        }
+
+                        elseif ($local === "comando_nacional") {
+                            # code...
+                        
+                            $this->query("SELECT acn.id_cm, acn.cargo, acn.id_cm 
+                                        FROM agente_conta ac 
+                                        JOIN agente_comando_municipal acn 
+                                        ON ac.id_agente = acn.id_agente  
+                                        WHERE ac.id_agente =  :ID_AGENTE");
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $local_row = $this->singleResult();
+                            extract($local_row);
+                            $_SESSION['usuario_local'] = array(
+                                "id_local"    => $id_cm,
+                                "cargo" => $cargo,
+                                "tipo_local" => "comando"
+                            );
+                        }
                         
                         header('Location: ' . ROOT_URL . 'inicio/agente');
         

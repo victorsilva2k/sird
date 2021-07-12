@@ -22,6 +22,13 @@ class agentes extends Controller{
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->cadastros(), true);
     }
+
+    protected function alteracoes()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new AgenteModel();
+        $this->returnView($viewmodel->alteracoes(), true);
+    }
     protected function permitir()
     {
         $this->verificarNivel(2);
@@ -52,17 +59,20 @@ class agentes extends Controller{
     }
     protected function cadastrar()
     {
+
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->cadastrar(), true);
     }
     protected function editar()
     {
+        $this->verificarNivel(2);
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->editar(), true);
     }
 
     protected function alterar()
     {
+        $this->verificarNivel(1);
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->alterar(), true);
     }

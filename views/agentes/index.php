@@ -7,7 +7,7 @@
     
     <div class="btn-groupo">
     <a href="<?php echo ROOT_URL; ?>agentes/cadastros" class="center-t btn btn-success mb-4 ">Cadastros</a>
-    <a href="<?php echo ROOT_URL; ?>agentes/edicoes" class="center-t btn btn-primary mb-4 ">Edições</a>
+    <a href="<?php echo ROOT_URL; ?>agentes/alteracoes" class="center-t btn btn-primary mb-4 ">Alterações</a>
 
     </div>
     

@@ -807,11 +807,33 @@ CREATE TABLE `provincia` (
 
 
 
+-- Edição Permissão
+
+INSERT INTO `sird-db`.`permissao_edicao`
+(`id_permissao`,
+`id_agente`,
+`campo_editado`,
+`novo_valor`,
+`estado`,
+`agente_responsavel`)
+VALUES
+(NULL,
+24,
+'nome',
+'João',
+1,
+NULL);
 
 
+SELECT `permissao_edicao`.`id_permissao`,
+    `permissao_edicao`.`id_agente`,
+    `permissao_edicao`.`campo_editado`,
+    `permissao_edicao`.`novo_valor`,
+    `permissao_edicao`.`estado`,
+    `permissao_edicao`.`agente_responsavel`
+FROM `sird-db`.`permissao_edicao`;
 
-
-
+SELECT a.sosbrenome, pe.novo_valor, pe.campo_editado, pe.data, a.sobrenome 'oficial_responsavel'
 
 
 
