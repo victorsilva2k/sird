@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sird-db` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sird-db`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: sird-db
@@ -32,7 +30,7 @@ CREATE TABLE `agente` (
   `data_nasc` date NOT NULL,
   `genero` varchar(45) NOT NULL,
   PRIMARY KEY (`id_agente`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +39,7 @@ CREATE TABLE `agente` (
 
 LOCK TABLES `agente` WRITE;
 /*!40000 ALTER TABLE `agente` DISABLE KEYS */;
-INSERT INTO `agente` VALUES (1,'Joao','bastos','usuario.png','1990-01-05','Masculino'),(7,'Victorino','Kioza','3854-2021-05-06.jpeg','2002-05-10','Masculino'),(18,'Rasmus','Lerdorf','8110-2021-03-26.jpeg','1999-12-15','Masculino'),(19,'Lina','Januário','1501-2021-03-26.jpeg','1980-08-09','Feminino'),(20,'James','Bila','usuario.png','1989-04-14','Masculino'),(22,'Mateus','Ngola','usuario.png','2021-04-16','Masculino'),(23,'Edson','Silva','usuario.png','2001-12-22','Masculino'),(24,'João','Paulo','usuario.png','2021-05-15','Masculino');
+INSERT INTO `agente` VALUES (1,'Joao','bastos','usuario.png','1990-01-05','Masculino'),(7,'Victorino','Kioza','4099-2021-06-23.jpeg','1990-07-26','Masculino'),(18,'Rasmus','Lerdorf','8110-2021-03-26.jpeg','1999-12-15','Masculino'),(19,'Lina','Januário','1501-2021-03-26.jpeg','1980-08-09','Feminino'),(20,'James','Bila','usuario.png','1989-04-14','Masculino'),(22,'Mateus','Ngola','usuario.png','2021-04-16','Masculino'),(23,'Edson','Silva','usuario.png','2001-12-22','Masculino'),(24,'João','Paulo','usuario.png','2021-05-15','Masculino'),(25,'Joaquim','Manuel','usuario.png','1994-05-05','Masculino');
 /*!40000 ALTER TABLE `agente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,6 +95,7 @@ CREATE TABLE `agente_comando_provincial` (
 
 LOCK TABLES `agente_comando_provincial` WRITE;
 /*!40000 ALTER TABLE `agente_comando_provincial` DISABLE KEYS */;
+INSERT INTO `agente_comando_provincial` VALUES (25,2,1);
 /*!40000 ALTER TABLE `agente_comando_provincial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,6 +112,7 @@ CREATE TABLE `agente_conta` (
   `password` varchar(200) NOT NULL,
   `estado_conta` tinyint NOT NULL DEFAULT '1',
   `data_cadastro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `local` varchar(45) NOT NULL DEFAULT 'posto',
   UNIQUE KEY `nip_UNIQUE` (`nip`),
   KEY `id_oficial_idx` (`id_agente`),
   CONSTRAINT `id_agente-oc` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`)
@@ -125,7 +125,7 @@ CREATE TABLE `agente_conta` (
 
 LOCK TABLES `agente_conta` WRITE;
 /*!40000 ALTER TABLE `agente_conta` DISABLE KEYS */;
-INSERT INTO `agente_conta` VALUES (23,101203,'$2y$10$FjRadxlUnBxF/0xjitBNeehXzMsMsCbiUl.ZepyfCN0MLG5f7c3tW',1,'2021-05-05 13:34:36'),(7,1220323,'$2y$10$/rXOVS8ZJu9E/uVHln3ebuI57d4jjO.Zu6uanzioOkmmPWgESDuaa',1,'2021-03-23 15:12:14'),(24,1234567,'$2y$10$6pGSCvF38lN8UbkyZWlJte590lU7W3ahnMFv72QjdEZ2lc/rl5sLC',1,'2021-05-06 12:54:29'),(22,1291919,'$2y$10$.aWM87wH2dFjs70/F/RQz.EwVqp8S5DkUPTsElpDyXsqFFcIUNqWe',1,'2021-04-22 21:31:09'),(1,1921765,'$2y$10$28vZsggb8wdw5t/MfbEDy.u40nqVO4goppauCG2qW7eAkHyxrFv3S',1,'2021-03-18 16:06:26'),(18,1985444,'$2y$10$DD0QNOW6GCftGIl9t8P6le4DgwhH4mNhG3q/yUfY0v7PJy7.HC1ty',2,'2021-03-26 15:53:49'),(20,3878372,'$2y$10$VOki2uuO9nlN.QtGBHZgs.zT0ZZOR.DERXVIQO5fQ8Asra4z3s6vm',2,'2021-03-26 16:25:45'),(19,7173713,'$2y$10$rLnm4dxANithuwmMpnNzmOD3eyZWZdv.IRYwNfTZT00kDGWN1lAnO',2,'2021-03-26 15:59:55');
+INSERT INTO `agente_conta` VALUES (23,101203,'$2y$10$FjRadxlUnBxF/0xjitBNeehXzMsMsCbiUl.ZepyfCN0MLG5f7c3tW',1,'2021-05-05 13:34:36','comando_municipal'),(25,155412,'$2y$10$6cTkftoexr32j2Ny9k2p9OdF/CzIev0pZ1Db8RBBSAFyag281.fBy',1,'2021-07-06 21:22:16','comando_provincial'),(7,1220323,'$2y$10$/rXOVS8ZJu9E/uVHln3ebuI57d4jjO.Zu6uanzioOkmmPWgESDuaa',1,'2021-03-23 15:12:14','comando_municipal'),(24,1234567,'$2y$10$6pGSCvF38lN8UbkyZWlJte590lU7W3ahnMFv72QjdEZ2lc/rl5sLC',1,'2021-05-06 12:54:29','posto'),(22,1291919,'$2y$10$.aWM87wH2dFjs70/F/RQz.EwVqp8S5DkUPTsElpDyXsqFFcIUNqWe',1,'2021-04-22 21:31:09','posto'),(1,1921765,'$2y$10$28vZsggb8wdw5t/MfbEDy.u40nqVO4goppauCG2qW7eAkHyxrFv3S',1,'2021-03-18 16:06:26','posto'),(18,1985444,'$2y$10$DD0QNOW6GCftGIl9t8P6le4DgwhH4mNhG3q/yUfY0v7PJy7.HC1ty',2,'2021-03-26 15:53:49','posto'),(20,3878372,'$2y$10$VOki2uuO9nlN.QtGBHZgs.zT0ZZOR.DERXVIQO5fQ8Asra4z3s6vm',2,'2021-03-26 16:25:45','posto'),(19,7173713,'$2y$10$rLnm4dxANithuwmMpnNzmOD3eyZWZdv.IRYwNfTZT00kDGWN1lAnO',2,'2021-03-26 15:59:55','posto');
 /*!40000 ALTER TABLE `agente_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,6 +217,7 @@ DROP TABLE IF EXISTS `comando_municipal`;
 CREATE TABLE `comando_municipal` (
   `id_comando_municipal` tinyint NOT NULL AUTO_INCREMENT,
   `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comando_provincial` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_comando_municipal`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,7 +228,7 @@ CREATE TABLE `comando_municipal` (
 
 LOCK TABLES `comando_municipal` WRITE;
 /*!40000 ALTER TABLE `comando_municipal` DISABLE KEYS */;
-INSERT INTO `comando_municipal` VALUES (1,'2021-03-18 15:11:32');
+INSERT INTO `comando_municipal` VALUES (1,'2021-03-18 15:11:32',1);
 /*!40000 ALTER TABLE `comando_municipal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +291,7 @@ CREATE TABLE `comando_provincial` (
   `nome` varchar(70) NOT NULL,
   `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_comando_provincial`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,6 +300,7 @@ CREATE TABLE `comando_provincial` (
 
 LOCK TABLES `comando_provincial` WRITE;
 /*!40000 ALTER TABLE `comando_provincial` DISABLE KEYS */;
+INSERT INTO `comando_provincial` VALUES (2,'Luanda','2021-07-06 21:32:29');
 /*!40000 ALTER TABLE `comando_provincial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -448,18 +450,6 @@ INSERT INTO `entregador_proprietario` VALUES (1,1),(2,99),(3,77),(4,100),(5,101)
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `estatisticas_comando_municipal`
---
-
-DROP TABLE IF EXISTS `estatisticas_comando_municipal`;
-/*!50001 DROP VIEW IF EXISTS `estatisticas_comando_municipal`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `estatisticas_comando_municipal` AS SELECT 
- 1 AS `total_documentos`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `foto_documento`
 --
 
@@ -485,39 +475,6 @@ LOCK TABLES `foto_documento` WRITE;
 INSERT INTO `foto_documento` VALUES (1,1,'no-img.png'),(2,1,'no-img.png'),(3,2,'usuario.png'),(4,2,'usuario.png'),(5,3,'usuario.png'),(6,3,'usuario.png'),(7,4,'6505-2021-04-26.jpeg'),(8,4,'7958-2021-04-26.jpeg'),(9,5,'2653-2021-04-26.jpeg'),(10,5,'8150-2021-04-26.jpeg'),(11,14,'470-2021-04-27.jpeg'),(12,15,'6015-2021-04-27.jpeg'),(13,16,'7701-2021-04-27.jpeg'),(14,16,'1403-2021-04-27.jpeg'),(15,17,'9696-2021-04-27.jpeg'),(16,18,'6484-2021-04-27.jpeg'),(17,18,'1393-2021-04-27.jpeg'),(18,19,'3348-2021-04-27.jpeg'),(19,19,'7545-2021-04-27.jpeg'),(20,27,'6090-2021-04-30.jpeg'),(21,27,'1552-2021-04-30.jpeg'),(22,28,'5607-2021-04-30.jpeg'),(23,28,'5921-2021-04-30.jpeg'),(24,29,'8034-2021-04-30.jpeg'),(25,29,'4110-2021-04-30.jpeg'),(26,30,'6423-2021-04-30.jpeg'),(27,30,'967-2021-04-30.jpeg'),(28,31,'1874-2021-04-30.jpeg'),(29,31,'9182-2021-04-30.jpeg'),(30,32,'429-2021-05-01.jpeg'),(31,32,'7860-2021-05-01.jpeg'),(32,30,'no-img.png'),(33,30,'no-img.png'),(34,33,'7860-2021-05-01.jpeg'),(35,33,'7860-2021-05-01.jpeg'),(36,34,'8195-2021-05-03.jpeg'),(37,34,'2128-2021-05-03.jpeg'),(38,35,'9329-2021-05-03.jpeg'),(39,35,'8928-2021-05-03.jpeg'),(40,36,'3140-2021-05-03.jpeg'),(41,36,'6332-2021-05-03.jpeg'),(42,37,'1683-2021-05-03.jpeg'),(43,37,'3387-2021-05-03.jpeg'),(44,38,'1267-2021-05-03.jpeg'),(45,38,'5977-2021-05-03.jpeg'),(46,39,'9061-2021-05-04.jpeg'),(47,39,'2245-2021-05-04.jpeg'),(48,40,'2017-2021-05-04.jpeg'),(49,40,'9053-2021-05-04.jpeg'),(50,41,'1891-2021-05-04.jpeg'),(51,41,'3977-2021-05-04.jpeg'),(52,42,'6355-2021-05-05.jpeg'),(53,42,'8246-2021-05-05.jpeg'),(56,44,'2250-2021-05-05.jpeg'),(57,44,'3052-2021-05-05.jpeg'),(58,45,'8662-2021-05-06.jpeg'),(59,45,'5876-2021-05-06.jpeg'),(60,46,'1707-2021-05-06.jpeg'),(61,46,'9902-2021-05-06.jpeg'),(62,47,'8274-2021-05-06.jpeg'),(63,47,'8865-2021-05-06.jpeg'),(64,48,'4840-2021-05-06.jpeg'),(65,48,'9606-2021-05-06.jpeg'),(66,49,'8483-2021-05-06.jpeg'),(67,49,'no-img.png'),(68,50,'5103-2021-05-06.jpeg'),(69,50,'549-2021-05-06.jpeg'),(70,51,'8051-2021-05-06.jpeg'),(71,51,'7294-2021-05-06.jpeg'),(72,52,'5482-2021-05-06.jpeg'),(73,52,'no-img.png'),(74,53,'1569-2021-05-06.jpeg'),(75,53,'7213-2021-05-06.jpeg'),(76,54,'4393-2021-05-06.jpeg'),(77,54,'1212-2021-05-06.jpeg');
 /*!40000 ALTER TABLE `foto_documento` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Temporary view structure for view `listar_documentos`
---
-
-DROP TABLE IF EXISTS `listar_documentos`;
-/*!50001 DROP VIEW IF EXISTS `listar_documentos`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `listar_documentos` AS SELECT 
- 1 AS `nome_completo`,
- 1 AS `id_proprietario`,
- 1 AS `categorias`*/;
-SET character_set_client = @saved_cs_client;
-
---
--- Temporary view structure for view `listar_postos`
---
-
-DROP TABLE IF EXISTS `listar_postos`;
-/*!50001 DROP VIEW IF EXISTS `listar_postos`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `listar_postos` AS SELECT 
- 1 AS `id_posto`,
- 1 AS `estado_actividade`,
- 1 AS `tipo`,
- 1 AS `nome`,
- 1 AS `distrito`,
- 1 AS `bairro`,
- 1 AS `rua`,
- 1 AS `municipio`*/;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `local_documento`
@@ -678,11 +635,12 @@ CREATE TABLE `permissao_edicao` (
   `novo_valor` varchar(200) NOT NULL,
   `estado` tinyint DEFAULT '1',
   `agente_responsavel` int DEFAULT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_permissao`),
   KEY `id_oficial_idx` (`id_agente`),
   CONSTRAINT `agente_responsavel` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
   CONSTRAINT `id_agente-pe` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -691,6 +649,7 @@ CREATE TABLE `permissao_edicao` (
 
 LOCK TABLES `permissao_edicao` WRITE;
 /*!40000 ALTER TABLE `permissao_edicao` DISABLE KEYS */;
+INSERT INTO `permissao_edicao` VALUES (1,24,'nome','João',1,NULL,'2021-06-29 21:01:04');
 /*!40000 ALTER TABLE `permissao_edicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -946,60 +905,6 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `estatisticas_comando_municipal`
---
-
-/*!50001 DROP VIEW IF EXISTS `estatisticas_comando_municipal`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `estatisticas_comando_municipal` AS select count(0) AS `total_documentos` from `documentos` union select count(0) AS `total_perdidos` from `documentos` where (`documentos`.`estado` = 1) union select count(0) AS `total_perdidos` from `documentos` where (`documentos`.`estado` = 3) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `listar_documentos`
---
-
-/*!50001 DROP VIEW IF EXISTS `listar_documentos`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `listar_documentos` AS select `pd`.`nome_completo` AS `nome_completo`,`pd`.`id_proprietario` AS `id_proprietario`,group_concat(`cd`.`categoria` separator ',') AS `categorias` from ((`propietario_documento` `pd` join `documentos` `d` on((`pd`.`id_proprietario` = `d`.`id_proprietario`))) join `categoria_documento` `cd` on((`d`.`categoria_documento` = `cd`.`id_categoria_documento`))) group by `pd`.`id_proprietario` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `listar_postos`
---
-
-/*!50001 DROP VIEW IF EXISTS `listar_postos`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `listar_postos` AS select `p`.`id_posto` AS `id_posto`,`p`.`estado_actividade` AS `estado_actividade`,`p`.`tipo` AS `tipo`,`p`.`nome` AS `nome`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`pl`.`rua` AS `rua`,`cml`.`municipio` AS `municipio` from ((((`posto` `p` join `posto_localizacao` `pl` on((`p`.`id_posto` = `pl`.`id_posto`))) join `bairro` `b` on((`b`.`id_bairro` = `pl`.`bairro`))) join `distrito` `d` on((`d`.`id_distrito` = `pl`.`distrito`))) join `comando_municipal_localizacao` `cml` on((`p`.`id_comando_municipal` = `cml`.`id_cm`))) where ((`p`.`estado_actividade` = 1) or (`p`.`estado_actividade` = 2)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
 -- Final view structure for view `ver_documento_agente`
 --
 
@@ -1098,4 +1003,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-21 14:17:22
+-- Dump completed on 2021-07-14 19:48:25

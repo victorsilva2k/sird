@@ -531,8 +531,9 @@ class AgenteModel extends Model{
                                       FROM agente_conta 
                                       WHERE id_agente =  :ID_AGENTE");
                         $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                        $local_row = $this->singleResult();
+                        $local_sel = $this->singleResult();
                         extract($local_sel);
+                      
                         // Caso for posto
                         if ($local === "posto") {
 
@@ -563,12 +564,12 @@ class AgenteModel extends Model{
                             $_SESSION['usuario_local'] = array(
                                 "id_local"    => $id_cm,
                                 "cargo" => $cargo,
-                                "tipo_local" => "comando"
+                                "tipo_local" => "comando_municipal"
                             );
                         } elseif ($local === "comando_provincial") {
                             # code...
                         
-                            $this->query("SELECT acp.id_cm, acp.cargo, acp.id_cm 
+                            $this->query("SELECT acp.id_comando_provincial, acp.cargo 
                                         FROM agente_conta ac 
                                         JOIN agente_comando_provincial acp 
                                         ON ac.id_agente = acp.id_agente  
@@ -577,13 +578,11 @@ class AgenteModel extends Model{
                             $local_row = $this->singleResult();
                             extract($local_row);
                             $_SESSION['usuario_local'] = array(
-                                "id_local"    => $id_cm,
+                                "id_local"    => $id_comando_provincial,
                                 "cargo" => $cargo,
-                                "tipo_local" => "comando"
+                                "tipo_local" => "comando_provincial"
                             );
-                        }
-
-                        elseif ($local === "comando_nacional") {
+                        } elseif ($local === "comando_nacional") {
                             # code...
                         
                             $this->query("SELECT acn.id_cm, acn.cargo, acn.id_cm 
@@ -597,7 +596,7 @@ class AgenteModel extends Model{
                             $_SESSION['usuario_local'] = array(
                                 "id_local"    => $id_cm,
                                 "cargo" => $cargo,
-                                "tipo_local" => "comando"
+                                "tipo_local" => "comando_municipal"
                             );
                         }
                         

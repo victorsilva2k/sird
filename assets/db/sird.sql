@@ -833,7 +833,191 @@ SELECT `permissao_edicao`.`id_permissao`,
     `permissao_edicao`.`agente_responsavel`
 FROM `sird-db`.`permissao_edicao`;
 
-SELECT a.sosbrenome, pe.novo_valor, pe.campo_editado, pe.data, a.sobrenome 'oficial_responsavel'
+SELECT a.sosbrenome, pe.novo_valor, pe.campo_editado, pe.data, a.sobrenome 'oficial_responsavel';
+
+-- INSERINDO AGENTE COMANDO PROVINCIAL
+
+INSERT INTO `sird-db`.`agente_comando_provincial`
+(`id_agente`,
+`id_comando_provincial`,
+`cargo`)
+VALUES
+(25,
+2,
+1);
+
+
+INSERT INTO comando_municipal_localizacao VALUES(1, "Luanda", "Talatona", "SIAC", "Belas", "4");
+1, Luanda, Talatona, 1, 2, 8;
+
+-- Verificando local de agente
+
+SELECT local FROM agente_conta WHERE id_agente = 25;
+
+SELECT acm.id_cm, acm.cargo, acm.id_cm 
+                                        FROM agente_conta ac 
+                                        JOIN agente_comando_municipal acm 
+                                        ON ac.id_agente = acm.id_agente  
+                                        WHERE ac.id_agente  = 7;
+
+SELECT acp.id_comando_provincial, acp.cargo, acp.id_comando_provincial
+ 
+                                        FROM agente_conta ac 
+                                        JOIN agente_comando_provincial acp 
+                                        ON ac.id_agente = acp.id_agente  
+                                        WHERE ac.id_agente =25;
+
+
+-- Ver postos por comando municipal
+
+SELECT p.id_posto, p.tipo, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
+FROM posto p 
+JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+JOIN bairro b ON b.id_bairro= pl.bairro
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm 
+WHERE  p.id_comando_municipal = 1;
+
+-- extra
+
+ SELECT 
+                            `p`.`id_posto` AS `id_posto`,
+                            `p`.`estado_actividade` AS `estado_actividade`,
+                            `p`.`tipo` AS `tipo`,
+                            `p`.`nome` AS `nome`,
+                            `d`.`distrito` AS `distrito`,
+                            `b`.`bairro` AS `bairro`,
+                            `pl`.`rua` AS `rua`,
+                            `cml`.`municipio` AS `municipio`
+                        FROM
+                            ((((`posto` `p`
+                            JOIN `posto_localizacao` `pl` ON ((`p`.`id_posto` = `pl`.`id_posto`)))
+                            JOIN `bairro` `b` ON ((`b`.`id_bairro` = `pl`.`bairro`)))
+                            JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`)))
+                            JOIN `comando_municipal_localizacao` `cml` ON ((`p`.`id_comando_municipal` = `cml`.`id_cm`)))
+                        WHERE p.id_comando_municipal = 1;
+                        
+SELECT * FROM `sird-db`.listar_postos;
+
+-- Ver postos por comando provincial
+
+SELECT p.id_posto, p.tipo, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
+FROM posto p 
+JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+JOIN bairro b ON b.id_bairro= pl.bairro
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm
+JOIN comando_municipal cm ON cml.id_cm = cm.id_comando_municipal
+WHERE p.estado_actividade = 1 AND cm.comando_provincial = 1;
+
+
+-- extra
+
+ SELECT 
+                            `p`.`id_posto` AS `id_posto`,
+                            `p`.`estado_actividade` AS `estado_actividade`,
+                            `p`.`tipo` AS `tipo`,
+                            `p`.`nome` AS `nome`,
+                            `d`.`distrito` AS `distrito`,
+                            `b`.`bairro` AS `bairro`,
+                            `pl`.`rua` AS `rua`,
+                            `cml`.`municipio` AS `municipio`
+                        FROM
+                            ((((`posto` `p`
+                            JOIN `posto_localizacao` `pl` ON ((`p`.`id_posto` = `pl`.`id_posto`)))
+                            JOIN `bairro` `b` ON ((`b`.`id_bairro` = `pl`.`bairro`)))
+                            JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`)))
+                            JOIN `comando_municipal_localizacao` `cml` ON ((`p`.`id_comando_municipal` = `cml`.`id_cm`))
+                            JOIN comando_municipal cm ON cml.id_cm = cm.id_comando_municipal)
+                        WHERE cm.comando_provincial = 1;
+
+-- configurações de chaves estrangeiras
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ver comando provincial
+
+CREATE VIEW comando_provincial_informacao AS SELECT p.provincia, m.municipio, d.distrito, b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  FROM comando_provincial_localizacao cpl JOIN comando_provincial cp
+ON cp.id_comando_provincial = cpl.id_cp
+        JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+        JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+        JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+        JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`;
+        
+        
+SELECT p.provincia, m.municipio, d.distrito, b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  FROM comando_provincial_localizacao cpl JOIN comando_provincial cp
+ON cp.id_comando_provincial = cpl.id_cp
+        JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+        JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+        JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+        JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+        WHERE cp.id_comando_provincial = 2;
+
+UPDATE `sird-db`.`comando_provincial_localizacao`
+SET
+`id_cp` = 2
+WHERE id_cp = 1;
+
+
+INSERT INTO `sird-db`.`comando_provincial_localizacao`
+(`id_cp`,
+`provincia`,
+`municipio`,
+`distrito`,
+`bairro`,
+`rua`)
+VALUES
+(1,
+7,
+8,
+7,
+10,
+3);
+
+
+-- ver comando municipais por comando provincial
+
+SELECT cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+    FROM `comando_municipal` `cm`
+        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+        JOIN municipio m ON cml.municipio = m.id_municipio
+        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@
 </style>
 
 
-    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
+    <?php  if(Controller::verificarLugar(2)): ?>
 
 
         <div class="btn-groupo">

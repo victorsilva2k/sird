@@ -6,12 +6,12 @@
 </style>
     <div class="caixa-info br-25">
         <div class="caixa-info__titulo">
-            <p>Informações do Comando Municipal</p>
+            <p>Informações do Comando Provincial</p>
         </div>
             <?php foreach($viewmodel as $item) : extract($item);?>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Nome</h3></div>
-                <div class="caixa-info__descricao"><p >Comando Municipal de <?php echo $municipio?></p></div>
+                <div class="caixa-info__descricao"><p >Comando Provincial de <?php echo $nome_cp?></p></div>
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Província</h3></div>

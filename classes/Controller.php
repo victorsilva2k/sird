@@ -24,8 +24,14 @@ abstract class Controller{
                 case "posto":
                     $nivel_num = 1;
                     break;
-                case "comando":
+                case "comando_municipal":
                     $nivel_num = 2;
+                    break;
+                case "comando_provincial":
+                    $nivel_num = 3;
+                    break;
+                case "comando_nacional":
+                    $nivel_num = 4;
                     break;
                 default:
                     $nivel_num = 0;
@@ -40,6 +46,33 @@ abstract class Controller{
 
         }
     }
+
+    public static function verificarLugar($nivel){
+
+        if (isset($_SESSION['usuario_local'])) {
+            switch ($_SESSION['usuario_local']['tipo_local']) {
+                case "posto":
+                    $nivel_num = 1;
+                    break;
+                case "comando_municipal":
+                    $nivel_num = 2;
+                    break;
+                case "comando_provincial":
+                    $nivel_num = 3;
+                    break;
+                case "comando_nacional":
+                    $nivel_num = 4;
+                    break;
+                default:
+                    $nivel_num = 0;
+            }
+            if (($nivel_num >= $nivel)) {
+                return true;
+        } else {
+            return false;
+        }
+    }
+}
     public function verificarParametro(){
 
         if (!isset($this->param)) {

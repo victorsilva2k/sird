@@ -22,7 +22,7 @@ class InicioModel extends Model{
         $this->query('SELECT * FROM ver_documento_principal');
         
         $row['documentos'] = $this->resultSet();
-        if ($_SESSION['usuario_local']['tipo_local'] === 'comando') {
+        if ($_SESSION['usuario_local']['tipo_local'] !== 'posto') {
             $this->query('SELECT * FROM estatisticas_comando_municipal');
         }
         

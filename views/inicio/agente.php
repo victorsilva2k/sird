@@ -8,7 +8,7 @@
         <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
         <a href="<?php echo ROOT_URL; ?>documentos/" class="btn-groupo__botao center-t btn btn-success mb-4 ">Devolver Documento</a>
     </div>
-    <?php if($_SESSION['usuario_local']['tipo_local'] === 'comando'): ?>
+    <?php if($_SESSION['usuario_local']['tipo_local'] === 'posto'): ?>
         <div class="visao-geral mgt-20">
                 <div class="visao-geral__total-doc visao-geral__div br-25">
                     <h1 class="visao-geral__titulo"><?php echo $viewmodel['estatisticas'][0]['total_documentos'];?></h1>

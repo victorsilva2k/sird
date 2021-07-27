@@ -71,7 +71,7 @@
                             </a>
                         </li>
 
-                        <?php if($_SESSION['usuario_local']['tipo_local'] === "comando"): ?>
+                        <?php  if(Controller::verificarLugar(2)): ?>
                             <li class="navegacao-lateral__item" id="agentes_nav">
                                 <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
@@ -89,6 +89,16 @@
                                 <span>Comando Municipal</span>
                             </a>
                         </li>
+                        <?php  if(Controller::verificarLugar(3)): ?>
+                            <li class="navegacao-lateral__item" id="agentes_nav">
+                                <a href="<?php echo ROOT_URL; ?>comandosprovinciais" class="navegacao-lateral__link">
+                                    <svg class="navegacao-lateral__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
+                                    </svg>
+                                    <span>Comando Provincial</span>
+                                </a>
+                            </li>
+                        <?php endif;?>
                         <li class="navegacao-lateral__item mais-link" id="mais_nav">
                             <a href="<?php echo ROOT_URL; ?>mais" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
@@ -151,7 +161,7 @@
                                 <a href="<?php echo ROOT_URL; ?>agentes/perfil" class="cabecalho__link-usuario">
                                     <div class="cabecalho__nav cabecalho__usuario-nav mge-10">
                                         <?php
-                                           if($_SESSION['usuario_local']['tipo_local'] === "comando"){
+                                           if($_SESSION['usuario_local']['tipo_local'] === "comando_municipal"){
                                                $nivel = "Of. ";
                                            } else {
                                                $nivel = "Ag. ";
@@ -184,7 +194,7 @@
                                 </a>
                             </li>
 
-                            <?php if(($_SESSION['usuario_local']['tipo_local'] === "comando") AND !(isset($_SESSION['usuario_local']))): ?>
+                            <?php if(($_SESSION['usuario_local']['tipo_local'] === "comando_municipal") AND !(isset($_SESSION['usuario_local']))): ?>
                                 <li class="navegacao-lateral__item" id="agentes_nav">
                                     <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-inferior__link">
                                         <svg class="navegacao-inferior__icone">

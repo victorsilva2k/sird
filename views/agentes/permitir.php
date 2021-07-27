@@ -37,7 +37,7 @@
                 <div class="caixa-info__descricao  ">
                     <select class="caixa-info__input input--text" name="permitirTipoEstabelecimento" id="">
                         <option id="posto_check" value="Posto">Posto</option>
-                        <option id="comando_check" value="Comando">Comando Municipal</option>
+                        <option id="comando_check" value="comando_municipal">Comando Municipal</option>
                     </select>
                 </div>
 
