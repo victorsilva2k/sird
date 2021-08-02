@@ -1,6 +1,6 @@
 <?php
 
-class ComandoModel extends Model{
+class ComandoMunicipalModel extends Model{
     public function Index()
     {
         if(Controller::verificarLugar(3)) {
@@ -44,7 +44,7 @@ class ComandoModel extends Model{
             try {
                 $this->beginTransaction();
 
-                // Alterando os dados de localização do comando municipal
+                // Alterando os dados de localização do comandosmunicipais municipal
                 $this->query("UPDATE comando_municipal_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA  WHERE id_cm = :ID_CM");
 
                 $this->bind(':DISTRITO', $editarComandoDistrito);
@@ -71,7 +71,7 @@ class ComandoModel extends Model{
             if ($this->rowCounte() >= 1) {
                 //Redirect  
                 Messages::setMessage("Edição feita com sucesso", "success");
-                header('Location: ' . ROOT_URL . 'comando');
+                header('Location: ' . ROOT_URL . 'comandosmunicipais');
             }
             
         }

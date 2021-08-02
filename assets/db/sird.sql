@@ -56,7 +56,7 @@ VALUES
 (1,
 1);
 
--- Adicionando agente a um comando municipal
+-- Adicionando agente a um comandosmunicipais municipal
 
 INSERT INTO `sird-db`.`agente_comando_municipal`
 (`id_agente`,
@@ -868,7 +868,7 @@ SELECT acp.id_comando_provincial, acp.cargo, acp.id_comando_provincial
                                         WHERE ac.id_agente =25;
 
 
--- Ver postos por comando municipal
+-- Ver postos por comandosmunicipais municipal
 
 SELECT p.id_posto, p.tipo, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
 FROM posto p 
@@ -898,7 +898,7 @@ WHERE  p.id_comando_municipal = 1;
                         
 SELECT * FROM `sird-db`.listar_postos;
 
--- Ver postos por comando provincial
+-- Ver postos por comandosmunicipais provincial
 
 SELECT p.id_posto, p.tipo, p.nome, pl.distrito, b.bairro, pl.rua, cml.municipio
 FROM posto p 
@@ -933,7 +933,7 @@ WHERE p.estado_actividade = 1 AND cm.comando_provincial = 1;
 
 SET FOREIGN_KEY_CHECKS=0;
 
--- ver comando provincial
+-- ver comandosmunicipais provincial
 
 CREATE VIEW comando_provincial_informacao AS SELECT p.provincia, m.municipio, d.distrito, b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  FROM comando_provincial_localizacao cpl JOIN comando_provincial cp
 ON cp.id_comando_provincial = cpl.id_cp
@@ -973,7 +973,7 @@ VALUES
 3);
 
 
--- ver comando municipais por comando provincial
+-- ver comandosmunicipais municipais por comandosmunicipais provincial
 
 SELECT cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
     FROM `comando_municipal` `cm`

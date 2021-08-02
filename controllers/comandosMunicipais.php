@@ -1,17 +1,17 @@
 <?php
 
-class Comando extends Controller{
+class ComandoMunicipal extends Controller{
     protected function Index()
     {
         $this->verificarNivel(1);
-        $viewmodel = new ComandoModel();
+        $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->mostrarComando(), true);
     }
 
     protected function Editar()
     {
         $this->verificarNivel(2);
-        $viewmodel = new ComandoModel();
+        $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->Editar($this->param), true);
     }
 }

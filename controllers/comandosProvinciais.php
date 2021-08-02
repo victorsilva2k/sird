@@ -11,7 +11,7 @@ class ComandosProvinciais extends Controller{
     protected function Editar()
     {
         $this->verificarNivel(2);
-        $viewmodel = new ComandoModel();
+        $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->Editar($this->param), true);
     }
 }

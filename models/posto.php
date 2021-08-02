@@ -343,7 +343,7 @@ class PostoModel extends Model{
                 $this->bind(':ID_POSTO', $id_posto);
                 $this->execute();
 
-                // TODO ao eliminar um posto todos os documentos desse posto passam para o comando municipal
+                // TODO ao eliminar um posto todos os documentos desse posto passam para o comandosmunicipais municipal
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
