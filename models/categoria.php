@@ -145,7 +145,7 @@ class CategoriaModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
 
             }
             //Verify

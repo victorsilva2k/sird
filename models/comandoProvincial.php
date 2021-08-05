@@ -19,24 +19,121 @@ class ComandoProvincialModel extends Model{
             $row['comando_provincial'] = $this->resultSet();
 
 
-            $this->query("SELECT cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+            $this->query("SELECT cm.id_comando_municipal id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
                         FROM `comando_municipal` `cm`
                         JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
                         JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :ID_CP;");
-            $this->bind(':ID_CP', $_SESSION['usuario_local']['id_local']);
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :ID_CM;");
+            $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
             $row['comando_municipal'] = $this->resultSet();
             return $row;
 
 
     }
-    public function mostrarComando()
+
+    public function adicionar()
     {
-        $this->query('SELECT * FROM comando_municipal_informacao;');
-        $row = $this->resultSet();
+
+
+
+
+        //Limpando POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // INSERT MySQL
+
+        if (isset($post['submit'])) {
+
+            extract($post);
+
+            // Caso o utizador não escrever ou deixar em branco um dos campos
+            if ($adicionarPostoNome == '' || $adicionarPostoRua == '') {
+                Messages::setMessage("Por favor preencha todos os campos", "error");
+                return;
+            }
+
+
+            try {
+                $this->beginTransaction();
+
+                // Alterando os dados do posto
+                $this->query("INSERT INTO `sird-db`.`posto`
+                                        (`id_posto`,
+                                        `id_comando_municipal`,
+                                        `tipo`,
+                                        `nome`,
+                                        `data_criacao`,
+                                        `estado_actividade`)
+                                        VALUES
+                                        (null,
+                                        :ID_CM,
+                                        :TIPO,
+                                        :NOME,
+                                        CURRENT_TIMESTAMP,
+                                        1)");
+
+                $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
+                $this->bind(':TIPO', $adicionarPostoTipo);
+                $this->bind(':NOME', $adicionarPostoNome);
+                $this->execute();
+
+                $id_posto = $this->lastInsertId();
+
+                // Alterando os dados de localização do posto
+                $this->query("INSERT INTO `sird-db`.`posto_localizacao`
+                                        (`id_posto`,
+                                        `distrito`,
+                                        `bairro`,
+                                        `rua`)
+                                        VALUES
+                                        (:ID_POSTO,
+                                        :DISTRITO,
+                                        :BAIRRO,
+                                        :RUA)");
+
+                $this->bind(':DISTRITO', $adicionarPostoDistrito);
+                $this->bind(':BAIRRO', $adicionarPostoBairro);
+                $this->bind(':RUA', $adicionarPostoRua);
+                $this->bind(':ID_POSTO', $id_posto);
+                $this->execute();
+
+                // Registrando a alteração
+                $this->query("INSERT INTO `sird-db`.`operacao_posto` (`id_operacao`, `id_agente`, `id_posto`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_POSTO, 1, CURRENT_TIMESTAMP);");
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                $this->bind(':ID_POSTO', $id_posto);
+                $this->execute();
+
+                $this->commit();
+                if ($this->rowCounte() >= 1) {
+                    //Redirect
+                    Messages::setMessage("Posto adicionado com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'postos');
+                }
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+
+            }
+            //Verify
+
+
+
+        }
+        // Pegando dados dos bairros
+        $this->query('select * from bairro;');
+        $row["bairros"] = $this->resultSet();
+
+        // Pegando dados dos distritos
+        $this->query('select * from distrito');
+        $row['distritos'] = $this->resultSet();
         return $row;
+
+
+
+
     }
+
     public function Editar()
     {
           

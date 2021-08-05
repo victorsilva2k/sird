@@ -16,7 +16,7 @@
                         <select class="caixa-info__input input--text" name="editarComandoDistrito">
                             <?php foreach($viewmodel["distritos"] as $item) : extract($item);?>
                                 <option  value="<?php echo $id_distrito?>"><?php echo $distrito?></option>
-                            <?php endforeach;?>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -33,7 +33,13 @@
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Rua</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="editarComandoRua" value="<?php echo $rua?>" id="">
+                    <input  type="text" class="caixa-info__input input--text" placeholder="<?php echo $rua?>" name="editarComandoRua" minlength="1" maxlength="39" value="<?php echo $rua?>" id="">
+                </div>
+            </div>
+            <div class="caixa-info__item">
+                <div class="caixa-info__cabecalho"><h3 >Terminal</h3></div>
+                <div class="caixa-info__descricao  ">
+                    <input  type="text" class="caixa-info__input input--text" placeholder="<?php echo $terminal?>" name="editarComandoTerminal" maxlength="20" minlength="6" value="<?php echo $rua?>" id="">
                 </div>
             </div>
             <button type="submit" name="submit" class="caixa-info__botao  btn btn-success mgt-10 ">Guardar alterações</button>

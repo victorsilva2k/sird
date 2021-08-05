@@ -68,11 +68,11 @@
                         <td><?php echo $provincia?></td>
                         <td><?php echo $terminal?></td>
                         <td>
-                            <a href="<?php echo ROOT_URL; ?>comandomunicipal/ver/<?php echo $id_cm?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/ver/<?php echo $id_cm?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
  
-                            <a href="<?php echo ROOT_URL; ?>comandomunicipal/editar/<?php echo $id_cm?>" class="center-t btn btn-primary mb-4 ">Editar</a>
-                            
-                            <a href="<?php echo ROOT_URL; ?>comandomunicipal/eliminar/<?php echo $id_cm?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/editar/<?php echo $id_cm?>" class="center-t btn btn-primary mb-4 ">Editar</a>
+
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/eliminar/<?php echo $id_cm?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
 
                         </td>
                     </tr>
@@ -80,9 +80,9 @@
                 <?php endforeach;?>
 
                 </tbody>
-            </table> 
+            </table>
                     <div class="btn-groupo">
-                        <a href="<?php echo ROOT_URL; ?>comandomunicipal/adicionar" class="center-t btn btn-primary mb-4 ">Adicionar comando municipal</a>
+                        <a href="<?php echo ROOT_URL; ?>comandosmunicipais/adicionar" class="center-t btn btn-primary mb-4 ">Adicionar comando municipal</a>
 
                     </div>
                 </div>

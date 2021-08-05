@@ -975,7 +975,7 @@ VALUES
 
 -- ver comandosmunicipais municipais por comandosmunicipais provincial
 
-SELECT cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+SELECT cm.id_comando_municipal id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
     FROM `comando_municipal` `cm`
         JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
@@ -983,7 +983,20 @@ SELECT cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.te
         JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = 2;
 
 
+-- adicionar novo comando municipal
 
+INSERT INTO comando_municipal VALUES(NULL, current_timestamp(), 2, "923456456");
+INSERT INTO comando_municipal_localizacao VALUES(last_insert_id(), 7, 9, 6, 8, "4");
+
+-- ver comando municipal
+
+SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        JOIN distrito d ON cml.distrito = d.id_distrito
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
 
 
 

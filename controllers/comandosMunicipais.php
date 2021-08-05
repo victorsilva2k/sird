@@ -1,17 +1,32 @@
 <?php
 
-class ComandoMunicipal extends Controller{
+class ComandosMunicipais extends Controller{
     protected function Index()
     {
         $this->verificarNivel(1);
         $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->mostrarComando(), true);
     }
-
+    
     protected function Editar()
     {
         $this->verificarNivel(2);
         $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->Editar($this->param), true);
     }
+    protected function ver()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new ComandoMunicipalModel();
+        $this->returnView($viewmodel->ver($this->param), true);
+    }
+
+    protected function adicionar()
+    {
+        $this->verificarNivel(3);
+        $viewmodel = new ComandoMunicipalModel();
+        $this->returnView($viewmodel->adicionar(), true);
+    }
 }
+
+
