@@ -999,8 +999,97 @@ SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.ba
                         JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
 
 
+-- Criar comando nacional
 
 
+CREATE TABLE `comando_nacional` (
+  `id_comando_nacional` tinyint NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(70) NOT NULL,
+  `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_comando_nacional`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `comando_nacional_localizacao` (
+  `fk_id_cn` tinyint NOT NULL,
+  `provincia` mediumint NOT NULL,
+  `municipio` mediumint NOT NULL,
+  `distrito` mediumint NOT NULL,
+  `bairro` smallint NOT NULL,
+  `rua` varchar(40) DEFAULT NULL,
+  KEY `id_cn_idx` (`fk_id_cn`),
+  CONSTRAINT `id_cn-cnl` FOREIGN KEY (`fk_id_cn`) REFERENCES `comando_nacional` (`id_comando_nacional`),
+  KEY `distrito_idx` (`distrito`),
+  CONSTRAINT `distrito-cnl` FOREIGN KEY (`distrito`) REFERENCES `distrito` (`id_distrito`),
+  KEY `bairro_idx` (`bairro`),
+  CONSTRAINT `bairro-cnl` FOREIGN KEY (`bairro`) REFERENCES `bairro` (`id_bairro`),
+  KEY `municipio_idx` (`municipio`),
+  CONSTRAINT `municipio-cnl` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`id_municipio`),
+  KEY `provincia_idx` (`provincia`),
+  CONSTRAINT `provincia-cnl` FOREIGN KEY (`provincia`) REFERENCES `provincia` (`id_provincia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `agente_comando_nacional` (
+  `id_agente` int NOT NULL,
+  `id_comando_nacional` tinyint NOT NULL,
+  `cargo` tinyint NOT NULL DEFAULT '1',
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_comando_nacional_idx` (`id_comando_nacional`),
+  CONSTRAINT `id_agente-acn` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_comando_nacional-acn` FOREIGN KEY (`id_comando_nacional`) REFERENCES `comando_nacional` (`id_comando_nacional`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Inserir localização no comando nacional
+
+INSERT INTO `sird-db`.`comando_nacional_localizacao`
+(`fk_id_cn`,
+`provincia`,
+`municipio`,
+`distrito`,
+`bairro`,
+`rua`)
+VALUES
+(2,
+7,
+7,
+7,
+10,
+1);
+
+-- Inserir agentes no comando nacional
+
+INSERT INTO `sird-db`.`agente_comando_nacional`
+(`id_agente`,
+`id_comando_nacional`,
+`cargo`)
+VALUES
+(26,
+2,
+DEFAULT);
+
+SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  
+            FROM comando_provincial_localizacao cpl 
+            JOIN comando_provincial cp
+                    ON cp.id_comando_provincial = cpl.id_cp
+                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+                            WHERE cp.id_comando_provincial = 2;
+
+
+-- Rever Comando Municipal
+
+SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        JOIN distrito d ON cml.distrito = d.id_distrito
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
 
 
 

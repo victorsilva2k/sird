@@ -3,9 +3,9 @@
 class ComandosMunicipais extends Controller{
     protected function Index()
     {
-        $this->verificarNivel(1);
+        $this->verificarNivel(2);
         $viewmodel = new ComandoMunicipalModel();
-        $this->returnView($viewmodel->mostrarComando(), true);
+        $this->returnView($viewmodel->index(), true);
     }
     
     protected function Editar()

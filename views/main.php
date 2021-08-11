@@ -81,21 +81,33 @@
                                 </a>
                             </li>
                         <?php endif;?>
+                        <?php  if(Controller::verificarLugar(2, true)): ?>
                         <li class="navegacao-lateral__item" id="comando_nav">
-                            <a href="<?php echo ROOT_URL; ?>comando" class="navegacao-lateral__link">
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
                                     <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
                                 </svg>
                                 <span>Comando Municipal</span>
                             </a>
                         </li>
-                        <?php  if(Controller::verificarLugar(3)): ?>
+                        <?php endif;?>
+                        <?php  if(Controller::verificarLugar(3, true)): ?>
                             <li class="navegacao-lateral__item" id="agentes_nav">
                                 <a href="<?php echo ROOT_URL; ?>comandosprovinciais" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
                                     </svg>
                                     <span>Comando Provincial</span>
+                                </a>
+                            </li>
+                        <?php endif;?>
+                        <?php  if(Controller::verificarLugar(4)): ?>
+                            <li class="navegacao-lateral__item" id="agentes_nav">
+                                <a href="<?php echo ROOT_URL; ?>comandosnacionais" class="navegacao-lateral__link">
+                                    <svg class="navegacao-lateral__icone">
+                                        <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
+                                    </svg>
+                                    <span>Comando Nacional</span>
                                 </a>
                             </li>
                         <?php endif;?>

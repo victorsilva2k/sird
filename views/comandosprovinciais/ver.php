@@ -4,11 +4,16 @@
         background-color: var(--color-grey-light-4);
     }
 </style>
-    <div class="caixa-info br-25">
-        <div class="caixa-info__titulo">
-            <p>Informações do Comando Provincial</p>
-        </div>
-            <?php foreach($viewmodel as $item) : extract($item);?>
+<div class="bairros content-div br-25 mgb-20">
+<?php foreach($viewmodel['comando_provincial'] as $item) : extract($item);?>
+                <div class="content-div__cima">
+
+                    <h1 class="titulo--normal content-div__titulo">Comando Provincial de <?php echo $nome_cp?></h1>
+                </div>
+
+
+            
+            <div class="content-div__baixo">
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Nome</h3></div>
                 <div class="caixa-info__descricao"><p >Comando Provincial de <?php echo $nome_cp?></p></div>
@@ -18,34 +23,69 @@
                 <div class="caixa-info__descricao"><p ><?php echo $provincia?></p></div>
             </div>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Município</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $municipio?></p></div>
+                <div class="caixa-info__cabecalho"><h3 >Endereço</h3></div>
+                <div class="caixa-info__descricao"><p ><?php echo "$municipio, $distrito, $bairro, $rua"?></p></div>
             </div>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Distrito</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $distrito?></p></div>
+                <div class="caixa-info__cabecalho"><h3 >Terminal</h3></div>
+                <div class="caixa-info__descricao"><p ><?php echo $terminal?></p></div>
             </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Bairro</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $bairro?></p></div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Rua</h3></div>
-                <div class="caixa-info__descricao"><p ><?php echo $rua?></p></div>
-            </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Data de Criação</h3></div>
-                <div class="caixa-info__descricao"><p><?php echo $this->tratarData($data_criacao, true)?></p></div>
-            </div>
+
+</div>
             <?php endforeach;?>
-           
-            
-        
-        
-        
+      
         
     </div>
+    
 
-    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando_municipal"): ?>
-    <a href="<?php echo ROOT_URL?>comando/editar" class="  btn btn-success mgt-10 ">Editar</a>
-    <?php endif;?>
+    <!-- COMANDOS MUNICIPAIS -->
+
+    <div class="bairros content-div br-25">
+                <div class="content-div__cima">
+
+
+                    <h1 class="titulo--normal content-div__titulo">Comandos Municipais</h1>
+                </div>
+
+                <div class="content-div__baixo">
+
+                <table class="tabela tabela-striped">
+                <thead>
+                <tr>
+
+                    <th scope="col">Nome</th>
+                    <th scope="col">Província</th>
+                    <th scope="col">Terminal</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($viewmodel['comando_municipal'] as $item) : extract($item);?>
+
+                    <tr>
+
+                        <td><?php echo $municipio?></td>
+                        <td><?php echo $provincia?></td>
+                        <td><?php echo $terminal?></td>
+                        <td>
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/ver/<?php echo $id_cm?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
+ 
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/editar/<?php echo $id_cm?>" class="center-t btn btn-primary mb-4 ">Editar</a>
+
+                            <a href="<?php echo ROOT_URL; ?>comandosmunicipais/eliminar/<?php echo $id_cm?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+
+                        </td>
+                    </tr>
+
+                <?php endforeach;?>
+
+                </tbody>
+            </table>
+                    <div class="btn-groupo">
+                        <a href="<?php echo ROOT_URL; ?>comandosmunicipais/adicionar" class="center-t btn btn-primary mb-4 ">Adicionar comando municipal</a>
+
+                    </div>
+                </div>
+            </div>
+ 
+

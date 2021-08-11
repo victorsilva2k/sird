@@ -596,7 +596,7 @@ class AgenteModel extends Model{
                             $_SESSION['usuario_local'] = array(
                                 "id_local"    => $id_cm,
                                 "cargo" => $cargo,
-                                "tipo_local" => "comando_municipal"
+                                "tipo_local" => "comando_nacional"
                             );
                         }
                         

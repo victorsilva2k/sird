@@ -3,23 +3,24 @@
 class ComandoMunicipalModel extends Model{
     public function Index()
     {
-        if(Controller::verificarLugar(3)) {
-            // TODO
-            $this->query('select * from listar_comandos;');
-            $row = $this->resultSet();
-            return $row;
-        } else {
-          $this->query('SELECT * FROM comando_municipal_informacao;');
-            $row = $this->resultSet();
-            return $row;  
-        }
+        if(Controller::verificarLugar(2, true)) {
+        $this->query("SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        JOIN distrito d ON cml.distrito = d.id_distrito
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = :ID_CM;");
+        $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
         
-    }
-    public function mostrarComando()
-    {
-        $this->query('SELECT * FROM comando_municipal_informacao;');
         $row = $this->resultSet();
         return $row;
+
+        } else {
+            header('Location: ' . ROOT_URL . 'comandosprovinciais');
+
+        }
+        
     }
 
     public function ver($id_cm)
@@ -32,7 +33,15 @@ class ComandoMunicipalModel extends Model{
                         JOIN distrito d ON cml.distrito = d.id_distrito
                         JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = :ID_CM;");
         $this->bind(':ID_CM', $id_cm);
-        $row = $this->resultSet();
+        $row['comando_municipal'] = $this->resultSet();
+
+        $this->query('SELECT ocm.tipo, ocm.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_municipal ocm 
+                        JOIN agente a ON a.id_agente = ocm.id_agente
+                        WHERE id_cm = :ID_CM ORDER BY data DESC');
+        $this->bind(':ID_CM', $id_cm);
+
+        $row["alteracoes"] = $this->resultSet();
         return $row;
     }
 
@@ -49,7 +58,7 @@ class ComandoMunicipalModel extends Model{
         if (isset($post['submit'])) {
 
             extract($post);
-            var_dump($_SESSION['usuario_local']['id_local']);
+            
 
    
             // Caso o utizador não escrever ou deixar em branco um dos campos
@@ -101,7 +110,7 @@ class ComandoMunicipalModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
 
             }
             //Verify
@@ -131,7 +140,7 @@ class ComandoMunicipalModel extends Model{
 
     }
 
-    public function Editar()
+    public function Editar($comando_municipal_id)
     {
           
 
@@ -160,20 +169,27 @@ class ComandoMunicipalModel extends Model{
                 $this->bind(':DISTRITO', $editarComandoDistrito);
                 $this->bind(':BAIRRO', $editarComandoBairro);
                 $this->bind(':RUA', $editarComandoRua);
-                $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
+                $this->bind(':ID_CM', $comando_municipal_id);
                 $this->execute();
 
+                // Alterando o terminal do comando municipal
+                $this->query("UPDATE comando_municipal SET terminal = :TERMINAL  WHERE id_comando_municipal = :ID_CM");
+
+                $this->bind(':TERMINAL', $editarComandoTerminal );
+                $this->bind(':ID_CM', $comando_municipal_id);
+                $this->execute();
+                
                 // Registrando a alteração
                 $this->query("INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 2, CURRENT_TIMESTAMP);");
                 $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
+                $this->bind(':ID_CM', $comando_municipal_id);
                 $this->execute();
 
                 $this->commit();
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
 
             }
             //Verify
@@ -185,7 +201,16 @@ class ComandoMunicipalModel extends Model{
             }
             
         }
-        $this->query('SELECT * FROM comando_municipal_informacao;');
+
+
+        $this->query("SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.id_distrito, d.distrito, b.bairro, b.id_bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        JOIN distrito d ON cml.distrito = d.id_distrito
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = :ID_CM;");
+        $this->bind(':ID_CM', $comando_municipal_id);
         $row["comando_municipal"] = $this->resultSet();
 
         $this->query('select * from distrito');

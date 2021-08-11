@@ -5,10 +5,10 @@
     }
 </style>
 <div class="bairros content-div br-25 mgb-20">
-    <?php foreach($viewmodel['comando_provincial'] as $item) : extract($item);?>
+    <?php foreach($viewmodel as $item) : extract($item);?>
         <div class="content-div__cima">
 
-            <h1 class="titulo--normal content-div__titulo">Comando Provincial de <?php echo $nome_cp?></h1>
+            <h1 class="titulo--normal content-div__titulo">Comando Municipal de <?php echo $municipio?></h1>
         </div>
 
 
@@ -37,6 +37,9 @@
 
 </div>
 
-    <?php if($_SESSION['usuario_local']['tipo_local'] === "comando_municipal"): ?>
-    <a href="<?php echo ROOT_URL?>comando/editar" class="  btn btn-success mgt-10 ">Editar</a>
+<?php if(Controller::verificarLugar(3)): ?>
+    <a href="<?php echo ROOT_URL?>comandosmunicipais/editar/<?php echo $id_cm?>" class="  btn btn-success mgt-10 ">Editar</a>
+    <a href="<?php echo ROOT_URL; ?>comandosprovinciais/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
+    
+    
     <?php endif;?>

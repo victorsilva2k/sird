@@ -47,7 +47,7 @@ abstract class Controller{
         }
     }
 
-    public static function verificarLugar($nivel){
+    public static function verificarLugar($nivel, $uni = NULL){
 
         if (isset($_SESSION['usuario_local'])) {
             switch ($_SESSION['usuario_local']['tipo_local']) {
@@ -66,11 +66,22 @@ abstract class Controller{
                 default:
                     $nivel_num = 0;
             }
-            if (($nivel_num >= $nivel)) {
-                return true;
-        } else {
-            return false;
-        }
+            if ($uni == false) {
+                if (($nivel_num >= $nivel)) {
+                    return true;
+                    
+                } else {
+                    return false;
+                }
+            
+            }else {
+                if (($nivel_num === $nivel)) {
+                    return true;
+                    
+                } else {
+                    return false;
+                }
+            }
     }
 }
     public function verificarParametro(){
