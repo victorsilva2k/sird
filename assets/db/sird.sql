@@ -996,7 +996,7 @@ SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.ba
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
                         JOIN municipio m ON cml.municipio = m.id_municipio
                         JOIN distrito d ON cml.distrito = d.id_distrito
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial= 2;
 
 
 -- Criar comando nacional
@@ -1119,6 +1119,20 @@ VALUES
 9,
 12,
 7);
+-- Criar Operação Comando Provincial
+
+CREATE TABLE `operacao_comando_provincial` (
+  `id_operacao` mediumint NOT NULL AUTO_INCREMENT,
+  `id_agente` int NOT NULL,
+  `id_cp` tinyint NOT NULL,
+  `tipo` tinyint NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_operacao`),
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_cp-ocp_idx` (`id_cp`),
+  CONSTRAINT `id_agente-opcp` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_cp-opcp` FOREIGN KEY (`id_cp`) REFERENCES `comando_provincial` (`id_comando_provincial`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- Ver Comando Nacional
 

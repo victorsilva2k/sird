@@ -1,66 +1,37 @@
 <?php
 
-class ComandoProvincialModel extends Model{
+class ComandoNacionalModel extends Model{
     public function Index()
     {
      
             // TODO
             $this->query("SELECT p.provincia, m.municipio, d.distrito, 
-            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  
+            b.bairro, cnl.rua, cn.terminal  
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            ");
+            $row['comando_nacional'] = $this->resultSet();
+
+
+            $this->query("SELECT p.provincia,  cp.nome as 'nome_cp', cp.terminal  
             FROM comando_provincial_localizacao cpl 
             JOIN comando_provincial cp
                     ON cp.id_comando_provincial = cpl.id_cp
                             JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
                             JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
                             JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
-                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
-                            WHERE cp.id_comando_provincial = :ID_CP;");
-            $this->bind(':ID_CP', $_SESSION['usuario_local']['id_local']);
-            $row['comando_provincial'] = $this->resultSet();
-
-
-            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal
-                        FROM `comando_municipal` `cm`
-                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
-                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
-                        JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :IDCP;");
-            $this->bind(':IDCP', $_SESSION['usuario_local']['id_local']);
-            $row['comando_municipal'] = $this->resultSet();
-            return $row;
-
-
-    }
-    public function ver()
-    {
-     
-            // TODO
-            $this->query("SELECT p.provincia, m.municipio, d.distrito, 
-            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  
-            FROM comando_provincial_localizacao cpl 
-            JOIN comando_provincial cp
-                    ON cp.id_comando_provincial = cpl.id_cp
-                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
-                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
-                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
-                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
-                            WHERE cp.id_comando_provincial = :ID_CP;");
-            $this->bind(':ID_CP', $_SESSION['usuario_local']['id_local']);
-            $row['comando_provincial'] = $this->resultSet();
-
-
-            $this->query("SELECT cm.id_comando_provincial id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_provincial, cm.terminal
-                        FROM `comando_provincial` `cm`
-                        JOIN `comando_provincial_localizacao` `cml` ON `cm`.`id_comando_provincial` = `cml`.`id_cm`
-                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
-                        JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :ID_CM;");
-            $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`;");
             $row['comando_provincial'] = $this->resultSet();
             return $row;
 
 
     }
+    
     
 
     public function adicionar()

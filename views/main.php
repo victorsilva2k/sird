@@ -103,7 +103,7 @@
                         <?php endif;?>
                         <?php  if(Controller::verificarLugar(4)): ?>
                             <li class="navegacao-lateral__item" id="agentes_nav">
-                                <a href="<?php echo ROOT_URL; ?>comandosnacionais" class="navegacao-lateral__link">
+                                <a href="<?php echo ROOT_URL; ?>comandonacional" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
                                     </svg>
