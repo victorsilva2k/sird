@@ -1091,6 +1091,37 @@ SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.ba
                         JOIN distrito d ON cml.distrito = d.id_distrito
                         JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
 
+-- Inserindo Comando Provincial
+
+INSERT INTO `sird-db`.`comando_provincial`
+(`id_comando_provincial`,
+`nome`,
+`data_criacao`,
+`terminal`)
+VALUES
+(NULL,
+'Lubango',
+DEFAULT,
+'923556677');
+
+
+INSERT INTO `sird-db`.`comando_provincial_localizacao`
+(`id_cp`,
+`provincia`,
+`municipio`,
+`distrito`,
+`bairro`,
+`rua`)
+VALUES
+(last_insert_id(),
+8,
+10,
+9,
+12,
+7);
+
+-- Ver Comando Nacional
+
 
 
 

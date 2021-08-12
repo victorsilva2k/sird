@@ -19,14 +19,14 @@ class ComandoProvincialModel extends Model{
             $row['comando_provincial'] = $this->resultSet();
 
 
-            $this->query("SELECT cm.id_comando_provincial id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_provincial, cm.terminal
-                        FROM `comando_provincial` `cm`
-                        JOIN `comando_provincial_localizacao` `cml` ON `cm`.`id_comando_provincial` = `cml`.`id_cm`
+            $this->query("SELECT cm.id_comando_municipal id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
                         JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :ID_CM;");
-            $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
-            $row['comando_provincial'] = $this->resultSet();
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :IDCP;");
+            $this->bind(':IDCP', $_SESSION['usuario_local']['id_local']);
+            $row['comando_municipal'] = $this->resultSet();
             return $row;
 
 
@@ -76,7 +76,6 @@ class ComandoProvincialModel extends Model{
         if (isset($post['submit'])) {
 
             extract($post);
-            var_dump($_SESSION['usuario_local']['id_local']);
 
    
             // Caso o utizador não escrever ou deixar em branco um dos campos
@@ -90,14 +89,12 @@ class ComandoProvincialModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query('INSERT INTO comando_provincial VALUES(NULL, DEFAULT, :IDCP, :TERMINAL_CP)');
-                $this->bind('IDCP', $_SESSION['usuario_local']['id_local']);
+                $this->query('INSERT INTO comando_provincial VALUES(NULL,:NOME, DEFAULT,  :TERMINAL_CP)');
+                $this->bind('NOME', $adicionarComandoPNome);
                 $this->bind('TERMINAL_CP', $adicionarComandoPTerminal);
                 $this->execute();
 
                 $id_comando_provincial = $this->lastInsertId();
-
-                var_dump($id_comando_provincial);
 
                 // Alterando os dados de localização do posto
                 $this->query("INSERT INTO comando_provincial_localizacao VALUES(:ID_CM, 
@@ -110,7 +107,7 @@ class ComandoProvincialModel extends Model{
                 $this->bind(':DISTRITO', $adicionarComandoPDistrito);
                 $this->bind(':BAIRRO', $adicionarComandoPBairro);
                 $this->bind(':RUA', $adicionarComandoPRua);
-                $this->bind(':ID_CM', $id_comando_provincial);
+                $this->bind(':ID_CP', $id_comando_provincial);
                 $this->execute();
 
                 // Registrando a alteração

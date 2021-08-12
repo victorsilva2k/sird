@@ -79,8 +79,6 @@ class ComandoMunicipalModel extends Model{
 
                 $id_comando_municipal = $this->lastInsertId();
 
-                var_dump($id_comando_municipal);
-
                 // Alterando os dados de localização do posto
                 $this->query("INSERT INTO comando_municipal_localizacao VALUES(:ID_CM, 
                                                                                     :PROVINCIA, :MUNICIPIO, 
