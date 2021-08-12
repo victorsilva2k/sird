@@ -18,7 +18,7 @@ class ComandoNacionalModel extends Model{
             $row['comando_nacional'] = $this->resultSet();
 
 
-            $this->query("SELECT p.provincia,  cp.nome as 'nome_cp', cp.terminal  
+            $this->query("SELECT p.provincia,  cp.nome as 'nome_cp', cp.id_comando_provincial as id_cp, cp.terminal  
             FROM comando_provincial_localizacao cpl 
             JOIN comando_provincial cp
                     ON cp.id_comando_provincial = cpl.id_cp

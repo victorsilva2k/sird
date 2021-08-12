@@ -31,8 +31,10 @@ class ComandoProvincialModel extends Model{
 
 
     }
-    public function ver()
+    public function ver($comando_provincial_id)
     {
+     
+            // TODO
      
             // TODO
             $this->query("SELECT p.provincia, m.municipio, d.distrito, 
@@ -45,20 +47,19 @@ class ComandoProvincialModel extends Model{
                             JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
                             JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
                             WHERE cp.id_comando_provincial = :ID_CP;");
-            $this->bind(':ID_CP', $_SESSION['usuario_local']['id_local']);
+            $this->bind(':ID_CP', $comando_provincial_id);
             $row['comando_provincial'] = $this->resultSet();
 
 
-            $this->query("SELECT cm.id_comando_provincial id_cm, cm.data_criacao, p.provincia, m.municipio, cm.id_comando_provincial, cm.terminal
-                        FROM `comando_provincial` `cm`
-                        JOIN `comando_provincial_localizacao` `cml` ON `cm`.`id_comando_provincial` = `cml`.`id_cm`
+            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
                         JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :ID_CM;");
-            $this->bind(':ID_CM', $_SESSION['usuario_local']['id_local']);
-            $row['comando_provincial'] = $this->resultSet();
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.comando_provincial = :IDCP;");
+            $this->bind(':IDCP', $comando_provincial_id);
+            $row['comando_municipal'] = $this->resultSet();
             return $row;
-
 
     }
     
