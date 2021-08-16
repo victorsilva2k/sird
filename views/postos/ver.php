@@ -45,6 +45,11 @@
                     <div class="caixa-info__descricao"><p ><?php echo $this->tratarData($data_criacao, true)?></p></div>
 
                 </div>
+                <div class="caixa-info__item">
+                    <div class="caixa-info__cabecalho"><h3 >Terminal</h3></div>
+                    <div class="caixa-info__descricao"><p ><?php echo $terminal?></p></div>
+
+                </div>
 
             <?php endforeach;?>
 

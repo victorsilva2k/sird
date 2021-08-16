@@ -14,10 +14,7 @@
 
 
         <div class="content-div__baixo">
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Nome</h3></div>
-                <div class="caixa-info__descricao"><p >Comando Provincial de <?php echo $nome_cp?></p></div>
-            </div>
+
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Província</h3></div>
                 <div class="caixa-info__descricao"><p ><?php echo $provincia?></p></div>
@@ -34,7 +31,6 @@
         </div>
 
 
-
     </div>
     <a href="<?php echo ROOT_URL; ?>comandosprovinciais/editar/<?php echo $id_cp?>" class="mgb-20 center-t btn btn-success mb-4 ">Editar</a>
 
@@ -45,7 +41,7 @@
 <?php if(Controller::verificarLugar(4)): ?>
 
 
-        <a href="<?php echo ROOT_URL; ?>comandonacional/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
+    <a href="<?php echo ROOT_URL; ?>comandonacional/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
 
     <div class="alteracoes-documento registro-alteracoes">
         <h1 class="titulo--normal">Registro de Alterações</h1>

@@ -1191,8 +1191,51 @@ CREATE TABLE `operacao_comando_nacional` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 
+-- Editar comando nacional
+
+SELECT p.provincia, m.municipio, d.distrito, d.id_distrito, b.id_bairro, p.id_provincia, m.id_municipio,
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn  
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            WHERE cn.id_comando_nacional = 2;
 
 
+-- ver registros de alterações comando provincial
+
+SELECT ocp.tipo, ocp.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_provincial ocp 
+                        JOIN agente a ON a.id_agente = ocp.id_agente
+                        WHERE id_cp = 2 ORDER BY data DESC;
+
+SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal, cp.id_comando_provincial as id_cp  
+            FROM comando_provincial_localizacao cpl 
+            JOIN comando_provincial cp
+                    ON cp.id_comando_provincial = cpl.id_cp
+                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+                            WHERE cp.id_comando_provincial = 2;
+-- ver registros de alterações do comando provincial
+
+SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn   
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            WHERE cn.id_comando_nacional = 2;
+                            
+-- editar terminal de posto
 
 
 
