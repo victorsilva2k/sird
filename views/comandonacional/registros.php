@@ -32,7 +32,7 @@
 
 
     </div>
-    <a href="<?php echo ROOT_URL; ?>comandosprovinciais/editar/<?php echo $id_cp?>" class="mgb-20 center-t btn btn-success mb-4 ">Editar</a>
+    <a href="<?php echo ROOT_URL; ?>comandosprovinciais/editar/<?php echo $id_cn?>" class="mgb-20 center-t btn btn-success mb-4 ">Editar</a>
 
 <?php endforeach;?>
 <!-- Registros -->

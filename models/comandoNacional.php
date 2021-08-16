@@ -126,8 +126,33 @@ class ComandoNacionalModel extends Model{
 
     }
 
-    public function Registros($comando_nacional_id)
+    public function registros($comando_nacional_id)
     {
+
+        // TODO
+        $this->query("SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn   
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            WHERE cn.id_comando_nacional = :IDCN");
+        $this->bind(':IDCN', $comando_nacional_id);
+        $row['comando_nacional'] = $this->resultSet();
+
+
+        $this->query('SELECT ocn.tipo, ocn.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_nacional ocn 
+                        JOIN agente a ON a.id_agente = ocn.id_agente
+                        WHERE id_cn = :IDCN ORDER BY data DESC');
+        $this->bind(':IDCN', $comando_nacional_id);
+
+        $row["alteracoes"] = $this->resultSet();
+
+        return $row;
 
     }
 

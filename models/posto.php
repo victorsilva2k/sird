@@ -250,6 +250,16 @@ class PostoModel extends Model{
                 $this->bind(':NOME', $editarPostoNome);
                 $this->execute();
 
+                // Alterando os terminal do posto
+                $this->query("UPDATE `sird-db`.`posto`
+                                SET
+                                `terminal` = :TERMINAL
+                                WHERE id_posto = :ID_POSTO;");
+
+                $this->bind(':TERMINAL', $editarPostoTerminal);
+                $this->bind(':ID_POSTO', $id_posto);
+                $this->execute();
+
 
 
                 // Registrando a alteração

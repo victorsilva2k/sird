@@ -57,6 +57,12 @@
                 <input  type="text" class="caixa-info__input input--text" name="editarPostoRua" value="<?php echo $rua?>" placeholder="Ex: 1" required maxlength="39">
             </div>
         </div>
+        <div class="caixa-info__item">
+            <div class="caixa-info__cabecalho"><h3 >Terminal</h3></div>
+            <div class="caixa-info__descricao  ">
+                <input  type="text" class="caixa-info__input input--text" name="editarPostoTerminal" value="<?php echo $terminal?>" placeholder="Ex: 1" required maxlength="39">
+            </div>
+        </div>
 
         <button type="submit" name="submit" value="Editar" class="caixa-info__botao  btn btn-success mgt-10 ">Guardar alterações</button>
     <?php endforeach;?>
