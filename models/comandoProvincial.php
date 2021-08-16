@@ -38,7 +38,7 @@ class ComandoProvincialModel extends Model{
      
             // TODO
             $this->query("SELECT p.provincia, m.municipio, d.distrito, 
-            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal  
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal, cp.id_comando_provincial as id_cp  
             FROM comando_provincial_localizacao cpl 
             JOIN comando_provincial cp
                     ON cp.id_comando_provincial = cpl.id_cp
@@ -170,7 +170,7 @@ class ComandoProvincialModel extends Model{
 
             
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($editarComandoRua == '' || $editarComandoTerminal == '' ) {
+            if ($editarComandoPRua == '' || $editarComandoPTerminal == '' ) {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -179,38 +179,40 @@ class ComandoProvincialModel extends Model{
             try {
                 $this->beginTransaction();
 
-                // Alterando os dados de localização do comandosmunicipais municipal
-                $this->query("UPDATE comando_provincial_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA  WHERE id_cm = :ID_CM");
+                // Alterando os dados de localização do comando provincial
+                $this->query("UPDATE comando_provincial_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA, provincia = :PROVINCIA, municipio = :MUNICIPIO  WHERE id_cp = :IDCP");
 
-                $this->bind(':DISTRITO', $editarComandoDistrito);
-                $this->bind(':BAIRRO', $editarComandoBairro);
-                $this->bind(':RUA', $editarComandoRua);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':PROVINCIA', $editarComandoPProvincia);
+                $this->bind(':MUNICIPIO', $editarComandoPMunicipio);
+                $this->bind(':DISTRITO', $editarComandoPDistrito);
+                $this->bind(':BAIRRO', $editarComandoPBairro);
+                $this->bind(':RUA', $editarComandoPRua);
+                $this->bind(':IDCP', $comando_provincial_id);
                 $this->execute();
 
                 
-                // Alterando os terminal do comando municipal
+                // Alterando os terminal do comando provincial
                 $this->query("UPDATE `sird-db`.`comando_provincial`
                                 SET
                                 `terminal` = :TERMINAL
-                                WHERE id_comando_provincial = ID_CM;
+                                WHERE id_comando_provincial = :IDCP;
                                 ");
 
-                $this->bind(':TERMINAL', $editarComandoTerminal);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':TERMINAL', $editarComandoPTerminal);
+                $this->bind(':IDCP', $comando_provincial_id);
                 $this->execute();
                 
                 // Registrando a alteração
-                $this->query("INSERT INTO `sird-db`.`operacao_comando_provincial` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 2, CURRENT_TIMESTAMP);");
+                $this->query("INSERT INTO `sird-db`.`operacao_comando_provincial` (`id_operacao`, `id_agente`, `id_cp`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :IDCP, 2, CURRENT_TIMESTAMP);");
                 $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':IDCP', $comando_provincial_id);
                 $this->execute();
 
                 $this->commit();
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
 
             }
             //Verify
@@ -218,20 +220,29 @@ class ComandoProvincialModel extends Model{
             if ($this->rowCounte() >= 1) {
                 //Redirect  
                 Messages::setMessage("Edição feita com sucesso", "success");
-                header('Location: ' . ROOT_URL . 'comandosmunicipais');
+                header('Location: ' . ROOT_URL . 'comandonacional');
             }
             
         }
-        $this->query("SELECT cm.id_comando_provincial id_cm, cml.rua, cm.data_criacao, d.id_distrito, d.distrito, b.bairro, b.id_bairro,  p.provincia, m.municipio, cm.id_comando_provincial, cm.terminal
-                        FROM `comando_provincial` `cm`
-                        JOIN `comando_provincial_localizacao` `cml` ON `cm`.`id_comando_provincial` = `cml`.`id_cm`
-                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
-                        JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN distrito d ON cml.distrito = d.id_distrito
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_provincial = :ID_CM;");
-        $this->bind(':ID_CM', $comando_provincial_id);
+        $this->query("SELECT p.provincia, m.municipio, d.distrito, d.id_distrito, b.id_bairro, p.id_provincia, m.id_municipio,
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal, cp.id_comando_provincial as id_cp  
+            FROM comando_provincial_localizacao cpl 
+            JOIN comando_provincial cp
+                    ON cp.id_comando_provincial = cpl.id_cp
+                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+                            WHERE cp.id_comando_provincial = :IDCP;");
+        $this->bind(':IDCP', $comando_provincial_id);
         $row["comando_provincial"] = $this->resultSet();
 
+        $this->query('select * from municipio');
+        $row["municipios"] = $this->resultSet();
+
+        $this->query('select * from provincia');
+
+        $row["provincias"] = $this->resultSet();
         $this->query('select * from distrito');
         $row["distritos"] = $this->resultSet();
 

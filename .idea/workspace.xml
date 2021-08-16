@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/comandosmunicipais/adicionar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comandosMunicipais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandosMunicipais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/categoria.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/categoria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comandoMunicipal.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoMunicipal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/comandoProvincial.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoProvincial.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="1ib8tvLCjJfuosb1nUmEmlvVxdm" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -67,6 +65,18 @@
       <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comando_provincial" />
     </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -100,6 +110,7 @@
       <workItem from="1627399313984" duration="1092000" />
       <workItem from="1627896658667" duration="166000" />
       <workItem from="1627896874402" duration="8802000" />
+      <workItem from="1629114674288" duration="4737000" />
     </task>
     <servers />
   </component>
@@ -115,18 +126,38 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="275" y="62" key="#SQL_Dialects/0.40.1366.728@0.40.1366.728" timestamp="1627909398300" />
-    <state x="275" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1627902718211">
+    <state x="274" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629120813496">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="275" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1366.728@0.40.1366.728" timestamp="1627902718211" />
+    <state x="274" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1366.728@0.40.1366.728" timestamp="1629120813496" />
     <state x="0" y="40" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1627400741340">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="0" y="40" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.40.1366.728@0.40.1366.728" timestamp="1627400741340" />
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629121083126">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629121083126" />
     <state x="463" y="159" key="FileChooserDialogImpl" timestamp="1621522285885">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="463" y="159" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1621522285885" />
+    <state width="905" height="179" key="GridCell.Tab.0.bottom" timestamp="1629120281514">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state width="905" height="179" key="GridCell.Tab.0.bottom/0.40.1366.728@0.40.1366.728" timestamp="1629120281514" />
+    <state width="905" height="179" key="GridCell.Tab.0.center" timestamp="1629120281514">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state width="905" height="179" key="GridCell.Tab.0.center/0.40.1366.728@0.40.1366.728" timestamp="1629120281514" />
+    <state width="905" height="179" key="GridCell.Tab.0.left" timestamp="1629120281514">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state width="905" height="179" key="GridCell.Tab.0.left/0.40.1366.728@0.40.1366.728" timestamp="1629120281514" />
+    <state width="905" height="179" key="GridCell.Tab.0.right" timestamp="1629120281514">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state width="905" height="179" key="GridCell.Tab.0.right/0.40.1366.728@0.40.1366.728" timestamp="1629120281514" />
     <state x="511" y="115" key="RollbackChangesDialog" timestamp="1626794140031">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -136,15 +167,19 @@
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1626790210667" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1626790503119">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1629115467045">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1626790503119" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1627896877759">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629115467045" />
+    <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1629120732991">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog/0.40.1366.728@0.40.1366.728" timestamp="1629120732991" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629114739552">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1627896877759" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1627399313771" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629114739552" />
     <state x="492" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1627906598547">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -153,6 +188,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="136" width="607" height="536" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1627908733264" />
+    <state x="339" y="182" key="run.anything.popup" timestamp="1629119768941">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="339" y="182" key="run.anything.popup/0.40.1366.728@0.40.1366.728" timestamp="1629119768941" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1626790067342">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
