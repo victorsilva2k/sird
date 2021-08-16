@@ -15,6 +15,13 @@ class ComandoNacional extends Controller{
         $this->returnView($viewmodel->Editar($this->param), true);
     }
 
+    protected function registros()
+    {
+        $this->verificarNivel(4);
+        $viewmodel = new ComandoProvincialModel();
+        $this->returnView($viewmodel->registros($this->param), true);
+    }
+
     protected function adicionar()
     {
         $this->verificarNivel(4);

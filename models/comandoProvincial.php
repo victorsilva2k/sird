@@ -62,6 +62,37 @@ class ComandoProvincialModel extends Model{
             return $row;
 
     }
+
+    public function registros($comando_provincial_id)
+    {
+
+            // TODO
+
+            // TODO
+            $this->query("SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal, cp.id_comando_provincial as id_cp  
+            FROM comando_provincial_localizacao cpl 
+            JOIN comando_provincial cp
+                    ON cp.id_comando_provincial = cpl.id_cp
+                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+                            WHERE cp.id_comando_provincial = :ID_CP;");
+            $this->bind(':ID_CP', $comando_provincial_id);
+            $row['comando_provincial'] = $this->resultSet();
+
+
+        $this->query('SELECT ocp.tipo, ocp.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_provincial ocp 
+                        JOIN agente a ON a.id_agente = ocp.id_agente
+                        WHERE id_cp = :IDCP ORDER BY data DESC');
+        $this->bind(':IDCP', $comando_provincial_id);
+
+        $row["alteracoes"] = $this->resultSet();
+        return $row;
+
+    }
     
 
     public function adicionar()

@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/comandonacional/registros.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/comandosprovinciais/registros.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/comandoNacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandoNacional.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/comandosProvinciais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandosProvinciais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comandoNacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoNacional.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/comandoProvincial.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoProvincial.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandonacional/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/editar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandonacional/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/comandonacional/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/ver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,17 +57,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/comandosmunicipais" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/comandonacional" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Programas\xampp\htdocs\sird\views\comandosprovinciais" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\Programas\xampp\htdocs\sird\views\comandonacional" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais\" />
       <recent name="H:\Programas\xampp\htdocs\sird\models" />
       <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views\comando_provincial" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -110,12 +117,35 @@
       <workItem from="1627399313984" duration="1092000" />
       <workItem from="1627896658667" duration="166000" />
       <workItem from="1627896874402" duration="8802000" />
-      <workItem from="1629114674288" duration="4737000" />
+      <workItem from="1629114674288" duration="8181000" />
     </task>
+    <task id="LOCAL-00001" summary="editar comando provincial">
+      <created>1629121123794</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629121123794</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="editar comando provincial" />
+    <option name="LAST_COMMIT_MESSAGE" value="editar comando provincial" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="62" key="#Notifications" timestamp="1627902742187">
@@ -134,10 +164,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="0" y="40" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.40.1366.728@0.40.1366.728" timestamp="1627400741340" />
-    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629121083126">
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629121120482">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629121083126" />
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629121120482" />
     <state x="463" y="159" key="FileChooserDialogImpl" timestamp="1621522285885">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -167,10 +197,10 @@
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1626790210667" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1629115467045">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1629124181024">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629115467045" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629124181024" />
     <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1629120732991">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -204,6 +234,15 @@
           <url>file://$PROJECT_DIR$/views/postos/index.php</url>
           <line>90</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/models/comandoNacional.php</url>
+          <line>3</line>
+          <properties>
+            <option name="className" value="\ComandoNacionalModel" />
+            <option name="methodName" value="Index" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

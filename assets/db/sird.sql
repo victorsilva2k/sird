@@ -1160,11 +1160,35 @@ SELECT p.provincia,  cp.nome as 'nome_cp', cp.terminal
                             JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
                             JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`;
 
+-- editar comando provincial
 
+SELECT p.provincia, m.municipio, d.distrito, d.id_distrito, b.id_bairro, p.id_provincia, m.id_municipio,
+            b.bairro, cpl.rua, cp.nome as 'nome_cp', cp.terminal, cp.id_comando_provincial as id_cp  
+            FROM comando_provincial_localizacao cpl 
+            JOIN comando_provincial cp
+                    ON cp.id_comando_provincial = cpl.id_cp
+                            JOIN `distrito` `d` ON `cpl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cpl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cpl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cpl`.`provincia` = `p`.`id_provincia`
+                            WHERE cp.id_comando_provincial = 2;
+                            
+UPDATE comando_provincial_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA, provincia = :PROVINCIA, municipio = :MUNICIPIO  WHERE id_cp = 2;
 
+-- Criar Operação Comando Nacional
 
-
-
+CREATE TABLE `operacao_comando_nacional` (
+  `id_operacao` mediumint NOT NULL AUTO_INCREMENT,
+  `id_agente` int NOT NULL,
+  `id_cn` tinyint NOT NULL,
+  `tipo` tinyint NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_operacao`),
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_cn-ocn_idx` (`id_cn`),
+  CONSTRAINT `id_agente-opcn` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_cn-opcn` FOREIGN KEY (`id_cn`) REFERENCES `comando_nacional` (`id_comando_nacional`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 
 

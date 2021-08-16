@@ -4,8 +4,8 @@
         background-color: var(--color-grey-light-4);
     }
 </style>
-<div class="bairros content-div br-25 mgb-20">
 <?php foreach($viewmodel['comando_nacional'] as $item) : extract($item);?>
+<div class="bairros content-div br-25 mgb-20">
                 <div class="content-div__cima">
 
                     <h1 class="titulo--normal content-div__titulo">Comando Nacional de Angola</h1>
@@ -29,13 +29,17 @@
             </div>
 
 </div>
-            <?php endforeach;?>
-      
-        
-    </div>
-    
 
-    <!-- COMANDOS MUNICIPAIS -->
+
+</div>
+    <div class="btn-group">
+        <a href="<?php echo ROOT_URL; ?>comandonacional/editar/<?php echo $id_cn?>" class="mgb-20 center-t btn btn-success mb-4 ">Editar</a>
+        <a href="<?php echo ROOT_URL; ?>comandonacional/registros/<?php echo $id_cn?>" class="center-t btn btn-secondary mb-4 ">Ver mais</a>
+    </div>
+<?php endforeach;?>
+
+
+    <!-- COMANDOS PROVINCIAIS -->
 
     <div class="bairros content-div br-25">
                 <div class="content-div__cima">

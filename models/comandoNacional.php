@@ -6,7 +6,7 @@ class ComandoNacionalModel extends Model{
      
             // TODO
             $this->query("SELECT p.provincia, m.municipio, d.distrito, 
-            b.bairro, cnl.rua, cn.terminal  
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn   
             FROM comando_nacional_localizacao cnl 
             JOIN comando_nacional cn
                     ON cn.id_comando_nacional = cnl.fk_id_cn
@@ -50,7 +50,7 @@ class ComandoNacionalModel extends Model{
 
    
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarComandoPTerminal == '' || $adicionarComandoPRua == '') {
+            if ($adicionarComandoNTerminal == '' || $adicionarComandoNRua == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -61,8 +61,8 @@ class ComandoNacionalModel extends Model{
 
                 // Alterando os dados do posto
                 $this->query('INSERT INTO comando_provincial VALUES(NULL,:NOME, DEFAULT,  :TERMINAL_CP)');
-                $this->bind('NOME', $adicionarComandoPNome);
-                $this->bind('TERMINAL_CP', $adicionarComandoPTerminal);
+                $this->bind('NOME', $adicionarComandoNNome);
+                $this->bind('TERMINAL_CP', $adicionarComandoNTerminal);
                 $this->execute();
 
                 $id_comando_provincial = $this->lastInsertId();
@@ -73,11 +73,11 @@ class ComandoNacionalModel extends Model{
                                                                                     :DISTRITO, :BAIRRO, 
                                                                                     :RUA)");
 
-                $this->bind(':PROVINCIA', $adicionarComandoPProvincia);
-                $this->bind(':MUNICIPIO', $adicionarComandoPMunicipio);
-                $this->bind(':DISTRITO', $adicionarComandoPDistrito);
-                $this->bind(':BAIRRO', $adicionarComandoPBairro);
-                $this->bind(':RUA', $adicionarComandoPRua);
+                $this->bind(':PROVINCIA', $adicionarComandoNProvincia);
+                $this->bind(':MUNICIPIO', $adicionarComandoNMunicipio);
+                $this->bind(':DISTRITO', $adicionarComandoNDistrito);
+                $this->bind(':BAIRRO', $adicionarComandoNBairro);
+                $this->bind(':RUA', $adicionarComandoNRua);
                 $this->bind(':IDCP', $id_comando_provincial);
                 $this->execute();
 
@@ -126,61 +126,63 @@ class ComandoNacionalModel extends Model{
 
     }
 
-    public function Editar($comando_provincial_id)
+    public function Editar($comando_nacional_id)
     {
-          
+
 
         //Limpando POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         // INSERT MySQL
-        
+
         if (isset($post['submit'])) {
-        
+
             extract($post);
 
-            
+
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($editarComandoRua == '' || $editarComandoTerminal == '' ) {
+            if ($editarComandoNRua == '' || $editarComandoNTerminal == '' ) {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
-            
-            
+
+
             try {
                 $this->beginTransaction();
 
-                // Alterando os dados de localização do comandosmunicipais municipal
-                $this->query("UPDATE comando_provincial_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA  WHERE id_cm = :ID_CM");
+                // Alterando os dados de localização do comando nacional
+                $this->query("UPDATE comando_nacional_localizacao SET distrito = :DISTRITO, bairro = :BAIRRO, rua = :RUA, provincia = :PROVINCIA, municipio = :MUNICIPIO  WHERE fk_id_cn = :IDCN");
 
-                $this->bind(':DISTRITO', $editarComandoDistrito);
-                $this->bind(':BAIRRO', $editarComandoBairro);
-                $this->bind(':RUA', $editarComandoRua);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':PROVINCIA', $editarComandoNProvincia);
+                $this->bind(':MUNICIPIO', $editarComandoNMunicipio);
+                $this->bind(':DISTRITO', $editarComandoNDistrito);
+                $this->bind(':BAIRRO', $editarComandoNBairro);
+                $this->bind(':RUA', $editarComandoNRua);
+                $this->bind(':IDCN', $comando_nacional_id);
                 $this->execute();
 
-                
-                // Alterando os terminal do comando municipal
-                $this->query("UPDATE `sird-db`.`comando_provincial`
+
+                // Alterando os terminal do comando nacional
+                $this->query("UPDATE `sird-db`.`comando_nacional`
                                 SET
                                 `terminal` = :TERMINAL
-                                WHERE id_comando_provincial = ID_CM;
+                                WHERE id_comando_nacional = :IDCN;
                                 ");
 
-                $this->bind(':TERMINAL', $editarComandoTerminal);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':TERMINAL', $editarComandoNTerminal);
+                $this->bind(':IDCN', $comando_nacional_id);
                 $this->execute();
-                
+
                 // Registrando a alteração
-                $this->query("INSERT INTO `sird-db`.`operacao_comando_provincial` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 2, CURRENT_TIMESTAMP);");
+                $this->query("INSERT INTO `sird-db`.`operacao_comando_nacional` (`id_operacao`, `id_agente`, `id_cN`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :IDCN, 2, CURRENT_TIMESTAMP);");
                 $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                $this->bind(':ID_CM', $comando_provincial_id);
+                $this->bind(':IDCN', $comando_nacional_id);
                 $this->execute();
 
                 $this->commit();
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
 
             }
             //Verify
@@ -188,26 +190,68 @@ class ComandoNacionalModel extends Model{
             if ($this->rowCounte() >= 1) {
                 //Redirect  
                 Messages::setMessage("Edição feita com sucesso", "success");
-                header('Location: ' . ROOT_URL . 'comandosmunicipais');
+                header('Location: ' . ROOT_URL . 'comandonacional');
             }
-            
-        }
-        $this->query("SELECT cm.id_comando_provincial id_cm, cml.rua, cm.data_criacao, d.id_distrito, d.distrito, b.bairro, b.id_bairro,  p.provincia, m.municipio, cm.id_comando_provincial, cm.terminal
-                        FROM `comando_provincial` `cm`
-                        JOIN `comando_provincial_localizacao` `cml` ON `cm`.`id_comando_provincial` = `cml`.`id_cm`
-                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
-                        JOIN municipio m ON cml.municipio = m.id_municipio
-                        JOIN distrito d ON cml.distrito = d.id_distrito
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_provincial = :ID_CM;");
-        $this->bind(':ID_CM', $comando_provincial_id);
-        $row["comando_provincial"] = $this->resultSet();
 
+        }
+        $this->query("SELECT p.provincia, m.municipio, d.distrito, d.id_distrito, b.id_bairro, p.id_provincia, m.id_municipio,
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn  
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            WHERE cn.id_comando_nacional = :IDCP;");
+        $this->bind(':IDCP', $comando_nacional_id);
+        $row["comando_nacional"] = $this->resultSet();
+
+        $this->query('select * from municipio');
+        $row["municipios"] = $this->resultSet();
+
+        $this->query('select * from provincia');
+
+        $row["provincias"] = $this->resultSet();
         $this->query('select * from distrito');
         $row["distritos"] = $this->resultSet();
 
         $this->query('select * from bairro ;');
         $row["bairros"] = $this->resultSet();
-    
-        return $row;  
+
+        return $row;
     }
+
+
+    public function registros($comando_nacional_id)
+    {
+
+        // TODO
+
+        // TODO
+        $this->query("SELECT p.provincia, m.municipio, d.distrito, 
+            b.bairro, cnl.rua, cn.terminal, cn.id_comando_nacional as id_cn   
+            FROM comando_nacional_localizacao cnl 
+            JOIN comando_nacional cn
+                    ON cn.id_comando_nacional = cnl.fk_id_cn
+                            JOIN `distrito` `d` ON `cnl`.`distrito` = `d`.`id_distrito`
+                            JOIN `bairro` `b` ON `cnl`.`bairro` = `b`.`id_bairro`
+                            JOIN `municipio` `m` ON `cnl`.`municipio` = `m`.`id_municipio`
+                            JOIN `provincia` `p` ON `cnl`.`provincia` = `p`.`id_provincia`
+                            WHERE cn.id_comando_nacional = :IDCN;");
+        $this->bind(':IDCN', $comando_nacional_id);
+        $row['comando_nacional'] = $this->resultSet();
+
+
+        $this->query('SELECT ocn.tipo, ocn.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_nacional ocn 
+                        JOIN agente a ON a.id_agente = ocn.id_agente
+                        WHERE id_cp = :IDCN ORDER BY data DESC');
+        $this->bind(':IDCN', $comando_nacional_id);
+
+        $row["alteracoes"] = $this->resultSet();
+        return $row;
+
+    }
+
 }
