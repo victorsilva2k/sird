@@ -98,6 +98,19 @@ class PostoModel extends Model{
 
     }
 
+
+    public function escolher($id_posto)
+    {
+
+
+
+        $this->query('   SELECT * FROM `sird-db`.ver_posto;');
+
+        $row = $this->resultSet();
+        return $row;
+
+    }
+
     public function adicionar()
     {
 
@@ -329,82 +342,7 @@ class PostoModel extends Model{
         return $row;  
     }
 
-    public function eliminar($id_posto)
-    {
-
-
-        //Limpando POST
-        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        // INSERT MySQL
 
 
 
-            try {
-                $this->beginTransaction();
-
-                // Verificando a seleção
-                $this->query('SELECT `agente_posto`.`id_agente`
-                                    FROM `sird-db`.`agente_posto`
-                                    WHERE id_posto = :ID_POSTO;');
-                $this->bind(':ID_POSTO', $id_posto);
-                $row = $this->resultSet();
-                // Caso exista agentes ligados a esse posto
-                if ($this->rowCounte() >= 1) {
-                    foreach($row as $item)  {
-                        extract($item);
-
-                        // Suspender a conta
-                        $this->query("UPDATE `sird-db`.`agente_conta`
-                                        SET
-                                        `estado_conta` = 3
-                                        WHERE id_agente = :ID_AGENTE;");
-                        $this->bind(':ID_AGENTE', $id_agente);
-                        $this->execute();
-
-
-                    }
-                }
-
-
-                // Alterar estado do Posto
-                $this->query("UPDATE `sird-db`.`posto` SET estado_actividade = 3
-                                    WHERE id_posto = :ID_POSTO;");
-                $this->bind(':ID_POSTO', $id_posto);
-                $this->execute();
-
-                // Registrando a alteração
-                $this->query("INSERT INTO `sird-db`.`operacao_posto` (`id_operacao`, `id_agente`, `id_posto`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_POSTO, 3, CURRENT_TIMESTAMP);");
-                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                $this->bind(':ID_POSTO', $id_posto);
-                $this->execute();
-
-                // TODO ao eliminar um posto todos os documentos desse posto passam para o comandosmunicipais municipal
-                $this->commit();
-                if ($this->rowCounte() >= 1) {
-                    //Redirect
-                    Messages::setMessage("Posto eliminado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'postos');
-                }
-            } catch (\PDOException $erro) {
-                $this->rollBack();
-
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
-
-            }
-            //Verify
-
-
-
-
-
-        // Pegando dados do posto
-        $this->query('SELECT * FROM ver_posto WHERE id_posto = :ID_POSTO');
-        $this->bind(':ID_POSTO', $id_posto);
-        $row["posto"] = $this->resultSet();
-
-        // Pegando dados dos bairros
-        $this->query('select * from bairro;');
-        $row["bairros"] = $this->resultSet();
-        return $row;
-    }
 }
