@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/comandosmunicipais/registros.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/db/sird-backup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird-backup.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comandosMunicipais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandosMunicipais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comandoMunicipal.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoMunicipal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/registros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/registros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/registros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/registros.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +64,16 @@
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosprovinciais" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="ver.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/sird/views/comandosmunicipais/ver.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.ver.php" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -118,7 +121,7 @@
       <workItem from="1629114674288" duration="10653000" />
       <workItem from="1629202164869" duration="695000" />
       <workItem from="1629210983395" duration="1443000" />
-      <workItem from="1629309855817" duration="1545000" />
+      <workItem from="1629309855817" duration="3484000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>
@@ -148,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629127064388</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ver postos por comando municipal e registros de CM">
+      <created>1629311600290</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629311600290</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,9 +182,14 @@
     <MESSAGE value="editar comando nacional, registro de alterações comando provincial" />
     <MESSAGE value="ver terminal de posto" />
     <MESSAGE value="registro de alterações de comando nacional e provincial" />
-    <option name="LAST_COMMIT_MESSAGE" value="registro de alterações de comando nacional e provincial" />
+    <MESSAGE value="ver postos por comando municipal e registros de CM" />
+    <option name="LAST_COMMIT_MESSAGE" value="ver postos por comando municipal e registros de CM" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="263" y="59" key="#CLI_Interpreters" timestamp="1629315817694">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="263" y="59" key="#CLI_Interpreters/0.40.1366.728@0.40.1366.728" timestamp="1629315817694" />
     <state x="275" y="62" key="#Inspections" timestamp="1629124992644">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -183,6 +198,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="275" y="62" key="#Notifications/0.40.1366.728@0.40.1366.728" timestamp="1627902742187" />
+    <state x="390" y="40" key="#PHP" timestamp="1629315819781">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="390" y="40" key="#PHP/0.40.1366.728@0.40.1366.728" timestamp="1629315819781" />
     <state x="275" y="62" key="#SQL_Dialects" timestamp="1627909398300">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -195,10 +214,14 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="0" y="40" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.40.1366.728@0.40.1366.728" timestamp="1627400741340" />
-    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629127062615">
+    <state x="465" y="83" key="#ver.php" timestamp="1629315781573">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629127062615" />
+    <state x="465" y="83" key="#ver.php/0.40.1366.728@0.40.1366.728" timestamp="1629315781573" />
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629311597891">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629311597891" />
     <state x="463" y="159" key="FileChooserDialogImpl" timestamp="1621522285885">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -232,10 +255,14 @@
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1626790210667" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1629311491061">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1629316506264">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629311491061" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629316506264" />
+    <state x="544" y="302" key="WebDeployment.AddServerDialog.v.1" timestamp="1629315812776">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="544" y="302" key="WebDeployment.AddServerDialog.v.1/0.40.1366.728@0.40.1366.728" timestamp="1629315812776" />
     <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1629120732991">
       <screen x="0" y="40" width="1366" height="728" />
     </state>

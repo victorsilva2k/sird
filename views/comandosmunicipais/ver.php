@@ -59,7 +59,6 @@
         <tr>
 
             <th scope="col">Posto</th>
-            <th scope="col">Munícipio</th>
             <th scope="col">Distrito</th>
             <th scope="col">Bairro</th>
             <th scope="col">Estado</th>
@@ -85,7 +84,6 @@
                     ?>
 
                 </td>
-                <td><?php echo $municipio?></td>
                 <td><?php echo $distrito?></td>
                 <td><?php echo $bairro?></td>
                 <td>

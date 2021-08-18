@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: sird-db
+-- Host: localhost    Database: sird-db
 -- ------------------------------------------------------
 -- Server version	8.0.22
 
@@ -30,7 +30,7 @@ CREATE TABLE `agente` (
   `data_nasc` date NOT NULL,
   `genero` varchar(45) NOT NULL,
   PRIMARY KEY (`id_agente`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `agente` (
 
 LOCK TABLES `agente` WRITE;
 /*!40000 ALTER TABLE `agente` DISABLE KEYS */;
-INSERT INTO `agente` VALUES (1,'Joao','bastos','usuario.png','1990-01-05','Masculino'),(7,'Victorino','Kioza','4099-2021-06-23.jpeg','1990-07-26','Masculino'),(18,'Rasmus','Lerdorf','8110-2021-03-26.jpeg','1999-12-15','Masculino'),(19,'Lina','Januário','1501-2021-03-26.jpeg','1980-08-09','Feminino'),(20,'James','Bila','usuario.png','1989-04-14','Masculino'),(22,'Mateus','Ngola','usuario.png','2021-04-16','Masculino'),(23,'Edson','Silva','usuario.png','2001-12-22','Masculino'),(24,'João','Paulo','usuario.png','2021-05-15','Masculino'),(25,'Joaquim','Manuel','usuario.png','1994-05-05','Masculino');
+INSERT INTO `agente` VALUES (1,'Joao','bastos','usuario.png','1990-01-05','Masculino'),(7,'Victorino','Kioza','4099-2021-06-23.jpeg','1990-07-26','Masculino'),(18,'Rasmus','Lerdorf','8110-2021-03-26.jpeg','1999-12-15','Masculino'),(19,'Lina','Januário','1501-2021-03-26.jpeg','1980-08-09','Feminino'),(20,'James','Bila','usuario.png','1989-04-14','Masculino'),(22,'Mateus','Ngola','usuario.png','2021-04-16','Masculino'),(23,'Edson','Silva','usuario.png','2001-12-22','Masculino'),(24,'João','Paulo','usuario.png','2021-05-15','Masculino'),(25,'Joaquim','Manuel','usuario.png','1994-05-05','Masculino'),(26,'Leandro','Onde','usuario.png','1995-02-10','Masculino');
 /*!40000 ALTER TABLE `agente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +69,34 @@ LOCK TABLES `agente_comando_municipal` WRITE;
 /*!40000 ALTER TABLE `agente_comando_municipal` DISABLE KEYS */;
 INSERT INTO `agente_comando_municipal` VALUES (7,1,1),(23,1,1);
 /*!40000 ALTER TABLE `agente_comando_municipal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `agente_comando_nacional`
+--
+
+DROP TABLE IF EXISTS `agente_comando_nacional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `agente_comando_nacional` (
+  `id_agente` int NOT NULL,
+  `id_comando_nacional` tinyint NOT NULL,
+  `cargo` tinyint NOT NULL DEFAULT '1',
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_comando_nacional_idx` (`id_comando_nacional`),
+  CONSTRAINT `id_agente-acn` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_comando_nacional-acn` FOREIGN KEY (`id_comando_nacional`) REFERENCES `comando_nacional` (`id_comando_nacional`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `agente_comando_nacional`
+--
+
+LOCK TABLES `agente_comando_nacional` WRITE;
+/*!40000 ALTER TABLE `agente_comando_nacional` DISABLE KEYS */;
+INSERT INTO `agente_comando_nacional` VALUES (26,2,1);
+/*!40000 ALTER TABLE `agente_comando_nacional` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -125,7 +153,7 @@ CREATE TABLE `agente_conta` (
 
 LOCK TABLES `agente_conta` WRITE;
 /*!40000 ALTER TABLE `agente_conta` DISABLE KEYS */;
-INSERT INTO `agente_conta` VALUES (23,101203,'$2y$10$FjRadxlUnBxF/0xjitBNeehXzMsMsCbiUl.ZepyfCN0MLG5f7c3tW',1,'2021-05-05 13:34:36','comando_municipal'),(25,155412,'$2y$10$6cTkftoexr32j2Ny9k2p9OdF/CzIev0pZ1Db8RBBSAFyag281.fBy',1,'2021-07-06 21:22:16','comando_provincial'),(7,1220323,'$2y$10$/rXOVS8ZJu9E/uVHln3ebuI57d4jjO.Zu6uanzioOkmmPWgESDuaa',1,'2021-03-23 15:12:14','comando_municipal'),(24,1234567,'$2y$10$6pGSCvF38lN8UbkyZWlJte590lU7W3ahnMFv72QjdEZ2lc/rl5sLC',1,'2021-05-06 12:54:29','posto'),(22,1291919,'$2y$10$.aWM87wH2dFjs70/F/RQz.EwVqp8S5DkUPTsElpDyXsqFFcIUNqWe',1,'2021-04-22 21:31:09','posto'),(1,1921765,'$2y$10$28vZsggb8wdw5t/MfbEDy.u40nqVO4goppauCG2qW7eAkHyxrFv3S',1,'2021-03-18 16:06:26','posto'),(18,1985444,'$2y$10$DD0QNOW6GCftGIl9t8P6le4DgwhH4mNhG3q/yUfY0v7PJy7.HC1ty',2,'2021-03-26 15:53:49','posto'),(20,3878372,'$2y$10$VOki2uuO9nlN.QtGBHZgs.zT0ZZOR.DERXVIQO5fQ8Asra4z3s6vm',2,'2021-03-26 16:25:45','posto'),(19,7173713,'$2y$10$rLnm4dxANithuwmMpnNzmOD3eyZWZdv.IRYwNfTZT00kDGWN1lAnO',2,'2021-03-26 15:59:55','posto');
+INSERT INTO `agente_conta` VALUES (26,100200,'$2y$10$gwsXNG17O6qJmA6PNgfvzu/9pdM2h3kao.au4OTfU1FavgqJeA9I6',1,'2021-08-10 21:05:49','comando_nacional'),(23,101203,'$2y$10$FjRadxlUnBxF/0xjitBNeehXzMsMsCbiUl.ZepyfCN0MLG5f7c3tW',1,'2021-05-05 13:34:36','comando_municipal'),(25,155412,'$2y$10$6cTkftoexr32j2Ny9k2p9OdF/CzIev0pZ1Db8RBBSAFyag281.fBy',1,'2021-07-06 21:22:16','comando_provincial'),(7,1220323,'$2y$10$/rXOVS8ZJu9E/uVHln3ebuI57d4jjO.Zu6uanzioOkmmPWgESDuaa',1,'2021-03-23 15:12:14','comando_municipal'),(24,1234567,'$2y$10$6pGSCvF38lN8UbkyZWlJte590lU7W3ahnMFv72QjdEZ2lc/rl5sLC',1,'2021-05-06 12:54:29','posto'),(22,1291919,'$2y$10$.aWM87wH2dFjs70/F/RQz.EwVqp8S5DkUPTsElpDyXsqFFcIUNqWe',1,'2021-04-22 21:31:09','posto'),(1,1921765,'$2y$10$28vZsggb8wdw5t/MfbEDy.u40nqVO4goppauCG2qW7eAkHyxrFv3S',1,'2021-03-18 16:06:26','posto'),(18,1985444,'$2y$10$DD0QNOW6GCftGIl9t8P6le4DgwhH4mNhG3q/yUfY0v7PJy7.HC1ty',2,'2021-03-26 15:53:49','posto'),(20,3878372,'$2y$10$VOki2uuO9nlN.QtGBHZgs.zT0ZZOR.DERXVIQO5fQ8Asra4z3s6vm',2,'2021-03-26 16:25:45','posto'),(19,7173713,'$2y$10$rLnm4dxANithuwmMpnNzmOD3eyZWZdv.IRYwNfTZT00kDGWN1lAnO',2,'2021-03-26 15:59:55','posto');
 /*!40000 ALTER TABLE `agente_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +198,7 @@ CREATE TABLE `bairro` (
   `distrito` mediumint NOT NULL,
   PRIMARY KEY (`id_bairro`),
   KEY `distrito-d_idx` (`distrito`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +207,7 @@ CREATE TABLE `bairro` (
 
 LOCK TABLES `bairro` WRITE;
 /*!40000 ALTER TABLE `bairro` DISABLE KEYS */;
-INSERT INTO `bairro` VALUES (1,'Mundo Verde',1),(2,'Dangereux',3),(3,'Mbondo Chapé',3),(6,'Camama 3',2),(7,'Simione',2),(8,'Kifica',3),(9,'Chinguar',6);
+INSERT INTO `bairro` VALUES (1,'Mundo Verde',1),(2,'Dangereux',3),(3,'Mbondo Chapé',3),(6,'Camama 3',2),(7,'Simione',2),(8,'Kifica',6),(9,'Chinguar',6),(10,'Congolenses',7),(11,'Morro da Luz',8),(12,'Casapato',10),(13,'Malanje',11);
 /*!40000 ALTER TABLE `bairro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,9 +245,12 @@ DROP TABLE IF EXISTS `comando_municipal`;
 CREATE TABLE `comando_municipal` (
   `id_comando_municipal` tinyint NOT NULL AUTO_INCREMENT,
   `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `comando_provincial` tinyint NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_comando_municipal`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `comando_provincial` tinyint NOT NULL,
+  `terminal` varchar(45) DEFAULT '923900900',
+  PRIMARY KEY (`id_comando_municipal`),
+  KEY `fk_comando_provincial2_idx` (`comando_provincial`),
+  CONSTRAINT `fk_comando_provincial2` FOREIGN KEY (`comando_provincial`) REFERENCES `comando_provincial` (`id_comando_provincial`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +259,7 @@ CREATE TABLE `comando_municipal` (
 
 LOCK TABLES `comando_municipal` WRITE;
 /*!40000 ALTER TABLE `comando_municipal` DISABLE KEYS */;
-INSERT INTO `comando_municipal` VALUES (1,'2021-03-18 15:11:32',1);
+INSERT INTO `comando_municipal` VALUES (1,'2021-03-18 15:11:32',2,'923900901'),(2,'2021-08-02 13:01:07',2,'923456456'),(9,'2021-08-05 11:54:50',2,'925654456');
 /*!40000 ALTER TABLE `comando_municipal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,8 +306,71 @@ CREATE TABLE `comando_municipal_localizacao` (
 
 LOCK TABLES `comando_municipal_localizacao` WRITE;
 /*!40000 ALTER TABLE `comando_municipal_localizacao` DISABLE KEYS */;
-INSERT INTO `comando_municipal_localizacao` VALUES (1,'Luanda','Talatona','1','2','8');
+INSERT INTO `comando_municipal_localizacao` VALUES (1,'7','8','1','2','Albuquerque 4'),(2,'7','9','6','8','5'),(9,'7','7','8','11','7');
 /*!40000 ALTER TABLE `comando_municipal_localizacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comando_nacional`
+--
+
+DROP TABLE IF EXISTS `comando_nacional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comando_nacional` (
+  `id_comando_nacional` tinyint NOT NULL AUTO_INCREMENT,
+  `nome` varchar(70) NOT NULL,
+  `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `terminal` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_comando_nacional`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comando_nacional`
+--
+
+LOCK TABLES `comando_nacional` WRITE;
+/*!40000 ALTER TABLE `comando_nacional` DISABLE KEYS */;
+INSERT INTO `comando_nacional` VALUES (2,'Comando Nacional de Angola','2021-08-10 21:06:31','922501421');
+/*!40000 ALTER TABLE `comando_nacional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comando_nacional_localizacao`
+--
+
+DROP TABLE IF EXISTS `comando_nacional_localizacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comando_nacional_localizacao` (
+  `fk_id_cn` tinyint NOT NULL,
+  `provincia` mediumint NOT NULL,
+  `municipio` mediumint NOT NULL,
+  `distrito` mediumint NOT NULL,
+  `bairro` smallint NOT NULL,
+  `rua` varchar(40) DEFAULT NULL,
+  KEY `id_cn_idx` (`fk_id_cn`),
+  KEY `distrito_idx` (`distrito`),
+  KEY `bairro_idx` (`bairro`),
+  KEY `municipio_idx` (`municipio`),
+  KEY `provincia_idx` (`provincia`),
+  CONSTRAINT `bairro-cnl` FOREIGN KEY (`bairro`) REFERENCES `bairro` (`id_bairro`),
+  CONSTRAINT `distrito-cnl` FOREIGN KEY (`distrito`) REFERENCES `distrito` (`id_distrito`),
+  CONSTRAINT `id_cn-cnl` FOREIGN KEY (`fk_id_cn`) REFERENCES `comando_nacional` (`id_comando_nacional`),
+  CONSTRAINT `municipio-cnl` FOREIGN KEY (`municipio`) REFERENCES `municipio` (`id_municipio`),
+  CONSTRAINT `provincia-cnl` FOREIGN KEY (`provincia`) REFERENCES `provincia` (`id_provincia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comando_nacional_localizacao`
+--
+
+LOCK TABLES `comando_nacional_localizacao` WRITE;
+/*!40000 ALTER TABLE `comando_nacional_localizacao` DISABLE KEYS */;
+INSERT INTO `comando_nacional_localizacao` VALUES (2,7,7,7,10,'5');
+/*!40000 ALTER TABLE `comando_nacional_localizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,8 +384,9 @@ CREATE TABLE `comando_provincial` (
   `id_comando_provincial` tinyint NOT NULL AUTO_INCREMENT,
   `nome` varchar(70) NOT NULL,
   `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `terminal` varchar(45) DEFAULT '923500500',
   PRIMARY KEY (`id_comando_provincial`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,9 +395,27 @@ CREATE TABLE `comando_provincial` (
 
 LOCK TABLES `comando_provincial` WRITE;
 /*!40000 ALTER TABLE `comando_provincial` DISABLE KEYS */;
-INSERT INTO `comando_provincial` VALUES (2,'Luanda','2021-07-06 21:32:29');
+INSERT INTO `comando_provincial` VALUES (2,'Luanda','2021-07-06 21:32:29','923500501'),(3,'Lubango','2021-08-12 10:04:55','923556677'),(5,'Malanje','2021-08-12 10:37:14','923434354');
 /*!40000 ALTER TABLE `comando_provincial` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `comando_provincial_informacao`
+--
+
+DROP TABLE IF EXISTS `comando_provincial_informacao`;
+/*!50001 DROP VIEW IF EXISTS `comando_provincial_informacao`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `comando_provincial_informacao` AS SELECT 
+ 1 AS `provincia`,
+ 1 AS `municipio`,
+ 1 AS `distrito`,
+ 1 AS `bairro`,
+ 1 AS `rua`,
+ 1 AS `nome_cp`,
+ 1 AS `terminal`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `comando_provincial_localizacao`
@@ -337,6 +450,7 @@ CREATE TABLE `comando_provincial_localizacao` (
 
 LOCK TABLES `comando_provincial_localizacao` WRITE;
 /*!40000 ALTER TABLE `comando_provincial_localizacao` DISABLE KEYS */;
+INSERT INTO `comando_provincial_localizacao` VALUES (2,7,7,7,10,'6'),(3,8,10,9,12,'7'),(5,9,11,10,13,'Rua 3');
 /*!40000 ALTER TABLE `comando_provincial_localizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -353,7 +467,7 @@ CREATE TABLE `distrito` (
   `municipio` mediumint NOT NULL,
   PRIMARY KEY (`id_distrito`),
   KEY `municipio-d_idx` (`municipio`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -362,7 +476,7 @@ CREATE TABLE `distrito` (
 
 LOCK TABLES `distrito` WRITE;
 /*!40000 ALTER TABLE `distrito` DISABLE KEYS */;
-INSERT INTO `distrito` VALUES (1,'Cidade Universitária',0),(2,'Camama',0),(3,'Talatona',0),(4,'Lar do Patriota',0),(5,'Futungo de Belas',0),(6,'Benfica',0);
+INSERT INTO `distrito` VALUES (1,'Cidade Universitária',8),(2,'Camama',8),(3,'Talatona',8),(4,'Lar do Patriota',8),(5,'Futungo de Belas',8),(6,'Benfica',9),(7,'Rangel',7),(8,'Rocha',7),(9,'Senhora do Monte',10),(10,'Quibala',11);
 /*!40000 ALTER TABLE `distrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,6 +564,18 @@ INSERT INTO `entregador_proprietario` VALUES (1,1),(2,99),(3,77),(4,100),(5,101)
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `estatisticas_comando_municipal`
+--
+
+DROP TABLE IF EXISTS `estatisticas_comando_municipal`;
+/*!50001 DROP VIEW IF EXISTS `estatisticas_comando_municipal`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `estatisticas_comando_municipal` AS SELECT 
+ 1 AS `total_documentos`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `foto_documento`
 --
 
@@ -475,6 +601,39 @@ LOCK TABLES `foto_documento` WRITE;
 INSERT INTO `foto_documento` VALUES (1,1,'no-img.png'),(2,1,'no-img.png'),(3,2,'usuario.png'),(4,2,'usuario.png'),(5,3,'usuario.png'),(6,3,'usuario.png'),(7,4,'6505-2021-04-26.jpeg'),(8,4,'7958-2021-04-26.jpeg'),(9,5,'2653-2021-04-26.jpeg'),(10,5,'8150-2021-04-26.jpeg'),(11,14,'470-2021-04-27.jpeg'),(12,15,'6015-2021-04-27.jpeg'),(13,16,'7701-2021-04-27.jpeg'),(14,16,'1403-2021-04-27.jpeg'),(15,17,'9696-2021-04-27.jpeg'),(16,18,'6484-2021-04-27.jpeg'),(17,18,'1393-2021-04-27.jpeg'),(18,19,'3348-2021-04-27.jpeg'),(19,19,'7545-2021-04-27.jpeg'),(20,27,'6090-2021-04-30.jpeg'),(21,27,'1552-2021-04-30.jpeg'),(22,28,'5607-2021-04-30.jpeg'),(23,28,'5921-2021-04-30.jpeg'),(24,29,'8034-2021-04-30.jpeg'),(25,29,'4110-2021-04-30.jpeg'),(26,30,'6423-2021-04-30.jpeg'),(27,30,'967-2021-04-30.jpeg'),(28,31,'1874-2021-04-30.jpeg'),(29,31,'9182-2021-04-30.jpeg'),(30,32,'429-2021-05-01.jpeg'),(31,32,'7860-2021-05-01.jpeg'),(32,30,'no-img.png'),(33,30,'no-img.png'),(34,33,'7860-2021-05-01.jpeg'),(35,33,'7860-2021-05-01.jpeg'),(36,34,'8195-2021-05-03.jpeg'),(37,34,'2128-2021-05-03.jpeg'),(38,35,'9329-2021-05-03.jpeg'),(39,35,'8928-2021-05-03.jpeg'),(40,36,'3140-2021-05-03.jpeg'),(41,36,'6332-2021-05-03.jpeg'),(42,37,'1683-2021-05-03.jpeg'),(43,37,'3387-2021-05-03.jpeg'),(44,38,'1267-2021-05-03.jpeg'),(45,38,'5977-2021-05-03.jpeg'),(46,39,'9061-2021-05-04.jpeg'),(47,39,'2245-2021-05-04.jpeg'),(48,40,'2017-2021-05-04.jpeg'),(49,40,'9053-2021-05-04.jpeg'),(50,41,'1891-2021-05-04.jpeg'),(51,41,'3977-2021-05-04.jpeg'),(52,42,'6355-2021-05-05.jpeg'),(53,42,'8246-2021-05-05.jpeg'),(56,44,'2250-2021-05-05.jpeg'),(57,44,'3052-2021-05-05.jpeg'),(58,45,'8662-2021-05-06.jpeg'),(59,45,'5876-2021-05-06.jpeg'),(60,46,'1707-2021-05-06.jpeg'),(61,46,'9902-2021-05-06.jpeg'),(62,47,'8274-2021-05-06.jpeg'),(63,47,'8865-2021-05-06.jpeg'),(64,48,'4840-2021-05-06.jpeg'),(65,48,'9606-2021-05-06.jpeg'),(66,49,'8483-2021-05-06.jpeg'),(67,49,'no-img.png'),(68,50,'5103-2021-05-06.jpeg'),(69,50,'549-2021-05-06.jpeg'),(70,51,'8051-2021-05-06.jpeg'),(71,51,'7294-2021-05-06.jpeg'),(72,52,'5482-2021-05-06.jpeg'),(73,52,'no-img.png'),(74,53,'1569-2021-05-06.jpeg'),(75,53,'7213-2021-05-06.jpeg'),(76,54,'4393-2021-05-06.jpeg'),(77,54,'1212-2021-05-06.jpeg');
 /*!40000 ALTER TABLE `foto_documento` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `listar_documentos`
+--
+
+DROP TABLE IF EXISTS `listar_documentos`;
+/*!50001 DROP VIEW IF EXISTS `listar_documentos`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `listar_documentos` AS SELECT 
+ 1 AS `nome_completo`,
+ 1 AS `id_proprietario`,
+ 1 AS `categorias`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `listar_postos`
+--
+
+DROP TABLE IF EXISTS `listar_postos`;
+/*!50001 DROP VIEW IF EXISTS `listar_postos`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `listar_postos` AS SELECT 
+ 1 AS `id_posto`,
+ 1 AS `estado_actividade`,
+ 1 AS `tipo`,
+ 1 AS `nome`,
+ 1 AS `distrito`,
+ 1 AS `bairro`,
+ 1 AS `rua`,
+ 1 AS `municipio`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `local_documento`
@@ -503,6 +662,25 @@ INSERT INTO `local_documento` VALUES ('posto',1,1),('comando',77,1),('comando',1
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `localizacoes`
+--
+
+DROP TABLE IF EXISTS `localizacoes`;
+/*!50001 DROP VIEW IF EXISTS `localizacoes`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `localizacoes` AS SELECT 
+ 1 AS `provincia`,
+ 1 AS `id_provincia`,
+ 1 AS `municipio`,
+ 1 AS `id_municipio`,
+ 1 AS `distrito`,
+ 1 AS `id_distrito`,
+ 1 AS `bairro`,
+ 1 AS `id_bairro`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `municipio`
 --
 
@@ -516,7 +694,7 @@ CREATE TABLE `municipio` (
   PRIMARY KEY (`id_municipio`),
   KEY `provincia-m_idx` (`provincia`),
   CONSTRAINT `provincia-m` FOREIGN KEY (`provincia`) REFERENCES `provincia` (`id_provincia`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,6 +703,7 @@ CREATE TABLE `municipio` (
 
 LOCK TABLES `municipio` WRITE;
 /*!40000 ALTER TABLE `municipio` DISABLE KEYS */;
+INSERT INTO `municipio` VALUES (7,'Maianga',7),(8,'Talatona',7),(9,'Belas',7),(10,'Lubango',8),(11,'Malanje',9);
 /*!40000 ALTER TABLE `municipio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,7 +725,7 @@ CREATE TABLE `operacao_comando_municipal` (
   KEY `id_cm-ocm_idx` (`id_cm`),
   CONSTRAINT `id_agente-opcm` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
   CONSTRAINT `id_cm-opcm` FOREIGN KEY (`id_cm`) REFERENCES `comando_municipal` (`id_comando_municipal`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,8 +734,70 @@ CREATE TABLE `operacao_comando_municipal` (
 
 LOCK TABLES `operacao_comando_municipal` WRITE;
 /*!40000 ALTER TABLE `operacao_comando_municipal` DISABLE KEYS */;
-INSERT INTO `operacao_comando_municipal` VALUES (2,1,1,2,'2021-03-20 15:11:00'),(3,1,1,2,'2021-03-23 14:56:44'),(4,7,1,2,'2021-04-07 11:09:17'),(5,7,1,2,'2021-04-19 21:57:51'),(6,7,1,2,'2021-04-19 22:16:00'),(7,7,1,2,'2021-04-19 22:17:35');
+INSERT INTO `operacao_comando_municipal` VALUES (2,1,1,2,'2021-03-20 15:11:00'),(3,1,1,2,'2021-03-23 14:56:44'),(4,7,1,2,'2021-04-07 11:09:17'),(5,7,1,2,'2021-04-19 21:57:51'),(6,7,1,2,'2021-04-19 22:16:00'),(7,7,1,2,'2021-04-19 22:17:35'),(8,25,9,1,'2021-08-05 11:54:50'),(9,25,1,2,'2021-08-05 13:21:33'),(10,25,2,2,'2021-08-05 13:21:45'),(11,25,1,2,'2021-08-11 11:33:38'),(12,25,1,2,'2021-08-11 11:33:46'),(13,25,1,2,'2021-08-11 11:33:59'),(14,25,1,2,'2021-08-11 11:35:35'),(15,25,1,2,'2021-08-11 11:35:52'),(16,25,1,2,'2021-08-11 12:19:19'),(17,25,1,2,'2021-08-11 12:19:59');
 /*!40000 ALTER TABLE `operacao_comando_municipal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operacao_comando_nacional`
+--
+
+DROP TABLE IF EXISTS `operacao_comando_nacional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `operacao_comando_nacional` (
+  `id_operacao` mediumint NOT NULL AUTO_INCREMENT,
+  `id_agente` int NOT NULL,
+  `id_cn` tinyint NOT NULL,
+  `tipo` tinyint NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_operacao`),
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_cn-ocn_idx` (`id_cn`),
+  CONSTRAINT `id_agente-opcn` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_cn-opcn` FOREIGN KEY (`id_cn`) REFERENCES `comando_nacional` (`id_comando_nacional`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operacao_comando_nacional`
+--
+
+LOCK TABLES `operacao_comando_nacional` WRITE;
+/*!40000 ALTER TABLE `operacao_comando_nacional` DISABLE KEYS */;
+INSERT INTO `operacao_comando_nacional` VALUES (18,26,2,1,'2021-08-12 10:37:14'),(19,26,2,2,'2021-08-16 15:07:22'),(20,26,2,2,'2021-08-16 15:07:50'),(21,26,2,2,'2021-08-16 15:07:58'),(22,26,2,2,'2021-08-16 15:08:22'),(23,26,2,2,'2021-08-16 15:08:29'),(24,26,2,2,'2021-08-16 15:08:39'),(25,26,2,2,'2021-08-16 15:56:18'),(26,26,2,2,'2021-08-16 16:14:12');
+/*!40000 ALTER TABLE `operacao_comando_nacional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operacao_comando_provincial`
+--
+
+DROP TABLE IF EXISTS `operacao_comando_provincial`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `operacao_comando_provincial` (
+  `id_operacao` mediumint NOT NULL AUTO_INCREMENT,
+  `id_agente` int NOT NULL,
+  `id_cp` tinyint NOT NULL,
+  `tipo` tinyint NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_operacao`),
+  KEY `id_oficial_idx` (`id_agente`),
+  KEY `id_cp-ocp_idx` (`id_cp`),
+  CONSTRAINT `id_agente-opcp` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
+  CONSTRAINT `id_cp-opcp` FOREIGN KEY (`id_cp`) REFERENCES `comando_provincial` (`id_comando_provincial`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operacao_comando_provincial`
+--
+
+LOCK TABLES `operacao_comando_provincial` WRITE;
+/*!40000 ALTER TABLE `operacao_comando_provincial` DISABLE KEYS */;
+INSERT INTO `operacao_comando_provincial` VALUES (18,25,5,1,'2021-08-12 10:37:14'),(19,26,2,2,'2021-08-16 13:28:38'),(20,26,2,2,'2021-08-16 13:34:29'),(21,26,2,2,'2021-08-16 13:38:16'),(22,26,2,2,'2021-08-16 13:38:42'),(23,26,2,2,'2021-08-16 13:40:09'),(24,26,2,2,'2021-08-16 16:13:04');
+/*!40000 ALTER TABLE `operacao_comando_provincial` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -608,7 +849,7 @@ CREATE TABLE `operacao_posto` (
   KEY `id_posto_idx` (`id_posto`),
   CONSTRAINT `id_agente-opt` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`),
   CONSTRAINT `id_posto-opt` FOREIGN KEY (`id_posto`) REFERENCES `posto` (`id_posto`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -617,7 +858,7 @@ CREATE TABLE `operacao_posto` (
 
 LOCK TABLES `operacao_posto` WRITE;
 /*!40000 ALTER TABLE `operacao_posto` DISABLE KEYS */;
-INSERT INTO `operacao_posto` VALUES (1,1,1,1,'2021-03-18 15:59:34'),(2,7,4,1,'2021-03-25 21:41:09'),(4,7,1,2,'2021-03-26 15:05:13'),(5,7,1,2,'2021-03-26 15:05:20'),(6,7,1,2,'2021-03-26 15:05:25'),(7,7,1,2,'2021-03-26 15:05:30'),(8,7,1,2,'2021-03-26 15:05:37'),(9,7,1,2,'2021-03-26 15:05:55'),(10,7,1,2,'2021-03-26 15:06:10'),(11,7,1,2,'2021-03-26 15:06:17'),(14,7,8,1,'2021-04-07 11:12:53'),(15,7,9,1,'2021-04-11 20:27:38'),(16,7,9,3,'2021-04-11 20:27:46'),(17,7,11,1,'2021-04-19 22:35:18'),(18,7,1,2,'2021-04-19 22:43:14'),(19,7,12,1,'2021-04-25 23:09:28'),(20,7,1,2,'2021-04-29 13:51:51'),(21,7,1,2,'2021-04-29 13:56:56'),(22,7,4,2,'2021-04-29 13:58:23'),(23,7,8,2,'2021-04-29 13:58:32'),(24,7,9,2,'2021-04-29 13:58:46'),(25,7,12,2,'2021-04-29 13:58:54'),(26,7,11,3,'2021-05-05 13:57:43'),(27,7,11,3,'2021-05-05 13:57:48'),(28,7,11,3,'2021-05-05 13:58:03'),(29,7,11,3,'2021-05-05 13:58:04'),(30,7,11,3,'2021-05-05 13:58:05'),(31,7,11,3,'2021-05-05 13:58:05'),(32,7,11,3,'2021-05-05 13:58:06'),(33,7,13,1,'2021-05-05 13:59:45');
+INSERT INTO `operacao_posto` VALUES (1,1,1,1,'2021-03-18 15:59:34'),(2,7,4,1,'2021-03-25 21:41:09'),(4,7,1,2,'2021-03-26 15:05:13'),(5,7,1,2,'2021-03-26 15:05:20'),(6,7,1,2,'2021-03-26 15:05:25'),(7,7,1,2,'2021-03-26 15:05:30'),(8,7,1,2,'2021-03-26 15:05:37'),(9,7,1,2,'2021-03-26 15:05:55'),(10,7,1,2,'2021-03-26 15:06:10'),(11,7,1,2,'2021-03-26 15:06:17'),(14,7,8,1,'2021-04-07 11:12:53'),(15,7,9,1,'2021-04-11 20:27:38'),(16,7,9,3,'2021-04-11 20:27:46'),(17,7,11,1,'2021-04-19 22:35:18'),(18,7,1,2,'2021-04-19 22:43:14'),(19,7,12,1,'2021-04-25 23:09:28'),(20,7,1,2,'2021-04-29 13:51:51'),(21,7,1,2,'2021-04-29 13:56:56'),(22,7,4,2,'2021-04-29 13:58:23'),(23,7,8,2,'2021-04-29 13:58:32'),(24,7,9,2,'2021-04-29 13:58:46'),(25,7,12,2,'2021-04-29 13:58:54'),(26,7,11,3,'2021-05-05 13:57:43'),(27,7,11,3,'2021-05-05 13:57:48'),(28,7,11,3,'2021-05-05 13:58:03'),(29,7,11,3,'2021-05-05 13:58:04'),(30,7,11,3,'2021-05-05 13:58:05'),(31,7,11,3,'2021-05-05 13:58:05'),(32,7,11,3,'2021-05-05 13:58:06'),(33,7,13,1,'2021-05-05 13:59:45'),(34,25,1,2,'2021-08-16 15:58:37'),(35,26,1,2,'2021-08-16 16:00:55'),(36,7,14,1,'2021-08-18 20:39:59');
 /*!40000 ALTER TABLE `operacao_posto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -667,10 +908,11 @@ CREATE TABLE `posto` (
   `nome` varchar(55) NOT NULL,
   `data_criacao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado_actividade` tinyint NOT NULL DEFAULT '1',
+  `terminal` varchar(45) DEFAULT '925400400',
   PRIMARY KEY (`id_posto`),
   KEY `id_comando_municipal_idx` (`id_comando_municipal`),
   CONSTRAINT `id_comando_municipal-p` FOREIGN KEY (`id_comando_municipal`) REFERENCES `comando_municipal` (`id_comando_municipal`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -679,7 +921,7 @@ CREATE TABLE `posto` (
 
 LOCK TABLES `posto` WRITE;
 /*!40000 ALTER TABLE `posto` DISABLE KEYS */;
-INSERT INTO `posto` VALUES (1,1,1,'Mbondo Chapé','2021-03-18 15:51:36',1),(4,1,1,'Mundo Verde','2021-03-25 21:41:09',1),(8,1,1,'7ª','2021-04-07 11:12:53',1),(9,1,1,'Fubu','2021-04-11 20:27:37',2),(11,1,1,'Qualquer','2021-04-19 22:35:18',2),(12,1,1,'Nova Vida 2','2021-04-25 23:09:28',1),(13,1,1,'Benvindo','2021-05-05 13:59:45',1);
+INSERT INTO `posto` VALUES (1,1,1,'Mbondo Chapé','2021-03-18 15:51:36',1,'982312128'),(4,1,1,'Mundo Verde','2021-03-25 21:41:09',1,'925400400'),(8,1,1,'7ª','2021-04-07 11:12:53',1,'925400400'),(9,1,1,'Fubu','2021-04-11 20:27:37',2,'925400400'),(11,1,1,'Qualquer','2021-04-19 22:35:18',2,'925400400'),(12,1,1,'Nova Vida 2','2021-04-25 23:09:28',1,'925400400'),(13,1,1,'Benvindo','2021-05-05 13:59:45',1,'925400400'),(14,1,1,'Simione 6','2021-08-18 20:39:59',1,'925400400');
 /*!40000 ALTER TABLE `posto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -707,7 +949,7 @@ CREATE TABLE `posto_localizacao` (
 
 LOCK TABLES `posto_localizacao` WRITE;
 /*!40000 ALTER TABLE `posto_localizacao` DISABLE KEYS */;
-INSERT INTO `posto_localizacao` VALUES (1,'3',3,'7'),(4,'3',1,'6'),(8,'5',6,'4'),(9,'3',3,'8'),(11,'2',6,'9'),(12,'6',1,'1'),(13,'1',8,'28');
+INSERT INTO `posto_localizacao` VALUES (1,'1',3,'7'),(4,'3',1,'6'),(8,'5',6,'4'),(9,'3',3,'8'),(11,'2',6,'9'),(12,'6',1,'1'),(13,'1',8,'28'),(14,'2',7,'3');
 /*!40000 ALTER TABLE `posto_localizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -771,7 +1013,7 @@ CREATE TABLE `provincia` (
   `id_provincia` mediumint NOT NULL AUTO_INCREMENT,
   `provincia` varchar(200) NOT NULL,
   PRIMARY KEY (`id_provincia`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -780,6 +1022,7 @@ CREATE TABLE `provincia` (
 
 LOCK TABLES `provincia` WRITE;
 /*!40000 ALTER TABLE `provincia` DISABLE KEYS */;
+INSERT INTO `provincia` VALUES (7,'Luanda'),(8,'Huíla'),(9,'Malanje');
 /*!40000 ALTER TABLE `provincia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -868,6 +1111,7 @@ SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `ver_posto` AS SELECT 
  1 AS `id_posto`,
+ 1 AS `terminal`,
  1 AS `tipo`,
  1 AS `data_criacao`,
  1 AS `nome`,
@@ -877,14 +1121,6 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `rua`,
  1 AS `municipio`*/;
 SET character_set_client = @saved_cs_client;
-
---
--- Dumping events for database 'sird-db'
---
-
---
--- Dumping routines for database 'sird-db'
---
 
 --
 -- Final view structure for view `comando_municipal_informacao`
@@ -900,6 +1136,96 @@ SET character_set_client = @saved_cs_client;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `comando_municipal_informacao` AS select `cm`.`id_comando_municipal` AS `id_cm`,`cm`.`data_criacao` AS `data_criacao`,`cml`.`provincia` AS `provincia`,`cml`.`municipio` AS `municipio`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`cml`.`rua` AS `rua` from (((`comando_municipal` `cm` join `comando_municipal_localizacao` `cml` on((`cm`.`id_comando_municipal` = `cml`.`id_cm`))) join `distrito` `d` on((`cml`.`distrito` = `d`.`id_distrito`))) join `bairro` `b` on((`cml`.`bairro` = `b`.`id_bairro`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `comando_provincial_informacao`
+--
+
+/*!50001 DROP VIEW IF EXISTS `comando_provincial_informacao`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `comando_provincial_informacao` AS select `p`.`provincia` AS `provincia`,`m`.`municipio` AS `municipio`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`cpl`.`rua` AS `rua`,`cp`.`nome` AS `nome_cp`,`cp`.`terminal` AS `terminal` from (((((`comando_provincial_localizacao` `cpl` join `comando_provincial` `cp` on((`cp`.`id_comando_provincial` = `cpl`.`id_cp`))) join `distrito` `d` on((`cpl`.`distrito` = `d`.`id_distrito`))) join `bairro` `b` on((`cpl`.`bairro` = `b`.`id_bairro`))) join `municipio` `m` on((`cpl`.`municipio` = `m`.`id_municipio`))) join `provincia` `p` on((`cpl`.`provincia` = `p`.`id_provincia`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `estatisticas_comando_municipal`
+--
+
+/*!50001 DROP VIEW IF EXISTS `estatisticas_comando_municipal`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `estatisticas_comando_municipal` AS select count(0) AS `total_documentos` from `documentos` union select count(0) AS `total_perdidos` from `documentos` where (`documentos`.`estado` = 1) union select count(0) AS `total_perdidos` from `documentos` where (`documentos`.`estado` = 3) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `listar_documentos`
+--
+
+/*!50001 DROP VIEW IF EXISTS `listar_documentos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `listar_documentos` AS select `pd`.`nome_completo` AS `nome_completo`,`pd`.`id_proprietario` AS `id_proprietario`,group_concat(`cd`.`categoria` separator ',') AS `categorias` from ((`propietario_documento` `pd` join `documentos` `d` on((`pd`.`id_proprietario` = `d`.`id_proprietario`))) join `categoria_documento` `cd` on((`d`.`categoria_documento` = `cd`.`id_categoria_documento`))) group by `pd`.`id_proprietario` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `listar_postos`
+--
+
+/*!50001 DROP VIEW IF EXISTS `listar_postos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `listar_postos` AS select `p`.`id_posto` AS `id_posto`,`p`.`estado_actividade` AS `estado_actividade`,`p`.`tipo` AS `tipo`,`p`.`nome` AS `nome`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`pl`.`rua` AS `rua`,`cml`.`municipio` AS `municipio` from ((((`posto` `p` join `posto_localizacao` `pl` on((`p`.`id_posto` = `pl`.`id_posto`))) join `bairro` `b` on((`b`.`id_bairro` = `pl`.`bairro`))) join `distrito` `d` on((`d`.`id_distrito` = `pl`.`distrito`))) join `comando_municipal_localizacao` `cml` on((`p`.`id_comando_municipal` = `cml`.`id_cm`))) where ((`p`.`estado_actividade` = 1) or (`p`.`estado_actividade` = 2)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `localizacoes`
+--
+
+/*!50001 DROP VIEW IF EXISTS `localizacoes`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `localizacoes` AS select `p`.`provincia` AS `provincia`,`p`.`id_provincia` AS `id_provincia`,`m`.`municipio` AS `municipio`,`m`.`id_municipio` AS `id_municipio`,`d`.`distrito` AS `distrito`,`d`.`id_distrito` AS `id_distrito`,`b`.`bairro` AS `bairro`,`b`.`id_bairro` AS `id_bairro` from (((`provincia` `p` join `municipio` `m` on((`m`.`provincia` = `p`.`id_provincia`))) join `distrito` `d` on((`d`.`municipio` = `m`.`id_municipio`))) join `bairro` `b` on((`b`.`distrito` = `d`.`id_distrito`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -989,7 +1315,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `ver_posto` AS select `p`.`id_posto` AS `id_posto`,`p`.`tipo` AS `tipo`,`p`.`data_criacao` AS `data_criacao`,`p`.`nome` AS `nome`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`b`.`id_bairro` AS `id_bairro`,`pl`.`rua` AS `rua`,`cml`.`municipio` AS `municipio` from ((((`posto` `p` join `posto_localizacao` `pl` on((`p`.`id_posto` = `pl`.`id_posto`))) join `bairro` `b` on((`b`.`id_bairro` = `pl`.`bairro`))) join `distrito` `d` on((`pl`.`distrito` = `d`.`id_distrito`))) join `comando_municipal_localizacao` `cml` on((`p`.`id_comando_municipal` = `cml`.`id_cm`))) where ((`p`.`estado_actividade` = 1) or (`p`.`estado_actividade` = 2)) */;
+/*!50001 VIEW `ver_posto` AS select `p`.`id_posto` AS `id_posto`,`p`.`terminal` AS `terminal`,`p`.`tipo` AS `tipo`,`p`.`data_criacao` AS `data_criacao`,`p`.`nome` AS `nome`,`d`.`distrito` AS `distrito`,`b`.`bairro` AS `bairro`,`b`.`id_bairro` AS `id_bairro`,`pl`.`rua` AS `rua`,`cml`.`municipio` AS `municipio` from ((((`posto` `p` join `posto_localizacao` `pl` on((`p`.`id_posto` = `pl`.`id_posto`))) join `bairro` `b` on((`b`.`id_bairro` = `pl`.`bairro`))) join `distrito` `d` on((`pl`.`distrito` = `d`.`id_distrito`))) join `comando_municipal_localizacao` `cml` on((`p`.`id_comando_municipal` = `cml`.`id_cm`))) where ((`p`.`estado_actividade` = 1) or (`p`.`estado_actividade` = 2)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1003,4 +1329,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-14 19:48:25
+-- Dump completed on 2021-08-18 21:02:45

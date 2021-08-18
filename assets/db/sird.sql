@@ -1241,7 +1241,43 @@ UPDATE `sird-db`.`posto`
                                 SET
                                 `terminal` = '982312121'
                                 WHERE id_posto = 1;
- -- ver postos por comando nacional
+ -- ver postos por comando municipal
+ 
+ -- eliminar posto 
+ 
+ 
+ UPDATE `sird-db`.`local_documento`
+SET
+`id_local` = 9
+WHERE id_local = 1 AND tipo_local = 'posto' ;
+
+UPDATE `sird-db`.`agente_posto`
+SET
+`id_posto` = 9
+WHERE id_posto = 1;
+
+UPDATE `sird-db`.`posto`
+SET
+`estado_actividade` = 2
+WHERE `id_posto` = 1;
+
+
+INSERT INTO `sird-db`.`operacao_posto`
+(`id_operacao`,
+`id_agente`,
+`id_posto`,
+`tipo`,
+`data`)
+VALUES
+(NULL,
+7,
+1,
+3,
+DEFAULT);
+
+
+
+ 
 
 
 
