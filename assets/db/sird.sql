@@ -1237,6 +1237,12 @@ SELECT p.provincia, m.municipio, d.distrito,
                             
 -- editar terminal de posto
 
+UPDATE `sird-db`.`posto`
+                                SET
+                                `terminal` = '982312121'
+                                WHERE id_posto = 1;
+ -- ver postos por comando nacional
+
 
 
 

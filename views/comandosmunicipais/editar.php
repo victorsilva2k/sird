@@ -46,7 +46,8 @@
                 </div>
             </div>
             <button type="submit" name="submit" class="caixa-info__botao  btn btn-success mgt-10 ">Guardar alterações</button>
-            <a href="<?php echo ROOT_URL; ?>comandosprovinciais/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
+                <a href="<?php echo ROOT_URL; ?>comandosmunicipais/ver/<?php echo $id_cm; ?>" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
+
 
 
             <?php endforeach;?>

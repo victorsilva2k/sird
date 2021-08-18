@@ -42,6 +42,27 @@ class ComandoMunicipalModel extends Model{
         $this->bind(':ID_CM', $id_cm);
 
         $row["alteracoes"] = $this->resultSet();
+
+        $this->query('    SELECT 
+                            `p`.`id_posto` AS `id_posto`,
+                            `p`.`estado_actividade` AS `estado_actividade`,
+                            `p`.`tipo` AS `tipo`,
+                            `p`.`nome` AS `nome`,
+                            `d`.`distrito` AS `distrito`,
+                            `b`.`bairro` AS `bairro`,
+                            `pl`.`rua` AS `rua`,
+                            `cml`.`municipio` AS `municipio`
+                        FROM
+                            ((((`posto` `p`
+                            JOIN `posto_localizacao` `pl` ON ((`p`.`id_posto` = `pl`.`id_posto`)))
+                            JOIN `bairro` `b` ON ((`b`.`id_bairro` = `pl`.`bairro`)))
+                            JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`)))
+                            JOIN `comando_municipal_localizacao` `cml` ON ((`p`.`id_comando_municipal` = `cml`.`id_cm`)))
+                        WHERE p.id_comando_municipal = :ID_COMANDO_MUNICIPAL');
+        $this->bind('ID_COMANDO_MUNICIPAL', $id_cm);
+
+        $row['postos'] = $this->resultSet();
+
         return $row;
     }
 
@@ -219,4 +240,29 @@ class ComandoMunicipalModel extends Model{
     
         return $row;  
     }
+
+    public function registros($id_cm)
+    {
+        $this->query("SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+                        JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        JOIN distrito d ON cml.distrito = d.id_distrito
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = :ID_CM;");
+        $this->bind(':ID_CM', $id_cm);
+        $row['comando_municipal'] = $this->resultSet();
+
+        $this->query('SELECT ocm.tipo, ocm.data, a.nome, a.sobrenome
+                        FROM `sird-db`.operacao_comando_municipal ocm 
+                        JOIN agente a ON a.id_agente = ocm.id_agente
+                        WHERE id_cm = :ID_CM ORDER BY data DESC');
+        $this->bind(':ID_CM', $id_cm);
+
+        $row["alteracoes"] = $this->resultSet();
+
+        return $row;
+    }
+
+
 }

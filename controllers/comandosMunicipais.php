@@ -20,6 +20,12 @@ class ComandosMunicipais extends Controller{
         $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->ver($this->param), true);
     }
+    protected function registros()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new ComandoMunicipalModel();
+        $this->returnView($viewmodel->registros($this->param), true);
+    }
 
     protected function adicionar()
     {

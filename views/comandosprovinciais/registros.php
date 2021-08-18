@@ -45,7 +45,7 @@
 <?php if(Controller::verificarLugar(4)): ?>
 
 
-        <a href="<?php echo ROOT_URL; ?>comandonacional/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
+    <a href="<?php echo ROOT_URL; ?>comandonacional/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
 
     <div class="alteracoes-documento registro-alteracoes">
         <h1 class="titulo--normal">Registro de Alterações</h1>

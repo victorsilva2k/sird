@@ -4,7 +4,32 @@ class PostoModel extends Model{
     public function Index()
     {
 
-        if(Controller::verificarLugar(3)) {
+        if(Controller::verificarLugar(4)) {
+
+        $this->query('     SELECT 
+                                    `p`.`id_posto` AS `id_posto`,
+                                    `p`.`estado_actividade` AS `estado_actividade`,
+                                    `p`.`tipo` AS `tipo`,
+                                    `p`.`nome` AS `nome`,
+                                    `d`.`distrito` AS `distrito`,
+                                    `b`.`bairro` AS `bairro`,
+                                    `pl`.`rua` AS `rua`,
+                                    `cml`.`municipio` AS `municipio`
+                                FROM
+                                    ((((`posto` `p`
+                                    JOIN `posto_localizacao` `pl` ON ((`p`.`id_posto` = `pl`.`id_posto`)))
+                                    JOIN `bairro` `b` ON ((`b`.`id_bairro` = `pl`.`bairro`)))
+                                    JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`)))
+                                    JOIN `comando_municipal_localizacao` `cml` ON ((`p`.`id_comando_municipal` = `cml`.`id_cm`))
+                                    JOIN comando_municipal cm ON cml.id_cm = cm.id_comando_municipal)
+                                WHERE cm.comando_provincial = :ID_COMANDO_PROVINCIAL');
+        $this->bind('ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
+        $row = $this->resultSet();
+        return $row;
+        // HACK ele deve pesquisar por postos por municipio e provincia
+    }
+
+        elseif(Controller::verificarLugar(3)) {
 
             $this->query('     SELECT 
                                     `p`.`id_posto` AS `id_posto`,
