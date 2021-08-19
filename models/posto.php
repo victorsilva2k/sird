@@ -99,13 +99,104 @@ class PostoModel extends Model{
     }
 
 
-    public function escolher($id_posto)
+    public function eliminar($id_posto)
     {
 
+        //Limpando POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // INSERT MySQL
+
+        if (isset($post['submit'])) {
+
+            extract($post);
 
 
-        $this->query('   SELECT * FROM `sird-db`.ver_posto;');
 
+            // Caso o utizador não escrever ou deixar em branco um dos campos
+            if ($PostoEliminado == '' || $PostoEscolhido == '') {
+                Messages::setMessage("Por favor preencha todos os campos", "error");
+                return;
+            }
+
+            try {
+                $this->beginTransaction();
+
+                // Movendo os documentos para o novo posto
+                $this->query(" UPDATE `sird-db`.`local_documento`
+                                    SET
+                                    `id_local` = :POSTO_ESCOLHIDO
+                                    WHERE id_local = :POSTO_ELIMINADO AND tipo_local = 'posto' ;");
+                $this->bind(':POSTO_ESCOLHIDO', $PostoEscolhido);
+                $this->bind(':POSTO_ELIMINADO', $PostoEliminado);
+                $this->execute();
+
+
+                // Movendo os agentes para o novo posto
+                $this->query("UPDATE `sird-db`.`agente_posto`
+                                    SET
+                                    `id_posto` = :POSTO_ESCOLHIDO
+                                    WHERE id_posto = :POSTO_ELIMINADO;");
+                $this->bind(':POSTO_ESCOLHIDO', $PostoEscolhido);
+                $this->bind(':POSTO_ELIMINADO', $PostoEliminado);
+                $this->execute();
+
+
+                // Mudando o estado de actividade do posto para eliminado
+                $this->query("UPDATE `sird-db`.`posto`
+                                    SET
+                                    `estado_actividade` = 2
+                                    WHERE `id_posto` = :POSTO_ELIMINADO;");
+                $this->bind(':POSTO_ELIMINADO', $PostoEliminado);
+                $this->execute();
+
+                // Registrando a alteração
+                $this->query("INSERT INTO `sird-db`.`operacao_posto` (`id_operacao`, `id_agente`, `id_posto`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_POSTO, 3, CURRENT_TIMESTAMP);");
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                $this->bind(':ID_POSTO', $id_posto);
+                $this->execute();
+
+                $this->commit();
+                if ($this->rowCounte() >= 1) {
+                    //HACK ele tem que ir para o comando municipal do posto eliminado
+
+                    Messages::setMessage("Posto eliminado com sucesso", "success");
+                    switch ($_SESSION['usuario_local']['tipo_local']) {
+                        case "comando_municipal":
+                            $local = 'comandosmunicipais';
+                            break;
+                        case "comando_provincial":
+                            $local = 'comandos_provinciais';
+                            break;
+                        case "comando_nacional":
+                            $local = 'comandos_provinciais';
+                            break;
+                        default:
+                            $nivel_num = 0;
+                    }
+                    header('Location: ' . ROOT_URL . 'comandosmunicipais');
+                }
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+
+            }
+
+        }
+
+        $this->query('SELECT id_comando_municipal FROM posto WHERE id_posto = :ID_POSTO;');
+        $this->bind(':ID_POSTO', $id_posto);
+        $row = $this->singleResult();
+        extract($row);
+
+        $this->query('SELECT 
+                                `p`.`id_posto` AS `id_posto`,
+                                `p`.`tipo` AS `tipo`,
+                                `p`.`nome` AS `nome`
+                            FROM posto p
+                            WHERE p.id_comando_municipal = :IDCM AND p.id_posto != :ID_POSTO AND p.estado_actividade = 1');
+        $this->bind(':IDCM', $id_comando_municipal);
+        $this->bind(':ID_POSTO', $id_posto);
         $row = $this->resultSet();
         return $row;
 
@@ -318,9 +409,6 @@ class PostoModel extends Model{
                 Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
 
             }
-            //Verify
-
-
 
         }
 

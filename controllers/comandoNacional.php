@@ -15,7 +15,7 @@ class ComandoNacional extends Controller{
         $this->returnView($viewmodel->Editar($this->param), true);
     }
 
-    /** @noinspection PhpUnused */
+
     protected function registros()
     {
         $this->verificarNivel(4);

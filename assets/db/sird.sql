@@ -1089,7 +1089,7 @@ SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.ba
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
                         JOIN municipio m ON cml.municipio = m.id_municipio
                         JOIN distrito d ON cml.distrito = d.id_distrito
-                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro` WHERE cm.id_comando_municipal = 1;
+                        JOIN `bairro` `b` ON `cml`.`bairro` = `b`.`id_bairro`;
 
 -- Inserindo Comando Provincial
 
@@ -1274,6 +1274,34 @@ VALUES
 1,
 3,
 DEFAULT);
+
+-- ver comando municipal de posto
+
+SELECT id_comando_municipal FROM posto WHERE id_posto = 1;
+
+SELECT 
+                            `p`.`id_posto` AS `id_posto`,
+                            `p`.`estado_actividade` AS `estado_actividade`,
+                            `p`.`tipo` AS `tipo`,
+                            `p`.`nome` AS `nome`,
+                            `d`.`distrito` AS `distrito`,
+                            `b`.`bairro` AS `bairro`,
+                            `pl`.`rua` AS `rua`,
+                            `cml`.`municipio` AS `municipio`
+                        FROM
+                            ((((`posto` `p`
+                            JOIN `posto_localizacao` `pl` ON ((`p`.`id_posto` = `pl`.`id_posto`)))
+                            JOIN `bairro` `b` ON ((`b`.`id_bairro` = `pl`.`bairro`)))
+                            JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`)))
+                            JOIN `comando_municipal_localizacao` `cml` ON ((`p`.`id_comando_municipal` = `cml`.`id_cm`)))
+                        WHERE p.id_comando_municipal = 1;
+                        
+                         SELECT 
+                            `p`.`id_posto` AS `id_posto`,
+                            `p`.`tipo` AS `tipo`,
+                            `p`.`nome` AS `nome`
+                        FROM posto p
+                        WHERE p.id_comando_municipal = 1 AND p.id_posto != 4 AND p.estado_actividade = 1;
 
 
 

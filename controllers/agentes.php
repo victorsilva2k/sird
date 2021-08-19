@@ -51,9 +51,7 @@ class agentes extends Controller{
     }
     protected function sair()
     {
-        unset($_SESSION['is_logged_in']);
-        unset($_SESSION['dados_usuario']);
-        unset($_SESSION['usuario_local']);
+        unset($_SESSION['is_logged_in'], $_SESSION['dados_usuario'], $_SESSION['usuario_local']);
         session_destroy();
         header('Location: ' .ROOT_URL. 'agentes/entrar');
     }

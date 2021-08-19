@@ -29,13 +29,6 @@ class Postos extends Controller{
         $this->returnView($viewmodel->eliminar($this->param), true);
     }
 
-    protected function escolher()
-    {
-        $this->verificarNivel(2);
-        $viewmodel = new PostoModel();
-        $this->returnView($viewmodel->escolher($this->param), true);
-    }
-
     protected function adicionar()
     {
         $this->verificarNivel(2);
