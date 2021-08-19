@@ -264,5 +264,109 @@ class ComandoMunicipalModel extends Model{
         return $row;
     }
 
+    public function eliminar($id_cm)
+    {
+
+        //Limpando POST
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // INSERT MySQL
+
+        if (isset($post['submit'])) {
+
+            extract($post);
+
+
+
+            // Caso o utizador não escrever ou deixar em branco um dos campos
+            if ($ComandoMunicipalEliminado == '' || $ComandoMunicipalEscolhido == '') {
+                Messages::setMessage("Por favor preencha todos os campos", "error");
+                return;
+            }
+
+            try {
+                $this->beginTransaction();
+
+                // Movendo os postos para o novo comando municipal
+                $this->query(" UPDATE `sird-db`.`posto`
+                                    SET
+                                    `id_comando_municipal` = :COMANDO_ESCOLHIDO
+                                    WHERE `id_comando_municipal` = :COMANDO_ELIMINADO;");
+                $this->bind(':COMANDO_ESCOLHIDO', $ComandoMunicipalEscolhido);
+                $this->bind(':COMANDO_ELIMINADO', $ComandoMunicipalEliminado);
+                $this->execute();
+
+
+                // Movendo os agentes para o novo comando municipal
+                $this->query("UPDATE `sird-db`.`agente_comando_municipal`
+                                    SET
+                                    `id_cm` = :COMANDO_ESCOLHIDO
+                                    WHERE id_cm = :COMANDO_ELIMINADO;");
+                $this->bind(':COMANDO_ESCOLHIDO', $ComandoMunicipalEscolhido);
+                $this->bind(':COMANDO_ELIMINADO', $ComandoMunicipalEliminado);
+                $this->execute();
+
+                // Movendo os documentos para o novo comando municipal
+                $this->query(" UPDATE `sird-db`.`local_documento`
+                                    SET
+                                    `id_local` = :COMANDO_ESCOLHIDO
+                                    WHERE id_local = :COMANDO_ELIMINADO AND tipo_local = 'comando_municipal';");
+                $this->bind(':COMANDO_ESCOLHIDO', $ComandoMunicipalEscolhido);
+                $this->bind(':COMANDO_ELIMINADO', $ComandoMunicipalEliminado);
+                $this->execute();
+
+
+                // Mudando o estado de actividade do comando_municipal para eliminado
+                $this->query("UPDATE `sird-db`.`comando_municipal`
+                                    SET
+                                    `estado_actividade` = 2
+                                    WHERE `id_comando_municipal` = :COMANDO_ELIMINADO;");
+                $this->bind(':COMANDO_ELIMINADO', $ComandoMunicipalEliminado);
+                $this->execute();
+
+                // Movendo os documentos para o novo comando municipal
+                $this->query(" UPDATE `sird-db`.`local_documento`
+                                    SET
+                                    `id_local` = :COMANDO_ESCOLHIDO
+                                    WHERE id_local = :COMANDO_ELIMINADO AND tipo_local = 'comando_municipal';");
+                $this->bind(':COMANDO_ESCOLHIDO', $ComandoMunicipalEscolhido);
+                $this->bind(':COMANDO_ELIMINADO', $ComandoMunicipalEliminado);
+                $this->execute();
+
+                // Registrando a alteração
+                $this->query("INSERT INTO `sird-db`.`operacao_comando_municipal` (`id_operacao`, `id_agente`, `id_cm`, `tipo`, `data`) VALUES(NULL, :ID_AGENTE, :ID_CM, 3, CURRENT_TIMESTAMP);");
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                $this->bind(':ID_CM', $id_cm);
+                $this->execute();
+
+                $this->commit();
+                if ($this->rowCounte() >= 1) {
+                    //HACK ele tem que ir para o comando municipal do posto eliminado
+
+                    Messages::setMessage("Comando Municipal eliminado com sucesso", "success");
+
+                    header('Location: ' . ROOT_URL . 'comandosmunicipais/' . $ComandoMunicipalEscolhido);
+                }
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+
+            }
+
+        }
+
+        $this->query("SELECT cm.id_comando_municipal id_cm, m.municipio
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        WHERE cm.comando_provincial = :IDCP AND cm.id_comando_municipal != :IDCM;");
+        $this->bind(':IDCP', $_SESSION['usuario_local']['id_local']);
+        $this->bind(':IDCM', $id_cm);
+        $row = $this->resultSet();
+        return $row;
+
+    }
+
 
 }

@@ -1304,6 +1304,49 @@ SELECT
                         WHERE p.id_comando_municipal = 1 AND p.id_posto != 4 AND p.estado_actividade = 1;
 
 
+-- eliminar comando municipal
+-- - mudar id comando municipal de posto
+UPDATE `sird-db`.`posto`
+SET
+`id_comando_municipal` = 9
+WHERE `id_comando_municipal` = 2;
+
+--
+
+UPDATE `sird-db`.`agente_comando_municipal`
+SET
+`id_cm` = 9
+WHERE id_cm = 2;
+
+-- 
+
+ UPDATE `sird-db`.`local_documento`
+SET
+`id_local` = 9
+WHERE id_local = 2 AND tipo_local = 'comando_municipal';
+
+--
+
+UPDATE `sird-db`.`comando_municipal`
+SET
+`estado_actividade` = 2
+WHERE `id_comando_municipal` = 2;
+
+INSERT INTO `sird-db`.`operacao_comando_municipal`
+(`id_operacao`,
+`id_agente`,
+`id_cm`,
+`tipo`,
+`data`)
+VALUES
+(NULL,
+27,
+2,
+3,
+DEFAULT);
+
+
+
 
  
 

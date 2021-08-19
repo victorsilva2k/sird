@@ -14,6 +14,12 @@ class ComandosMunicipais extends Controller{
         $viewmodel = new ComandoMunicipalModel();
         $this->returnView($viewmodel->Editar($this->param), true);
     }
+    protected function Eliminar()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new ComandoMunicipalModel();
+        $this->returnView($viewmodel->eliminar($this->param), true);
+    }
     protected function ver()
     {
         $this->verificarNivel(2);

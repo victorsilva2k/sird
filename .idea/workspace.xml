@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="escolher posto para mover arquivos">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/comandosmunicipais/eliminar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/agentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/agentes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comandoNacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandoNacional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/postos.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/documento.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/documento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/posto.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/posto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/postos/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/postos/escolher.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/comandosMunicipais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comandosMunicipais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comandoMunicipal.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoMunicipal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.26.zip" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/comandosmunicipais" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
@@ -69,8 +60,8 @@
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosprovinciais" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandonacional" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais\" />
       <recent name="H:\Programas\xampp\htdocs\sird\models" />
@@ -136,7 +127,7 @@
       <workItem from="1629309855817" duration="7450000" />
       <workItem from="1629371562878" duration="620000" />
       <workItem from="1629372210312" duration="569000" />
-      <workItem from="1629372820507" duration="6052000" />
+      <workItem from="1629372820507" duration="8621000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>
@@ -187,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629321155840</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="eliminar postos">
+      <created>1629383573418</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629383573418</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +212,8 @@
     <MESSAGE value="ver postos por comando municipal e registros de CM" />
     <MESSAGE value="revisão de postos" />
     <MESSAGE value="escolher posto para mover arquivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="escolher posto para mover arquivos" />
+    <MESSAGE value="eliminar postos" />
+    <option name="LAST_COMMIT_MESSAGE" value="eliminar postos" />
   </component>
   <component name="WindowStateProjectService">
     <state x="263" y="59" key="#CLI_Interpreters" timestamp="1629315817694">
@@ -267,10 +266,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="430" y="240" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1629372831783" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1629372241884">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1629383570219">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1629372241884" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1629383570219" />
     <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629311597891" />
     <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1629374322372">
       <screen x="0" y="0" width="1366" height="768" />
@@ -343,10 +342,10 @@
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="6" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1629378467010" />
     <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1626790210667" />
-    <state width="498" height="471" key="SwitcherDM" timestamp="1629382503972">
+    <state width="498" height="471" key="SwitcherDM" timestamp="1629386336113">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="498" height="471" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1629382503972" />
+    <state width="498" height="471" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1629386336113" />
     <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629316506264" />
     <state x="544" y="302" key="WebDeployment.AddServerDialog.v.1" timestamp="1629315812776">
       <screen x="0" y="40" width="1366" height="728" />
