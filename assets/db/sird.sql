@@ -1347,10 +1347,15 @@ DEFAULT);
 
 
 
+SELECT cm.id_comando_municipal id_cm, m.municipio
+                        FROM `comando_municipal` `cm`
+                        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
 
+                        JOIN municipio m ON cml.municipio = m.id_municipio
+                        WHERE cm.comando_provincial = 2 AND cm.id_comando_municipal != 9;
  
 
-
+-- ver agentes de comando municipal
 
 
 

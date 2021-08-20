@@ -1,5 +1,5 @@
 <style>
-    .comando-link {
+    .comando_p_link {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }
@@ -56,6 +56,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Província</th>
                     <th scope="col">Terminal</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Ações</th>
                 </tr>
                 </thead>
@@ -68,13 +69,30 @@
                         <td><?php echo $provincia?></td>
                         <td><?php echo $terminal?></td>
                         <td>
+                            <?php
+                            switch ($estado_actividade) {
+                                case 1:
+                                    $estado = "Activo";
+                                    break;
+                                case 2:
+                                    $estado = "Eliminado";
+                                    break;
+                                default:
+                                    $estado = "Activo";
+                            }
+                            echo ucfirst($estado);
+
+                            ?>
+                        </td>
+                        <td>
                             <a href="<?php echo ROOT_URL; ?>comandosmunicipais/ver/<?php echo $id_cm?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
- 
+                         <?php if($estado_actividade == 1):?>
                             <a href="<?php echo ROOT_URL; ?>comandosmunicipais/editar/<?php echo $id_cm?>" class="center-t btn btn-primary mb-4 ">Editar</a>
 
                             <a href="<?php echo ROOT_URL; ?>comandosmunicipais/eliminar/<?php echo $id_cm?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
-
+                        <?php endif;?>
                         </td>
+
                     </tr>
 
                 <?php endforeach;?>

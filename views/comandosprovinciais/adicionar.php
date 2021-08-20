@@ -1,6 +1,6 @@
 
 <style>
-    .comando-link {
+    .comando_p_link {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }

@@ -1,5 +1,5 @@
 <style>
-    .comando-link {
+    .comando_n_link {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }
@@ -34,7 +34,7 @@
 </div>
     <div class="btn-group">
         <a href="<?php echo ROOT_URL; ?>comandonacional/editar/<?php echo $id_cn?>" class="mgb-20 center-t btn btn-success mb-4 ">Editar</a>
-        <a href="<?php echo ROOT_URL; ?>comandonacional/registros/<?php echo $id_cn?>" class="center-t btn btn-secondary mb-4 ">Ver mais</a>
+        <a href="<?php echo ROOT_URL; ?>comandonacional/registros/<?php echo $id_cn?>" class="center-t btn btn-secondary mb-4 mgb-20">Ver mais</a>
     </div>
 <?php endforeach;?>
 
@@ -73,7 +73,7 @@
  
                             <a href="<?php echo ROOT_URL; ?>comandosprovinciais/editar/<?php echo $id_cp?>" class="center-t btn btn-primary mb-4 ">Editar</a>
 
-                            <a href="<?php echo ROOT_URL; ?>comandosprovinciais/eliminar/<?php echo $id_cp?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>
+
 
                         </td>
                     </tr>

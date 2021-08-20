@@ -1,5 +1,5 @@
 <style>
-    .comando-link {
+    .comando_m_link {
         border-left: 3px solid var(--color-grey-dark-1);
         background-color: var(--color-grey-light-4);
     }
@@ -8,7 +8,7 @@
     <div class="bairros content-div br-25 mgb-20">
         <div class="content-div__cima">
 
-            <h1 class="titulo--normal content-div__titulo">Comando Municipal de <?php echo $municipio?></h1>
+            <h1 class="titulo--normal content-div__titulo">Comando Municipal de <?php echo $municipio?><?php if($estado_actividade == 2): echo " (Eliminado)"?> <?php endif;?></h1>
         </div>
 
 
@@ -38,8 +38,11 @@
 
 
 <?php endforeach;?>
+
 <a href="<?php echo ROOT_URL; ?>comandosmunicipais/registros/<?php echo $id_cm?>" class="center-t btn btn-primary  ">Ver mais</a>
+<?php if($estado_actividade == 1):?>
 <a href="<?php echo ROOT_URL?>comandosmunicipais/editar/<?php echo $id_cm?>" class="  btn btn-success mgt-10 ">Editar</a>
+<?php endif;?>
 <?php if(Controller::verificarLugar(3, true)): ?>
     <a href="<?php echo ROOT_URL; ?>comandosprovinciais/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
 
@@ -48,7 +51,7 @@
     <a href="<?php echo ROOT_URL; ?>comandonacional/" class="caixa-info__botao  btn btn-secondary mgt-10 ">Voltar</a>
 <?php endif;?>
 
-
+<?php if($estado_actividade == 1):?>
 
 <div class="documentos-recentes">
 
@@ -122,4 +125,4 @@
 
 </div>
 
-
+<?php endif;?>

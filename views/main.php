@@ -62,6 +62,7 @@
                                 <span>Documentos</span>
                             </a>
                         </li>
+                        <?php if((Controller::verificarLugar(1)) AND !(Controller::verificarLugar(2))): ?>
                         <li class="navegacao-lateral__item" id="postos_nav">
                             <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
@@ -70,9 +71,9 @@
                                 <span>Postos</span>
                             </a>
                         </li>
-
+                        <?php endif;?>
                         <?php  if(Controller::verificarLugar(2)): ?>
-                            <li class="navegacao-lateral__item" id="agentes_nav">
+                            <li class="navegacao-lateral__item agentes_link" id="agentes_nav">
                                 <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-user"></use>
@@ -82,7 +83,7 @@
                             </li>
                         <?php endif;?>
                         <?php  if(Controller::verificarLugar(2, true)): ?>
-                        <li class="navegacao-lateral__item" id="comando_nav">
+                        <li class="navegacao-lateral__item comando_m_link" id="comando_m_nav">
                             <a href="<?php echo ROOT_URL; ?>comandosmunicipais" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
                                     <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-office"></use>
@@ -92,7 +93,7 @@
                         </li>
                         <?php endif;?>
                         <?php  if(Controller::verificarLugar(3, true)): ?>
-                            <li class="navegacao-lateral__item" id="agentes_nav">
+                            <li class="navegacao-lateral__item comando_p_link" id="comando_p_nav">
                                 <a href="<?php echo ROOT_URL; ?>comandosprovinciais" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
@@ -102,7 +103,7 @@
                             </li>
                         <?php endif;?>
                         <?php  if(Controller::verificarLugar(4)): ?>
-                            <li class="navegacao-lateral__item" id="agentes_nav">
+                            <li class="navegacao-lateral__item comando_n_link" id="comando_n_nav">
                                 <a href="<?php echo ROOT_URL; ?>comandonacional" class="navegacao-lateral__link">
                                     <svg class="navegacao-lateral__icone">
                                         <use xlink:href="<?php echo ROOT_IMG; ?>site/sprite.svg#icon-home1"></use>
@@ -206,7 +207,7 @@
                                 </a>
                             </li>
 
-                            <?php if(($_SESSION['usuario_local']['tipo_local'] === "comando_municipal") AND !(isset($_SESSION['usuario_local']))): ?>
+                            <?php if((Controller::verificarLugar(2)) AND !(isset($_SESSION['usuario_local']))): ?>
                                 <li class="navegacao-lateral__item" id="agentes_nav">
                                     <a href="<?php echo ROOT_URL; ?>agentes" class="navegacao-inferior__link">
                                         <svg class="navegacao-inferior__icone">

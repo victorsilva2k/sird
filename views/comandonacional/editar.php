@@ -1,5 +1,10 @@
 
-
+<style>
+    .comando_n_link {
+        border-left: 3px solid var(--color-grey-dark-1);
+        background-color: var(--color-grey-light-4);
+    }
+</style>
 <form method="post" class="caixa-info br-25">
     <div class="caixa-info__titulo">
         <p>Editar Comando Nacional</p>

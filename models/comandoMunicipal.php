@@ -25,7 +25,7 @@ class ComandoMunicipalModel extends Model{
 
     public function ver($id_cm)
     {
-        $this->query("SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal
+        $this->query("SELECT cm.id_comando_municipal id_cm, cml.rua, cm.data_criacao, d.distrito, b.bairro,  p.provincia, m.municipio, cm.id_comando_municipal, cm.terminal, cm.estado_actividade
                         FROM `comando_municipal` `cm`
                         JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`

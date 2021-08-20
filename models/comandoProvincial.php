@@ -19,7 +19,7 @@ class ComandoProvincialModel extends Model{
             $row['comando_provincial'] = $this->resultSet();
 
 
-            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal
+            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal, cm.estado_actividade
                         FROM `comando_municipal` `cm`
                         JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
@@ -51,7 +51,7 @@ class ComandoProvincialModel extends Model{
             $row['comando_provincial'] = $this->resultSet();
 
 
-            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal
+            $this->query("SELECT cm.id_comando_municipal id_cm, p.provincia, m.municipio,  cm.terminal, cm.estado_actividade
                         FROM `comando_municipal` `cm`
                         JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                         JOIN `provincia` `p` ON `cml`.`provincia` = `p`.`id_provincia`
