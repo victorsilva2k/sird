@@ -1357,6 +1357,45 @@ SELECT cm.id_comando_municipal id_cm, m.municipio
 
 -- ver agentes de comando municipal
 
+SELECT a.nome, a.sobrenome, m.municipio, ac.nip
+FROM agente a 
+JOIN agente_conta ac 
+	ON ac.id_agente = a.id_agente
+JOIN agente_comando_municipal acm 
+	ON acm.id_agente = a.id_agente
+JOIN `comando_municipal` `cm` 
+	ON acm.id_cm = cm.id_comando_municipal
+JOIN `comando_municipal_localizacao` `cml` 
+	ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+JOIN municipio m 
+	ON cml.municipio = m.id_municipio 
+WHERE cm.comando_provincial = 2;
+
+-- ver agente de comando provincial
+
+SELECT a.nome agente_nome, a.sobrenome, cp.nome nome_comando, ac.nip
+FROM agente a 
+JOIN agente_conta ac 
+	ON ac.id_agente = a.id_agente
+JOIN agente_comando_provincial acp 
+	ON acp.id_agente = a.id_agente
+JOIN comando_provincial cp 
+	ON acp.id_comando_provincial = cp.id_comando_provincial
+WHERE ac.estado_conta = 1;
+
+-- recuperar palavrar passe
+
+-- pedir solicitação 
+
+UPDATE `sird-db`.`agente_conta`
+SET `estado_conta` = 4
+WHERE `nip` = 7173713 AND estado_conta = 1;
+
+select estado_conta FROM agente_conta WHERE nip = 7173713;
+
+select estado_conta FROM agente_conta WHERE id_agente = 28;
+
+
 
 
 

@@ -5,7 +5,7 @@ class AgenteModel extends Model{
     public function index()
     {
         if (Controller::verificarLugar(2, true)) {
-            $this->query('SELECT a.nome as agente_nome, a.sobrenome, p.nome as posto_nome, p.tipo,  ac.nip
+            $this->query('SELECT a.nome as agente_nome, a.sobrenome, p.nome as posto_nome, p.tipo,  ac.nip, a.id_agente
             FROM agente_conta ac 
             JOIN agente a ON ac.id_agente = a.id_agente
             JOIN agente_posto ap ON ac.id_agente = ap.id_agente
@@ -14,7 +14,7 @@ class AgenteModel extends Model{
 
         } elseif (Controller::verificarLugar(3, true)){
 
-            $this->query('SELECT a.nome, a.sobrenome, m.municipio, ac.nip
+            $this->query('SELECT a.nome, a.sobrenome, m.municipio, ac.nip, a.id_agente
                                 FROM agente a 
                                 JOIN agente_conta ac 
                                     ON ac.id_agente = a.id_agente
@@ -31,7 +31,7 @@ class AgenteModel extends Model{
             $row = $this->resultSet();
         }elseif (Controller::verificarLugar(4, true)){
 
-            $this->query('SELECT a.nome agente_nome, a.sobrenome, cp.nome nome_comando, ac.nip
+            $this->query('SELECT a.nome agente_nome, a.sobrenome, cp.nome nome_comando, ac.nip, a.id_agente
                                 FROM agente a 
                                 JOIN agente_conta ac 
                                     ON ac.id_agente = a.id_agente
@@ -466,8 +466,6 @@ class AgenteModel extends Model{
                 return $row;
 
     }
-
-
     public function editar()
     {
         //Sanitizing POST
@@ -499,7 +497,7 @@ class AgenteModel extends Model{
                     if (password_verify($editarPasswordAntiga, $pass)) {
           
                         $password_f = password_hash($editarPassword, PASSWORD_DEFAULT);
-                        $this->query("UPDATE agente_conta SET password = '$2y$10$i6dO6LTDKNQYhJf42TPEQeVcWwHAmmF7qr77ytA.bQ0waGoG.I7Oi' WHERE id_agente = 7");
+                        $this->query("UPDATE agente_conta SET password = :PASSWORD WHERE id_agente = :ID_AGENTE");
                         $this->bind(':PASSWORD', $password_f);
                         $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
                         $this->execute();
@@ -649,8 +647,17 @@ class AgenteModel extends Model{
         return;
     }
 
-    public function aguardar()
+    public function aguardar($id_agente)
     {
-        return;
+        $this->query('select estado_conta FROM agente_conta WHERE id_agente = :ID_AGENTE;');
+        $this->bind(':ID_AGENTE', $id_agente);
+        $estado = $this->singleResult();
+        extract($estado);
+        //Verifica se a solicitão foi aceite
+        if ($estado_conta == 5){
+            header('Location: ' . ROOT_URL . 'palavrapasse/actualizar');
+        }
+        $row = $this->resultSet();
+        return $row;
     }
 }

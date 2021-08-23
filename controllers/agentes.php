@@ -77,7 +77,7 @@ class agentes extends Controller{
     protected function aguardar()
     {
         $viewmodel = new AgenteModel();
-        $this->returnView($viewmodel->aguardar(), true);
+        $this->returnView($viewmodel->aguardar($this->param), true);
     }
 
 

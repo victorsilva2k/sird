@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="ver agentes(revistos)">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="ver agentes(revistos), comandos municipais eliminados">
+      <change afterPath="$PROJECT_DIR$/controllers/palavrapasse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/palavrapasse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/palavrapasse/adicionar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/palavrapasse/editar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/palavrapasse/eliminar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/palavrapasse/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/palavrapasse/pedir.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/exemplos.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/db/sird.sql" beforeDir="false" afterPath="$PROJECT_DIR$/assets/db/sird.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/agentes.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/agentes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/agente.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/agente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comandoMunicipal.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoMunicipal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comandoProvincial.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/comandoProvincial.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/alteracoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/alteracoes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/cadastros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/cadastros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/agentes/aguardar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/aguardar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/agentes/entrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/entrar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/agentes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/agentes/permitir.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/agentes/permitir.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/registros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandonacional/registros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandonacional/ver.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/eliminar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/registros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/registros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosmunicipais/ver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/adicionar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/adicionar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/editar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/registros.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/registros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/comandosprovinciais/ver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/comandosmunicipais" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
@@ -81,11 +72,11 @@
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosprovinciais" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\Programas\xampp\htdocs\sird\views\palavrapasse" />
+      <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais" />
       <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views\comandonacional" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais\" />
-      <recent name="H:\Programas\xampp\htdocs\sird\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -150,7 +141,10 @@
       <workItem from="1629372210312" duration="569000" />
       <workItem from="1629372820507" duration="9252000" />
       <workItem from="1629459010965" duration="3287000" />
-      <workItem from="1629463344942" duration="2419000" />
+      <workItem from="1629463344942" duration="2640000" />
+      <workItem from="1629715561015" duration="830000" />
+      <workItem from="1629719585012" duration="5827000" />
+      <workItem from="1629726760295" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>
@@ -215,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629386814591</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ver agentes(revistos), comandos municipais eliminados">
+      <created>1629465969080</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1629465969080</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +245,8 @@
     <MESSAGE value="escolher posto para mover arquivos" />
     <MESSAGE value="eliminar postos" />
     <MESSAGE value="eliminar comandos municipais" />
-    <option name="LAST_COMMIT_MESSAGE" value="eliminar comandos municipais" />
+    <MESSAGE value="ver agentes(revistos), comandos municipais eliminados" />
+    <option name="LAST_COMMIT_MESSAGE" value="ver agentes(revistos), comandos municipais eliminados" />
   </component>
   <component name="WindowStateProjectService">
     <state x="263" y="59" key="#CLI_Interpreters" timestamp="1629315817694">
@@ -298,11 +300,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="430" y="240" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1629372831783" />
-    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629465537195">
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629465979851">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1629386812931" />
-    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629465537195" />
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629465979851" />
     <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1629374322372">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -360,6 +362,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1322" height="238" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1629378904985" />
+    <state x="263" y="143" key="IDE.errors.dialog" timestamp="1629726604913">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="263" y="143" key="IDE.errors.dialog/0.40.1366.728@0.40.1366.728" timestamp="1629726604913" />
     <state x="517" y="327" key="NewPhpFileDialog" timestamp="1629125196035">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -368,17 +374,21 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="511" y="115" key="RollbackChangesDialog/0.40.1366.728@0.40.1366.728" timestamp="1626794140031" />
-    <state x="184" y="46" key="SettingsEditor" timestamp="1629465258265">
+    <state x="184" y="46" key="SettingsEditor" timestamp="1629716429957">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="6" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1629378467010" />
-    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1629465258265" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1629465893510">
+    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1629716429957" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1629726585410">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state width="498" height="471" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1629386336113" />
-    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629465893510" />
+    <state width="498" height="446" key="SwitcherDM/0.40.1366.728@0.40.1366.728" timestamp="1629726585410" />
+    <state x="275" y="140" key="Vcs.Push.Dialog.v2" timestamp="1629722448199">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="275" y="140" key="Vcs.Push.Dialog.v2/0.40.1366.728@0.40.1366.728" timestamp="1629722448199" />
     <state x="544" y="302" key="WebDeployment.AddServerDialog.v.1" timestamp="1629315812776">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -387,21 +397,21 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog/0.40.1366.728@0.40.1366.728" timestamp="1629120732991" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629463376035">
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629728756963">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1627896877759" />
     <state x="379" y="198" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1629372824928" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629463376035" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629728756963" />
     <state x="492" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1629125594227">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="492" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1366.728@0.40.1366.728" timestamp="1629125594227" />
-    <state x="379" y="136" width="737" height="606" key="find.popup" timestamp="1629465404322">
+    <state x="379" y="136" width="737" height="606" key="find.popup" timestamp="1629725478355">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="101" width="737" height="640" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1629379557599" />
-    <state x="379" y="136" width="737" height="606" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1629465404322" />
+    <state x="379" y="136" width="737" height="606" key="find.popup/0.40.1366.728@0.40.1366.728" timestamp="1629725478355" />
     <state x="339" y="182" key="run.anything.popup" timestamp="1629119768941">
       <screen x="0" y="40" width="1366" height="728" />
     </state>

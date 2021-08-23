@@ -8,6 +8,7 @@
     <div class="btn-groupo">
     <a href="<?php echo ROOT_URL; ?>agentes/cadastros" class="center-t btn btn-success mb-4 ">Cadastros</a>
     <a href="<?php echo ROOT_URL; ?>agentes/alteracoes" class="center-t btn btn-primary mb-4 ">Alterações</a>
+        <a href="<?php echo ROOT_URL; ?>palavrapasse/" class="center-t btn btn-secondary mb-4 ">Palavras-passe</a>
 
     </div>
     
@@ -111,5 +112,3 @@
             </tbody>
             <?php endif;?>
         </table>
-
-    </div>
