@@ -38,22 +38,7 @@
                         <input  type="text" class="caixa-info__input input--text" name="editarAgenteSobrenome" value="<?php echo "$sobrenome"?>"  required minlength="3" maxlength="100">
                     </div>
                 </div>
-                <div class="caixa-info__item">
-                    <div class="caixa-info__cabecalho"><h3 >Data de Nascimento</h3></div>
-                    <div class="caixa-info__descricao">
-                        <input  type="date" class="caixa-info__input input--text" id="date-input" name="editarAgenteDataNascimento" required />
-                    </div>
-                </div>
-                <!-- HACK -->
-                <div class="caixa-info__item">
-                    <div class="caixa-info__cabecalho"><h3 >Gênero</h3></div>
-                    <div class="caixa-info__descricao">
-                    <select class="caixa-info__input input--text" name="editarAgenteGenero" id="">
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                    </select>
-                    </div>
-                </div>
+
 
 
 

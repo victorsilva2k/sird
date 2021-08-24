@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/palavrapasse.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/palavrapasse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/palavrapasse.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/palavrapasse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/palavrapasse/pedir.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/palavrapasse/pedir.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +27,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileColors">
+    <fileColor scope="Open Files" color="Blue" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -133,7 +132,8 @@
       <workItem from="1629715561015" duration="830000" />
       <workItem from="1629719585012" duration="5827000" />
       <workItem from="1629726760295" duration="646000" />
-      <workItem from="1629804935066" duration="1516000" />
+      <workItem from="1629804935066" duration="1587000" />
+      <workItem from="1629807186722" duration="786000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>
@@ -212,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629728806134</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="recuperar palavrapasse.php terminado">
+      <created>1629807126184</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1629807126184</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +250,8 @@
     <MESSAGE value="eliminar comandos municipais" />
     <MESSAGE value="ver agentes(revistos), comandos municipais eliminados" />
     <MESSAGE value="inicio de recuperar palavrapasse" />
-    <option name="LAST_COMMIT_MESSAGE" value="inicio de recuperar palavrapasse" />
+    <MESSAGE value="recuperar palavrapasse.php terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="recuperar palavrapasse.php terminado" />
   </component>
   <component name="WindowStateProjectService">
     <state x="263" y="59" key="#CLI_Interpreters" timestamp="1629315817694">
@@ -271,11 +279,11 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="390" y="40" key="#PHP/0.40.1366.728@0.40.1366.728" timestamp="1629315819781" />
-    <state x="272" y="40" width="1094" height="768" key="#Plugins" timestamp="1629463328581">
+    <state x="272" y="40" width="1094" height="768" key="#Plugins" timestamp="1629807163875">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="272" y="0" width="1094" height="768" key="#Plugins/0.0.1366.768@0.0.1366.768" timestamp="1629378508172" />
-    <state x="272" y="40" key="#Plugins/0.40.1366.728@0.40.1366.728" timestamp="1629463328581" />
+    <state x="272" y="40" key="#Plugins/0.40.1366.728@0.40.1366.728" timestamp="1629807163875" />
     <state x="275" y="62" key="#SQL_Dialects" timestamp="1627909398300">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -297,11 +305,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="430" y="240" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1629372831783" />
-    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629728802585">
+    <state x="308" y="40" key="CommitChangelistDialog2" timestamp="1629807123515">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1629386812931" />
-    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629728802585" />
+    <state x="308" y="40" key="CommitChangelistDialog2/0.40.1366.728@0.40.1366.728" timestamp="1629807123515" />
     <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1629374322372">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -371,12 +379,12 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="511" y="115" key="RollbackChangesDialog/0.40.1366.728@0.40.1366.728" timestamp="1626794140031" />
-    <state x="184" y="46" key="SettingsEditor" timestamp="1629805850302">
+    <state x="184" y="46" key="SettingsEditor" timestamp="1629807287811">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="6" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1629378467010" />
-    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1629805850302" />
+    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1629807287811" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1629726585410">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -394,12 +402,12 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog/0.40.1366.728@0.40.1366.728" timestamp="1629120732991" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629804944646">
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629807203279">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1627896877759" />
     <state x="379" y="198" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1629372824928" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629804944646" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629807203279" />
     <state x="492" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1629125594227">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -413,10 +421,10 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="339" y="182" key="run.anything.popup/0.40.1366.728@0.40.1366.728" timestamp="1629119768941" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1629463322643">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1629807139387">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="346" y="52" width="672" height="716" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1629378482679" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1629463322643" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1629807139387" />
   </component>
 </project>

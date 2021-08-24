@@ -345,113 +345,146 @@ class AgenteModel extends Model{
                 if (isset($post['submit'])) {
 
                     extract($post);
+                    try {
+                        $this->beginTransaction();
+                        // VERIFICAÇÕES
+
+                        // Verifica se todos os campos já foram preenchidos
+                        if ($editarAgenteNome == '' || $editarAgenteSobrenome == '' ) {
+                            Messages::setMessage("Por favor preencha todos os campos", "error");
+                            return;
+                        } 
+                            // Verifica se uma imagem foi selecionada
+                            if ($_FILES["editarAgenteFoto"]["error"] > 0) {
+                                $foto = "usuario.png";
+                            } else {
+                                $n = rand(0, 10000);
+                                $exp = explode("/", $_FILES["editarAgenteFoto"]["type"]);
+                                $tipo_ficheiro = $exp[1];
             
-                    // VERIFICAÇÕES
-
-                    // Verifica se todos os campos já foram preenchidos
-                    if ($editarAgenteNome == '' || $editarAgenteSobrenome == '' ) {
-                        Messages::setMessage("Por favor preencha todos os campos", "error");
-                        return;
-                    } 
-                        // Verifica se uma imagem foi selecionada
-                        if ($_FILES["editarAgenteFoto"]["error"] > 0) {
-                            $foto = "usuario.png";
-                        } else {
-                            $n = rand(0, 10000);
-                            $exp = explode("/", $_FILES["editarAgenteFoto"]["type"]);
-                            $tipo_ficheiro = $exp[1];
-        
-                            if ($tipo_ficheiro !== 'jpeg' && $tipo_ficheiro !== 'png' && $tipo_ficheiro !== 'jpg') {
-                                Messages::setMessage("Ficheiro não suportado", "error");
-                                return;
+                                if ($tipo_ficheiro !== 'jpeg' && $tipo_ficheiro !== 'png' && $tipo_ficheiro !== 'jpg') {
+                                    Messages::setMessage("Ficheiro não suportado", "error");
+                                    return;
+                                }
+                                $data = date("Y-m-d");
+                                $foto = $n . '-' . $data . '.' . $tipo_ficheiro;
+                                $destino = "assets/img/agentes/" . $foto;
+                                move_uploaded_file($_FILES['editarAgenteFoto']['tmp_name'], $destino);
                             }
-                            $data = date("Y-m-d");
-                            $foto = $n . '-' . $data . '.' . $tipo_ficheiro;
-                            $destino = "assets/img/agentes/" . $foto;
-                            move_uploaded_file($_FILES['editarAgenteFoto']['tmp_name'], $destino);
-                        }
-
-                        // Verifica se o nivel do usuário
-                        if ($_SESSION['usuario_local']['tipo_local'] === "posto") {
-
-                        // Inserindo alteração de nome
-                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
-                                    (`id_permissao`,
-                                    `id_agente`,
-                                    `campo_editado`,
-                                    `novo_valor`,
-                                    `estado`,
-                                    `agente_responsavel`)
-                                    VALUES
-                                    (NULL,
-                                    :ID_AGENTE,
-                                    :CAMPO_EDITADO,
-                                    :NOVO_VALOR,
-                                    1,
-                                    NULL);");
-                        $this->bind(':CAMPO_EDITADO', 'nome');
-                        $this->bind(':NOVO_VALOR', $editarAgenteNome);
-                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                        $this->execute();
-
-
-                        // Inserindo alteração de sobrenome
-                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
-                                    (`id_permissao`,
-                                    `id_agente`,
-                                    `campo_editado`,
-                                    `novo_valor`,
-                                    `estado`,
-                                    `agente_responsavel`)
-                                    VALUES
-                                    (NULL,
-                                    :ID_AGENTE,
-                                    :CAMPO_EDITADO,
-                                    :NOVO_VALOR,
-                                    1,
-                                    NULL);");
-                        $this->bind(':CAMPO_EDITADO', 'sobrenome');
-                        $this->bind(':NOVO_VALOR', $editarAgenteSobrenome);
-                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                        $this->execute();
                         
-                        // Inserindo alteração de foto
-                        $this->query("INSERT INTO `sird-db`.`permissao_edicao`
-                                    (`id_permissao`,
-                                    `id_agente`,
-                                    `campo_editado`,
-                                    `novo_valor`,
-                                    `estado`,
-                                    `agente_responsavel`)
-                                    VALUES
-                                    (NULL,
-                                    :ID_AGENTE,
-                                    :CAMPO_EDITADO,
-                                    :NOVO_VALOR,
-                                    1,
-                                    NULL);");
-                        $this->bind(':CAMPO_EDITADO', 'foto_arquivo');
-                        $this->bind(':NOVO_VALOR', $foto);
-                        $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-                        $this->execute();
 
+                            // Verifica se o nivel do usuário
+                        if (Controller::verificarLugar(1, true)) {
+
+                            
+                            $this->query('SELECT a.nome , a.sobrenome, 
+                                        a.foto_arquivo as foto_armazenada
+                                        FROM agente_conta ac 
+                                        JOIN agente a ON ac.id_agente = a.id_agente WHERE a.id_agente = :ID_AGENTE');
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $dados_perfil = $this->singleResult();
+                            extract($dados_perfil);
+
+                            // Verifica se o dado inserido é igual ao armazenado
+                            if ($nome != $editarAgenteNome) {
+                                
+                                // Inserindo alteração de nome
+                                $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                            (`id_permissao`,
+                                            `id_agente`,
+                                            `campo_editado`,
+                                            `novo_valor`,
+                                            `estado`,
+                                            `agente_responsavel`)
+                                            VALUES
+                                            (NULL,
+                                            :ID_AGENTE,
+                                            :CAMPO_EDITADO,
+                                            :NOVO_VALOR,
+                                            1,
+                                            NULL);");
+                                $this->bind(':CAMPO_EDITADO', 'nome');
+                                $this->bind(':NOVO_VALOR', $editarAgenteNome);
+                                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                                $this->execute();
+                            }
+
+                            // Verifica se o dado inserido é igual ao armazenado
+                            if ($sobrenome != $editarAgenteSobrenome) {
+                            // Inserindo alteração de sobrenome
+                            $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                        (`id_permissao`,
+                                        `id_agente`,
+                                        `campo_editado`,
+                                        `novo_valor`,
+                                        `estado`,
+                                        `agente_responsavel`)
+                                        VALUES
+                                        (NULL,
+                                        :ID_AGENTE,
+                                        :CAMPO_EDITADO,
+                                        :NOVO_VALOR,
+                                        1,
+                                        NULL);");
+                            $this->bind(':CAMPO_EDITADO', 'sobrenome');
+                            $this->bind(':NOVO_VALOR', $editarAgenteSobrenome);
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $this->execute();
+                            }   
+
+                            // Verifica se o dado inserido é igual ao armazenado
+                            if ($foto_armazenada != $foto) {
+                            // Inserindo alteração de foto
+                            $this->query("INSERT INTO `sird-db`.`permissao_edicao`
+                                        (`id_permissao`,
+                                        `id_agente`,
+                                        `campo_editado`,
+                                        `novo_valor`,
+                                        `estado`,
+                                        `agente_responsavel`)
+                                        VALUES
+                                        (NULL,
+                                        :ID_AGENTE,
+                                        :CAMPO_EDITADO,
+                                        :NOVO_VALOR,
+                                        1,
+                                        NULL);");
+                            $this->bind(':CAMPO_EDITADO', 'foto_arquivo');
+                            $this->bind(':NOVO_VALOR', $foto);
+                            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                            $this->execute();
+                            }   
                         } else {
-                            // Inserindo os dados pessoais de um agente
-                        $this->query("UPDATE agente SET nome = :NOME, sobrenome = :SOBRENOME, data_nasc = :NASC, genero = :GENERO, foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
+                            // Inserindo os dados pessoais de um agente de comando municipal ou superior
+                        $this->query("UPDATE agente SET nome = :NOME, sobrenome = :SOBRENOME,  foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
                         $this->bind(':NOME', $editarAgenteNome);
                         $this->bind(':SOBRENOME', $editarAgenteSobrenome);
-                        $this->bind(':NASC', $editarAgenteDataNascimento);
                         $this->bind(':FOTO', $foto);
-                        $this->bind(':GENERO', $editarAgenteGenero);
+
                         $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
                         $this->execute();
-
-                        Messages::setMessage("Edição feita com sucesso", "success");
-                        header('Location: ' . ROOT_URL . 'agentes/perfil');
                         }
+                        
+                        $this->commit();
+
+                            if ($this->rowCounte() >= 1) {
+                                //Redirect  
+                                Messages::setMessage("Cadastrado Permitido com sucesso", "success");
+                                header('Location: ' . ROOT_URL . 'agentes/cadastros');
+                            }
+                        
+                    } catch (\PDOException $erro) {
+                        $this->rollBack();
+
+                        Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO:  | {$erro->getMessage()}" , "error");
+
+                    }
+                    Messages::setMessage("Edição feita com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'agentes/perfil');
+                    }
         
         
-                }
+                
                 
 
                 $this->query('SELECT a.nome , a.sobrenome, 
