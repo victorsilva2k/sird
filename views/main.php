@@ -266,7 +266,7 @@
             
                 
                 <?php 
-                echo '<div class="cont principal mgt-20 mgb-20">';
+                echo '<div class="cont mb-5  principal mgt-20 mgb-20">';
                 
                 Messages::displayMessage();
                 require $view; 

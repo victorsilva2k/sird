@@ -27,7 +27,7 @@ class PalavraPasse extends Controller{
     {
 
         $viewmodel = new PalavraPasseModel();
-        $this->returnView($viewmodel->negar($this->param), true);
+        $this->returnView($viewmodel->actualizar($this->param), true);
     }
     protected function permitir()
     {

@@ -2,93 +2,48 @@
 
 class PalavraPasseModel extends Model{
 
-    public function adicionar()
-    {
 
-        //Limpando POST
-        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        // INSERT MySQL
-
-        if (isset($post['submit'])) {
-
-            extract($post);
-
-            // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarDistritoNome == '') {
-                Messages::setMessage("Por favor preencha todos os campos", "error");
-                return;
-            }
-
-
-            try {
-                $this->beginTransaction();
-
-                // Alterando os dados do posto
-                $this->query("INSERT INTO `sird-db`.`Distrito`
-                                    (`Distrito`)
-                                    VALUES
-                                    (:NOME);");
-
-                $this->bind(':NOME', $adicionarDistritoNome);
-                $this->execute();
-
-
-                $this->commit();
-                if ($this->rowCounte() >= 1) {
-                    //Redirect
-                    Messages::setMessage("Distrito adicionado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'mais');
-                }
-            } catch (\PDOException $erro) {
-                $this->rollBack();
-
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
-
-            }
-            //Verify
-
-
-
-        }
-        $this->query('select * from Distrito;');
-        $row = $this->resultSet();
-        return $row;
-
-
-
-    }
     public function actualizar($id_agente)
     {
         //Sanitizing POST
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         // INSERT MySQL
         if (isset($post['submit'])) {
-            
             extract($post);
-     
-            $this->query("SELECT 
-            ac.password as pass
-            FROM agente_conta ac 
-            WHERE ac.id_agente =  :ID_AGENTE");
-            $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
-            $row = $this->singleResult();
-            
-            // Verifica se existe um oficial na base de dados com o NIP inserido
-          
-                extract($row);
-                // verifica se a conta está activa ou não
+
+
                 
-                if ($editarPassword === $editarConfirmarPassword) {
+                if ($ActualizarPasse === $ActualizarPasseConfirmar) {
                     // verifica se a palavra passe está correcta
-                    
-          
-                        $password_f = password_hash($editarPassword, PASSWORD_DEFAULT);
+                try {
+                        $this->beginTransaction();
+                        // Actualizar a palavra-passe
+                        $password_f = password_hash($ActualizarPasse, PASSWORD_DEFAULT);
                         $this->query("UPDATE agente_conta SET password = 
                         :PASSWORD WHERE id_agente = :ID_AGENTE AND estado_conta = 5");
                         $this->bind(':PASSWORD', $password_f);
                         $this->bind(':ID_AGENTE', $id_agente);
                         $this->execute();
+
+                        // actualizar o estado do agente
+
+                        $this->query("UPDATE agente_conta SET estado_conta = 1 
+                                        WHERE id_agente = :ID_AGENTE AND estado_conta = 5");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->execute();
+
+                        $this->commit();
                         header('Location: ' . ROOT_URL . 'agentes/entrar');
+
+                } catch (\PDOException $erro) {
+
+                    $this->rollBack();
+
+                    Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
+
+                }
+                //Verify
+
 
                 } else {
                     # code...
@@ -225,7 +180,7 @@ class PalavraPasseModel extends Model{
 
                 // Alterando os dados do posto
                 $this->query("UPDATE `sird-db`.`agente_conta`
-                            SET `estado_conta` = 6
+                            SET `estado_conta` = 1
                             WHERE `id_agente` = :ID_AGENTE AND estado_conta = 4");
                 $this->bind(':ID_AGENTE', $id_agente);
                 $this->execute();

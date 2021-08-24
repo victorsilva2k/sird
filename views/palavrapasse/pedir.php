@@ -1,9 +1,9 @@
 
 <style>
-    .comando_m_nav {
-        border-left: 3px solid var(--color-grey-dark-1);
-        background-color: var(--color-grey-light-4);
+    .cabecalho--top, .barra-lateral {
+        display: none;
     }
+
 </style>
 <form method="POST" class="caixa-info br-25">
     <div class="caixa-info__titulo">
