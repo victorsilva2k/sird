@@ -29,8 +29,22 @@
                     <?php foreach($viewmodel as $item) : extract($item);?>
 
                         <tr>
-                        <td><?php echo "$sobrenome"?></td>
-                        <td><?php echo ucfirst($campo_editado) . ": $novo_valor "?></td>
+                        <td><?php echo "$nome  " . "$sobrenome"?></td>
+                        <td><?php if ($campo_editado == "foto_arquivo"):?>
+                                <?php if ($estado == 1):?>
+                                <img src="<?php echo ROOT_IMG; ?>agentes/<?php echo $novo_valor; ?>" alt="Foto Usuário" class="img-thumbnail tabela--imagem">
+                                    <?php else:?>
+                                        <?php echo "Foto";?>
+                                <?php endif;?>
+                                <?php else:?>
+                            <?php echo ucfirst($campo_editado) . ": $novo_valor "?>
+
+                                <?php endif;?>
+                            
+                            
+                            
+                            
+                    </td>
                         <td><?php switch ($estado) {
                             case 1:
                                             $estado_extenso = 'Pendente';
@@ -60,7 +74,7 @@
                         <td><?php  echo $oficial_responsavel;?></td>
                         <td>
                         <?php if($estado == 1):?>   
-                        <a href="<?php echo ROOT_URL; ?>agentes/aceitaralteracao/<?php echo $id_permissao?>" class="center-t btn btn-success mb-4 ">Aceitar</a>
+                        <a href="<?php echo ROOT_URL; ?>agentes/permitiralteracao/<?php echo $id_permissao?>" class="center-t btn btn-success mb-4 ">Permitir</a>
                         <a href="<?php echo ROOT_URL; ?>agentes/negaralteracao/<?php echo $id_permissao?>" class="center-t btn btn-danger mb-4 ">Negar</a>
                         <?php endif;?>
                         </td>

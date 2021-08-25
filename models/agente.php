@@ -251,27 +251,28 @@ class AgenteModel extends Model{
 
                 $this->query("SELECT novo_valor, campo_editado, id_agente  FROM permissao_edicao WHERE id_permissao = :ID_PERMISSAO AND estado = 1;");
                 $this->bind(':ID_PERMISSAO', $id_permissao);
-                $row = $this->resultSet();
+                $row = $this->singleResult();
                 extract($row);
-
                 if ($this->rowCounte() < 1) {
                     header('Location: ' . ROOT_URL . 'agentes/alteracoes');
 
                 }
-
+                
+                
                 if ($campo_editado == 'foto_arquivo') {
                     $this->query("UPDATE agente SET foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
-                    $this->bind(':FOTO', $foto);
+                    $this->bind(':FOTO', $novo_valor);
                     $this->bind(':ID_AGENTE', $id_agente);
-                    $this->execute();
-                } else {
 
+   
+                } else {
                     $this->query("UPDATE agente SET :CAMPO_EDITADO = :NOVO_VALOR WHERE id_agente = :ID_AGENTE");
                     $this->bind(':NOVO_VALOR', $novo_valor);
                     $this->bind(':CAMPO_EDITADO', $campo_editado);
                     $this->bind(':ID_AGENTE', $id_agente);
-                    $this->execute();
                 }
+                $this->execute();
+
 
                 // actualizando a permissão para "aceito"
                 $this->query('UPDATE `sird-db`.`permissao_edicao`
@@ -294,7 +295,7 @@ class AgenteModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: " , "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: {$erro->getMessage()}" , "error");
 
             }
             //Verify

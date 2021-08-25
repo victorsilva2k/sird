@@ -55,7 +55,7 @@
 
         </div>
         <a href="<?php echo ROOT_URL?>postos/" class="  btn btn-secondary mgt-10 ">Voltar</a>
-
+         <?php if(Controller::verificarLugar(2, true)): ?>                       
         <div class="alteracoes-documento registro-alteracoes">
             <h1 class="titulo--normal">Registro de Alterações</h1>
 
@@ -98,5 +98,5 @@
                 </tbody>
             </table>
         </div>
-
+        <?php endif;?>
 

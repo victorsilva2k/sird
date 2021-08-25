@@ -1399,9 +1399,25 @@ select estado_conta FROM agente_conta WHERE id_agente = 28;
 
 SELECT a.nome, a.sobrenome, pe.campo_editado, pe.novo_valor, pe.estado, pe.data, ar.nome as responsavel_nome, ar.sobrenome as responsavel_sobrenome
 FROM permissao_edicao pe JOIN agente a ON a.id_agente = pe.id_agente 
-LEFT OUTER JOIN agente ar ON pe.agente_responsavel = ar.id_agente;
+LEFT OUTER JOIN agente ar ON pe.agente_responsavel = ar.id_agente
+JOIN agente_posto ag ON a.id_agente = ag.id_agente
+JOIN posto p ON p.id_posto = ag.id_posto WHERE p.id_comando_municipal = 1;
 
+-- ver alteração 
 
+SELECT novo_valor, campo_editado, id_agente  FROM permissao_edicao WHERE id_permissao = 9 AND estado = 1;
+
+-- negar alteração
+UPDATE `sird-db`.`permissao_edicao`
+SET
+
+`estado` = 3,
+`agente_responsavel` = 1
+WHERE `id_permissao` = 2;
+
+-- permitir edição
+
+UPDATE agente SET nome = 'Camuli' WHERE id_agente = 28
 
 
 

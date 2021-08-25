@@ -63,7 +63,7 @@
                                 <span>Documentos</span>
                             </a>
                         </li>
-                        <?php if((Controller::verificarLugar(1)) AND (Controller::verificarLugar(2, true))): ?>
+                        <?php if((Controller::verificarLugar(1, true)) OR (Controller::verificarLugar(2, true))): ?>
                         <li class="navegacao-lateral__item" id="postos_nav">
                             <a href="<?php echo ROOT_URL; ?>postos" class="navegacao-lateral__link">
                                 <svg class="navegacao-lateral__icone">
