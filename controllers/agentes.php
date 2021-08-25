@@ -67,6 +67,18 @@ class agentes extends Controller{
         $viewmodel = new AgenteModel();
         $this->returnView($viewmodel->editar(), true);
     }
+    protected function negaralteracao()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new AgenteModel();
+        $this->returnView($viewmodel->negaralteracao($this->param), true);
+    }
+    protected function permitiralteracao()
+    {
+        $this->verificarNivel(2);
+        $viewmodel = new AgenteModel();
+        $this->returnView($viewmodel->permitiralteracao($this->param), true);
+    }
 
     protected function alterar()
     {

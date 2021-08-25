@@ -7,7 +7,9 @@
     
     <div class="btn-groupo">
     <a href="<?php echo ROOT_URL; ?>agentes/cadastros" class="center-t btn btn-success mb-4 ">Cadastros</a>
+    <?php if (Controller::verificarLugar(2, true)): ?>
     <a href="<?php echo ROOT_URL; ?>agentes/alteracoes" class="center-t btn btn-primary mb-4 ">Alterações</a>
+    <?php endif;?>
         <a href="<?php echo ROOT_URL; ?>palavrapasse/" class="center-t btn btn-secondary mb-4 ">Palavras-passe</a>
 
     </div>

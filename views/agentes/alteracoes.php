@@ -32,26 +32,37 @@
                         <td><?php echo "$sobrenome"?></td>
                         <td><?php echo ucfirst($campo_editado) . ": $novo_valor "?></td>
                         <td><?php switch ($estado) {
-                                        case 1:
-                                            $estado = 'Pendente';
+                            case 1:
+                                            $estado_extenso = 'Pendente';
                                             break;
                                         case 2:
-                                            $estado = 'Aceito';
+                                            $estado_extenso = 'Aceito';
                                             break;
                                         case 3:
-                                            $estado = 'Negado';
+                                            $estado_extenso = 'Negado';
                                             break;
                                         default:
-                                            $estado = 'Pendente';
+                                            $estado_extenso = 'Pendente';
 
                                             break;
                                     }
-                                    echo $estado;
+                                    echo $estado_extenso;
                         ?></td>
+                        <td><?php echo $this->tratarData($data);?></td>
+
+                        <?php 
+                        $oficial_responsavel = $responsavel_nome . " " . $responsavel_sobrenome;
+                            if ($responsavel_nome == NULL OR $responsavel_sobrenome == NULL) {
+                                $oficial_responsavel = "N/A";
+                            } 
+                        ?>
+
                         <td><?php  echo $oficial_responsavel;?></td>
                         <td>
-                        <a href="<?php echo ROOT_URL; ?>agentes/aceitar/<?php echo $id?>" class="center-t btn btn-success mb-4 ">Aceitar</a>
-                        <a href="<?php echo ROOT_URL; ?>agentes/negar/<?php echo $id?>" class="center-t btn btn-danger mb-4 ">Negar</a>
+                        <?php if($estado == 1):?>   
+                        <a href="<?php echo ROOT_URL; ?>agentes/aceitaralteracao/<?php echo $id_permissao?>" class="center-t btn btn-success mb-4 ">Aceitar</a>
+                        <a href="<?php echo ROOT_URL; ?>agentes/negaralteracao/<?php echo $id_permissao?>" class="center-t btn btn-danger mb-4 ">Negar</a>
+                        <?php endif;?>
                         </td>
 
                         </tr>
@@ -61,7 +72,7 @@
                     </tbody>
                 </table>
                     <div class="btn-groupo">
-                        <a href="<?php echo ROOT_URL; ?>categorias/adicionar" class="center-t btn btn-primary mb-4 ">Adicionar Categoria</a>
+                        <a href="<?php echo ROOT_URL; ?>agentes/" class="center-t btn btn-secondary mb-4 ">Voltar</a>
 
                     </div>
                 </div>

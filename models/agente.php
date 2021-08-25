@@ -194,6 +194,116 @@ class AgenteModel extends Model{
         
  
     }
+    public function negaralteracao($id_permissao)
+    {
+
+
+            try {
+                $this->beginTransaction();
+
+                $this->query('UPDATE `sird-db`.`permissao_edicao`
+                SET
+                `estado` = 3,
+                `agente_responsavel` = :ID_AGENTE
+                WHERE `id_permissao` = :ID_PERMISSAO;');
+                $this->bind(':ID_PERMISSAO', $id_permissao);
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                $this->execute();
+
+                // Eliminando a foto
+                $this->query("SELECT novo_valor FROM permissao_edicao WHERE id_permissao = :ID_PERMISSAO AND campo_editado = 'foto_arquivo'");
+                $this->bind(':ID_PERMISSAO', $id_permissao);
+                $agente = $this->singleResult();
+                extract($agente);
+                // verifica se a foto é igual a foto padrão
+                if ($foto !== 'usuario.png') {
+                    // elimina a foto
+                    unlink("assets/img/agentes/$foto");
+                }
+
+
+                
+                $this->commit();
+
+         
+                    Messages::setMessage("Pedido negado com sucess", "success");
+                    header('Location: ' . ROOT_URL . 'agentes/alteracoes');
+
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: " , "error");
+
+            }
+            //Verify
+
+            
+            
+        
+ 
+    }
+    public function permitiralteracao($id_permissao)
+    {
+            
+
+            try {
+                $this->beginTransaction();
+
+                $this->query("SELECT novo_valor, campo_editado, id_agente  FROM permissao_edicao WHERE id_permissao = :ID_PERMISSAO AND estado = 1;");
+                $this->bind(':ID_PERMISSAO', $id_permissao);
+                $row = $this->resultSet();
+                extract($row);
+
+                if ($this->rowCounte() < 1) {
+                    header('Location: ' . ROOT_URL . 'agentes/alteracoes');
+
+                }
+
+                if ($campo_editado == 'foto_arquivo') {
+                    $this->query("UPDATE agente SET foto_arquivo = :FOTO WHERE id_agente = :ID_AGENTE;");
+                    $this->bind(':FOTO', $foto);
+                    $this->bind(':ID_AGENTE', $id_agente);
+                    $this->execute();
+                } else {
+
+                    $this->query("UPDATE agente SET :CAMPO_EDITADO = :NOVO_VALOR WHERE id_agente = :ID_AGENTE");
+                    $this->bind(':NOVO_VALOR', $novo_valor);
+                    $this->bind(':CAMPO_EDITADO', $campo_editado);
+                    $this->bind(':ID_AGENTE', $id_agente);
+                    $this->execute();
+                }
+
+                // actualizando a permissão para "aceito"
+                $this->query('UPDATE `sird-db`.`permissao_edicao`
+                SET
+                `estado` = 2,
+                `agente_responsavel` = :ID_AGENTE
+                WHERE `id_permissao` = :ID_PERMISSAO;');
+                $this->bind(':ID_PERMISSAO', $id_permissao);
+                $this->bind(':ID_AGENTE', $_SESSION['dados_usuario']['id']);
+                $this->execute();
+
+               
+                $this->commit();
+
+                if ($this->rowCounte() >= 1) {
+                    //Redirect  
+                    Messages::setMessage("Pedido negado com sucess", "success");
+                    header('Location: ' . ROOT_URL . 'agentes/alteracoes');
+                }
+            } catch (\PDOException $erro) {
+                $this->rollBack();
+
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO: " , "error");
+
+            }
+            //Verify
+
+            
+            
+        
+ 
+    }
     public function cadastros()
     {
         $this->query('SELECT a.id_agente id, a.nome, a.sobrenome, a.genero, ac.nip 
@@ -210,15 +320,14 @@ class AgenteModel extends Model{
 
     public function alteracoes()
     {
-        $this->query('SELECT a.id_agente id, a.nome, a.sobrenome, a.genero, ac.nip 
-                      FROM agente a 
-                      JOIN agente_conta ac ON ac.id_agente = a.id_agente 
-                      WHERE ac.estado_conta = 0;');
+        $this->query('SELECT a.nome, a.sobrenome, pe.id_permissao, pe.campo_editado, pe.novo_valor, pe.estado, pe.data, ar.nome as responsavel_nome, ar.sobrenome as responsavel_sobrenome
+                        FROM permissao_edicao pe JOIN agente a ON a.id_agente = pe.id_agente 
+                        LEFT OUTER JOIN agente ar ON pe.agente_responsavel = ar.id_agente
+                        JOIN agente_posto ag ON a.id_agente = ag.id_agente
+                        JOIN posto p ON p.id_posto = ag.id_posto WHERE p.id_comando_municipal = :IDCM;');
+        $this->bind(':IDCM', $_SESSION['usuario_local']['id_local']);
         $row = $this->resultSet();
-        if ($this->rowCounte() < 1){
-            // header('Location: ' . ROOT_URL . 'agentes/');
-            
-        }
+
         return $row;    
     }
     public function cadastrar()
@@ -680,6 +789,7 @@ class AgenteModel extends Model{
         return;
     }
 
+    
     public function aguardar($id_agente)
     {
         $this->query('select estado_conta FROM agente_conta WHERE id_agente = :ID_AGENTE;');

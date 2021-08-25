@@ -1397,9 +1397,11 @@ select estado_conta FROM agente_conta WHERE id_agente = 28;
 
 -- ver pedidos de alterações
 
-SELECT a.nome, a.sobrenome, pe.campo_editado, pe.novo_valor
+SELECT a.nome, a.sobrenome, pe.campo_editado, pe.novo_valor, pe.estado, pe.data, ar.nome as responsavel_nome, ar.sobrenome as responsavel_sobrenome
+FROM permissao_edicao pe JOIN agente a ON a.id_agente = pe.id_agente 
+LEFT OUTER JOIN agente ar ON pe.agente_responsavel = ar.id_agente;
 
-id_permissao, id_agente, campo_editado, novo_valor, estado, agente_responsavel, data
+
 
 
 
