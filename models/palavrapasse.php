@@ -208,7 +208,8 @@ class PalavraPasseModel extends Model{
             FROM agente_conta ac 
             JOIN agente a ON ac.id_agente = a.id_agente
             JOIN agente_posto ap ON ac.id_agente = ap.id_agente
-            JOIN posto p ON ap.id_posto = p.id_posto WHERE ac.estado_conta = 4');
+            JOIN posto p ON ap.id_posto = p.id_posto WHERE ac.estado_conta = 4 AND p.id_comando_municipal = :ID_COMANDO_MUNICIPAL');
+            $this->bind(':ID_COMANDO_MUNICIPAL', $_SESSION['usuario_local']['id_local']);
             $row = $this->resultSet();
 
         } elseif (Controller::verificarLugar(3, true)){
@@ -225,8 +226,8 @@ class PalavraPasseModel extends Model{
                                     ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
                                 JOIN municipio m 
                                     ON cml.municipio = m.id_municipio 
-                                WHERE cm.comando_provincial = :IDCM AND ac.estado_conta = 4');
-            $this->bind(':IDCM', $_SESSION['usuario_local']['id_local']);
+                                WHERE cm.comando_provincial = :ID_COMANDO_PROVINCIAL AND ac.estado_conta = 4');
+            $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
             $row = $this->resultSet();
         }elseif (Controller::verificarLugar(4, true)){
 

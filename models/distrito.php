@@ -24,12 +24,17 @@ class DistritoModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("INSERT INTO `sird-db`.`Distrito`
-                                    (`Distrito`)
-                                    VALUES
-                                    (:NOME);");
+                $this->query("INSERT INTO `sird-db`.`distrito`
+                            (`distrito`,
+                            `municipio`)
+                            VALUES
+                            (
+                            :NOME,
+                            :MUNICIPIO);
+                            ");
 
                 $this->bind(':NOME', $adicionarDistritoNome);
+                $this->bind(':MUNICIPIO', $adicionarDistritoMunicipio);
                 $this->execute();
 
 
@@ -42,7 +47,7 @@ class DistritoModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde ", "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
 
             }
             //Verify
@@ -50,7 +55,7 @@ class DistritoModel extends Model{
 
 
         }
-        $this->query('select * from Distrito;');
+        $this->query('select id_municipio, municipio from municipio;');
         $row = $this->resultSet();
         return $row;
 
@@ -84,10 +89,12 @@ class DistritoModel extends Model{
                 // Alterando os dados do posto
                 $this->query("UPDATE `sird-db`.`Distrito`
                                     SET
-                                    `Distrito` = :NOME
+                                    `Distrito` = :NOME, 
+                                    Municipio = :MUNICIPIO
                                     WHERE `id_Distrito` = :ID_Distrito;");
 
                 $this->bind(':NOME', $editarDistritoNome);
+                $this->bind(':MUNICIPIO', $editarDistritoMunicipio);
                 $this->bind(':ID_Distrito', $id_Distrito);
                 $this->execute();
 
@@ -109,9 +116,12 @@ class DistritoModel extends Model{
 
 
         }
-        $this->query('select * from Distrito WHERE id_Distrito = :ID_Distrito;');
-        $this->bind(":ID_Distrito", $id_Distrito);
-        $row = $this->resultSet();
+        // Pegas os dados dos distritos e municipio
+        $this->query('SELECT d.id_distrito, d.distrito, m.municipio, m.id_municipio FROM distrito d JOIN municipio m ON d.municipio = m.id_municipio WHERE id_distrito = :ID_DISTRITO');
+        $this->bind(':ID_DISTRITO', $id_Distrito);
+        $row['distrito'] = $this->resultSet();
+        $this->query('SELECT id_municipio, municipio FROM municipio;');
+        $row['municipio'] = $this->resultSet();
         return $row;
 
 

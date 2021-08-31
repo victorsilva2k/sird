@@ -14,7 +14,7 @@ class MaisModel extends Model{
 
 
         // Pegando dados dos distritos
-        $this->query('SELECT * FROM distrito ORDER BY distrito;');
+        $this->query('SELECT d.id_distrito, d.distrito, m.municipio FROM distrito d JOIN municipio m ON d.municipio = m.id_municipio');
         $row["distritos"] = $this->resultSet();
         return $row;
     }
