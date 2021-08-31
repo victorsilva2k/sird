@@ -27,6 +27,7 @@ require_once "controllers/mais.php";
 require_once "controllers/bairros.php";
 require_once "controllers/categorias.php";
 require_once "controllers/distritos.php";
+require_once "controllers/municipios.php";
 require_once "controllers/cidadaos.php";
 // Models
 require_once "models/inicio.php";
@@ -44,6 +45,7 @@ require_once "models/mais.php";
 require_once "models/bairro.php";
 require_once "models/categoria.php";
 require_once "models/distrito.php";
+require_once "models/municipio.php";
 $bt = new Bootstrap($_GET);
 $controller = $bt->createController();
 if ($controller) {

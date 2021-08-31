@@ -1,6 +1,6 @@
 <?php
 
-class DistritoModel extends Model{
+class MunicipioModel extends Model{
 
     public function adicionar()
     {
@@ -14,7 +14,7 @@ class DistritoModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarDistritoNome == '') {
+            if ($adicionarMunicipioNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -24,25 +24,25 @@ class DistritoModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("INSERT INTO `sird-db`.`distrito`
-                            (`distrito`,
-                            `municipio`)
+                $this->query("INSERT INTO `sird-db`.`municipio`
+                            (`municipio`,
+                            `provincia`)
                             VALUES
                             (
-                            :NOME,
-                            :MUNICIPIO);
+                            :MUNICIPIO,
+                            :PROVINCIA);
                             ");
 
-                $this->bind(':NOME', $adicionarDistritoNome);
-                $this->bind(':MUNICIPIO', $adicionarDistritoMunicipio);
+                $this->bind(':PROVINCIA', $adicionarMunicipioProvincia);
+                $this->bind(':MUNICIPIO', $adicionarMunicipioNome);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Distrito adicionado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'mais');
+                    Messages::setMessage("Municipio adicionado com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'mais/index/municipio');
                 }
             } catch (\PDOException $erro) {
                 $this->rollBack();
@@ -55,14 +55,14 @@ class DistritoModel extends Model{
 
 
         }
-        $this->query('select id_municipio, municipio from municipio;');
+        $this->query('SELECT * FROM provincia');
         $row = $this->resultSet();
         return $row;
 
 
 
     }
-    public function editar($id_Distrito)
+    public function editar($id_municipio)
     {
 
 
@@ -77,7 +77,7 @@ class DistritoModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($editarDistritoNome == '') {
+            if ($editarMunicipioNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -87,23 +87,23 @@ class DistritoModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("UPDATE `sird-db`.`Distrito`
+                $this->query("UPDATE `sird-db`.`Municipio`
                                     SET
-                                    `Distrito` = :NOME, 
-                                    Municipio = :MUNICIPIO
-                                    WHERE `id_Distrito` = :ID_Distrito;");
+                                    `Municipio` = :MUNICIPIO, 
+                                    provincia = :PROVINCIA
+                                    WHERE `id_municipio` = :ID_MUNICIPIO;");
 
-                $this->bind(':NOME', $editarDistritoNome);
-                $this->bind(':MUNICIPIO', $editarDistritoMunicipio);
-                $this->bind(':ID_Distrito', $id_Distrito);
+                $this->bind(':MUNICIPIO', $editarMunicipioNome);
+                $this->bind(':PROVINCIA', $editarMunicipioProvincia);
+                $this->bind(':ID_MUNICIPIO', $id_municipio);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Distrito editado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'mais/index/distrito');
+                    Messages::setMessage("Municipio editado com sucesso", "success");
+                    header('Location: ' . ROOT_URL . 'mais/index/municipio');
                 }
             } catch (\PDOException $erro) {
                 $this->rollBack();
@@ -117,11 +117,11 @@ class DistritoModel extends Model{
 
         }
         // Pegas os dados dos distritos e municipio
-        $this->query('SELECT d.id_distrito, d.distrito, m.municipio, m.id_municipio FROM distrito d JOIN municipio m ON d.municipio = m.id_municipio WHERE id_distrito = :ID_DISTRITO');
-        $this->bind(':ID_DISTRITO', $id_Distrito);
-        $row['distrito'] = $this->resultSet();
-        $this->query('SELECT id_municipio, municipio FROM municipio;');
+        $this->query('SELECT m.municipio, p.provincia, p.id_provincia FROM municipio m JOIN provincia p ON m.provincia = p.id_provincia WHERE m.id_municipio = :ID_MUNICIPIO');
+        $this->bind(':ID_MUNICIPIO', $id_municipio);
         $row['municipio'] = $this->resultSet();
+        $this->query('SELECT * FROM provincia');
+        $row['provincia'] = $this->resultSet();
         return $row;
 
 

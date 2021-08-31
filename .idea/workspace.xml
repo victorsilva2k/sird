@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="" />
+    <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/municipios.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/municipio.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/municipios/adicionar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/municipios/editar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/municipios/eliminar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/mais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/mais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,15 +64,15 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
+      <recent name="H:\Programas\xampp\htdocs\sird\models" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views\palavrapasse" />
+      <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\Programas\xampp\htdocs\sird\views\comandosprovinciais" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\Programas\xampp\htdocs\sird\views\palavrapasse" />
-      <recent name="H:\Programas\xampp\htdocs\sird\controllers" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views\comandosmunicipais" />
-      <recent name="H:\Programas\xampp\htdocs\sird\views\postos" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,6 +143,7 @@
       <workItem from="1629726760295" duration="646000" />
       <workItem from="1629804935066" duration="1587000" />
       <workItem from="1629807186722" duration="1417000" />
+      <workItem from="1630419828226" duration="1202000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>
@@ -312,7 +324,6 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1629374322372" />
-    <state x="463" y="159" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1621522285885" />
     <state width="1322" height="238" key="GridCell.Tab.0.bottom" timestamp="1629378904984">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -377,12 +388,12 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="511" y="115" key="RollbackChangesDialog/0.40.1366.728@0.40.1366.728" timestamp="1626794140031" />
-    <state x="184" y="46" key="SettingsEditor" timestamp="1629807287811">
+    <state x="184" y="46" key="SettingsEditor" timestamp="1630420554143">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627896948981" />
     <state x="184" y="6" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1629378467010" />
-    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1629807287811" />
+    <state x="184" y="46" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1630420554143" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1629726585410">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
@@ -400,12 +411,12 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="541" y="125" key="com.intellij.database.view.ui.DbObjectDialog/0.40.1366.728@0.40.1366.728" timestamp="1629120732991" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1629807203279">
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1630419906327">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1627896877759" />
     <state x="379" y="198" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1629372824928" />
-    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1629807203279" />
+    <state x="379" y="228" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1630419906327" />
     <state x="492" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1629125594227">
       <screen x="0" y="40" width="1366" height="728" />
     </state>

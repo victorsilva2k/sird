@@ -5,7 +5,7 @@ class Mais extends Controller{
     {
         $this->verificarNivel(1);
         $viewmodel = new MaisModel();
-        $this->returnView($viewmodel->index(), true);
+        $this->returnView($viewmodel->index($this->param), true);
     }
 
 

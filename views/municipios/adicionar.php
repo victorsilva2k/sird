@@ -1,4 +1,3 @@
-
 <style>
     .mais-link {
         border-left: 3px solid var(--color-grey-dark-1);
@@ -7,24 +6,24 @@
 </style>
     <form method="POST" class="caixa-info br-25">
         <div class="caixa-info__titulo">
-            <p>Adicionar Distritos</p>
+            <p>Adicionar Municípios</p>
         </div>
 
 
     
 
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Nome do Distrito</h3></div>
+                <div class="caixa-info__cabecalho h5">Nome do Município</div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="adicionarDistritoNome"  id="" required maxlength="150" minlength="2">
+                    <input  type="text" class="caixa-info__input input--text" name="adicionarMunicipioNome"  id="" required maxlength="150" minlength="2">
                 </div>
             </div>
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Munícipio</h3></div>
+                <div class="caixa-info__cabecalho h5">Província</div>
                 <div class="caixa-info__descricao  ">
-                    <select class="caixa-info__input input--text" name="adicionarDistritoMunicipio">
+                    <select class="caixa-info__input input--text" name="adicionarMunicipioProvincia">
                             <?php foreach($viewmodel as $item) : extract($item);?>
-                                <option  value="<?php echo $id_municipio?>"><?php echo $municipio?></option>
+                                <option  value="<?php echo $id_provincia?>"><?php echo $provincia?></option>
                             <?php endforeach;?>
 
                     </select>
