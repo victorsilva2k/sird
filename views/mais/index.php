@@ -180,7 +180,7 @@
                             </tbody>
                         </table>
                         <div class="btn-groupo">
-                            <a href="<?php echo ROOT_URL; ?>bairros/provincias" class="center-t btn btn-prim   ary mb-4 ">Adicionar Provincia</a>
+                            <a href="<?php echo ROOT_URL; ?>provincias/adicionar" class="center-t btn btn-primary mb-4 ">Adicionar Provincia</a>
 
                         </div>
                     </div>

@@ -1417,23 +1417,62 @@ WHERE `id_permissao` = 2;
 
 -- permitir edição
 
-UPDATE agente SET nome = 'Camuli' WHERE id_agente = 28
+UPDATE agente SET nome = 'Camuli' WHERE id_agente = 28;
+
+
+INSERT INTO `sird-db`.`Distrito`
+                                    (`Distrito`)
+                                    VALUES
+                                    ('', 1);
+
+-- adicionar distritos actualizados
+
+INSERT INTO `sird-db`.`distrito`
+(`distrito`,
+`municipio`)
+VALUES
+(
+'',
+1);
+
+
+-- ver distritos actualizados
+
+select d.id_distrito, d.distrito, m.municipio FROM distrito d JOIN municipio m ON d.municipio = m.id_municipio;
+
+
+INSERT INTO `sird-db`.`municipio`
+(`id_municipio`,
+`municipio`,
+`provincia`)
+VALUES
+(<{id_municipio: }>,
+<{municipio: }>,
+<{provincia: }>);
+
+INSERT INTO `sird-db`.`provincia`
+(`id_provincia`,
+`provincia`)
+VALUES
+(<{id_provincia: }>,
+<{provincia: }>);
+
+-- ver comandos municipais para aceitar agentes
+
+SELECT cm.id_comando_municipal, m.municipio
+        FROM `comando_municipal` `cm`
+        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+        JOIN municipio m ON cml.municipio = m.id_municipio
+        WHERE cm.comando_provincial = 2;
 
 
 
+SELECT p.id_posto, p.nome, p.tipo FROM posto p 
+JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm 
+JOIN comando_provincial_localizacao cpl ON 	cml.provincia = cpl.provincia  WHERE estado_actividade = 1 AND cpl.id_cp;
 
 
-
-
-
-
-
-
-
-
-
-
-
+select * from posto;
 
 
 

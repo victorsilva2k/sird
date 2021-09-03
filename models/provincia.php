@@ -1,6 +1,6 @@
 <?php
 
-class MunicipioModel extends Model{
+class ProvinciaModel extends Model{
 
     public function adicionar()
     {
@@ -14,7 +14,7 @@ class MunicipioModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($adicionarMunicipioNome == '') {
+            if ($adicionarProvinciaNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -24,24 +24,21 @@ class MunicipioModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query("INSERT INTO `sird-db`.`municipio`
-                            (`municipio`,
+                $this->query("INSERT INTO `sird-db`.`provincia`
+                            (
                             `provincia`)
                             VALUES
-                            (
-                            :MUNICIPIO,
-                            :PROVINCIA);
+                            (:PROVINCIA);
                             ");
 
-                $this->bind(':PROVINCIA', $adicionarMunicipioProvincia);
-                $this->bind(':MUNICIPIO', $adicionarMunicipioNome);
+                $this->bind(':PROVINCIA', $adicionarProvinciaNome);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Municipio adicionado com sucesso", "success");
+                    Messages::setMessage("Provincia adicionado com sucesso", "success");
                     header('Location: ' . ROOT_URL . 'mais/index/municipio');
                 }
             } catch (\PDOException $erro) {
@@ -55,14 +52,10 @@ class MunicipioModel extends Model{
 
 
         }
-        $this->query('SELECT * FROM provincia');
-        $row = $this->resultSet();
-        return $row;
-
 
 
     }
-    public function editar($id_municipio)
+    public function editar($id_provincia)
     {
 
 
@@ -77,7 +70,7 @@ class MunicipioModel extends Model{
             extract($post);
 
             // Caso o utizador não escrever ou deixar em branco um dos campos
-            if ($editarMunicipioNome == '') {
+            if ($editarProvinciaNome == '') {
                 Messages::setMessage("Por favor preencha todos os campos", "error");
                 return;
             }
@@ -86,23 +79,20 @@ class MunicipioModel extends Model{
             try {
                 $this->beginTransaction();
 
-                // Alterando os dados do posto
-                $this->query("UPDATE `sird-db`.`Municipio`
+                // Alterando os dados da provincia
+                $this->query("UPDATE `sird-db`.`provincia`
                                     SET
-                                    `Municipio` = :MUNICIPIO, 
                                     provincia = :PROVINCIA
-                                    WHERE `id_municipio` = :ID_MUNICIPIO;");
-
-                $this->bind(':MUNICIPIO', $editarMunicipioNome);
-                $this->bind(':PROVINCIA', $editarMunicipioProvincia);
-                $this->bind(':ID_MUNICIPIO', $id_municipio);
+                                    WHERE `id_provincia` = :ID_PROVINCIA;");
+                $this->bind(':PROVINCIA', $editarProvinciaNome);
+                $this->bind(':ID_PROVINCIA', $id_provincia);
                 $this->execute();
 
 
                 $this->commit();
                 if ($this->rowCounte() >= 1) {
                     //Redirect
-                    Messages::setMessage("Municipio editado com sucesso", "success");
+                    Messages::setMessage("Provincia editada com sucesso", "success");
                     header('Location: ' . ROOT_URL . 'mais/index/municipio');
                 }
             } catch (\PDOException $erro) {
@@ -116,11 +106,10 @@ class MunicipioModel extends Model{
 
 
         }
-        // Pegas os dados dos distritos e municipio
-        $this->query('SELECT m.municipio, p.provincia, p.id_provincia FROM municipio m JOIN provincia p ON m.provincia = p.id_provincia WHERE m.id_municipio = :ID_MUNICIPIO');
-        $this->bind(':ID_MUNICIPIO', $id_municipio);
-        $row['municipio'] = $this->resultSet();
-        $this->query('SELECT * FROM provincia');
+        // Pegas os dados da Provincia
+
+        $this->query('SELECT * FROM provincia WHERE id_provincia = :ID_PROVINCIA');
+        $this->bind(':ID_PROVINCIA', $id_provincia);
         $row['provincia'] = $this->resultSet();
         return $row;
 

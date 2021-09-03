@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98754823-0a9e-4a9a-9962-fa554687a7fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/municipios.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/municipio.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/municipios/adicionar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/municipios/editar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/municipios/eliminar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/mais.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/mais.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/mais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/mais/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/mais/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/views/categorias/adicionar.php" />
@@ -143,7 +134,7 @@
       <workItem from="1629726760295" duration="646000" />
       <workItem from="1629804935066" duration="1587000" />
       <workItem from="1629807186722" duration="1417000" />
-      <workItem from="1630419828226" duration="1202000" />
+      <workItem from="1630419828226" duration="1881000" />
     </task>
     <task id="LOCAL-00001" summary="editar comando provincial">
       <created>1629121123794</created>

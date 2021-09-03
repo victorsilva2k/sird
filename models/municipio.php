@@ -128,37 +128,7 @@ class MunicipioModel extends Model{
 
 
     }
-    public function eliminar($id_Distrito)
-    {
 
-
-            try {
-                $this->beginTransaction();
-
-                // Alterando os dados do posto
-                $this->query("DELETE FROM `sird-db`.`Distrito`
-                                    WHERE id_Distrito = :ID_Distrito;");
-                $this->bind(':ID_Distrito', $id_Distrito);
-                $this->execute();
-
-
-                $this->commit();
-                if ($this->rowCounte() >= 1) {
-                    //Redirect
-                    Messages::setMessage("Distrito eliminado com sucesso", "success");
-                    header('Location: ' . ROOT_URL . 'mais');
-                }
-            } catch (\PDOException $erro) {
-                $this->rollBack();
-
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde {$erro->getMessage()}", "error");
-
-            }
-            //Verify
-
-
-
-        }
 
 
 

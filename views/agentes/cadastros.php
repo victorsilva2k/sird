@@ -9,11 +9,7 @@
     <div class="documentos-recentes">
     
         <h1 class="titulo--normal">Cadastros</h1>
-        <div class=" bg-light col p-4 mt-4 mb-4 border rounded">
-            
 
-
-        </div>
         <table class="tabela tabela-striped">
             <thead>
                 <tr>

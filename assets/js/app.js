@@ -35,40 +35,43 @@ document.addEventListener('DOMContentLoaded', function () { // faz com que as fu
 
     // Função para esconder a opção de postos em permitir.php
 
-    $('#selecionarComando').hide();
+    $('#selecionarComandoMunicipal').hide();
+    $('#selecionarComandoProvincial').hide();
+    $('#selecionarComandoNacional').hide();
 
     $("select").on("change", function() {
         var valor = $(this).val();   // aqui vc pega cada valor selecionado com o this
         switch (valor) {
             case 'Posto':
-                $('#selecionarComando').hide();
                 $('#selecionarPostos').show();
+                $('#selecionarComandoMunicipal').hide();
+                $('#selecionarComandoProvincial').hide();
+                $('#selecionarComandoNacional').hide();
               break;
-            case 'Comando':
-                $('#selecionarComando').show();
+            case 'comando_municipal':
                 $('#selecionarPostos').hide();
+                $('#selecionarComandoMunicipal').show();
+                $('#selecionarComandoProvincial').hide();
+                $('#selecionarComandoNacional').hide();
+              break;
+            case 'comando_provincial':
+                $('#selecionarPostos').hide();
+                $('#selecionarComandoMunicipal').hide();
+                $('#selecionarComandoProvincial').show();
+                $('#selecionarComandoNacional').hide();
+              break;
+            case 'comando_nacional':
+                $('#selecionarPostos').hide();
+                $('#selecionarComandoMunicipal').hide();
+                $('#selecionarComandoProvincial').hide();
+                $('#selecionarComandoNacional').show();
               break;
             default:
-                $('#selecionarComando').hide();
-                $('#selecionarPostos').show();
+      
               break;
           }
     });
 
-    
-    
-
-    $('#posto_check').select(function () {
-        $('#selecionarComando').hide();
-        $('#selecionarPostos').show();
-
-    });
-    $('#comando_check').click(function () {
-        $('#selecionarComando').show();
-        $('#selecionarPostos').hide();
-        
-        
-    });
 
     
 });

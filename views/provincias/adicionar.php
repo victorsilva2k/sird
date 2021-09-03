@@ -6,29 +6,15 @@
 </style>
     <form method="POST" class="caixa-info br-25">
         <div class="caixa-info__titulo">
-            <p>Adicionar Municípios</p>
+            <p>Adicionar Provincias</p>
         </div>
-
-
-    
-
             <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho h5">Nome do Município</div>
+                <div class="caixa-info__cabecalho h5">Nome da Provincia</div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="adicionarMunicipioNome"  id="" required maxlength="150" minlength="2">
+                    <input  type="text" class="caixa-info__input input--text" name="adicionarProvinciaNome"  id="" required maxlength="50" minlength="3">
                 </div>
             </div>
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho h5">Província</div>
-                <div class="caixa-info__descricao  ">
-                    <select class="caixa-info__input input--text" name="adicionarMunicipioProvincia">
-                            <?php foreach($viewmodel as $item) : extract($item);?>
-                                <option  value="<?php echo $id_provincia?>"><?php echo $provincia?></option>
-                            <?php endforeach;?>
 
-                    </select>
-                </div>
-            </div>
 
             <button type="submit" name="submit" value="Adicionar" class="caixa-info__botao  btn btn-success mgt-10 ">Adicionar</button>
 

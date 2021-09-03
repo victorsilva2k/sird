@@ -2,6 +2,7 @@
 
 class AgenteModel extends Model{
 
+    // Mostra os agentes por posto, comando municipal, provincial
     public function index()
     {
         if (Controller::verificarLugar(2, true)) {
@@ -48,6 +49,7 @@ class AgenteModel extends Model{
         return $row;
 
     }
+
     public function perfil()
     {
         $this->query('SELECT a.nome , a.sobrenome, 
@@ -60,6 +62,7 @@ class AgenteModel extends Model{
 
         return $row;
     }
+    // Permitir cadastro e dá um cargo a um agente
     public function permitirCadastro($id_agente)
     {
         //Limpando POST
@@ -74,33 +77,99 @@ class AgenteModel extends Model{
                 $this->beginTransaction();
 
                 // Verifica qual é o tipo de estabelecimento escolhido
-                if ($permitirTipoEstabelecimento == "Posto") {
-                    
-                    $this->query("INSERT INTO `sird-db`.`agente_posto`
-                    (`id_agente`,
-                    `id_posto`)
-                    VALUES
-                    (:ID_AGENTE,
-                    :ID_POSTO);");
-                    $this->bind(':ID_AGENTE', $id_agente);
-                    $this->bind(':ID_POSTO', $permitirPosto);
-                    $this->execute();
-                } elseif ($permitirTipoEstabelecimento == "Comando") {
-                    
-                    $this->query("INSERT INTO `sird-db`.`agente_comando_municipal`
-                    (`id_agente`,
-                    `id_cm`,
-                    `cargo`)
-                    VALUES
-                    (:ID_AGENTE,
-                     :ID_CM,
-                     1)");
-                    $this->bind(':ID_AGENTE', $id_agente);
-                    $this->bind(':ID_CM', $permitirComando);
-                    $this->execute();
+                switch ($permitirTipoEstabelecimento) {
+
+                    case 'Posto':
+                        $this->query("INSERT INTO `sird-db`.`agente_posto`
+                        (`id_agente`,
+                        `id_posto`)
+                        VALUES
+                        (:ID_AGENTE,
+                        :ID_POSTO);");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->bind(':ID_POSTO', $permitirPosto);
+                        $this->execute();
+                        break;
+
+                    case 'comando_municipal':
+                        $this->query("INSERT INTO `sird-db`.`agente_comando_municipal`
+                                    (`id_agente`,
+                                    `id_cm`,
+                                    `cargo`)
+                                    VALUES
+                                    (:ID_AGENTE,
+                                    :ID_COMANDO_MUNICIPAL,
+                                    1)");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->bind(':ID_COMANDO_MUNICIPAL', $permitirComandoMunicipal);
+                        $this->execute();
+
+                        // Alterando o local para comando municipal
+
+                        $this->query("UPDATE agente_conta SET local = 'comando_municipal' WHERE id_agente = :ID_AGENTE");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->execute();
+                        break;
+
+                    case 'comando_provincial':
+                        
+                        $this->query("INSERT INTO `sird-db`.`agente_comando_provincial`
+                                    (`id_agente`,
+                                    `id_comando_provincial`,
+                                    `cargo`)
+                                    VALUES
+                                    (:ID_AGENTE,
+                                    :ID_COMANDO_PROVINCIAL,
+                                    1)");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->bind(':ID_COMANDO_PROVINCIAL', $permitirComandoProvincial);
+                        $this->execute();
+                        
+                        // Alterando o local para comando provincial
+
+                        $this->query("UPDATE agente_conta SET local = 'comando_provincial' WHERE id_agente = :ID_AGENTE");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->execute();
+                        break;
+
+                    case 'comando_nacional':
+                        
+                        $this->query("INSERT INTO `sird-db`.`agente_comando_nacional`
+                                    (`id_agente`,
+                                    `id_comando_nacional`,
+                                    `cargo`)
+                                    VALUES
+                                    (:ID_AGENTE,
+                                    :ID_COMANDO_NACIONAL,
+                                    1)");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->bind(':ID_COMANDO_NACIONAL', $permitirComandoNacional);
+                        $this->execute();
+
+                        // Alterando o local para comando nacional
+
+                        $this->query("UPDATE agente_conta SET local = 'comando_nacional' WHERE id_agente = :ID_AGENTE");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->execute();
+                        break;
+
+                    default:
+
+                        $this->query("INSERT INTO `sird-db`.`agente_posto`
+                        (`id_agente`,
+                        `id_posto`)
+                        VALUES
+                        (:ID_AGENTE,
+                        :ID_POSTO);");
+                        $this->bind(':ID_AGENTE', $id_agente);
+                        $this->bind(':ID_POSTO', $permitirPosto);
+                        $this->execute();
+
+                        break;
                 }
 
-                // Eliminar agente da tabela agente
+
+                // Mudar o estado do agente para activo
                 $this->query("UPDATE agente_conta SET estado_conta = 1 WHERE id_agente = :ID_AGENTE");
                 $this->bind(':ID_AGENTE', $id_agente);
                 $this->execute();
@@ -115,7 +184,7 @@ class AgenteModel extends Model{
             } catch (\PDOException $erro) {
                 $this->rollBack();
 
-                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO:  | $permitirPosto" , "error");
+                Messages::setMessage("Aconteceu um erro tente novamente mais tarde. ERRO:  | " , "error");
 
             }
             //Verify
@@ -124,17 +193,72 @@ class AgenteModel extends Model{
             
         }
 
-        $this->query('SELECT id_posto, nome, tipo FROM posto WHERE estado_actividade = 1;');
+        // Caso for um agente do comando nacional pode adicionar agentes em outros comandos provinciais, que pertecem a esse comando provincial e também pode adicionar agentes ao próprio comando nacional
+
+        if(Controller::verificarLugar(4)){
+
+            // Mostrar comandos provinciais
+            $this->query('SELECT nome, id_comando_provincial FROM comando_provincial');
+            $row["comando_provincial"] = $this->resultSet();
+    
+            // Mostrar comando nacional
+            $this->query('SELECT nome, id_comando_nacional FROM comando_nacional');
+            $row["comando_nacional"] = $this->resultSet();
+
+            // Mostrar comandos municipais
+            $this->query('SELECT cm.id_comando_municipal, m.municipio
+            FROM `comando_municipal` `cm`
+            JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+            JOIN municipio m ON cml.municipio = m.id_municipio
+            WHERE cm.estado_actividade = 1;');
+            $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
+            $row["comando_municipal"] = $this->resultSet();
+
+            // mostrar postos
+            $this->query('SELECT id_posto, nome, tipo FROM posto WHERE estado_actividade = 1;');
+            $row["postos"] = $this->resultSet();
+        }
+        // Caso for um agente do comando provincial pode adicionar agentes em outros comandos municipais, que pertecem a esse comando provincial e postos da mesma província
+        elseif(Controller::verificarLugar(3)){
+        // Mostrar comandos municipais
+        $this->query('SELECT cm.id_comando_municipal, m.municipio
+        FROM `comando_municipal` `cm`
+        JOIN `comando_municipal_localizacao` `cml` ON `cm`.`id_comando_municipal` = `cml`.`id_cm`
+        JOIN municipio m ON cml.municipio = m.id_municipio
+        WHERE cm.comando_provincial = :ID_COMANDO_PROVINCIAL AND cm.estado_actividade = 1;');
+        $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
+        $row["comando_municipal"] = $this->resultSet();
+
+        // mostrar postos
+        $this->query('SELECT p.id_posto, p.nome, p.tipo FROM posto p 
+        JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm 
+        JOIN comando_provincial_localizacao cpl ON 	cml.provincia = cpl.provincia  WHERE estado_actividade = 1 AND cpl.id_cp = :ID_COMANDO_PROVINCIAL;');
+        $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
         $row["postos"] = $this->resultSet();
+        
+        }
+
+        // Caso for um usuario de comando municipal pode adicionar agentes em postos, que pertencem a ele
+        elseif(Controller::verificarLugar(2)){
+            // mostrar postos
+            $this->query('SELECT id_posto, nome, tipo FROM posto WHERE estado_actividade = 1 AND id_comando_municipal = :ID_COMANDO_MUNICIPAL;');
+            $this->bind(':ID_COMANDO_MUNICIPAL', $_SESSION['usuario_local']['id_local']);
+            $row["postos"] = $this->resultSet();
+        }
+
+
+        
+        // Mostrar dados do agente
         $this->query('SELECT a.nome, a.sobrenome, a.genero, a.data_nasc data_nascimento, ac.nip, a.foto_arquivo foto 
                     FROM agente_conta ac 
                     JOIN agente a ON ac.id_agente = a.id_agente 
                     WHERE a.id_agente = :ID_AGENTE');
         $this->bind(":ID_AGENTE", $id_agente);
         $row["agente"] = $this->resultSet();
-    
+
         return $row;  
     }
+
     public function rejeitarCadastro($id_agente)
     {
 
@@ -196,6 +320,7 @@ class AgenteModel extends Model{
         
  
     }
+    // Nega uma alteração de perfil de um agente pertencente a um posto ou esquadra
     public function negaralteracao($id_permissao)
     {
 
@@ -244,6 +369,8 @@ class AgenteModel extends Model{
         
  
     }
+        // Permiti uma alteração de perfil de um agente pertencente a um posto ou esquadra
+
     public function permitiralteracao($id_permissao)
     {
             
@@ -442,7 +569,7 @@ class AgenteModel extends Model{
             
                 //Redirect  
                 Messages::setMessage("Cadastro feito com sucesso", "success");
-                header('Location: ' . ROOT_URL . 'agentes/aguardar');
+                header('Location: ' . ROOT_URL . 'agentes/aguardar/' . $cadastroId);
  
 
         }

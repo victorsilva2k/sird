@@ -1,32 +1,20 @@
 <?php
 
-class Municipios extends Controller{
-    protected function index()
-    {
-        $this->verificarNivel(1);
-        $viewmodel = new MunicipioModel();
-        $this->returnView($viewmodel->index(), true);
-    }
+class Provincias extends Controller{
+
 
     protected function adicionar()
     {
         $this->verificarNivel(1);
-        $viewmodel = new MunicipioModel();
+        $viewmodel = new ProvinciaModel();
         $this->returnView($viewmodel->adicionar(), true);
     }
 
     protected function editar()
     {
         $this->verificarNivel(1);
-        $viewmodel = new MunicipioModel();
+        $viewmodel = new ProvinciaModel();
         $this->returnView($viewmodel->editar($this->param), true);
     }
 
-    protected function eliminar()
-    {
-
-        $this->verificarNivel(1);
-        $viewmodel = new MunicipioModel();
-        $this->returnView($viewmodel->eliminar($this->param), true);
-    }
 }
