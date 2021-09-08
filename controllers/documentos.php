@@ -11,9 +11,9 @@ class Documentos extends Controller{
     }
     protected function listar()
     {
-        echo $estado = $this->param;
-        if (stristr($this->param, '?')) {
-            $parametros = explode($this->param, "pagina");
+
+    if (stristr($this->param, 'p')) {// HACK era suposto ele por mais uma barra e essa barra ser a pagina pro exemplo documentos/recebidos/1
+        $parametros = explode("p", $this->param);
             $estado = $parametros[0];
             $pagina = $parametros[1];
             echo "$estado e $pagina";
@@ -34,6 +34,13 @@ class Documentos extends Controller{
         $this->verificarNivel(1);
         $viewmodel = new DocumentosModel();
         $this->returnView($viewmodel->Index($estado, $pagina), true);
+    }
+
+    protected function recebidos()
+    {
+        $this->verificarNivel(1);
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->recebidos($this->param), true);
     }
 
     protected function pesquisar()
