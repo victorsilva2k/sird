@@ -30,6 +30,7 @@
     </div>
 
 </div>
+
 <div class="opcoes-documentos">
     <div class="opcoes-documentos__div opcoes-documento__div--activada">
         <a href="<?php echo ROOT_URL; ?>documentos/listar/recebidos" class="opcoes-documentos__link opcoes-documento__link--activado">

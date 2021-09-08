@@ -8,12 +8,32 @@
     }
 
 </style>
-<div class="btn-groupo">
-    <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
 
+
+<div class="container px-4">
+  <div class="row gx-5">
+    <div class="col">
+        <div class="btn-groupo">
+        <a href="<?php echo ROOT_URL; ?>documentos/publicar" class="btn-groupo__botao center-t btn btn-primary mb-4 ">Publicar Documento</a>
+
+        </div>
     </div>
-<div class="paginacao">
-<!-- removi a paginação -->
+    <div class="col">
+        <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+            <a class="page-link" href="#">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+            <a class="page-link" href="#">Próximo</a>
+            </li>
+        </ul>
+        </nav>
+    </div>
+  </div>
 </div>
 <div class="opcoes-documentos">
     <div class="opcoes-documentos__div <?php echo ($this->param === 'recebidos' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">

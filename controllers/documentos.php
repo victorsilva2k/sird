@@ -11,7 +11,14 @@ class Documentos extends Controller{
     }
     protected function listar()
     {
-        switch ($this->param) {
+        echo $estado = $this->param;
+        if (stristr($this->param, '?')) {
+            $parametros = explode($this->param, "pagina");
+            $estado = $parametros[0];
+            $pagina = $parametros[1];
+            echo "$estado e $pagina";
+        }
+        switch ($estado) {
             case 'entregues':
                 $estado = 3;
                 break;
@@ -26,7 +33,7 @@ class Documentos extends Controller{
         }
         $this->verificarNivel(1);
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->Index($estado), true);
+        $this->returnView($viewmodel->Index($estado, $pagina), true);
     }
 
     protected function pesquisar()

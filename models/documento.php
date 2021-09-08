@@ -1,8 +1,15 @@
 <?php
 
 class DocumentosModel extends Model{
-    public function Index($estado)
+    public function Index($estado, $pagina = NULL)
     {
+        $limite_inicial = 1;
+        $limite_final = 50;
+        $paginacao = 1;
+        if ($pagina) {
+            $limite_inicial = $pagina * 50;
+            $limite_final = $limite_inicial + 50;
+        }
         switch ($estado) {
             case 3:
                 $this->query('SELECT * FROM ver_documentos_entregues');
@@ -15,7 +22,9 @@ class DocumentosModel extends Model{
                 $this->query('SELECT * FROM ver_documento_principal');
                 break;
         }
-         
+        
+        echo "$limite_inicial e $limite_final e " . $this->page;
+        var_dump($_REQUEST);
         $row = $this->resultSet();
         return $row;
     }

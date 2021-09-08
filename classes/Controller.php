@@ -7,6 +7,8 @@ abstract class Controller{
     protected $action;
     protected $id;
 
+
+
     // Functions
     // Pega a acao e os dados da url
     public function __construct($action, $param, $request) {
@@ -14,6 +16,8 @@ abstract class Controller{
         $this->request = $request;
         $this->action = $action;
         $this->param = $param;
+  
+
 
     }
 

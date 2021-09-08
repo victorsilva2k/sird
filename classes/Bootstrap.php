@@ -8,6 +8,7 @@ class Bootstrap{
     private $action;
     private $request;
     private $param = [];
+    private $page;
 
     public function __construct($request) {
         $this->request = $request;
@@ -18,10 +19,7 @@ class Bootstrap{
         } else{
 
             $this->controller = $this->request['controller'];
-
-      
-            
-            
+ 
         }
         if ($this->request['action'] == "") {
             
@@ -41,6 +39,8 @@ class Bootstrap{
             $this->param = $this->request['param'];
 
         }
+
+        
         
     }
 
