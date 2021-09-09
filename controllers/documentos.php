@@ -35,12 +35,22 @@ class Documentos extends Controller{
         $viewmodel = new DocumentosModel();
         $this->returnView($viewmodel->Index($estado, $pagina), true);
     }
-
+    
     protected function recebidos()
     {
         $this->verificarNivel(1);
+        $limites = $this->paginar($this->param);
+        extract($limites);
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->recebidos($this->param), true);
+        $this->returnView($viewmodel->recebidos($limite_inicial, $limite_final), true);
+    }
+    protected function entregues()
+    {
+        $this->verificarNivel(1);
+        $limites = $this->paginar($this->param);
+        extract($limites);
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->entregues($limite_inicial, $limite_final), true);
     }
 
     protected function pesquisar()

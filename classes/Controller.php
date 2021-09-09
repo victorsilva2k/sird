@@ -50,7 +50,26 @@ abstract class Controller{
 
         }
     }
+    public function paginar($pagina)
+    {
 
+            $limite_inicial = 1;
+            $limite_final = 50;
+            ($pagina == NULL OR $pagina == "") ? $pagina = 1 : $pagina;
+            $pagina_anterior= 0;
+            $pagina_proxima = 2;
+            if ($pagina == true AND $pagina == 2) {
+                $limite_inicial =+ 50;
+                $limite_final = $limite_inicial + 50;
+            }elseif ($pagina >= 2) {
+                $limite_inicial = $limite_inicial * 50;
+                $limite_final = $limite_inicial + 50;
+            }
+
+            return $limites = array('limite_inicial' => $limite_inicial,
+                                    'limite_final'   => $limite_final);
+
+    }
     public static function verificarLugar($nivel, $uni = NULL){
 
         if (isset($_SESSION['usuario_local'])) {
