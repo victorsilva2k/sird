@@ -18,36 +18,22 @@
 
         </div>
     </div>
-    <div class="col">
-        <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-            <li class="page-item">
-            <a class="page-link" href="#">Anterior</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-            <a class="page-link" href="#">Próximo</a>
-            </li>
-        </ul>
-        </nav>
-    </div>
+
   </div>
 </div>
 <div class="opcoes-documentos">
     <div class="opcoes-documentos__div <?php echo ($this->param === 'recebidos' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
-        <a href="<?php echo ROOT_URL; ?>documentos/listar/recebidos" class="opcoes-documentos__link opcoes-documento__link--activado">
+        <a href="<?php echo ROOT_URL; ?>documentos/recebidos" class="opcoes-documentos__link opcoes-documento__link--activado">
             Recebidos
         </a>
     </div>
     <div class="opcoes-documentos__div  <?php echo ($this->param === 'entregues' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
-        <a href="<?php echo ROOT_URL; ?>documentos/listar/entregues" class="opcoes-documentos__link opcoes-documento__link--activado ">
+        <a href="<?php echo ROOT_URL; ?>documentos/entregues" class="opcoes-documentos__link opcoes-documento__link--activado ">
             Entregues
         </a>
     </div>
     <div class="opcoes-documentos__div  <?php echo ($this->param === 'eliminados' ?  'opcoes-documento__div--activada' :  'opcoes-documento__link--desactivado'); ?>">
-        <a href="<?php echo ROOT_URL; ?>documentos/listar/eliminados" class="opcoes-documentos__link opcoes-documento__link--activado ">
+        <a href="<?php echo ROOT_URL; ?>documentos/eliminados" class="opcoes-documentos__link opcoes-documento__link--activado ">
             Eliminados
         </a>
     </div>
@@ -77,7 +63,7 @@
                             
                             <a href="<?php echo ROOT_URL; ?>documentos/ver/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Ver</a>
                             
-                            <?php if($this->param !== 'entregues'): ?>
+                            <?php if($this->param !== 'entregues' AND $tipo_local == $_SESSION['usuario_local']['tipo_local'] AND $id_local == $_SESSION['usuario_local']['id_local']): ?>
                                 <a href="<?php echo ROOT_URL; ?>documentos/editar/<?php echo $id_proprietario?>" class="center-t btn btn-secondary mb-4 ">Editar</a>
                                 <a href="<?php echo ROOT_URL; ?>documentos/devolver/<?php echo $id_proprietario?>" class="center-t btn btn-success mb-4 ">Devolver</a>
                                 <a href="<?php echo ROOT_URL; ?>documentos/eliminar/<?php echo $id_proprietario?>" class="center-t btn btn-danger mb-4 ">Eliminar</a>

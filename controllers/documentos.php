@@ -52,6 +52,14 @@ class Documentos extends Controller{
         $viewmodel = new DocumentosModel();
         $this->returnView($viewmodel->entregues($limite_inicial, $limite_final), true);
     }
+    protected function eliminados()
+    {
+        $this->verificarNivel(1);
+        $limites = $this->paginar($this->param);
+        extract($limites);
+        $viewmodel = new DocumentosModel();
+        $this->returnView($viewmodel->eliminados($limite_inicial, $limite_final), true);
+    }
 
     protected function pesquisar()
     {

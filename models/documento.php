@@ -75,6 +75,29 @@ class DocumentosModel extends Model{
         $row['documentos'] = $this->resultSet();
         return $row;
     }
+    public function eliminados($limite_inicial, $limite_final)
+    {
+        
+        
+
+        $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
+        AS categorias, group_concat(od.data) 
+        AS datas, group_concat(d.id_documento) 
+        AS ids,
+        ld.tipo_local, ld.id_local
+        FROM propietario_documento pd 
+        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+        JOIN operacao_documento od ON od.id_documento = d.id_documento
+        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+        WHERE d.estado = 2  GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC limit :LIMITE_INICIAL, :LIMITE_FINAL;');
+        $this->bind(":LIMITE_INICIAL", $limite_inicial);
+        $this->bind(":LIMITE_FINAL", $limite_final);
+
+        $row['documentos'] = $this->resultSet();
+        return $row;
+    }
     public function Cidadao()
     {
         
