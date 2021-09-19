@@ -1477,17 +1477,60 @@ select * from posto;
 -- ver documentos com paginaçãoptimize
 
 SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
-                        AS categorias, group_concat(od.data) 
-                        AS datas, group_concat(d.id_documento) 
-                        AS ids,
-                        ld.tipo_local, ld.id_local
-                        FROM propietario_documento pd 
-                        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
-                        JOIN operacao_documento od ON od.id_documento = d.id_documento
-						JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
-                        JOIN foto_documento fd ON d.id_documento = fd.id_documento
-                        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
-						WHERE d.estado = 3 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC limit 1, 50	;
+        AS categorias, group_concat(od.data) 
+        AS datas, group_concat(d.id_documento) 
+        AS ids,
+        ld.tipo_local, ld.id_local
+        FROM propietario_documento pd 
+        JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+        JOIN operacao_documento od ON od.id_documento = d.id_documento
+        JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+        JOIN foto_documento fd ON d.id_documento = fd.id_documento
+        JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+        WHERE d.estado = 2 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC limit 1, 50;
+
+
+-- VER CO
+
+
+
+-- ver localização de local que publicou documento
+
+SELECT p.nome, d.distrito, p.terminal, b.bairro, pl.rua, m.municipio
+                        FROM posto p 
+                        JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
+                        JOIN bairro b ON b.id_bairro= pl.bairro
+                        JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm
+                        JOIN municipio m ON m.id_municipio = cml.municipio
+                        JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
+                         WHERE p.id_posto = 16;
+                        
+SELECT DISTINCT pd.nome_completo AS nome_proprietario, pd.id_proprietario, ed.nome_completo 
+                    AS nome_entregador, ed.telefone AS telefone_entregador, group_concat(fd.arquivo) AS fotos,  group_concat(cd.categoria) 
+                    AS categorias, group_concat(od.data) 
+                    AS datas,  group_concat(pt.telefone) 
+                    AS telefone_proprietario, group_concat(d.id_documento) 
+                    AS ids,
+                    ld.tipo_local, ld.id_local
+                    FROM propietario_documento pd 
+                    JOIN documentos d ON pd.id_proprietario = d.id_proprietario 
+                    JOIN operacao_documento od ON od.id_documento = d.id_documento
+                    JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
+                    JOIN foto_documento fd ON d.id_documento = fd.id_documento
+                    JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
+                    JOIN proprietario_telefone pt ON pt.id_proprietario = pd.id_proprietario
+                    JOIN entregador_proprietario ep ON ep.id_proprietario = pd.id_proprietario
+                    JOIN entregador_documento ed ON ed.id_entregador = ep.id_entregador
+                    WHERE pd.id_proprietario = 146 GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;
+
+
+
+
+
+
+
+
+
 
 
 

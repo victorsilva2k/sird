@@ -6,7 +6,7 @@ class Documentos extends Controller{
     {
 
         $this->verificarNivel(1);
-        header('Location: ' . ROOT_URL . 'documentos/listar');
+        header('Location: ' . ROOT_URL . 'documentos/recebidos');
 
     }
     protected function listar()
@@ -64,8 +64,17 @@ class Documentos extends Controller{
     protected function pesquisar()
     {
         $this->verificarNivel(1);
+        // separa o GET['pesquisar'] do url normal
+        $string =  substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1);
+        // separa a parte da pesquisa da url acima
+        $pesquisa_request = substr($string, strpos($string, "=") + 1);
+        $pesquisa_string = explode("?", $pesquisa_request);
+        $pesquisar = $pesquisa_string[0];
+        $pagina = substr($pesquisa_request, strpos($pesquisa_request, "=") + 1);
+        $limites = $this->paginar($pagina);
+        extract($limites);
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->pesquisar(), true);
+        $this->returnView($viewmodel->pesquisar($pesquisar, $limite_inicial, $limite_final, $pagina), true);
     }
 
     protected function ver()
@@ -73,7 +82,7 @@ class Documentos extends Controller{
         $this->verificarNivel(1);
         $this->verificarParametro();
         $viewmodel = new DocumentosModel();
-        $this->returnView($viewmodel->verAgente($this->param), true);
+        $this->returnView($viewmodel->ver($this->param), true);
     }
     protected function devolver()
     {

@@ -91,7 +91,7 @@ class DocumentosModel extends Model{
         JOIN categoria_documento cd ON d.categoria_documento = cd.id_categoria_documento 
         JOIN foto_documento fd ON d.id_documento = fd.id_documento
         JOIN local_documento ld ON ld.id_proprietario = pd.id_proprietario
-        WHERE d.estado = 2  GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC limit :LIMITE_INICIAL, :LIMITE_FINAL;');
+        WHERE d.estado = 2  GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC LIMIT :LIMITE_INICIAL, :LIMITE_FINAL;');
         $this->bind(":LIMITE_INICIAL", $limite_inicial);
         $this->bind(":LIMITE_FINAL", $limite_final);
 
@@ -116,15 +116,13 @@ class DocumentosModel extends Model{
         $row = $this->resultSet();
         return $row;
     }
-    public function pesquisar()
+    public function pesquisar($pesquisar, $limite_inicial, $limite_final, $pagina)
     {
-        
-        $string =  substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1); 
-        $pesquisar = substr($string, strpos($string, "=") + 1); 
 
 
         if (isset($pesquisar)) {
-            
+            $row['pesquisar']['valor'] = $pesquisar;
+            $row['pesquisar']['pagina'] = $pagina;
             $this->query("SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
                         AS categorias, group_concat(od.data) 
                         AS datas,   group_concat(fd.arquivo) AS fotos,
@@ -139,13 +137,15 @@ class DocumentosModel extends Model{
                         WHERE d.estado = 1 AND d.identifacador LIKE :PESQUISA 
                         OR pd.nome_completo LIKE :PESQUISA OR cd.categoria LIKE :PESQUISA 
                         OR pt.telefone LIKE :PESQUISA
-                        GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC;");
+                        GROUP BY pd.id_proprietario ORDER BY pd.id_proprietario DESC LIMIT :LIMITE_INICIAL, :LIMITE_FINAL;");
             $this->bind(':PESQUISA', "%$pesquisar%");
-
-            $row = $this->resultSet();
+            $this->bind(":LIMITE_INICIAL", $limite_inicial);
+            $this->bind(":LIMITE_FINAL", $limite_final);
+            $row['documentos'] = $this->resultSet();
             return $row;
         }
     }
+    // Não está a ser usado
     public function verCidadao($id_proprietario)
     {
         $this->query('SELECT DISTINCT pd.nome_completo, pd.id_proprietario,  group_concat(cd.categoria) 
@@ -164,7 +164,7 @@ class DocumentosModel extends Model{
         $row['documento'] = $this->resultSet();
         extract($ro);
         if ($tipo_local == 'posto') {
-            $this->query('SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+            $this->query('SELECT p.nome, d.distrito, p.terminal, b.bairro, pl.rua, cml.municipio
                         FROM posto p 
                         JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
                         JOIN bairro b ON b.id_bairro= pl.bairro
@@ -186,7 +186,7 @@ class DocumentosModel extends Model{
         }
         return $row;  
     }
-    public function verAgente($id_proprietario)
+    public function ver($id_proprietario)
     {
         $this->query('SELECT DISTINCT pd.nome_completo AS nome_proprietario, pd.id_proprietario, ed.nome_completo 
                     AS nome_entregador, ed.telefone AS telefone_entregador, group_concat(fd.arquivo) AS fotos,  group_concat(cd.categoria) 
@@ -210,23 +210,27 @@ class DocumentosModel extends Model{
         $row['documento'] = $this->resultSet();
         extract($ro);
         if ($tipo_local == 'posto') {
-            $this->query('SELECT p.nome, d.distrito, b.bairro, pl.rua, cml.municipio
+            $this->query('SELECT p.nome, d.distrito, p.terminal, b.bairro, pl.rua, m.municipio
                         FROM posto p 
                         JOIN posto_localizacao pl ON p.id_posto = pl.id_posto
                         JOIN bairro b ON b.id_bairro= pl.bairro
+                        JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm
+                        JOIN municipio m ON m.id_municipio = cml.municipio
                         JOIN `distrito` `d` ON ((`d`.`id_distrito` = `pl`.`distrito`))
-                        JOIN comando_municipal_localizacao cml ON p.id_comando_municipal = cml.id_cm WHERE p.id_posto = :ID_POSTO;');
+                        WHERE p.id_posto = :ID_POSTO;');
             $this->bind(':ID_POSTO', $id_local);
             $row['local'] = $this->resultSet();
         } else {
             
-                $this->query('SELECT cml.provincia, cml.municipio, d.distrito, b.bairro, cml.rua  
+                $this->query('SELECT cml.provincia, m.municipio, d.distrito, b.bairro, cml.rua, cm.terminal  
                 FROM comando_municipal cm 
                 JOIN comando_municipal_localizacao cml ON cm.id_comando_municipal = cml.id_cm
                 JOIN bairro b ON b.id_bairro= cml.bairro
-                JOIN distrito d ON ((d.id_distrito = cml.distrito))');
+                JOIN distrito d ON ((d.id_distrito = cml.distrito))
+                JOIN municipio m ON m.id_municipio = cml.municipio WHERE cm.id_comando_municipal = :ID_COMANDO_MUNICIPAL');
+                $this->bind(':ID_COMANDO_MUNICIPAL', $id_local);
                 $row['local'] = $this->resultSet();
-                $nome = "Comando Municipal Talatona";
+                
 
             
         }

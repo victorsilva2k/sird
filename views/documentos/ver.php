@@ -39,6 +39,7 @@
                 ?>
                 </p></div>
             </div>
+            
             <?php endforeach;?>
             <?php foreach($viewmodel['local'] as $item) : extract($item);?>
             <div class="caixa-info__item">
@@ -62,6 +63,10 @@
 
                 
                 </p></div>
+            </div>
+            <div class="caixa-info__item">
+                <div class="caixa-info__cabecalho"><h3 >Terminal do Local</h3></div>
+                <div class="caixa-info__descricao"><p ><?php echo $terminal; ?></p></div>
             </div>
             <?php endforeach;?>
             
