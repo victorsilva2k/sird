@@ -93,20 +93,29 @@ class ComandoMunicipalModel extends Model{
                 $this->beginTransaction();
 
                 // Alterando os dados do posto
-                $this->query('INSERT INTO comando_municipal VALUES(NULL, DEFAULT, :IDCM, :TERMINAL_CP)');
-                $this->bind('IDCM', $_SESSION['usuario_local']['id_local']);
+                // Erro: não adicionava - column count doesn't match - correção: o campo 'estado_actidade não tinha "DEFAULT"
+                $this->query('INSERT INTO comando_municipal VALUES(NULL, DEFAULT, :ID_COMANDO_PROVINCIAL, :TERMINAL_CP, DEFAULT)');
+                $this->bind('ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
                 $this->bind('TERMINAL_CP', $adicionarComandoMTerminal);
                 $this->execute();
 
                 $id_comando_municipal = $this->lastInsertId();
-                return;
+             
+
+                // Recebendo a provincia do comando provincial actual
+
+                $this->query('SELECT provincia FROM comando_provincial_localizacao WHERE id_cp = :ID_COMANDO_PROVINCIAL;');
+                $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
+                $provincia_array = $this->singleResult();
+                extract($provincia_array); // a provincia é tirada da função extract com provincia, por isso já não é instanciada
+
                 // Alterando os dados de localização do posto
                 $this->query("INSERT INTO comando_municipal_localizacao VALUES(:ID_CM, 
                                                                                     :PROVINCIA, :MUNICIPIO, 
                                                                                     :DISTRITO, :BAIRRO, 
                                                                                     :RUA)");
 
-                $this->bind(':PROVINCIA', $adicionarComandoMProvincia);
+                $this->bind(':PROVINCIA', $provincia);
                 $this->bind(':MUNICIPIO', $adicionarComandoMMunicipio);
                 $this->bind(':DISTRITO', $adicionarComandoMDistrito);
                 $this->bind(':BAIRRO', $adicionarComandoMBairro);
@@ -137,25 +146,37 @@ class ComandoMunicipalModel extends Model{
 
 
         }
+
+        // Recebendo a provincia do comando provincial actual
+
+        $this->query('SELECT provincia FROM comando_provincial_localizacao WHERE id_cp = :ID_COMANDO_PROVINCIAL;');
+        $this->bind(':ID_COMANDO_PROVINCIAL', $_SESSION['usuario_local']['id_local']);
+        $provincia_array = $this->singleResult();
+        extract($provincia_array);
         // Pegando dados dos bairros
-        $this->query('select * from bairro;');
+        $this->query('SELECT b.id_bairro, b.bairro FROM bairro b 
+                        JOIN distrito d ON b.distrito = d.id_distrito
+                        JOIN municipio m ON m.id_municipio = d.municipio
+                        WHERE m.provincia = 8');
+        $this->bind(':PROVINCIA', $provincia);
         $row["bairros"] = $this->resultSet();
 
         // Pegando dados dos distritos
-        $this->query('select * from distrito');
+        $this->query('SELECT d.id_distrito, d.distrito FROM distrito d
+        JOIN municipio m ON m.id_municipio = d.municipio
+        WHERE m.provincia = :PROVINCIA');
+        $this->bind(':PROVINCIA', $provincia);
         $row['distritos'] = $this->resultSet();
 
         // Pegando dados dos municipios
-        $this->query('select * from municipio');
+        $this->query('SELECT id_municipio, municipio FROM municipio WHERE provincia = :PROVINCIA;');
+        $this->bind(':PROVINCIA', $provincia);
         $row['municipios'] = $this->resultSet();
 
-        // Pegando dados dos provincias
-        $this->query('select * from provincia');
-        $row['provincias'] = $this->resultSet();
+
+
+
         return $row;
-
-
-
 
     }
 

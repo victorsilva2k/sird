@@ -11,21 +11,6 @@
         </div>
 
 
-    
-
-
-            <div class="caixa-info__item">
-                <div class="caixa-info__cabecalho"><h3 >Província</h3></div>
-                <div class="caixa-info__descricao  ">
-                    <select class="caixa-info__input input--text" name="adicionarComandoMProvincia">
-                            <?php foreach($viewmodel['provincias'] as $item) : extract($item);?>
-                                <option  value="<?php echo $id_provincia?>"><?php echo $provincia?></option>
-                            <?php endforeach;?>
-
-                    </select>
-                </div>
-            </div>
-
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Munícipio</h3></div>
                 <div class="caixa-info__descricao  ">
