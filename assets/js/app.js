@@ -75,4 +75,3 @@ document.addEventListener('DOMContentLoaded', function () { // faz com que as fu
 
     
 });
-

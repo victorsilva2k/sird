@@ -20,7 +20,7 @@ $('#add-documentos').click(function(e){
         }
         
 
-        $('#name').val('');
+        $('#name').l('');
         $('#comment').val('');
 
     });
