@@ -112,7 +112,7 @@
                     <div class="caixa-info__cabecalho"><h3 >Fotos</h3></div>
                     <div class="caixa-info__descricao caixa-info__grupo-img ">
                         <label for="filetype" class="botao cancel">
-                                <img src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="" class="caixa-info__img--grande bd--grey preview-img ">                                    
+                                <img id="imagem1" data-src="<?php echo ROOT_IMG; ?>" src="<?php echo ROOT_IMG; ?>site/no-img.png" alt="" class="caixa-info__img--grande bd--grey preview-img ">                                    
                         </label>
                         <input id="filetype" type="file" name="adicionarDocumentoFotoFrente[]" class="file-chooser" hidden />
                         <label for="filetype2" class="botao cancel">
@@ -121,6 +121,7 @@
                         <input id="filetype2" type="file" name="adicionarDocumentoFotoTraz[]" class="file-chooser2" hidden />
                     </div>
                 </div>
+                <!-- Fim Informação documento -->
                 <script>
                             const $a = document.querySelector.bind(document);
                             const previewImg = $a('.preview-img');
@@ -164,6 +165,8 @@
             
             </div>
         </div>
+
+      
         <a  class="  btn btn-primary mgt-10 " id="add-documentos">Adicionar Documento</a>
         <br>
         <div class="btn-grupo mgt-10">

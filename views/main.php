@@ -279,4 +279,5 @@
 </body>
 <script src="<?php echo ROOT_JS; ?>app.js"></script>    
 <script src="<?php echo ROOT_JS; ?>jquery-3.2.1.js"></script>
+<script src="<?php echo ROOT_JS; ?>ajax.js"></script>    
 </html>
