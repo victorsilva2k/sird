@@ -1,0 +1,4 @@
+vendor/
+.idea/
+.vscode/
+assets/, !assets/img/site, !assets/js, !assets/css

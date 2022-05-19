@@ -106,13 +106,10 @@ abstract class Controller{
             }
     }
 }
-    public function verificarParametro(){
-
+    public function verificarParametro(){// Retorna para a página inicial do método caso nenhum parametro seja especificadi
         if (!isset($this->param)) {
             $this->action = "index";
             header('Location: ' . ROOT_URL);
-
-            
         } 
     }
 

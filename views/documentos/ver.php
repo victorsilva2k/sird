@@ -20,7 +20,7 @@
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Número do Entregador</h3></div>
                 <div class="caixa-info__descricao"><p ><?php echo $telefone_entregador?></p></div>
-            </div>
+            </div>2
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Documentos</h3></div>
                 <div class="caixa-info__descricao"><p ><?php echo $this->verificarRepeticao($categorias)?></p></div>
@@ -29,13 +29,9 @@
                 <div class="caixa-info__cabecalho"><h3 >Data</h3></div>
                 <div class="caixa-info__descricao"><p >
                 <?php 
-
-
                     $data_array = explode(",",$datas);
                     $data = $data_array[0];
                     echo $this->tratarData($data, true);
-
-                    
                 ?>
                 </p></div>
             </div>
@@ -87,13 +83,7 @@
         <div class="br-25 bd-1 mgb-10 galeria__item">
             <img     class="cartoes__img-ver img--perfil" src="<?php echo ROOT_IMG; ?>documentos/<?php echo $foto; ?>" alt="Nome do Cidadão">
         </div>
-        <?php endforeach;?>    
-
-        
-
-
-
-                
+        <?php endforeach;?>                    
     </div>
 
     <div class="alteracoes-documento registro-alteracoes">

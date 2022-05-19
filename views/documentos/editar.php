@@ -19,18 +19,18 @@
 
 
     
-            <?php foreach($viewmodel["posto"] as $item) : extract($item);?>
+            <?php foreach($viewmodel["documento"] as $item) : extract($item);?>
             <div class="caixa-info__item">
 
                 <div class="caixa-info__cabecalho"><h3 >Nome Completo</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="editarDocumentoProprietarioNome" placeholder="Ex: João Paulo da Silva" id="" required minlength="3" maxlength="300">
+                    <input  type="text" class="caixa-info__input input--text" name="editarDocumentoProprietarioNome" placeholder="<?php echo $nome_proprietario?>" id="" required minlength="3" maxlength="300">
                 </div>
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
                 <div class="caixa-info__descricao  " id="caixa-numero">
-                    <input  type="number" class="caixa-info__input input--text" name="editarDocumentoProprietarioNumero[]" placeholder="Ex: 923432123" id="" required minlength="9" maxlength="12">
+                    <input  type="number" class="caixa-info__input input--text" name="editarDocumentoProprietarioNumero[]" placeholder="<?php echo $this->verificarRepeticao($telefone_proprietario)?>" id="" required minlength="9" maxlength="12">
                     
                 </div>
             </div>
@@ -58,13 +58,13 @@
 
                 <div class="caixa-info__cabecalho"><h3 >Nome Completo</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="text" class="caixa-info__input input--text" name="editarDocumentoEntregadorNome" value="<?php echo $nome_proprietario?> " placeholder="" id="" required minlength="3" maxlength="300">
+                    <input  type="text" class="caixa-info__input input--text" name="editarDocumentoEntregadorNome" value="<?php echo $nome_entregador?> " placeholder="" id="" required minlength="3" maxlength="300">
                 </div>
             </div>
             <div class="caixa-info__item">
                 <div class="caixa-info__cabecalho"><h3 >Número</h3></div>
                 <div class="caixa-info__descricao  ">
-                    <input  type="number" class="caixa-info__input input--text" name="editarDocumentoEntregadorNumero" placeholder="Ex: 923432123" id="" required minlength="9" maxlength="12" >
+                    <input  type="number" class="caixa-info__input input--text" name="editarDocumentoEntregadorNumero" placeholder="<?php echo $telefone_entregador?>" id="" required minlength="9" maxlength="12" >
                 </div>
             </div>
 
@@ -84,18 +84,18 @@
                     <div class="caixa-info__cabecalho"><h3 >Categoria</h3></div>
                     <div class="caixa-info__descricao  ">
                         <select class="caixa-info__input input--text" name="editarDocumentoCategoria[]" id="">
-                        <?php foreach($viewmodel as $item) : extract($item);?>
-                            <option  value="<?php echo $id_categoria_documento?>"><?php echo $categoria?></option>
+                        <?php foreach($viewmodel["categoria"] as $item) : extract($item);?>
+                            <option <?php if($id_categoria_documento == $idcategoria) echo "selected";?>  value="<?php echo $id_categoria_documento?>"><?php echo $categoria?></option>
                         <?php endforeach;?>
                         </select>
                     </div>
                     
                 </div>
                 <div class="caixa-info__item">
-                    <div class="caixa-info__cabecalho"><h3 >Identificador / Número</h3></div>
+                    <div class="caixa-info__cabecalho"><h3>Identificador / Número</h3></div>
 
                     <div class="caixa-info__descricao  ">
-                        <input  type="text" class="caixa-info__input input--text" name="editarDocumentoIdentificador[]" placeholder="Ex: 091BEAO1J1221" id=""  minlength="3" maxlength="20" required>
+                        <input  type="text" class="caixa-info__input input--text" name="editarDocumentoIdentificador[]" placeholder="<?php echo $identifacador_documento?>" id=""  minlength="3" maxlength="20" required>
                     </div>
                     
                 </div>
@@ -105,7 +105,7 @@
                 <div class="caixa-info__item">
                     <div class="caixa-info__cabecalho"><h3 >Data de emissão </h3></div>
                     <div class="caixa-info__descricao  ">
-                        <input  type="date" class="caixa-info__input input--text" id="date-input" name="editarDocumentoEmissao[]" required/>
+                        <input  type="date" class="caixa-info__input input--text" id="date-input" name="editarDocumentoEmissao[]" value="<?php echo $datas;?>" required/>
                     </div>
                 </div>
                 <div class="caixa-info__item">

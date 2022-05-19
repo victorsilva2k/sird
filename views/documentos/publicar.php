@@ -86,7 +86,7 @@
                         <select class="caixa-info__input input--text" name="adicionarDocumentoCategoria[]" id="">
                         <?php foreach($viewmodel as $item) : extract($item);?>
                             <option  value="<?php echo $id_categoria_documento?>"><?php echo $categoria?></option>
-                            <?php endforeach;?>
+                        <?php endforeach;?>
                         </select>
                     </div>
                     

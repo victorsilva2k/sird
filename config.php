@@ -3,8 +3,8 @@
 // Define DB Params
 
 define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "SUPERincu1060");
+define("DB_USER", "victorino");
+define("DB_PASS", "rookie1060GAMESET");
 define("DB_NAME", "sird-db");
 
 define("ROOT_PATH", "/sird/");
